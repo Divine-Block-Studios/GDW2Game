@@ -13,6 +13,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3B66F0A-D4E3-4A55-B6EF-91AB84878193/a9/e0a0951d/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3B66F0A-D4E3-4A55-B6EF-91AB84878193/a5/a45efe84/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -68,7 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1642734433953</updated>
       <workItem from="1642734438898" duration="4998000" />
-      <workItem from="1642780031171" duration="5297000" />
+      <workItem from="1642780031171" duration="15905000" />
     </task>
     <servers />
   </component>

@@ -17,6 +17,6 @@ public class BoardPlayer : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.rotation = Camera.main.transform.rotation;
+        transform.rotation = GameManager.gameManager.CameraArm.rotation;
     }
 }

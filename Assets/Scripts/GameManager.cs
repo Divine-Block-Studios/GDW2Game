@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => _players[curTurn];
+
+    public Transform CameraArm;
     public static GameManager gameManager { get; set; }
 
     private void Awake()

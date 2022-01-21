@@ -2,55 +2,61 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CamRotation : MonoBehaviour
 {
-    //Imagine a 3D rotation circle.
-    //Origin of circle is placed at current player
-    [Range(0.01f, 1f)]
-    [SerializeField] private float smoothFactor = 0.5f;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private Vector3 _cameraOffset;
+    
+    [SerializeField] private float sensitivity;
+    [SerializeField] private float scrollSensitivity;
+    [SerializeField] private float maxSize;
+    [SerializeField] private float minSize;
+    [SerializeField] private float maxAngle;
+    
+    private float _xRot;
+    private float _zRot;
 
-    private bool isRotating;
+    private float distance;
 
-    private Vector3 orbitPoint;
-    private Vector3 curPlayerPosition;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        curPlayerPosition = GameManager.gameManager.GetCurrentPlayer.transform.position;
-        _cameraOffset = transform.position - curPlayerPosition;
-        
+        distance = transform.GetChild(0).GetChild(0).localPosition.z;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        if (Input.GetKey(KeyCode.Mouse0))
+            Rotate();
     }
 
-    public async void MoveCamera()
+    
+    
+    
+    
+    private void Rotate()
     {
-        //Lerp cam from player to player.
-    }
+        //Run tests to see if this if statement is faster here, or faster in start paired with a boolean
+        #if UNITY_STANDALONE //directive for compiling/executing code for any standalone platform (Mac OS X, Windows or Linux).
+            print("rotate");
+            float mx = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+            float my = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+            float ms = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
 
-    private void LateUpdate()
-    {
-        if (!Input.GetKey(KeyCode.Mouse0))
-        {
-            Quaternion camTurnAngle =
-                Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotationSpeed,
-                    Vector3.up); // * Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * rotationSpeed, Vector3.up);
-            _cameraOffset = camTurnAngle * _cameraOffset;
+            //See in editor. Rotating horizontally affects Y and vice versa
+            _zRot -= mx;
+            _xRot -= my;
 
-            transform.LookAt(GameManager.gameManager.GetCurrentPlayer.transform);
-            //transform.Rotate(Vector3.forward, 90);
-            Vector3 newPos = curPlayerPosition + _cameraOffset;
-            transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
-        }
+            _xRot = Mathf.Clamp(_xRot, -maxAngle, 0);
+
+            distance = Mathf.Clamp(ms + distance, -maxSize, -minSize);
+            print(distance);
+
+            transform.GetChild(0).GetChild(0).localPosition = new Vector3(0,0,distance);
+            transform.GetChild(0).localRotation = Quaternion.Euler(_xRot,0,0);
+            transform.rotation = Quaternion.Euler(0,0,_zRot);
+        #elif UNITY_IOS || UNITY_ANDROID// directive for compiling/executing code for the iOS platform. Android for andriod. Select in build setting to use.
+            
+        #endif
     }
 }
