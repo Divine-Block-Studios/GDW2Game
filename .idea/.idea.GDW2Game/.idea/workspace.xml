@@ -10,7 +10,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3B66F0A-D4E3-4A55-B6EF-91AB84878193/a9/e0a0951d/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3B66F0A-D4E3-4A55-B6EF-91AB84878193/a5/a45efe84/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
@@ -18,9 +27,15 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/CamRotation.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/CamRotation.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="23zQRzbN9M2x3m50TKQMvk7lxzB" />
@@ -69,7 +84,9 @@
       <option name="presentableId" value="Default" />
       <updated>1642734433953</updated>
       <workItem from="1642734438898" duration="4998000" />
-      <workItem from="1642780031171" duration="15905000" />
+      <workItem from="1642780031171" duration="27391000" />
+      <workItem from="1642908992824" duration="7177000" />
+      <workItem from="1642960743535" duration="2255000" />
     </task>
     <servers />
   </component>

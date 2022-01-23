@@ -26,7 +26,7 @@ public class CamRotation : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse1))
             Rotate();
     }
 
@@ -38,7 +38,6 @@ public class CamRotation : MonoBehaviour
     {
         //Run tests to see if this if statement is faster here, or faster in start paired with a boolean
         #if UNITY_STANDALONE //directive for compiling/executing code for any standalone platform (Mac OS X, Windows or Linux).
-            print("rotate");
             float mx = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
             float my = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
             float ms = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
@@ -50,7 +49,6 @@ public class CamRotation : MonoBehaviour
             _xRot = Mathf.Clamp(_xRot, -maxAngle, 0);
 
             distance = Mathf.Clamp(ms + distance, -maxSize, -minSize);
-            print(distance);
 
             transform.GetChild(0).GetChild(0).localPosition = new Vector3(0,0,distance);
             transform.GetChild(0).localRotation = Quaternion.Euler(_xRot,0,0);

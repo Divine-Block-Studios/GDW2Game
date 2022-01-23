@@ -3,16 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //Max 20, cus if we expand to PUN we can only handle 20... Alternatively, if we do p2p...
-    //[SerializeField] private byte players;
 
     private byte curRound;
     private int curTurn;
-    [SerializeField]
-    private BoardPlayer [] _players;
+    private int diceRemainder;
+
+    [SerializeField] private GameObject debugStartTile;
+    
+    //May make sense to move this into BoardController class
+    [SerializeField] private BoardPlayer [] _players;
     
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => _players[curTurn];
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //_players = new BoardPlayer[players];
+        debugStartTile.GetComponent<Tile>().LandedOn(GetCurrentPlayer);
     }
 
     // Update is called once per frame
@@ -48,5 +52,18 @@ public class GameManager : MonoBehaviour
     void EndTurn()
     {
         //curTurn = (curTurn + 1) % players;
+    }
+
+    //This is called after a tile is landed on
+    public void EndAction(Tile nextTile, bool costAction)
+    {
+
+        if (costAction)
+        {
+            if (--diceRemainder == 0)
+            {
+                EndTurn();
+            }
+        }
     }
 }
