@@ -17,11 +17,11 @@ public class CamRotation : MonoBehaviour
     private float _xRot;
     private float _zRot;
 
-    private float distance;
+    private float _distance;
 
     private void Start()
     {
-        distance = transform.GetChild(0).GetChild(0).localPosition.z;
+        _distance = transform.GetChild(0).GetChild(0).localPosition.z;
     }
 
     private void Update()
@@ -48,9 +48,9 @@ public class CamRotation : MonoBehaviour
 
             _xRot = Mathf.Clamp(_xRot, -maxAngle, 0);
 
-            distance = Mathf.Clamp(ms + distance, -maxSize, -minSize);
+            _distance = Mathf.Clamp(ms + _distance, -maxSize, -minSize);
 
-            transform.GetChild(0).GetChild(0).localPosition = new Vector3(0,0,distance);
+            transform.GetChild(0).GetChild(0).localPosition = new Vector3(0,0,_distance);
             transform.GetChild(0).localRotation = Quaternion.Euler(_xRot,0,0);
             transform.rotation = Quaternion.Euler(0,0,_zRot);
         #elif UNITY_IOS || UNITY_ANDROID// directive for compiling/executing code for the iOS platform. Android for andriod. Select in build setting to use.
