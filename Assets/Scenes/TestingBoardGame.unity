@@ -983,9 +983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7157086a0a31c5c4bb99346a3f67818c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minForce: 0.3
-  maxForce: 0.7
-  spinTime: 2.2
+  minForce: 0.1
+  maxForce: 0.3
+  spinTime: 5
   delay: 1
   radius: 5
   tempA: {fileID: 2100000, guid: 3106713c319f38540bcb4161e65c7ec7, type: 2}

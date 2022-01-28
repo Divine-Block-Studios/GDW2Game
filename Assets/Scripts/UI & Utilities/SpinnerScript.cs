@@ -141,7 +141,7 @@ public class SpinnerScript : MonoBehaviour
                 
             }
 
-            yield return new WaitForSeconds(delay);
+            yield return null;
         }
         yield return null;
     }
