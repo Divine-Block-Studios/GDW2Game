@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinTile : Tile
+namespace Board.Tiles
 {
-    [SerializeField] private bool giveCoins;
-    [SerializeField] private ushort amount;
-    public override void LandedOn(BoardPlayer player)
+    public class CoinTile : Tile
     {
-        if (giveCoins)
+        [SerializeField] private bool giveCoins;
+        [SerializeField] private ushort amount;
+        public override void LandedOn(BoardPlayer player)
         {
-            player.Coins -= amount;
+            if (giveCoins)
+            {
+                player.Coins += amount;
+            }
+            else
+            {
+                player.Coins -= amount;
+            }
+            GameManager.gameManager.EndAction(nextTile, _costsMoveToPass);
         }
-        else
-        {
-        }
-
     }
 }
