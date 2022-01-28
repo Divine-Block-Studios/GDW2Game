@@ -128,7 +128,7 @@ public class SpinnerScript : MonoBehaviour
             
             time += Time.deltaTime;
             
-            if (((int)transform.eulerAngles.z / (int)angForNext) != curTile)
+            if (((int)transform.localEulerAngles.z / (int)angForNext) != curTile)
             {
                 //Change skins
                 _cones[curTile].material = matA;
