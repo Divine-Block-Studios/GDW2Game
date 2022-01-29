@@ -13,40 +13,40 @@ public class SpinnerScript : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private float minForce;
     [SerializeField] private float maxForce;
-    [SerializeField] private float spinTime;
-    [SerializeField] private int delay;
+    [SerializeField] private float minSpinTimeS;
+    [SerializeField] private float maxSpinTimeS;
+    [SerializeField] private int delayMS;
     [SerializeField] private float radius;
     [SerializeField] private Material tempA;
     [SerializeField] private Material tempB;
+
+    private float _trueSpinTime;
     
     private float _curForce;
     private int _count;
+    private int _curTile;
 
     private List<MeshRenderer> _cones;
 
     private Material matA;
     private Material matB;
 
-    private void Start()
+    public void Init(AwardableEvents [] items, Vector3 loc, BoardPlayer ply)
     {
-        List<string> testing = new List<string> {"A", "B", "C", "D", "A", "B"};
-        Init(testing, new Vector3(0,0,15), tempA, tempB);
-    }
-
-    public void Init<T>(List<T> items, Vector3 loc, Material A, Material B)
-    {
-        matA = A;
-        matB = B;
+        matA = tempA;
+        matB = tempB;
         _cones = new List<MeshRenderer>();
-        _count = items.Count;
+        _count = items.Length;
+        _trueSpinTime = Random.Range(minSpinTimeS, maxSpinTimeS);
         
         float angle = 360f / _count;
-        print("Range: " + angle);
         
+        print("TEST: Beginning Draw Cone");
         for (int i = 0; i < _count; i++)
         {
             DrawCone(angle, i, loc);
         }
+        Spin(angle, items, ply);
     }
 
     //This may be slow drawing the shape again and again...
@@ -64,7 +64,7 @@ public class SpinnerScript : MonoBehaviour
 
         float rotation = (angle * (index + 1)) % 360;
         print(rotation);
-        int rayCount = 18/_count;
+        int rayCount = 24/_count;
         //unsure
         float angIncrease = angle / rayCount;
 
@@ -82,7 +82,6 @@ public class SpinnerScript : MonoBehaviour
             //Get's the vertices point rotated
             
             Vector3 vertex = location + new Vector3(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad)) * radius;
-            print("Vertex: " + vertex);
             vertices[vertexIndex] = vertex;
 
             if (i > 0)
@@ -103,46 +102,46 @@ public class SpinnerScript : MonoBehaviour
         mesh.uv = uv;
         mesh.triangles = triangles;
 
-        print("Drawn Cone");
+        print("TEST: Cone Complete");
         _cones.Add(re);
-        StartCoroutine(Spin(angle));
     }
 
-    private IEnumerator Spin(float angle)
+    private async Task Spin(float angle, AwardableEvents[]items, BoardPlayer ply)
     {
         _curForce = Random.Range(minForce, maxForce);
-        print(_curForce);
+        print("TEST: Beginning Spin");
         float time = 0;
         float initForce = _curForce;
         float angForNext = angle;
-        int curTile = 0;
-        _cones[curTile].material = matB;
-        yield return new WaitForSeconds(delay);
+        _cones[_curTile].material = matB;
+        await Task.Delay(delayMS);
 
 
         while (initForce > 0)
         {
-            print("Force: " + initForce + " - " + time / spinTime);
-            initForce = _curForce - _curForce * (time / spinTime);
+            //print("Force: " + initForce + " - " + time / spinTimeS);
+            initForce = _curForce - _curForce * (time / _trueSpinTime);
             transform.eulerAngles -= new Vector3(0, 0, initForce);
             
             time += Time.deltaTime;
             
-            if (((int)transform.localEulerAngles.z / (int)angForNext) != curTile)
+            if (((int)transform.localEulerAngles.z / (int)angForNext) != _curTile)
             {
                 //Change skins
-                _cones[curTile].material = matA;
-                if (--curTile < 0)
+                _cones[_curTile].material = matA;
+                if (--_curTile < 0)
                 {
-                    curTile = _cones.Count -1; 
+                    _curTile = _cones.Count -1; 
                 }
-                _cones[curTile].material = matB;
+                _cones[_curTile].material = matB;
                 //Check if curTile is too high, reset if so.
-                
             }
-
-            yield return null;
+            await Task.Delay(1);
         }
-        yield return null;
+        print("TEST: Finished: " + items[_curTile]);
+        items[_curTile].Init(ply);
+        //Activate Item.
+        Destroy(gameObject);
+        
     }
 }

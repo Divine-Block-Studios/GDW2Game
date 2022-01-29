@@ -1,19 +1,25 @@
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Board.Tiles
 {
     public class GambleTile : Tile
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private AwardableEvents[] miniGames;  
+        public override void LandedOn(BoardPlayer player)
         {
-        
+            GameManager.gameManager.CreateSelectionUI(miniGames, true, player);
+            //Do not end the turn. This will be handled outside of this script. Sorry for rabbit holeing couldn't get it working otherwise
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Update()
         {
-        
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameManager.gameManager.CreateSelectionUI(miniGames, true, GameManager.gameManager.GetCurrentPlayer);
+            }
         }
     }
 }

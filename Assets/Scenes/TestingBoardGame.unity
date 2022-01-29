@@ -392,8 +392,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1009411713}
+  m_Children: []
   m_Father: {fileID: 2087113648}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -750,7 +749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextTile: {fileID: 1019112436}
   moveToTiles:
-  - {fileID: 1019112440}
+  - {fileID: 0}
   arrow: {fileID: 0}
   highlight: {fileID: 0}
   distBetweenArrowSpawns: 10
@@ -940,56 +939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1009411712
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1009411713}
-  - component: {fileID: 1009411714}
-  m_Layer: 0
-  m_Name: Spinner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1009411713
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009411712}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 519420032}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1009411714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009411712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7157086a0a31c5c4bb99346a3f67818c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minForce: 0.1
-  maxForce: 0.3
-  spinTime: 5
-  delay: 1
-  radius: 5
-  tempA: {fileID: 2100000, guid: 3106713c319f38540bcb4161e65c7ec7, type: 2}
-  tempB: {fileID: 2100000, guid: 30fc4ec00f5afca4784e8c799b307741, type: 2}
 --- !u!1 &1011168295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,22 +1054,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1448979078991038513, guid: e606742e38fc8b44b9ae532bceb25ac9, type: 3}
   m_PrefabInstance: {fileID: 1448979079197205445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1019112437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019112436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c978f19b63c2b946b71e3517e2e471c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTile: {fileID: 1950388120}
+  miniGames:
+  - {fileID: 11400000, guid: d05085f4bbc20304faacb39c6f9dc2d6, type: 2}
+  - {fileID: 11400000, guid: c7484c445d5da5044a3b38bf4947c739, type: 2}
+  - {fileID: 11400000, guid: daeafc70ee1e3944cbf58a2e3ffda0a9, type: 2}
+  - {fileID: 11400000, guid: c9faa944e666f9a48aa2cc3ab898105d, type: 2}
+  - {fileID: 11400000, guid: 3e68aa69191bc1249be9795c328622ab, type: 2}
 --- !u!4 &1019112439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1448979078991038514, guid: e606742e38fc8b44b9ae532bceb25ac9, type: 3}
   m_PrefabInstance: {fileID: 1448979079197205445}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1019112440 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1448979078991038525, guid: e606742e38fc8b44b9ae532bceb25ac9, type: 3}
-  m_PrefabInstance: {fileID: 1448979079197205445}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019112436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e08bb60b4de2864c95b1df4e133f97e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1019112441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,7 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5852c71d1d5741bf107df9e102306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTile: {fileID: 0}
+  nextTile: {fileID: 1950388120}
 --- !u!1 &1033129935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,8 +1834,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugStartTile: {fileID: 1019112436}
-  uiSpinner: {fileID: 0}
+  uiSpinner: {fileID: 5419204594222823393, guid: c91b607c2bd37c64aa9618dff1456225, type: 3}
   uiSelector: {fileID: 0}
+  DEBUG_SpinnerParent: {fileID: 0}
   spawnedUILoc: {x: 0, y: 0}
   players:
   - {fileID: 1011168298}
@@ -2817,7 +2775,8 @@ PrefabInstance:
       propertyPath: moveToTiles.Array.data[0]
       value: 
       objectReference: {fileID: 2128295241}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1448979078991038525, guid: e606742e38fc8b44b9ae532bceb25ac9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e606742e38fc8b44b9ae532bceb25ac9, type: 3}
 --- !u!1001 &6672134077173531291
 PrefabInstance:
