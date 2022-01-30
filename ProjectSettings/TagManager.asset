@@ -9,13 +9,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Map Events
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Map
+  - Player
+  - FakeUI
+  - FakeUISpriteMask
   - 
   - 
   - 

@@ -16,6 +16,7 @@ public class SpinnerScript : MonoBehaviour
     [SerializeField] private float minSpinTimeS;
     [SerializeField] private float maxSpinTimeS;
     [SerializeField] private int delayMS;
+    [SerializeField] private int postDestructionDelay;
     [SerializeField] private float radius;
     [SerializeField] private Material tempA;
     [SerializeField] private Material tempB;
@@ -44,18 +45,24 @@ public class SpinnerScript : MonoBehaviour
         print("TEST: Beginning Draw Cone");
         for (int i = 0; i < _count; i++)
         {
-            DrawCone(angle, i, loc);
+            DrawCone(angle, i, loc, items);
         }
         Spin(angle, items, ply);
     }
 
     //This may be slow drawing the shape again and again...
-    private void DrawCone(float angle, int index, Vector3 location)
+    private void DrawCone(float angle, int index, Vector3 location, AwardableEvents [] items)
     {
         GameObject go = Instantiate(new GameObject() ,transform);
         Mesh mesh = new Mesh();
         go.AddComponent<MeshFilter>().mesh = mesh;
+        go.layer = LayerMask.NameToLayer("FakeUI");
         MeshRenderer re = go.AddComponent<MeshRenderer>();
+        
+        GameObject item = Instantiate(new GameObject(), go.transform);
+        SpriteRenderer sr = item.AddComponent<SpriteRenderer>();
+        sr.sprite = items[index].icon;
+
         print("index: " +index);
         
         re.receiveShadows = false;
@@ -64,7 +71,7 @@ public class SpinnerScript : MonoBehaviour
 
         float rotation = (angle * (index + 1)) % 360;
         print(rotation);
-        int rayCount = 24/_count;
+        int rayCount = 32/_count;
         //unsure
         float angIncrease = angle / rayCount;
 
@@ -76,12 +83,18 @@ public class SpinnerScript : MonoBehaviour
 
         int vertexIndex = 1;
         int trianglesIndex = 0;
+        float tempRot = rotation - angle / 2;
+        item.transform.eulerAngles = new Vector3(0,0,-tempRot);
+        item.transform.localPosition = location + new Vector3(Mathf.Sin(tempRot * Mathf.Deg2Rad), Mathf.Cos(tempRot * Mathf.Deg2Rad)) * (radius / 1.5f) + new Vector3(0,0,-1f);
+        item.transform.localScale = new Vector3( radius /2, radius /2, 1);
+        //item.transform.localPosition = new Vector3()
         
         for (int i = 0; i <= rayCount; i++)
         {
             //Get's the vertices point rotated
             
             Vector3 vertex = location + new Vector3(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad)) * radius;
+            print("vertex: " + vertex);
             vertices[vertexIndex] = vertex;
 
             if (i > 0)
@@ -139,8 +152,9 @@ public class SpinnerScript : MonoBehaviour
             await Task.Delay(1);
         }
         print("TEST: Finished: " + items[_curTile]);
+        //Acts as a callback.
+        await Task.Delay(postDestructionDelay);
         items[_curTile].Init(ply);
-        //Activate Item.
         Destroy(gameObject);
         
     }

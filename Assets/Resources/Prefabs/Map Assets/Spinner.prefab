@@ -48,6 +48,7 @@ MonoBehaviour:
   minSpinTimeS: 3
   maxSpinTimeS: 6
   delayMS: 1000
+  postDestructionDelay: 500
   radius: 5
   tempA: {fileID: 2100000, guid: 3106713c319f38540bcb4161e65c7ec7, type: 2}
   tempB: {fileID: 2100000, guid: 30fc4ec00f5afca4784e8c799b307741, type: 2}

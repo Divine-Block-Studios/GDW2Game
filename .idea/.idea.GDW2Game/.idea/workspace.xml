@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/SpinnerA.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/SpinnerA.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/SpinnerB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/SpinnerB.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,9 +53,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/PlatformSpecificAssets.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/ExampleRenderPipelineAsset.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/CustomRenderPipeline.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/Custom Renderer/CustomRenderPipeline.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/Custom Renderer/CustomRendererInstance.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
     </changedPaths>
   </component>
@@ -111,6 +116,8 @@
       <workItem from="1643218264928" duration="3832000" />
       <workItem from="1643320993711" duration="238000" />
       <workItem from="1643392883438" duration="19143000" />
+      <workItem from="1643437202864" duration="2662000" />
+      <workItem from="1643568098166" duration="2895000" />
     </task>
     <servers />
   </component>
