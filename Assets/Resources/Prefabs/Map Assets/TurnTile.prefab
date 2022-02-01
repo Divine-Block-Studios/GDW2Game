@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1448979078991038514}
   - component: {fileID: 1448979078991038512}
   - component: {fileID: 1448979078991038515}
-  - component: {fileID: 1448979078991038525}
+  - component: {fileID: 5206459160220373326}
   m_Layer: 0
   m_Name: TurnTile
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448979078991038513}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1448979078991038525
+--- !u!114 &5206459160220373326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,8 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextTile: {fileID: 0}
-  moveToTiles:
-  - {fileID: 0}
-  arrow: {fileID: 4050202790379907685, guid: 3c7de3e5c0eb4344b80d2ecb72803e5a, type: 3}
+  moveToTiles: []
+  arrow: {fileID: 0}
   highlight: {fileID: 0}
   distBetweenArrowSpawns: 10

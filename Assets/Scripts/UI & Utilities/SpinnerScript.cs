@@ -42,7 +42,6 @@ public class SpinnerScript : MonoBehaviour
         
         float angle = 360f / _count;
         
-        print("TEST: Beginning Draw Cone");
         for (int i = 0; i < _count; i++)
         {
             DrawCone(angle, i, loc, items);
@@ -56,21 +55,17 @@ public class SpinnerScript : MonoBehaviour
         GameObject go = Instantiate(new GameObject() ,transform);
         Mesh mesh = new Mesh();
         go.AddComponent<MeshFilter>().mesh = mesh;
-        go.layer = LayerMask.NameToLayer("FakeUI");
         MeshRenderer re = go.AddComponent<MeshRenderer>();
         
         GameObject item = Instantiate(new GameObject(), go.transform);
         SpriteRenderer sr = item.AddComponent<SpriteRenderer>();
         sr.sprite = items[index].icon;
 
-        print("index: " +index);
-        
         re.receiveShadows = false;
         re.shadowCastingMode = ShadowCastingMode.Off;
         re.material = matA;
 
         float rotation = (angle * (index + 1)) % 360;
-        print(rotation);
         int rayCount = 32/_count;
         //unsure
         float angIncrease = angle / rayCount;
@@ -94,7 +89,6 @@ public class SpinnerScript : MonoBehaviour
             //Get's the vertices point rotated
             
             Vector3 vertex = location + new Vector3(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad)) * radius;
-            print("vertex: " + vertex);
             vertices[vertexIndex] = vertex;
 
             if (i > 0)
@@ -115,14 +109,12 @@ public class SpinnerScript : MonoBehaviour
         mesh.uv = uv;
         mesh.triangles = triangles;
 
-        print("TEST: Cone Complete");
         _cones.Add(re);
     }
 
     private async Task Spin(float angle, AwardableEvents[]items, BoardPlayer ply)
     {
         _curForce = Random.Range(minForce, maxForce);
-        print("TEST: Beginning Spin");
         float time = 0;
         float initForce = _curForce;
         float angForNext = angle;
@@ -132,7 +124,6 @@ public class SpinnerScript : MonoBehaviour
 
         while (initForce > 0)
         {
-            //print("Force: " + initForce + " - " + time / spinTimeS);
             initForce = _curForce - _curForce * (time / _trueSpinTime);
             transform.eulerAngles -= new Vector3(0, 0, initForce);
             
@@ -151,7 +142,6 @@ public class SpinnerScript : MonoBehaviour
             }
             await Task.Delay(1);
         }
-        print("TEST: Finished: " + items[_curTile]);
         //Acts as a callback.
         await Task.Delay(postDestructionDelay);
         items[_curTile].Init(ply);

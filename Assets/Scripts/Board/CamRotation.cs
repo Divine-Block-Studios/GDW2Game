@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CamRotation : MonoBehaviour
 {
@@ -19,20 +20,40 @@ public class CamRotation : MonoBehaviour
 
     private float _distance;
 
+    private Controls _controls;
+    private Coroutine zoomCoroutine;
+
+    private void Awake()
+    {
+        _controls = new Controls();
+    }
+
+    private void OnEnable()
+    {
+        _controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _controls.Disable();
+    }
+
     private void Start()
     {
-        _distance = transform.GetChild(0).GetChild(0).localPosition.z;
+       //_controls.CoreGameControls.Zoom.started += _ => ZoomStart();
+        //_controls.CoreGameControls.Zoom.canceled += _ => ZoomEnd();
+        //_distance = transform.GetChild(0).GetChild(0).localPosition.z;
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse1))
-            Rotate();
+        #if UNITY_STANDALONE
+            if (Input.GetKey(KeyCode.Mouse1))
+                Rotate();
+        #elif UNITY_IOS || UNITY_ANDROID
+            
+        #endif
     }
-
-    
-    
-    
     
     private void Rotate()
     {
@@ -56,5 +77,101 @@ public class CamRotation : MonoBehaviour
         #elif UNITY_IOS || UNITY_ANDROID// directive for compiling/executing code for the iOS platform. Android for andriod. Select in build setting to use.
             
         #endif
+    }
+
+    #if UNITY_IOS || UNITY_ANDROID
+    private void ZoomStart()
+    {
+        //print("ZoomStarting: " + _controls.CoreGameControls.Zoom.bindings[0].);
+    }
+
+    private void ZoomEnd()
+    {
+        print("ZoomEnd");
+        StopCoroutine(zoomCoroutine);
+    }
+#endif 
+
+    private IEnumerator ZoomDetection()
+    {
+        #if UNITY_STANDALONE
+        #elif UNITY_IOS || UNITY_ANDROID
+        float previousDistance = 0f;
+        float distance = 0f;
+        while (true)
+        {
+            //distance = Vector2.Distance(_controls.Touch.PrimaryFingerPosition.ReadValue<Vector2>(), _controls.Touch.SecondaryFingerPosition.ReadValue<Vector2>());
+
+            //Zooming out
+            if (distance > previousDistance)
+            {
+                Vector3 position = transform.position;
+                Vector3 targetPos = position;
+                targetPos.z -= 1;
+                position = Vector3.Slerp(position, targetPos, Time.deltaTime * scrollSensitivity);
+                transform.position = position;
+            }
+            //Zooming in
+            else if (distance < previousDistance)
+            {
+                Vector3 position = transform.position;
+                Vector3 targetPos = position;
+                targetPos.z += 1;
+                position = Vector3.Slerp(position, targetPos, Time.deltaTime * scrollSensitivity);
+                transform.position = position;
+            }
+            previousDistance = distance;
+            yield return null;
+        }
+#endif
+        yield return null;
+    }
+
+    private void PanCam()
+    {
+        #if UNITY_STANDALONE
+        #elif UNITY_IOS || UNITY_ANDROID
+        #endif
+    }
+    
+    /*
+     * #if UNITY_STANDALONE
+        #elif UNITY_IOS || UNITY_ANDROID
+        #endif
+     */
+
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+        Vector2 zoomInput = context.ReadValue<Vector2>();
+        print("Zooming: " + zoomInput);
+        
+        Vector3 position = transform.GetChild(0).GetChild(0).localPosition;
+        position.z = Mathf.Clamp(position.z + (Time.deltaTime * scrollSensitivity * zoomInput.y), minSize, maxSize);
+        transform.GetChild(0).GetChild(0).localPosition = position;
+        
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.phase != InputActionPhase.Started)
+        {
+            return;
+        }
+
+        print("Raycasting");
+    }
+
+    public void OnRotate(InputAction.CallbackContext context)
+    {
+        Vector2 rotateInfo = context.ReadValue<Vector2>();
+        print("rotating: " + rotateInfo);
+        
+        _zRot -= rotateInfo.x * sensitivity / 1000;
+        _xRot -= rotateInfo.y * sensitivity / 1000;
+
+        _xRot = Mathf.Clamp(_xRot, -maxAngle, 0);
+        
+        transform.GetChild(0).localRotation = Quaternion.Euler(_xRot,0,0);
+        transform.rotation = Quaternion.Euler(0,0,_zRot);
     }
 }

@@ -13,13 +13,5 @@ namespace Board.Tiles
             GameManager.gameManager.CreateSelectionUI(miniGames, true, player);
             //Do not end the turn. This will be handled outside of this script. Sorry for rabbit holeing couldn't get it working otherwise
         }
-
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                GameManager.gameManager.CreateSelectionUI(miniGames, true, GameManager.gameManager.GetCurrentPlayer);
-            }
-        }
     }
 }

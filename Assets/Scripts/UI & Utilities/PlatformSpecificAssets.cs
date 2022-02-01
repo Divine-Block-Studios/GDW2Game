@@ -18,7 +18,7 @@ public class PlatformSpecificAssets : MonoBehaviour
         {
             text.text = pcWords;
         }
-        if (forMobileDevices)
+        else if (forMobileDevices)
         {
             gameObject.SetActive(false);
         }
@@ -27,7 +27,7 @@ public class PlatformSpecificAssets : MonoBehaviour
         {
             text.text = mobileWords;
         }
-        if (!forMobileDevices)
+        else if (!forMobileDevices)
         {
             gameObject.SetActive(false);
         } 
