@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public platforms plats;
 
     Rigidbody2D body;
 
@@ -85,5 +86,11 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionExit2D(Collision2D collision)
     {
         colliding = false;
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        int curPlat = int.Parse(collision.tag);
+
+        plats.recievePlatform(curPlat);
     }
 }

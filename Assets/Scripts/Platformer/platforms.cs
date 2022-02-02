@@ -9,11 +9,9 @@ public class platforms : MonoBehaviour
 
     Rigidbody2D body;
 
-    List<int> xScale = new List<int>();
-    List<int> yScale = new List<int>();
-
     bool falling;
     int elapsedFrames;
+    int currentPlatform;
 
     void Start()
     {
@@ -31,7 +29,7 @@ public class platforms : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         float playerY = playerPos.y - 1f;
 
-        Transform curPlat = plats[0].transform;
+        Transform curPlat = plats[currentPlatform].transform;
 
         if (elapsedFrames > 30)
         {
@@ -40,7 +38,7 @@ public class platforms : MonoBehaviour
 
         if (!falling)
         {
-            if (playerPos.x > (plats[0].transform.position.x - (curPlat.localScale.x / 2)) && playerPos.x < (plats[0].transform.position.x + (curPlat.localScale.x / 2)) && playerY > plats[0].transform.position.y)
+            if (playerPos.x > (curPlat.position.x - (curPlat.localScale.x / 2)) && playerPos.x < (curPlat.position.x + (curPlat.localScale.x / 2)) && playerY > curPlat.position.y)
             {
                 enablePlatform(0);
             }
@@ -61,19 +59,22 @@ public class platforms : MonoBehaviour
 
             enablePlatform(1);
         }
-
-        //Transform curPlat = plats[int.Parse(collision.transform.tag)].transform;
     }
 
     public void enablePlatform(int x)
     {
         if (x == 0)
         {
-            plats[0].GetComponent<BoxCollider2D>().isTrigger = false;
+            plats[currentPlatform].GetComponent<BoxCollider2D>().isTrigger = false;
         }
         else if (x == 1)
         {
-            plats[0].GetComponent<BoxCollider2D>().isTrigger = true;
+            plats[currentPlatform].GetComponent<BoxCollider2D>().isTrigger = true;
         }
+    }
+
+    public void recievePlatform(int x)
+    {
+        currentPlatform = x;
     }
 }
