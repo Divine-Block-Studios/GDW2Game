@@ -17,5 +17,16 @@ public class test : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(-2f, 0f);
+        rb.angularVelocity = 0f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("enter");
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("exit");
     }
 }

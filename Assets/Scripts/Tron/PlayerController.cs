@@ -35,23 +35,35 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) && lastPressed != "S")
         {
-            rb[0].velocity = new Vector2(0f, 1f * speed);
             lastPressed = "W";
         }
-        if (Input.GetKeyDown(KeyCode.S) && lastPressed != "W")
+        else if (Input.GetKeyDown(KeyCode.S) && lastPressed != "W")
         {
-            rb[0].velocity = new Vector2(0f, -1f * speed);
             lastPressed = "S";
         }
-        if (Input.GetKeyDown(KeyCode.D) && lastPressed != "A")
+        else if (Input.GetKeyDown(KeyCode.D) && lastPressed != "A")
         {
-            rb[0].velocity = new Vector2(1f * speed, 0f);
             lastPressed = "D";
         }
-        if (Input.GetKeyDown(KeyCode.A) && lastPressed != "D")
+        else if (Input.GetKeyDown(KeyCode.A) && lastPressed != "D")
         {
-            rb[0].velocity = new Vector2(-1f * speed, 0f);
             lastPressed = "A";
+        }
+
+        switch(lastPressed)
+        {
+            case "W":
+                rb[0].velocity = new Vector2(0f, 1f * speed);
+                break;
+            case "S":
+                rb[0].velocity = new Vector2(0f, -1f * speed);
+                break;
+            case "D":
+                rb[0].velocity = new Vector2(1f * speed, 0f);
+                break;
+            case "A":
+                rb[0].velocity = new Vector2(-1f * speed, 0f);
+                break;
         }
     }
 
