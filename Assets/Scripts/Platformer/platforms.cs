@@ -27,11 +27,11 @@ public class platforms : MonoBehaviour
     void Update()
     {
         Vector3 playerPos = player.transform.position;
-        float playerY = playerPos.y - 1f;
+        float playerY = playerPos.y;
 
         Transform curPlat = plats[currentPlatform].transform;
 
-        if (elapsedFrames > 30)
+        if (elapsedFrames > 100)
         {
             falling = false;
         }
