@@ -147,6 +147,8 @@ public class PlayerController : MonoBehaviour
             case "W":
                 if (cornerPoint.y < (players[0].transform.position.y + offset.y))
                 {
+                    if (points.Count <= 2)
+                        points[0] = cornerPoint;
                     return true;
                 }
                 break;
@@ -182,6 +184,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Kill Player
+        // Remove line and colliders
     }
 
     /*
