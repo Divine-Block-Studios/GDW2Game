@@ -4,16 +4,11 @@ namespace Board.Tiles
 {
     public class ShopTile : Tile
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private Item[] purchaseAbleItems;
+        public override void LandedOn(BoardPlayer player)
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            //Can cause run time exception... Keep track of this. (Sending Item[] instead of AwardableEvent)
+            GameManager.gameManager.CreateSelectionUI(purchaseAbleItems, false, player);
         }
     }
 }

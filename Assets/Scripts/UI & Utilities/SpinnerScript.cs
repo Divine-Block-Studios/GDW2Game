@@ -32,7 +32,7 @@ public class SpinnerScript : MonoBehaviour
     private Material matA;
     private Material matB;
 
-    public void Init(AwardableEvents [] items, Vector3 loc, BoardPlayer ply)
+    public void Init(AwardableEvents [] items, BoardPlayer ply)
     {
         matA = tempA;
         matB = tempB;
@@ -44,14 +44,15 @@ public class SpinnerScript : MonoBehaviour
         
         for (int i = 0; i < _count; i++)
         {
-            DrawCone(angle, i, loc, items);
+            DrawCone(angle, i, items);
         }
         Spin(angle, items, ply);
     }
 
     //This may be slow drawing the shape again and again...
-    private void DrawCone(float angle, int index, Vector3 location, AwardableEvents [] items)
+    private void DrawCone(float angle, int index, AwardableEvents [] items)
     {
+        
         GameObject go = Instantiate(new GameObject() ,transform);
         Mesh mesh = new Mesh();
         go.AddComponent<MeshFilter>().mesh = mesh;
@@ -74,13 +75,11 @@ public class SpinnerScript : MonoBehaviour
         Vector2[] uv = new Vector2[vertices.Length];
         int[] triangles = new int[rayCount * 3];
 
-        vertices[0] = location;
-
         int vertexIndex = 1;
         int trianglesIndex = 0;
         float tempRot = rotation - angle / 2;
         item.transform.eulerAngles = new Vector3(0,0,-tempRot);
-        item.transform.localPosition = location + new Vector3(Mathf.Sin(tempRot * Mathf.Deg2Rad), Mathf.Cos(tempRot * Mathf.Deg2Rad)) * (radius / 1.5f) + new Vector3(0,0,-1f);
+        item.transform.localPosition = new Vector3(Mathf.Sin(tempRot * Mathf.Deg2Rad), Mathf.Cos(tempRot * Mathf.Deg2Rad)) * (radius / 1.5f) + new Vector3(0,0,-1f);
         item.transform.localScale = new Vector3( radius /2, radius /2, 1);
         //item.transform.localPosition = new Vector3()
         
@@ -88,7 +87,7 @@ public class SpinnerScript : MonoBehaviour
         {
             //Get's the vertices point rotated
             
-            Vector3 vertex = location + new Vector3(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad)) * radius;
+            Vector3 vertex = new Vector3(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad)) * radius;
             vertices[vertexIndex] = vertex;
 
             if (i > 0)

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Board;
 using Board.Tiles;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject uiSpinner;
     [SerializeField] private GameObject uiSelector;
     [SerializeField] private Transform DEBUG_SpinnerParent;
-    [SerializeField] private Vector2 spawnedUILoc;
+    [SerializeField] private Transform DEBUG_SelectorParent;
 
     //May make sense to move this into BoardController class
     [SerializeField] private BoardPlayer[] players;
@@ -26,6 +27,10 @@ public class GameManager : MonoBehaviour
     private byte curRound;
     private int curTurn;
     private int diceRemainder;
+    
+    //Move into board player;
+    private bool _inMenu;
+    public bool InMenu => _inMenu;
 
     private void Awake()
     {
@@ -81,16 +86,19 @@ public class GameManager : MonoBehaviour
         if (isSpinner)
         {
             //Create UI Spinner
-            go = Instantiate(uiSpinner, spawnedUILoc, Quaternion.identity, DEBUG_SpinnerParent);
+            go = Instantiate(uiSpinner, DEBUG_SpinnerParent);
             SpinnerScript s = go.GetComponent<SpinnerScript>();
-            s.Init(objects, spawnedUILoc, ply);
+            s.Init(objects, ply);
             //return s.Init(objects, spawnedUILoc);
         }
         else
         {
-            //Create UI Selector
-            go = Instantiate(uiSelector, spawnedUILoc, Quaternion.identity, DEBUG_SpinnerParent);
-            //SpinnerScript a = go.GetComponent<SpinnerScript>();
+            //Create UI SelectorScript
+            go = Instantiate(uiSelector, DEBUG_SelectorParent);
+            SelectorScript s = go.GetComponent<SelectorScript>();
+            _inMenu = true;
+            //Safe cast into items.
+            s.Init(objects as Item[], ply);
         }
     }
 
