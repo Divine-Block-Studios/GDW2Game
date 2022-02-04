@@ -45,13 +45,5 @@ public class CamRotation : MonoBehaviour
         //_distance = transform.GetChild(0).GetChild(0).localPosition.z;
     }
 
-    private void Update()
-    {
-        #if UNITY_STANDALONE
-            if (Input.GetKey(KeyCode.Mouse1))
-                Rotate();
-        #elif UNITY_IOS || UNITY_ANDROID
-            
-        #endif
-    }
+
 }
