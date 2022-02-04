@@ -13,7 +13,7 @@ public class SelectorScript : MonoBehaviour
     [SerializeField] private GameObject scrollBar;
     [SerializeField] private int randomItemsToDisplay;
     [SerializeField] private int outroDelayMS;
-
+    private float _boxDeltaY;
     private bool _inShop;
 
     //TODO: Add the ability to press on an item ICON and have it display what it does.
@@ -31,20 +31,32 @@ public class SelectorScript : MonoBehaviour
         
 
         print("init shop");
+        print("-----------------------------------------");
         _inShop = true;
+
+        foreach (Item i in items)
+        {
+            print(i.name);
+        }
         items = RandomizeArray(items);
+        print("post shuffle shop");
+        foreach (Item i in items)
+        {
+            print(i.name);
+        }
+        print("----------------------------------------");
 
         List<GameObject> gos = new List<GameObject> {itemTemplate};
         float sizeDeltaY = itemTemplate.GetComponent<RectTransform>().sizeDelta.y;
-        float boxDeltaY = itemBacking.GetComponent<RectTransform>().sizeDelta.y;
+        
         
         //if distance between items * num of items is larger than what would show
-        if ((sizeDeltaY + 5) * randomItemsToDisplay - 5 > itemBacking.GetComponent<RectTransform>().sizeDelta.y)
+        if ((sizeDeltaY + 5) * randomItemsToDisplay > itemBacking.GetComponent<RectTransform>().sizeDelta.y)
         {
             print("Showing Scroll");
+            _boxDeltaY = (sizeDeltaY + 5) * (randomItemsToDisplay-3);
             Scrollbar sb = scrollBar.GetComponent<Scrollbar>();
-            sb.size = (sizeDeltaY + 5) * randomItemsToDisplay - 5;
-            sb.onValueChanged.AddListener((dir) => ShiftItems(gos, dir));
+            sb.onValueChanged.AddListener(ShiftItems);
             scrollBar.SetActive(true);
         }
         else
@@ -62,6 +74,7 @@ public class SelectorScript : MonoBehaviour
                 //Instantiate the item template in the correct position, With the parent of item backing and grab the button Component
                 gos.Add(Instantiate(itemTemplate, itemBacking));
                 gos[i].transform.localPosition = new Vector3(itemTemplate.transform.localPosition.x, itemTemplate.transform.localPosition.y - (sizeDeltaY + 5) * i, 0);
+                gos[i].transform.GetChild(0).GetComponent<Image>().sprite = items[i].icon;
             }
 
             //Temp is required in order to work.
@@ -102,27 +115,26 @@ public class SelectorScript : MonoBehaviour
         }*/
     }
 
-    private void ShiftItems(List<GameObject> gos, float dir)
+    private void ShiftItems(float dir)
     {
-        print("Trying to Shift Items");
-        Vector3 move = new Vector3(0, dir);
-        foreach (GameObject go in gos)
-        {
-            go.transform.position += move;
-        }
+        print("Trying to Shift Items: " + dir + " - " + _boxDeltaY);
+        itemBacking.localPosition = new Vector3(0, _boxDeltaY * dir, 0);
+        print(itemBacking.localPosition);
     }
+    
+    
+    //This is just a classic fisher-yates array shuffle
 
-    private Item [] RandomizeArray(Item [] items)
+    private Item [] RandomizeArray(Item [] array)
     {
-        int len = items.Length;
-        while (len > 1)
+        int n = array.Length;
+        while (n > 1) 
         {
-            int rng = Random.Range(0, len--);
-            Item temp = items[rng];
-            items[len] = items[rng];
-            items[rng] = temp;
+            int k = Random.Range(0,n--);
+            Item temp = array[n];
+            array[n] = array[k];
+            array[k] = temp;
         }
-
-        return items;
+        return array;
     }
 }

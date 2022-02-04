@@ -60,6 +60,12 @@ public class SpinnerScript : MonoBehaviour
         
         GameObject item = Instantiate(new GameObject(), go.transform);
         SpriteRenderer sr = item.AddComponent<SpriteRenderer>();
+
+        //Weird magic float I guess
+        
+        //float size = Mathf.Min(1/ , maxHeight);
+        
+        
         sr.sprite = items[index].icon;
 
         re.receiveShadows = false;
@@ -68,6 +74,7 @@ public class SpinnerScript : MonoBehaviour
 
         float rotation = (angle * (index + 1)) % 360;
         int rayCount = 32/_count;
+        print(rayCount);
         //unsure
         float angIncrease = angle / rayCount;
 
@@ -80,8 +87,9 @@ public class SpinnerScript : MonoBehaviour
         float tempRot = rotation - angle / 2;
         item.transform.eulerAngles = new Vector3(0,0,-tempRot);
         item.transform.localPosition = new Vector3(Mathf.Sin(tempRot * Mathf.Deg2Rad), Mathf.Cos(tempRot * Mathf.Deg2Rad)) * (radius / 1.5f) + new Vector3(0,0,-1f);
-        item.transform.localScale = new Vector3( radius /2, radius /2, 1);
+        
         //item.transform.localPosition = new Vector3()
+        
         
         for (int i = 0; i <= rayCount; i++)
         {
@@ -103,12 +111,20 @@ public class SpinnerScript : MonoBehaviour
             vertexIndex++;
             rotation -= angIncrease;
         }
+        
+        //Don't know why this is appropriate, but it is... So whatever..
+        float maxHeight = radius * 0.025f;
+        float size = Mathf.Min(maxHeight, Vector3.Distance(vertices[0], item.transform.localPosition) / 8 / (_count/2));
+        item.transform.localScale = new Vector3( size,size, 1);
+        
+        print(Vector3.Distance(vertices[0], item.transform.localPosition));
 
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;
 
         _cones.Add(re);
+        print(Vector3.Distance(item.transform.position, transform.position));
     }
 
     private async Task Spin(float angle, AwardableEvents[]items, BoardPlayer ply)
