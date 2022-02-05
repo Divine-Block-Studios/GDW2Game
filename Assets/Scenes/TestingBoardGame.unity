@@ -1336,10 +1336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextTile: {fileID: 1950388120}
   purchaseAbleItems:
-  - {fileID: 11400000, guid: daeafc70ee1e3944cbf58a2e3ffda0a9, type: 2}
-  - {fileID: 11400000, guid: d05085f4bbc20304faacb39c6f9dc2d6, type: 2}
   - {fileID: 11400000, guid: c7484c445d5da5044a3b38bf4947c739, type: 2}
-  - {fileID: 11400000, guid: c7484c445d5da5044a3b38bf4947c739, type: 2}
+  - {fileID: 11400000, guid: 2ecf73a931cd89f488604ec6a07f13f4, type: 2}
 --- !u!4 &1019112439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1448979078991038514, guid: e606742e38fc8b44b9ae532bceb25ac9, type: 3}

@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/PickyDice.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Items/PickyDice.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/SelectorUICard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/SelectorUICard.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ShopTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ShopTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
     </list>
@@ -60,14 +62,14 @@
       <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/MultipleDisplayUtilities.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ShopTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/CamRotation.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tron/PlayerController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ShopTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="23zQRzbN9M2x3m50TKQMvk7lxzB" />
@@ -131,7 +133,7 @@
       <workItem from="1643817197377" duration="20334000" />
       <workItem from="1643915588084" duration="602000" />
       <workItem from="1643941372726" duration="7869000" />
-      <workItem from="1643992887039" duration="3576000" />
+      <workItem from="1643992887039" duration="10118000" />
     </task>
     <servers />
   </component>

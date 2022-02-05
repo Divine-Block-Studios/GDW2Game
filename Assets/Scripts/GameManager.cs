@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     private byte curRound;
     private int curTurn;
     private int diceRemainder;
-    
+
     //Move into board player;
     private bool _inMenu;
     public bool InMenu => _inMenu;
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
         //_players = new BoardPlayer[players];
         print(GetCurrentPlayer);
         debugStartTile.GetComponent<Tile>().LandedOn(GetCurrentPlayer);
+        
+        print("Testing:");
     }
 
     // Update is called once per frame
@@ -80,9 +82,11 @@ public class GameManager : MonoBehaviour
     //Somewhat complicated generic function. Essentially takes a list of objects and formats them in an appropriate manner./
     //Then the selected object is returned (val) with a state. 
     //If the UI is random, the user isn't actually allowed to select the option, but it should be dynamic for the sake of it's more interesting.
-    public void CreateSelectionUI(AwardableEvents[] objects, bool isSpinner, BoardPlayer ply)
+    public void CreateSelectionUI(AwardableEvents[] objects, bool isSpinner, bool shouldShuffle, BoardPlayer ply, int randomItemsToDisplay = 1)
     {
         GameObject go;
+        if(shouldShuffle)
+            Shuffle(objects);
         if (isSpinner)
         {
             //Create UI Spinner
@@ -98,9 +102,28 @@ public class GameManager : MonoBehaviour
             SelectorScript s = go.GetComponent<SelectorScript>();
             _inMenu = true;
             //Safe cast into items.
-            s.Init(objects as Item[], ply);
+            s.Init(objects as Item[], ply, randomItemsToDisplay);
         }
     }
+
+    //Custom Variation of FisherYates array shuffle method.
+    private static void Shuffle <T>(T [] array)
+    {
+        int length = array.Length;
+        while(length > 1)
+        {
+            //Set RNG to be a random element in the array (Excluding those which have been modified)
+            int rng = Random.Range(0, length--);
+
+            //Set temp to be last element
+            T temp = array[length];
+            //Set last element to be the random selected element
+            array[length] = array[rng];
+            //Set Random element to be what the old last element was
+            array[rng] = temp;
+        }
+    }
+
 
     public void LoadMiniGame(string gameName)
     {

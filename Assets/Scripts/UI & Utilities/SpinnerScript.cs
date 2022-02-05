@@ -54,11 +54,13 @@ public class SpinnerScript : MonoBehaviour
     {
         
         GameObject go = Instantiate(new GameObject() ,transform);
+        go.name = "SpinnerSlice: " + index + " ( " + items[index].name + " )";
         Mesh mesh = new Mesh();
         go.AddComponent<MeshFilter>().mesh = mesh;
         MeshRenderer re = go.AddComponent<MeshRenderer>();
         
         GameObject item = Instantiate(new GameObject(), go.transform);
+        item.name = items[index].name + ": Image";
         SpriteRenderer sr = item.AddComponent<SpriteRenderer>();
 
         //Weird magic float I guess
@@ -73,7 +75,7 @@ public class SpinnerScript : MonoBehaviour
         re.material = matA;
 
         float rotation = (angle * (index + 1)) % 360;
-        int rayCount = 32/_count;
+        int rayCount = (_count > 12)?3:32/_count;
         print(rayCount);
         //unsure
         float angIncrease = angle / rayCount;
@@ -127,12 +129,11 @@ public class SpinnerScript : MonoBehaviour
         print(Vector3.Distance(item.transform.position, transform.position));
     }
 
-    private async Task Spin(float angle, AwardableEvents[]items, BoardPlayer ply)
+    private async void Spin(float angle, AwardableEvents[]items, BoardPlayer ply)
     {
         _curForce = Random.Range(minForce, maxForce);
         float time = 0;
         float initForce = _curForce;
-        float angForNext = angle;
         _cones[_curTile].material = matB;
         await Task.Delay(delayMS);
 
@@ -144,7 +145,7 @@ public class SpinnerScript : MonoBehaviour
             
             time += Time.deltaTime;
             
-            if (((int)transform.localEulerAngles.z / (int)angForNext) != _curTile)
+            if (transform.localEulerAngles.z < angle * _curTile || (_curTile == 0 && transform.localEulerAngles.z > 358))
             {
                 //Change skins
                 _cones[_curTile].material = matA;
