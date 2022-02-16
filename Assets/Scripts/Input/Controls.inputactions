@@ -2,17 +2,17 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "CoreGameControls",
+            "name": "PCBoardControls",
             "id": "61db79d9-5871-4cf7-891d-27a558463c90",
             "actions": [
                 {
                     "name": "Interact",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "4e5fd080-de9e-4a2b-8337-d1299c7aa42c",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Tap",
-                    "initialStateCheck": false
+                    "interactions": "Press",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RotateCamera",
@@ -44,42 +44,42 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "508ba375-d130-4add-8ea2-118147b9bcb2",
-                    "path": "<Touchscreen>/Press",
+                    "name": "LeftClick",
+                    "id": "c3919c5b-09a2-4c5c-8976-5328c5606ac4",
+                    "path": "OneModifier",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
-                    "isComposite": false,
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "56900757-f397-477e-9fba-eb9874f1c20f",
+                    "name": "modifier",
+                    "id": "8c1357d5-1ae4-467b-a9f5-da41a1153f6e",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "728b50f2-1655-4ddb-b26e-dfaf108376e4",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
                     "id": "528ba3d1-52c3-4ca5-b6eb-bced102f20e4",
                     "path": "<Mouse>/scroll",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Zoom",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "15955850-7048-4c8c-ac2e-ed0af6683707",
-                    "path": "<Touchscreen>/touch0/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -185,6 +185,74 @@
                     "action": "RotateCamera",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "TouchBoardControls",
+            "id": "6eb8417e-3a8a-4150-88ff-76be19fd82ef",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Value",
+                    "id": "e223f801-fcaf-4369-88b0-fa698d94fc8a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotateCamera",
+                    "type": "Value",
+                    "id": "672a7813-30a4-4510-a106-2fb6bf8ca71c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Zoom",
+                    "type": "Value",
+                    "id": "3cf4fd3e-c157-406a-b682-9619e087befe",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "97f700df-2d1a-4d89-b40c-102073e76128",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3655d4a-a345-4ff8-9211-84cec2860f65",
+                    "path": "<Touchscreen>/touch1/delta",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0eaf363c-b3f0-432a-95c8-b00a53326790",
+                    "path": "<Touchscreen>/touch0/delta",
+                    "interactions": "Hold(duration=0.2,pressPoint=1.401298E-45)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
