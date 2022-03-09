@@ -10,11 +10,11 @@ namespace Board.Tiles
         {
             if (giveCoins)
             {
-                player.Coins += amount;
+                player.coins += amount;
             }
             else
             {
-                player.Coins -= amount;
+                player.coins -= amount;
             }
             GameManager.gameManager.EndAction(nextTile, _costsMoveToPass);
         }

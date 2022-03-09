@@ -53,6 +53,18 @@ public class BoardInputControls : MonoBehaviour
         // Holding the finger down for longer triggers rotate camera. [Acting very similarly to mouse rotate]
         // Then finally, instead of storing a new finger, if the camera is rotating (it must be if there's one finger) and a second finger lands, the player is trying to zoom! 
         _controls.TouchBoardControls.Interact.started += OnInteract;  // Try canceled?
+        _controls.TouchBoardControls.Interact.started += (ctx) =>
+        {
+            debugText.text = "Interact Started";
+        };
+        _controls.TouchBoardControls.Interact.performed += (ctx) =>
+        {
+            debugText.text = "Interact performed";
+        };
+        _controls.TouchBoardControls.Interact.canceled += (ctx) =>
+        {
+            debugText.text = "Interact canceled";
+        };
         _controls.TouchBoardControls.Zoom.started += OnZoom;
         _controls.TouchBoardControls.RotateCamera.started += OnRotate;
         //#endif
@@ -62,8 +74,6 @@ public class BoardInputControls : MonoBehaviour
 
 
     // Start is called before the first frame update
-    
-
     private void OnInteract(InputAction.CallbackContext context)
     {
         Ray ray = Camera.main.ScreenPointToRay (context.ReadValue<Vector2>());
@@ -103,7 +113,7 @@ public class BoardInputControls : MonoBehaviour
         _xRot = Mathf.Clamp(_xRot, -maxAngle, 0);
         
         cameraArmBase.GetChild(0).localRotation = Quaternion.Euler(_xRot,0,0);
-        cameraArmBase.rotation = Quaternion.Euler(0,0,_zRot);
+        cameraArmBase.localRotation = Quaternion.Euler(0,0,_zRot);
         //debugText.text = "Rotating: " + cameraArmBase.eulerAngles.z + " -  (input) " + rotateInfo;
     }
 }

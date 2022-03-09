@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -6,10 +7,11 @@ using Board;
 using Board.Tiles;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject debugStartTile;
+    [SerializeField] private Tile debugStartTile;
     [SerializeField] private GameObject uiSpinner;
     [SerializeField] private GameObject uiSelector;
     [SerializeField] private Transform DEBUG_SpinnerParent;
@@ -49,16 +51,34 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //_players = new BoardPlayer[players];
-        print(GetCurrentPlayer);
-        debugStartTile.GetComponent<Tile>().LandedOn(GetCurrentPlayer);
-        
-        print("Testing:");
+        BeginGame();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BeginGame()
     {
+        print(GetCurrentPlayer);
+        GetCurrentPlayer.currentTile = debugStartTile;
 
+        foreach (BoardPlayer player in players)
+        {
+            player.transform.position = debugStartTile.transform.position - player.GetHeight;
+        }
+
+
+        //DEBUG
+        GetCurrentPlayer.currentTile.LandedOn(GetCurrentPlayer);
+    }
+
+    public void UpdateCamera()
+    {
+        //TODO: Make this not called every frame, only while moving and when swapping views.
+        //While in game call this... While player is moving call this.
+        CameraArm.transform.position = GetCurrentPlayer.transform.position;
+    }
+
+    private void Update()
+    {
+        UpdateCamera();
     }
 
     void EndTurn()

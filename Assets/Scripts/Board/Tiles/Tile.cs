@@ -17,5 +17,12 @@ namespace Board.Tiles
         {
             GameManager.gameManager.EndAction(nextTile, _costsMoveToPass);
         }
+
+        public virtual void OnPressed(BoardPlayer player)
+        {
+            //if(player.IsTurn && player.Tile == WarpTile && Warptile.contains(this)? ) ()
+            player.MoveToTile(this);
+            //else{} (Shake tile anim?)
+        }
     }
 }

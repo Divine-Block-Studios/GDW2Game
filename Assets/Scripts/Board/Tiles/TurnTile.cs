@@ -53,18 +53,19 @@ namespace Board.Tiles
                     _arrows[_arrows.Count-1].name = "Arrow: " + (_arrows.Count-1); // why would this not work??
                     print("Arrow: " + i + ":" + j + " - " + _arrows[_arrows.Count-1].name + ", " + _arrows[_arrows.Count-1].transform.position + ", " + _arrows[_arrows.Count-1].transform.eulerAngles);
                     //Add a listener to the arrow
-                    _arrows[_arrows.Count-1].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
+                    _arrows[_arrows.Count-1].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
                 }
             
                 //Highlight all tiles that the player can move to (For Clarification purposes)
                 _highlights.Add(Instantiate(highlight, moveToTiles[i].transform.position - new Vector3(0,0f,0.2f), Quaternion.identity));
-                _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
+                _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
             }
         }
 
-        private void PressedBtn(Tile pressed)
+        private void PressedBtn(Tile pressed, BoardPlayer player)
         {
             Debug.Log("If I could, I'd move to: " + pressed.gameObject.name);
+            player.MoveToTile(pressed);
             foreach (GameObject go in _arrows)
             {
                 //Remove the arrow
