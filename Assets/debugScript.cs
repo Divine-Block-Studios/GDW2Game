@@ -7,25 +7,46 @@ using Random = UnityEngine.Random;
 
 public class debugScript : MonoBehaviour
 {
-    [Header("Debug")]
-    private Quaternion transformQuaternion;
-    public Vector3 transformEuler;
     public bool jump;
+
+    private Rigidbody rb;
 
     // Update is called once per frame
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
-        transformQuaternion = transform.rotation;
-        Debug.Log(transformQuaternion);
-        transformEuler = transform.eulerAngles;
         if (jump)
         {
-            Debug.Log("jumping: ");
             Jump();
             jump = false;
         }
+
+        if (rb.IsSleeping())
+        {
+            Debug.Log("Face: " + CheckDie());
+        }
+    }
+    
+    int CheckDie()
+    {
+        int len = transform.childCount;
+        float curLow = 1;
+        int val = 0;
+        for (int i = 0; i < len; i++)
+        {
+            float loc = transform.GetChild(i).position.z;
+            if (loc < curLow)
+            {
+                curLow = loc;
+                val =  i + 1;
+            }
+        }
+        return val;
     }
 
     void Jump()
