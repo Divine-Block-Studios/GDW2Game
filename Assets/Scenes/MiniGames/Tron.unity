@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 796342246}
   - component: {fileID: 796342245}
   - component: {fileID: 796342244}
+  - component: {fileID: 796342247}
   m_Layer: 7
   m_Name: Players
   m_TagString: Player
@@ -397,6 +398,7 @@ MonoBehaviour:
   trails:
   - {fileID: 0}
   mesh: {fileID: 796342245}
+  _animator: {fileID: 796342247}
   EC: {fileID: 796342246}
   cam: {fileID: 1196447309}
   speed: 5
@@ -486,6 +488,25 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!95 &796342247
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796342241}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 486daafa49a655a4dbc95da664e2d13e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1127336532
 GameObject:
   m_ObjectHideFlags: 0

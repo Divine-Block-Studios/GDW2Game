@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public List<Rigidbody2D> rb;
     public List<GameObject> trails = new List<GameObject>();
     public MeshFilter mesh;
+    public Animator _animator;
 
     private List<Vector2> points;
     private Vector3 offset;
@@ -42,6 +43,9 @@ public class PlayerController : MonoBehaviour
             //tr.Add(players[i].GetComponent<TrailRenderer>());
             //trails[i].GetComponent<Rigidbody2D>().isKinematic = false;
         }
+
+        //Call Animator
+        _animator = GetComponent<Animator>();
 
     }
 
