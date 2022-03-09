@@ -1,24 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public platforms plats;
+    public PlatformerUI ui;
+    public PlatformerControls pc;
 
     Rigidbody2D body;
 
     [SerializeField] float speed;
     [SerializeField] float jumpPower;
-    [SerializeField] float fallSpeed;
 
     float moveDist;
     bool colliding;
-    int elapsedFrames;
+    bool dashing;
+    bool moving;
+    public int elapsedFrames;
+    Vector2 mDir;
 
-    // Start is called before the first frame update
     void Start()
     {
+        pc = new PlatformerControls();
+        OnEnable();
+        InitInputActions();
+
         body = GetComponent<Rigidbody2D>();
         body.freezeRotation = true;
 
@@ -26,25 +34,53 @@ public class PlayerMovement : MonoBehaviour
         elapsedFrames = 200;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void FixedUpdate()
     {
-        Vector3 currentPos = transform.position;
-
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
+        if (moving || dashing)
         {
-            if (colliding)
-            {
-                body.AddForce(transform.up * jumpPower, ForceMode2D.Force);
-            }
+            movement();
         }
+        elapsedFrames++;
+    }
 
-        if (Input.GetKey(KeyCode.L) && colliding)
+    void OnEnable()
+    {
+        pc.Enable();
+    }
+    void OnDisable()
+    {
+        pc.Disable();
+    }
+
+    void InitInputActions()
+    {
+        pc.PlatformerDefault.Dash.performed += ctx => dashing = true;
+        pc.PlatformerDefault.Dash.canceled += ctx => dashing = false;
+
+        pc.PlatformerDefault.Movement.performed += ctx => movementCheck(ctx.ReadValue<Vector2>());
+        pc.PlatformerDefault.Movement.canceled += ctx => movementCheck(new Vector2());
+
+        pc.PlatformerDefault.Jump.performed += ctx => jump(ctx.ReadValue<Vector2>());
+    }
+
+    void movementCheck(Vector2 moveDir)
+    {
+        if(moveDir != new Vector2())
+        {
+            mDir = moveDir;
+            moving = true;
+        } 
+        else
+        {
+            moving = false;
+        }
+    }
+
+    void movement()
+    {
+        Vector2 currentPos = transform.position;
+
+        if(dashing && colliding)
         {
             moveDist = 0.2f * speed;
         }
@@ -53,32 +89,32 @@ public class PlayerMovement : MonoBehaviour
             moveDist = 0.1f * speed;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if(moving)
         {
-            Vector3 newPos = new Vector3(currentPos.x + moveDist, currentPos.y, currentPos.z);
-            transform.position = Vector3.Lerp(currentPos, newPos, 1);
+            Vector2 newPos = new Vector2(currentPos.x + moveDist * mDir.x, currentPos.y);
+            transform.position = newPos;
 
-            if (Input.GetKey(KeyCode.L) && !colliding && elapsedFrames >= 100)
+            if (dashing && !colliding && elapsedFrames >= 50)
             {
-                transform.position = new Vector3(currentPos.x + 5f, currentPos.y, currentPos.z);
+                transform.position = new Vector2(currentPos.x + 5f * mDir.x, currentPos.y);
                 elapsedFrames = 0;
+                ui.checkDash();
             }
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            Vector3 newPos = new Vector3(currentPos.x + -moveDist, currentPos.y, currentPos.z);
-            transform.position = Vector3.Lerp(currentPos, newPos, 1);
-
-            if (Input.GetKey(KeyCode.L) && !colliding && elapsedFrames >= 100)
-            {
-                transform.position = new Vector3(currentPos.x - 5f, currentPos.y, currentPos.z);
-                elapsedFrames = 0;
-            }
-        }
-
-        elapsedFrames++;
     }
 
+    void jump(Vector2 dir)
+    {
+        if(colliding)
+        {
+            body.AddForce(dir * jumpPower, ForceMode2D.Force);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        colliding = true;
+    }
     void OnCollisionStay2D(Collision2D collision)
     {
         colliding = true;
@@ -87,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
     {
         colliding = false;
     }
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         int curPlat = int.Parse(collision.tag);
 

@@ -12,6 +12,7 @@ public class platforms : MonoBehaviour
     bool falling;
     int elapsedFrames;
     int currentPlatform;
+    int prevPlat;
 
     void Start()
     {
@@ -40,11 +41,12 @@ public class platforms : MonoBehaviour
         {
             if (playerPos.x > (curPlat.position.x - (curPlat.localScale.x / 2)) && playerPos.x < (curPlat.position.x + (curPlat.localScale.x / 2)) && playerY > curPlat.position.y)
             {
-                enablePlatform(0);
+                enablePlatform(1, prevPlat);
+                enablePlatform(0, currentPlatform);
             }
             else
             {
-                enablePlatform(1);
+                enablePlatform(1, currentPlatform);
             }
         }
         elapsedFrames++;
@@ -57,24 +59,39 @@ public class platforms : MonoBehaviour
             falling = true;
             elapsedFrames = 0;
 
-            enablePlatform(1);
+            enablePlatform(1, currentPlatform);
         }
     }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        enablePlatform(1, currentPlatform);
+    }
 
-    public void enablePlatform(int x)
+    public void enablePlatform(int x, int platform)
     {
         if (x == 0)
         {
-            plats[currentPlatform].GetComponent<BoxCollider2D>().isTrigger = false;
+            prevPlat = prevPlatform();
+            plats[platform].GetComponent<BoxCollider2D>().isTrigger = false;
         }
         else if (x == 1)
         {
-            plats[currentPlatform].GetComponent<BoxCollider2D>().isTrigger = true;
+            plats[platform].GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
 
     public void recievePlatform(int x)
     {
         currentPlatform = x;
+    }
+
+    int prevPlatform()
+    {
+        return currentPlatform;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        enablePlatform(1, currentPlatform);
     }
 }
