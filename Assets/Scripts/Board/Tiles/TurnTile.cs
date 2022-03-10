@@ -77,7 +77,7 @@ namespace Board.Tiles
                 //Apparently it's recommended to destroy the listners after..
                 Destroy(go);
             }
-            GameManager.gameManager.EndAction(pressed.gameObject, _costsMoveToPass);
+            GameManager.gameManager.EndAction(pressed, _costsMoveToPass);
         }
     }
 }

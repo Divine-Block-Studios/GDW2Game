@@ -18,7 +18,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform DEBUG_SelectorParent;
 
     //May make sense to move this into BoardController class
+    [Header("Objects")] 
     [SerializeField] private BoardPlayer[] players;
+    [SerializeField] private GameObject dice;
+    [SerializeField] private Vector2 diceSpawnHeightByRadius;
 
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => players[curTurn];
@@ -63,10 +66,23 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = debugStartTile.transform.position - player.GetHeight;
         }
-
-
         //DEBUG
-        GetCurrentPlayer.currentTile.LandedOn(GetCurrentPlayer);
+        RollDice();
+    }
+
+    private void RollDice()
+    {
+        Vector3 startLoc = new Vector3(Random.Range(-diceSpawnHeightByRadius.y, diceSpawnHeightByRadius.y),
+            Random.Range(-diceSpawnHeightByRadius.x, diceSpawnHeightByRadius.x), 
+            Random.Range(0, diceSpawnHeightByRadius.y) + diceSpawnHeightByRadius.y);
+        Instantiate(dice, startLoc, Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
+    }
+
+    private void CheckDice(int num)
+    {
+        Debug.Log("Checking the dice from GM: " + num);
+        diceRemainder = num;
+        GetCurrentPlayer.MoveToTile(GetCurrentPlayer.currentTile.NextTile);
     }
 
     public void UpdateCamera()
@@ -87,16 +103,19 @@ public class GameManager : MonoBehaviour
     }
 
     //This is called after a tile is landed on
-    public void EndAction(GameObject nextTile, bool costAction)
+    public void EndAction(Tile nextTile, bool costAction)
     {
-
+        Debug.Log("End Action: " + costAction + " - (-1)" + diceRemainder);
         if (costAction)
         {
             if (--diceRemainder == 0)
             {
                 EndTurn();
+                return;
             }
+                
         }
+        GetCurrentPlayer.MoveToTile(nextTile);
     }
 
     //Somewhat complicated generic function. Essentially takes a list of objects and formats them in an appropriate manner./

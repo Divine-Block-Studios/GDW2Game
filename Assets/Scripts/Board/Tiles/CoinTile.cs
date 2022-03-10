@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Board.Tiles
@@ -6,6 +7,12 @@ namespace Board.Tiles
     {
         [SerializeField] private bool giveCoins;
         [SerializeField] private ushort amount;
+
+        private void Start()
+        {
+            _costsMoveToPass = true;
+        }
+
         public override void LandedOn(BoardPlayer player)
         {
             if (giveCoins)
@@ -16,7 +23,7 @@ namespace Board.Tiles
             {
                 player.coins -= amount;
             }
-            GameManager.gameManager.EndAction(nextTile, _costsMoveToPass);
+            base.LandedOn(player);
         }
     }
 }

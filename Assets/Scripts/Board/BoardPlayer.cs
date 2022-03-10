@@ -41,6 +41,7 @@ public class BoardPlayer : MonoBehaviour
     public void MoveToTile(Tile moveToTile)
     {
         Vector3 start = currentTile.transform.position;
+        Debug.Log(moveToTile.name);
         Vector3 end = moveToTile.transform.position;
         
         print(imgHeight);

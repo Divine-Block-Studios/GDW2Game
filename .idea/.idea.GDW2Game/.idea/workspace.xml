@@ -3,11 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Models/Board/MovedDice.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Models/Board/MovedDice.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Inputs/PlatformerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Inputs/PlatformerControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/debugScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/debugScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/debugScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DiceScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/debugScript.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DiceScript.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +35,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardSpecific/CyberPunkMapEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/EasterEggTile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3B66F0A-D4E3-4A55-B6EF-91AB84878193/a9/e0a0951d/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/20F44B7B-1714-4011-BFF5-057DED7FD27C/08/08c06f24/InputActionPhase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/MultipleDisplayUtilities.cs" root0="SKIP_HIGHLIGHTING" />
@@ -47,7 +54,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ForMobile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlatformSpecificAssets.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" />
@@ -66,14 +72,17 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ShopTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/debugScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/DiceScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/debugScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="23zQRzbN9M2x3m50TKQMvk7lxzB" />
@@ -142,7 +151,7 @@
       <workItem from="1644797984976" duration="6479000" />
       <workItem from="1644859963934" duration="4333000" />
       <workItem from="1646764179939" duration="7968000" />
-      <workItem from="1646844192646" duration="9792000" />
+      <workItem from="1646844192646" duration="19120000" />
     </task>
     <servers />
   </component>

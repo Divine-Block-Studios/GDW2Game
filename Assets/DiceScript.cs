@@ -5,30 +5,25 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class debugScript : MonoBehaviour
+public class DiceScript : MonoBehaviour
 {
-    public bool jump;
-
     private Rigidbody rb;
+    public Action<int> OnCompleted;
 
     // Update is called once per frame
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        StaticHelpers.ThrowAt(transform, transform.position, Vector3.zero, 20, 25);
     }
 
     void Update()
     {
-        if (jump)
-        {
-            Jump();
-            jump = false;
-        }
-
         if (rb.IsSleeping())
         {
-            Debug.Log("Face: " + CheckDie());
+            OnCompleted.Invoke(CheckDie());
+            Destroy(gameObject);
         }
     }
     
@@ -51,7 +46,6 @@ public class debugScript : MonoBehaviour
 
     void Jump()
     {
-
         Vector3 rngVector = new Vector3(Random.value - Random.value, Random.value - Random.value, -Random.value);
         Debug.Log("jumping: " + rngVector);
         GetComponent<Rigidbody>().AddForce(rngVector * 500);
