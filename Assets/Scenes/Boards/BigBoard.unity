@@ -675,7 +675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676404918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.585623, y: 22.321651, z: -8.556409}
+  m_LocalPosition: {x: -25.553223, y: 22.288916, z: -8.556409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1526574597}
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: d5e9aa765eb1ca1419073c2507965ea4, type: 3}
   m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 987381985}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: PCBoardControls
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2059985309}
 --- !u!65 &676404922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1419,7 +1419,7 @@ GameObject:
   - component: {fileID: 1062312687}
   - component: {fileID: 1062312688}
   m_Layer: 0
-  m_Name: WallSW (1)
+  m_Name: WallWE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1996,7 +1996,7 @@ MonoBehaviour:
   players:
   - {fileID: 676404923}
   dice: {fileID: 4073299363586020757, guid: f2a231cf04630e646ad6b1c9f23a5185, type: 3}
-  diceSpawnHeightByRadius: {x: 15, y: -20}
+  diceSpawnHeightByRadius: {x: 30, y: -20}
   CameraArm: {fileID: 942131747}
 --- !u!4 &1681034178
 Transform:

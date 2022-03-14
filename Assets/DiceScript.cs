@@ -15,7 +15,11 @@ public class DiceScript : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        StaticHelpers.ThrowAt(transform, transform.position, Vector3.zero, 20, 25);
+        Debug.Log(Vector3.zero);
+        Debug.DrawRay(transform.position, -transform.position, Color.magenta, 20f);
+        //Debug.DrawRay(transform.position, new Vector3(100,100,100), Color.black, 20f);
+        Debug.Log("Hello");
+        StaticHelpers.ThrowAt(transform, transform.position, -transform.position, 5, 2, 0.75f);
     }
 
     void Update()

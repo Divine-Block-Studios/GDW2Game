@@ -38,7 +38,7 @@ namespace Board.Tiles
                 float distance = Vector3.Distance(_origin, moveToTiles[i].transform.position);
                 Vector3 normal = (moveToTiles[i].transform.position - _origin) / distance;
                 //This rotation only works on a TwoD plane
-                Quaternion rotation = Quaternion.Euler(0, 0,Mathf.Atan2(moveToTiles[i].transform.position.y - _origin.y, moveToTiles[i].transform.position.x - _origin.x) * Mathf.Rad2Deg -90);
+                Quaternion rotation = Quaternion.Euler(arrow.transform.eulerAngles.x, arrow.transform.eulerAngles.y,Mathf.Atan2(moveToTiles[i].transform.position.y - _origin.y, moveToTiles[i].transform.position.x - _origin.x) * Mathf.Rad2Deg -90);
                 //print("Distance: " + distance + " Normal: " + normal + " Rotation: " + rotation);
                 int reps = Mathf.CeilToInt(distance / distBetweenArrowSpawns);
             

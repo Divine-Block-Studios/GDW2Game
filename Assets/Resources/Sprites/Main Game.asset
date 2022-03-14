@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Main Game
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  awardName: 
+  awardName: ???
   cost: 0

@@ -46,23 +46,15 @@ public static class StaticHelpers
         await Task.Yield();
     }
 
-    public static void ThrowAt(Transform obj, Vector3 start, Vector3 end, float rngAngle, float speed)
+    public static void ThrowAt(Transform obj, Vector3 start, Vector3 end, float throwRngAngle, float spinAngleRng, float speed)
     {
         Rigidbody rb = obj.GetComponent<Rigidbody>();
-        //This is the angle between
-        rngAngle = Random.Range(-rngAngle, rngAngle) * Mathf.Deg2Rad;
-        Vector3 rotation = Quaternion.AngleAxis(rngAngle, end - start).eulerAngles.normalized;
-        rb.AddForce(rotation * speed, ForceMode.Impulse);
+        end = Quaternion.AxisAngle(-Vector3.forward , Random.Range(-throwRngAngle, throwRngAngle)) * end-start;
         
-        //Check what maxMagnitudeDelta is 
-        rb.AddForce(start);
-        //rb.AddForce(Vector3.RotateTowards(start, end, rngAngle, 100), ForceMode.Impulse);
-    }
-
-    public static Vector3 RandomDirectionVector()
-    {
-        Vector3 rngVector = new Vector3(Random.value - Random.value, Random.value - Random.value, Random.value -Random.value);
-        return rngVector;
+        Debug.Log((end-start).normalized);
+        Debug.DrawRay(start, end, Color.black, 20);
+        rb.AddTorque(Random.Range(-spinAngleRng, spinAngleRng), Random.Range(-spinAngleRng, spinAngleRng), Random.Range(-spinAngleRng, spinAngleRng));
+        rb.AddForce(end * speed, ForceMode.Impulse);
     }
 
 
