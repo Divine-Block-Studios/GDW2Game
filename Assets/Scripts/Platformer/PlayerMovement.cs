@@ -1,9 +1,10 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public platforms plats;
     public PlatformerUI ui;
@@ -25,7 +26,11 @@ public class PlayerMovement : MonoBehaviour
     {
         pc = new PlatformerControls();
         OnEnable();
-        InitInputActions();
+        
+        if(isLocalPlayer)
+        {
+            InitInputActions();
+        }
 
         body = GetComponent<Rigidbody2D>();
         body.freezeRotation = true;
@@ -36,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (moving || dashing)
+        if (moving || dashing && isLocalPlayer)
         {
             movement();
         }
@@ -113,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("e");
         colliding = true;
     }
     void OnCollisionStay2D(Collision2D collision)
@@ -125,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("w");
         int curPlat = int.Parse(collision.tag);
 
         plats.recievePlatform(curPlat);
