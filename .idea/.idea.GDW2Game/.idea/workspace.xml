@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DiceScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DiceScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/Tile.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/Tile.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Dice.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Dice.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Instantiated Assets/Arrow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Instantiated Assets/Arrow.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Instantiated Assets/Arrow.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Instantiated Assets/Arrow.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/TurnTile.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/TurnTile.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Main Game.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Main Game.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MiniGames/Platformer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MiniGames/Platformer.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Platformer/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Platformer/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +148,7 @@
       <workItem from="1646928188177" duration="2656000" />
       <workItem from="1647050095162" duration="1995000" />
       <workItem from="1647139819660" duration="1828000" />
-      <workItem from="1647212465001" duration="4567000" />
+      <workItem from="1647212465001" duration="4988000" />
     </task>
     <servers />
   </component>

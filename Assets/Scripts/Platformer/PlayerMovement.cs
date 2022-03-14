@@ -14,6 +14,9 @@ public class PlayerMovement : NetworkBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float jumpPower;
+    
+    private float _useSpeed;
+    private float _useJumpPower;
 
     float moveDist;
     bool colliding;
@@ -21,10 +24,15 @@ public class PlayerMovement : NetworkBehaviour
     bool moving;
     public int elapsedFrames;
     Vector2 mDir;
+    
+    private void Awake()
+    {
+        pc = new PlatformerControls();
+    }
 
     void Start()
     {
-        pc = new PlatformerControls();
+        
         OnEnable();
         
         if(isLocalPlayer)
@@ -87,11 +95,11 @@ public class PlayerMovement : NetworkBehaviour
 
         if(dashing && colliding)
         {
-            moveDist = 0.2f * speed;
+            moveDist = 0.2f * _useSpeed;
         }
         else
         {
-            moveDist = 0.1f * speed;
+            moveDist = 0.1f * _useSpeed;
         }
 
         if(moving)
@@ -112,7 +120,7 @@ public class PlayerMovement : NetworkBehaviour
     {
         if(colliding)
         {
-            body.AddForce(dir * jumpPower, ForceMode2D.Force);
+            body.AddForce(dir * _useJumpPower, ForceMode2D.Force);
         }
     }
 
@@ -136,4 +144,23 @@ public class PlayerMovement : NetworkBehaviour
 
         plats.recievePlatform(curPlat);
     }
+    
+    private void ResetPlayer()
+    {
+        _useSpeed = speed;
+        _useJumpPower = jumpPower;
+    }
+
+    public void EndPowerUp()
+    {
+        Debug.Log("Ending power");
+        ResetPlayer();
+    }
+
+    public void JumpBoostPowerUp(float increase)
+    {
+        Debug.Log("Jump power");
+        _useJumpPower += increase;
+    }
+    
 }
