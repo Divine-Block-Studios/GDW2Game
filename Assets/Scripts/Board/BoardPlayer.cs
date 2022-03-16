@@ -14,8 +14,7 @@ public class BoardPlayer : MonoBehaviour
     [Header("Debug (None of this should be exposed)")]
     public Tile currentTile;
 
-    public ushort coins;
-    private byte remainingActions;
+    private ushort coins;
     private byte _location;
     private byte _stars;
 
@@ -40,6 +39,7 @@ public class BoardPlayer : MonoBehaviour
 
     public void MoveToTile(Tile moveToTile)
     {
+        print("Moving to tile: " + moveToTile);
         Vector3 start = currentTile.transform.position;
         Debug.Log(moveToTile.name);
         Vector3 end = moveToTile.transform.position;
@@ -56,9 +56,13 @@ public class BoardPlayer : MonoBehaviour
             Debug.Log("Needs to Lerp");
             StaticHelpers.MoveLerp(transform, start - imgHeight, end - imgHeight, moveSpeed, () => moveToTile.LandedOn(this), true);
         }
-        Debug.DrawRay(start, end, Color.red, 5);
         //Move along the direction vector at a set speed.
         //Cast two rays, one along ZX one along Y.
+    }
+
+    public void AddCoins(int addAmount)
+    {
+        coins = (ushort)Mathf.Clamp(coins + addAmount, 0, ushort.MaxValue);
     }
 
     //Sin wave turning?

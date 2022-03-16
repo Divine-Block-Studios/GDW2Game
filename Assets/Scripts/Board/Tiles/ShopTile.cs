@@ -10,7 +10,13 @@ namespace Board.Tiles
         [SerializeField] private bool shouldShuffle;
 
         [SerializeField] private int randomItemsToDisplay;
-        public override void LandedOn(BoardPlayer player)
+        
+        private void Start()
+        {
+            _costsMoveToPass = true;
+            _forcePlayerInteraction = true;
+        }
+        protected override void LandedOnFunctionality(BoardPlayer player)
         {
             //Can cause run time exception... Keep track of this. (Sending Item[] instead of AwardableEvent)
             

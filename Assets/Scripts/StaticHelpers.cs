@@ -56,6 +56,24 @@ public static class StaticHelpers
         rb.AddTorque(Random.Range(-spinAngleRng, spinAngleRng), Random.Range(-spinAngleRng, spinAngleRng), Random.Range(-spinAngleRng, spinAngleRng));
         rb.AddForce(end * speed, ForceMode.Impulse);
     }
+    
+    //Custom Variation of FisherYates array shuffle method.
+    public static void Shuffle <T>(T [] array)
+    {
+        int length = array.Length;
+        while(length > 1)
+        {
+            //Set RNG to be a random element in the array (Excluding those which have been modified)
+            int rng = Random.Range(0, length--);
+
+            //Set temp to be last element
+            T temp = array[length];
+            //Set last element to be the random selected element
+            array[length] = array[rng];
+            //Set Random element to be what the old last element was
+            array[rng] = temp;
+        }
+    }
 
 
 }

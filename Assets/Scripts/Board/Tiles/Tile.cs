@@ -21,7 +21,16 @@ namespace Board.Tiles
 
         private void Awake()
         {
-            GetComponent<MeshRenderer>().enabled = false;
+            print("AwakeMain: " + gameObject.name);
+
+            if (GameManager.gameManager)
+            {
+                print("True");
+            }
+
+
+            if(GameManager.gameManager.showTiles)
+                GetComponent<MeshRenderer>().enabled = false;
             float dims = transform.localScale.x / 2;
 
             for (int i = 0; i < _locations.Length; i++)
@@ -29,22 +38,41 @@ namespace Board.Tiles
                 float rotation = (60 * i) - 30;
                 Vector3 vertex = new Vector3(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad));
                 _locations[i] = vertex * dims;
-                Debug.Log(i+ " - " +vertex);
-                Debug.Log(_locations[i]);
             }
-
+            print("AwakeMain: " + gameObject.name);
         }
 
-        public virtual void LandedOn(BoardPlayer player)
+        public void LandedOn(BoardPlayer player)
         {
+            //Set this to be the current tile
             player.currentTile = this;
+            //if force interaction
+            Debug.Log("Testing: " + _forcePlayerInteraction + " - "  + _costsMoveToPass + " - " + gameObject.name + " - " + GameManager.gameManager.DiceRemainder);
+            if (_forcePlayerInteraction)
+            {
+                //Call function
+                LandedOnFunctionality(player);
+                return;
+            }
+            if (GameManager.gameManager.DiceRemainder == 0)
+            {
+                //if remaining moves is 0, call functionality regardless.
+                LandedOnFunctionality(player);
+            }
             GameManager.gameManager.EndAction(nextTile, _costsMoveToPass);
+            //End turn regardless of outcome.
+            
+        }
+
+        protected virtual void LandedOnFunctionality(BoardPlayer player)
+        {
+            
         }
 
         public virtual void OnPressed(BoardPlayer player)
         {
             //if(player.IsTurn && player.Tile == WarpTile && Warptile.contains(this)? ) ()
-            player.MoveToTile(this);
+            //player.MoveToTile(this);
             //else{} (Shake tile anim?)
         }
     }

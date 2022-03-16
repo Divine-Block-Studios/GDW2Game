@@ -5,9 +5,14 @@ namespace Board.Tiles
     public class ChanceTile : Tile
     {
         //[SerializeField] private 
-        public override void LandedOn(BoardPlayer player)
+        private void Start()
         {
-            base.LandedOn(player);
+            _costsMoveToPass = true;
+            _forcePlayerInteraction = false;
+        }
+        protected override void LandedOnFunctionality(BoardPlayer player)
+        {
+            
         }
     }
 }

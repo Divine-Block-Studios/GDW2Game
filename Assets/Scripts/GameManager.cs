@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Tile debugStartTile;
+    public bool showTiles;
     [SerializeField] private GameObject uiSpinner;
     [SerializeField] private GameObject uiSelector;
     [SerializeField] private Transform DEBUG_SpinnerParent;
@@ -19,7 +20,10 @@ public class GameManager : MonoBehaviour
 
     //May make sense to move this into BoardController class
     [Header("Objects")] 
-    [SerializeField] private BoardPlayer[] players;
+    [SerializeField] private Transform playerParentObj;
+    [SerializeField] private TextMesh diceObj;
+    [SerializeField] private Transform shredderObj;
+    
     [SerializeField] private GameObject dice;
     [SerializeField] private Vector2 diceSpawnHeightByRadius;
 
@@ -32,6 +36,9 @@ public class GameManager : MonoBehaviour
     private byte curRound;
     private int curTurn;
     private int diceRemainder;
+    
+    private BoardPlayer [] players;
+    public int DiceRemainder => diceRemainder;
 
     //Move into board player;
     private bool _inMenu;
@@ -39,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        print("GameManagerMade");
         if (gameManager != null && gameManager != this)
         {
             Destroy(gameObject);
@@ -53,6 +61,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        players = new BoardPlayer[playerParentObj.childCount];
+        
+        for (int i = 0; i < playerParentObj.childCount; i++)
+        {
+            players[i] = playerParentObj.GetChild(i).GetComponent<BoardPlayer>();
+        }
+
+        StaticHelpers.Shuffle(players);
+
+        diceObj.transform.parent = players[0].transform;
+        shredderObj.parent = players[0].transform;
+
         //_players = new BoardPlayer[players];
         BeginGame();
     }
@@ -80,8 +100,11 @@ public class GameManager : MonoBehaviour
 
     private void CheckDice(int num)
     {
+        num = 3;
         Debug.Log("Checking the dice from GM: " + num);
         diceRemainder = num;
+        diceObj.gameObject.SetActive(true);
+        diceObj.text = num.ToString();
         GetCurrentPlayer.MoveToTile(GetCurrentPlayer.currentTile.NextTile);
     }
 
@@ -105,15 +128,18 @@ public class GameManager : MonoBehaviour
     //This is called after a tile is landed on
     public void EndAction(Tile nextTile, bool costAction)
     {
-        Debug.Log("End Action: " + costAction + " - (-1)" + diceRemainder);
         if (costAction)
         {
-            if (--diceRemainder == 0)
+            Debug.Log("End Action: " + (diceRemainder - 1));
+            if (diceRemainder-- == 0)
             {
+                diceObj.gameObject.SetActive(false);
                 EndTurn();
                 return;
             }
-                
+
+            diceObj.text = diceRemainder.ToString();
+
         }
         GetCurrentPlayer.MoveToTile(nextTile);
     }
@@ -125,7 +151,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject go;
         if(shouldShuffle)
-            Shuffle(objects);
+            StaticHelpers.Shuffle(objects);
         if (isSpinner)
         {
             //Create UI Spinner
@@ -145,23 +171,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Custom Variation of FisherYates array shuffle method.
-    private static void Shuffle <T>(T [] array)
-    {
-        int length = array.Length;
-        while(length > 1)
-        {
-            //Set RNG to be a random element in the array (Excluding those which have been modified)
-            int rng = Random.Range(0, length--);
-
-            //Set temp to be last element
-            T temp = array[length];
-            //Set last element to be the random selected element
-            array[length] = array[rng];
-            //Set Random element to be what the old last element was
-            array[rng] = temp;
-        }
-    }
+    
 
 
     public void LoadMiniGame(string gameName)

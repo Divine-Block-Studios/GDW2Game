@@ -5,25 +5,16 @@ namespace Board.Tiles
 {
     public class CoinTile : Tile
     {
-        [SerializeField] private bool giveCoins;
-        [SerializeField] private ushort amount;
+        [SerializeField] private short amount;
 
         private void Start()
         {
             _costsMoveToPass = true;
         }
 
-        public override void LandedOn(BoardPlayer player)
+        protected override void LandedOnFunctionality(BoardPlayer player)
         {
-            if (giveCoins)
-            {
-                player.coins += amount;
-            }
-            else
-            {
-                player.coins -= amount;
-            }
-            base.LandedOn(player);
+            player.AddCoins(amount);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Board.Tiles
             }
         }
 
-        public override void LandedOn(BoardPlayer player)
+        protected override void LandedOnFunctionality(BoardPlayer player)
         {
             //Play mini game. When the minigame sends the players back, hopefully this function continues // TODO: Testing for errors here.
             

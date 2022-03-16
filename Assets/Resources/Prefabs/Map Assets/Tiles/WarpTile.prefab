@@ -95,4 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextTile: {fileID: 0}
-  warpToTile: []
+  moveToTiles: []
+  arrow: {fileID: 2103831153101574204, guid: 70ea6375b9e63eb47be57af36f5584c8, type: 3}
+  highlight: {fileID: 3595099606364897832, guid: fa7a39ecc7e6c244493bcdfd67e7e018, type: 3}
+  distBetweenArrowSpawns: 10
+  costToTravel: 5
+  randomlyPicked: 0

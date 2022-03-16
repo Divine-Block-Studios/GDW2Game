@@ -9,7 +9,14 @@ namespace Board.Tiles
     {
         [SerializeField] private AwardableEvents[] miniGames;
         [SerializeField] private bool shouldShuffle;
-        public override void LandedOn(BoardPlayer player)
+
+        private void Start()
+        {
+            _costsMoveToPass = true;
+            _forcePlayerInteraction = false;
+        }
+
+        protected override void LandedOnFunctionality(BoardPlayer player)
         {
             GameManager.gameManager.CreateSelectionUI(miniGames, true, shouldShuffle, player);
             //Do not end the turn. This will be handled outside of this script. Sorry for rabbit holeing couldn't get it working otherwise

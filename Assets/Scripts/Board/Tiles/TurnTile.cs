@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Board.Tiles
@@ -16,56 +17,54 @@ namespace Board.Tiles
         private Vector3 _origin;
         private void Start()
         {
-            _arrows = new List<GameObject>();
-            _highlights = new List<GameObject>();
-            _origin = transform.position;
+            
             _costsMoveToPass = false;
-            if(moveToTiles.Count > 0)
-                _forcePlayerInteraction = true;
-            else
+            _origin = transform.position;
+            _forcePlayerInteraction = true;
+            if(moveToTiles.Count == 0)
                 throw new Exception("TILE IS REDUNDANT: " + gameObject.name + " ADD OTHER MoveToTiles or change object script to Tile");
             moveToTiles.Add(nextTile.GetComponent<Tile>());
-            //gameObject.AddComponent<Interactable>().ONClick.AddListener(()=> PressedBtn()); Why'd I have this?
         }
 
         //TODO: Work through this weird issue.
-        public override void LandedOn(BoardPlayer player)
+        protected override void LandedOnFunctionality(BoardPlayer player)
         {
+            _arrows = new List<GameObject>();
+            _highlights = new List<GameObject>();
             //Create Arrow Gameobjects
+            player.currentTile = this;
             for (int i = 0; i < moveToTiles.Count; i++)
             {
                 int delegateInt = i;
                 float distance = Vector3.Distance(_origin, moveToTiles[i].transform.position);
                 Vector3 normal = (moveToTiles[i].transform.position - _origin) / distance;
-                //This rotation only works on a TwoD plane
-                Quaternion rotation = Quaternion.Euler(arrow.transform.eulerAngles.x, arrow.transform.eulerAngles.y,Mathf.Atan2(moveToTiles[i].transform.position.y - _origin.y, moveToTiles[i].transform.position.x - _origin.x) * Mathf.Rad2Deg -90);
-                //print("Distance: " + distance + " Normal: " + normal + " Rotation: " + rotation);
+                
+                //This working makes me sad
+                //There's a tilt sometimes which is an issue
+                Quaternion rotation = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, normal).eulerAngles - new Vector3(0,0,180));
                 int reps = Mathf.CeilToInt(distance / distBetweenArrowSpawns);
-            
-                print("I: " + i + " Reps: " + reps);
-            
+
                 //
                 for (int j = 0; j < reps; j++)
                 {
-                    Vector3 location = j * distBetweenArrowSpawns * normal + new Vector3(0,0,-3);
-                
+                    Vector3 location = (j == 0)
+                        ? 0.2f * distBetweenArrowSpawns * normal + transform.position: j * distBetweenArrowSpawns * normal + transform.position;
                     _arrows.Add(Instantiate(arrow, location, rotation));
-                    _arrows[_arrows.Count-1].name = "Arrow: " + (_arrows.Count-1); // why would this not work??
-                    print("Arrow: " + i + ":" + j + " - " + _arrows[_arrows.Count-1].name + ", " + _arrows[_arrows.Count-1].transform.position + ", " + _arrows[_arrows.Count-1].transform.eulerAngles);
+                        _arrows[_arrows.Count-1].name = "Arrow: " + (_arrows.Count-1); // why would this not work??
+                    
                     //Add a listener to the arrow
-                    _arrows[_arrows.Count-1].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
+                    _arrows[_arrows.Count-1].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
                 }
             
                 //Highlight all tiles that the player can move to (For Clarification purposes)
                 _highlights.Add(Instantiate(highlight, moveToTiles[i].transform.position - new Vector3(0,0f,0.2f), Quaternion.identity));
-                _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
+                _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
             }
         }
 
-        private void PressedBtn(Tile pressed, BoardPlayer player)
+
+        private void PressedBtn(Tile pressed)
         {
-            Debug.Log("If I could, I'd move to: " + pressed.gameObject.name);
-            player.MoveToTile(pressed);
             foreach (GameObject go in _arrows)
             {
                 //Remove the arrow

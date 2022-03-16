@@ -76,7 +76,6 @@ public class SpinnerScript : MonoBehaviour
 
         float rotation = (angle * (index + 1)) % 360;
         int rayCount = (_count > 12)?3:32/_count;
-        print(rayCount);
         //unsure
         float angIncrease = angle / rayCount;
 
@@ -118,15 +117,12 @@ public class SpinnerScript : MonoBehaviour
         float maxHeight = radius * 0.025f;
         float size = Mathf.Min(maxHeight, Vector3.Distance(vertices[0], item.transform.localPosition) / 8 / (_count/2));
         item.transform.localScale = new Vector3( size,size, 1);
-        
-        print(Vector3.Distance(vertices[0], item.transform.localPosition));
 
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;
 
         _cones.Add(re);
-        print(Vector3.Distance(item.transform.position, transform.position));
     }
 
     private async void Spin(float angle, AwardableEvents[]items, BoardPlayer ply)
