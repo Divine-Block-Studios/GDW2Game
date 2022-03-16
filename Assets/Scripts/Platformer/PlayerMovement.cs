@@ -28,17 +28,22 @@ public class PlayerMovement : NetworkBehaviour
     private void Awake()
     {
         pc = new PlatformerControls();
+
     }
 
     void Start()
     {
-        
-        OnEnable();
-        
-        if(isLocalPlayer)
+        if (isLocalPlayer)
         {
+            Debug.Log(isLocalPlayer);
+            
+
+            
             InitInputActions();
         }
+
+        _useSpeed = speed;
+        _useJumpPower = jumpPower;
 
         body = GetComponent<Rigidbody2D>();
         body.freezeRotation = true;
@@ -105,6 +110,9 @@ public class PlayerMovement : NetworkBehaviour
         if(moving)
         {
             Vector2 newPos = new Vector2(currentPos.x + moveDist * mDir.x, currentPos.y);
+            Debug.Log(newPos);
+            Debug.Log(moveDist);
+            Debug.Log(mDir);
             transform.position = newPos;
 
             if (dashing && !colliding && elapsedFrames >= 50)
@@ -126,7 +134,6 @@ public class PlayerMovement : NetworkBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("e");
         colliding = true;
     }
     void OnCollisionStay2D(Collision2D collision)
