@@ -97,12 +97,12 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/EasterEggTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ShopTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="23zQRzbN9M2x3m50TKQMvk7lxzB" />
@@ -180,7 +180,7 @@
       <workItem from="1647359756981" duration="14378000" />
       <workItem from="1647448761995" duration="8486000" />
       <workItem from="1647563417609" duration="9824000" />
-      <workItem from="1647632440794" duration="11940000" />
+      <workItem from="1647632440794" duration="12789000" />
     </task>
     <servers />
   </component>
