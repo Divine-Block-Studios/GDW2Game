@@ -5,7 +5,7 @@ namespace Board.Tiles
 {
     public class ShopTile : Tile
     {
-        [SerializeField] private Item[] purchaseAbleItems;
+        [SerializeField] private AwardableEvents[] purchaseAbleItems;
 
         [SerializeField] private bool shouldShuffle;
 

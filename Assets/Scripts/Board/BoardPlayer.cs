@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Board;
 using Board.Tiles;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,12 +10,35 @@ using UnityEngine.UI;
 
 public class BoardPlayer : MonoBehaviour
 {
-    [Header("Stats")] [SerializeField] private float moveSpeed;
+    [Header("Stats")] 
+    //This should be set in player settings and forwarded through GM?
+    public Sprite playerImg;
+    [SerializeField] private float moveSpeed;
 
     [Header("Debug (None of this should be exposed)")]
     public Tile currentTile;
 
-    private ushort coins;
+    public ushort coins;
+    
+    private Item _item;
+
+    private BoardInputControls ctrls;
+
+    public void InMenu(bool val)
+    {
+        ctrls.canRayCast = !val;
+    }
+
+    public Item Item
+    {
+        get => _item;
+        set
+        {
+            _item = value;
+            GameManager.gameManager.UpdateUIElements();
+        }
+    }
+
     private byte _location;
     private byte _stars;
 
@@ -29,6 +53,7 @@ public class BoardPlayer : MonoBehaviour
         //This is temporary, It should show the coins of the CURRENT player. if the player presses esc, or the "esc" button for IOS they can see all players Icons, balances and names.
         coinsText.text = coins.ToString();
         imgHeight = new Vector3(0, 0,GetComponent<SpriteRenderer>().size.y + 0.15f);
+        ctrls = GetComponent<BoardInputControls>();
     }
 
     // Update is called once per frame
@@ -53,7 +78,7 @@ public class BoardPlayer : MonoBehaviour
         }
         else
         {
-            Debug.Log("Needs to Lerp");
+            Debug.Log("Needs to Lerp: " + moveSpeed);
             StaticHelpers.MoveLerp(transform, start - imgHeight, end - imgHeight, moveSpeed, () => moveToTile.LandedOn(this), true);
         }
         //Move along the direction vector at a set speed.
@@ -63,6 +88,13 @@ public class BoardPlayer : MonoBehaviour
     public void AddCoins(int addAmount)
     {
         coins = (ushort)Mathf.Clamp(coins + addAmount, 0, ushort.MaxValue);
+    }
+
+    public void UseItem()
+    {
+        _item.Init(this);
+        _item = null;
+        GameManager.gameManager.UpdateUIElements();
     }
 
     //Sin wave turning?

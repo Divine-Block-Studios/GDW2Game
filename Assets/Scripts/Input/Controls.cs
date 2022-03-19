@@ -220,7 +220,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""id"": ""e223f801-fcaf-4369-88b0-fa698d94fc8a"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": true
                 },
                 {
@@ -229,7 +229,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""id"": ""672a7813-30a4-4510-a106-2fb6bf8ca71c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""SlowTap"",
                     ""initialStateCheck"": true
                 },
                 {
@@ -246,7 +246,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""97f700df-2d1a-4d89-b40c-102073e76128"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -269,7 +269,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""0eaf363c-b3f0-432a-95c8-b00a53326790"",
                     ""path"": ""<Touchscreen>/touch0/delta"",
-                    ""interactions"": ""Hold(duration=0.2,pressPoint=1.401298E-45)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RotateCamera"",

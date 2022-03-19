@@ -11,6 +11,8 @@ namespace Board.Tiles
         //If the player uses this tile, should it take a move?
         protected bool _costsMoveToPass;
 
+        public bool CostsMoveToPass => _costsMoveToPass;
+
         private readonly Vector3[] _locations = new Vector3[6];
         public Vector3 GetStandingLoc(int i) => _locations[i];
 

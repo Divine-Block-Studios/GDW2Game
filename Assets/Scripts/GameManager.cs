@@ -7,6 +7,10 @@ using Board;
 using Board.Tiles;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
+using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -19,13 +23,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform DEBUG_SelectorParent;
 
     //May make sense to move this into BoardController class
-    [Header("Objects")] 
+    [Header("Player Objects")] 
     [SerializeField] private Transform playerParentObj;
     [SerializeField] private TextMesh diceObj;
     [SerializeField] private Transform shredderObj;
-    
+    [SerializeField] private Transform playerBadge;
+
+    [Header("Game Elements")]
     [SerializeField] private GameObject dice;
     [SerializeField] private Vector2 diceSpawnHeightByRadius;
+
+    [Header("Game Settings")]
+    [SerializeField] private ushort startingCoins;
+
+    [SerializeField] private float timeBeforeForcedRoll;
 
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => players[curTurn];
@@ -34,10 +45,11 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager { get; set; }
 
     private byte curRound;
+    private byte nextShreddingRound;
     private int curTurn;
     private int diceRemainder;
     
-    private BoardPlayer [] players;
+    public BoardPlayer [] players;
     public int DiceRemainder => diceRemainder;
 
     //Move into board player;
@@ -66,15 +78,17 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < playerParentObj.childCount; i++)
         {
             players[i] = playerParentObj.GetChild(i).GetComponent<BoardPlayer>();
+            players[i].AddCoins(startingCoins);
         }
 
         StaticHelpers.Shuffle(players);
 
-        diceObj.transform.parent = players[0].transform;
-        shredderObj.parent = players[0].transform;
+        diceObj.transform.SetParent( players[0].transform);
+        shredderObj.SetParent( players[0].transform);
 
         //_players = new BoardPlayer[players];
         BeginGame();
+        UpdateUIElements();
     }
 
     public void BeginGame()
@@ -88,6 +102,8 @@ public class GameManager : MonoBehaviour
         }
         //DEBUG
         RollDice();
+        //If local player == Current player, use item.
+        playerBadge.GetChild(2).GetComponent<Button>().onClick.AddListener(() => GetCurrentPlayer.UseItem());
     }
 
     private void RollDice()
@@ -100,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckDice(int num)
     {
-        num = 3;
+        num = 12;
         Debug.Log("Checking the dice from GM: " + num);
         diceRemainder = num;
         diceObj.gameObject.SetActive(true);
@@ -120,9 +136,30 @@ public class GameManager : MonoBehaviour
         UpdateCamera();
     }
 
+    void EliminatePlayer()
+    {
+        
+    }
+
+    void EndRound()
+    {
+        if (++curRound == nextShreddingRound)
+        {
+            EliminatePlayer();
+        }
+    }
+
     void EndTurn()
     {
-        //curTurn = (curTurn + 1) % players;
+        curTurn = (curTurn + 1) % players.Length;
+        if (++curTurn % players.Length == 0)
+        {
+            //Then the full round is complete
+            EndRound();
+        }
+
+        UpdateUIElements();
+        //
     }
 
     //This is called after a tile is landed on
@@ -137,9 +174,7 @@ public class GameManager : MonoBehaviour
                 EndTurn();
                 return;
             }
-
             diceObj.text = diceRemainder.ToString();
-
         }
         GetCurrentPlayer.MoveToTile(nextTile);
     }
@@ -167,17 +202,52 @@ public class GameManager : MonoBehaviour
             SelectorScript s = go.GetComponent<SelectorScript>();
             _inMenu = true;
             //Safe cast into items.
-            s.Init(objects as Item[], ply, randomItemsToDisplay);
+            s.Init(objects, ply, randomItemsToDisplay);
         }
     }
-
     
-
-
     public void LoadMiniGame(string gameName)
     {
         //Complete all tasks BEFORE loading.
         SceneManager.LoadScene(gameName);
+    }
+
+    public void UpdateUIElements()
+    { 
+        Transform plyIcon = playerBadge.GetChild(0);
+        plyIcon.GetComponent<Image>().sprite = GetCurrentPlayer.playerImg;
+        plyIcon.GetChild(0).GetComponent<Text>().text = GetCurrentPlayer.gameObject.name;
+        playerBadge.GetChild(1).GetChild(0).GetComponent<Text>().text = GetCurrentPlayer.coins.ToString();
+        Item i = GetCurrentPlayer.Item;
+        if (i != null)
+        {
+            //If the player has an item
+            Transform item =playerBadge.GetChild(2);
+            item.gameObject.SetActive(true);
+            item.GetChild(0).GetComponent<Image>().sprite = i.icon;
+            item.GetChild(1).GetComponent<Text>().text = i.awardName;
+        }
+        else
+        {
+            playerBadge.GetChild(2).gameObject.SetActive(false);
+        }
+    }
+
+    public BoardPlayer GetRandomPlayer(BoardPlayer ignore = null)
+    {
+        BoardPlayer rng = players[Random.Range(0, players.Length)];
+        
+        //Kind a cringe way to do this because in theory it can go forever
+        if (ignore == rng)
+        {
+            if (players.Length == 0)
+            {
+                Debug.LogError("FATAL: infinite loop, ignored players is only player");
+            }
+            return GetRandomPlayer(ignore);
+        }
+
+        return rng;
     }
 
 }

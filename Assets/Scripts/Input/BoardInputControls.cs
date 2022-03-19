@@ -19,6 +19,7 @@ public class BoardInputControls : MonoBehaviour
     [SerializeField] private Transform cameraArmBase;
     public Text debugText;
     private Controls _controls;
+    public bool canRayCast;
     
     private float _xRot;
     private float _zRot;
@@ -31,14 +32,16 @@ public class BoardInputControls : MonoBehaviour
         {
             debugText = GameObject.Find("DEBUGTEXT").GetComponent<Text>();
         }
+
+        canRayCast = true;
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         _controls.Enable();   
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         _controls.Disable();
     }
@@ -46,52 +49,69 @@ public class BoardInputControls : MonoBehaviour
     private void Start()
     {
         print("Success");
-        //#if UNITY_STANDALONE
         _controls.PCBoardControls.Interact.started += OnInteract;
         _controls.PCBoardControls.RotateCamera.started += OnRotate;
         _controls.PCBoardControls.Zoom.started += OnZoom;
-        //#elif UNITY_IOS || UNITY_ANDROID
+        #if UNITY_IOS || UNITY_ANDROID
         // Done a bit of "code hacking" to get this to work. 1 tap for a short period triggers an interact. [If the finger is removed, it will make events more clear]
         // Holding the finger down for longer triggers rotate camera. [Acting very similarly to mouse rotate]
         // Then finally, instead of storing a new finger, if the camera is rotating (it must be if there's one finger) and a second finger lands, the player is trying to zoom! 
         _controls.TouchBoardControls.Interact.started += OnInteract;  // Try canceled?
-        _controls.TouchBoardControls.Interact.started += (ctx) =>
-        {
-            debugText.text = "Interact Started";
-        };
-        _controls.TouchBoardControls.Interact.performed += (ctx) =>
-        {
-            debugText.text = "Interact performed";
-        };
-        _controls.TouchBoardControls.Interact.canceled += (ctx) =>
-        {
-            debugText.text = "Interact canceled";
-        };
         _controls.TouchBoardControls.Zoom.started += OnZoom;
         _controls.TouchBoardControls.RotateCamera.started += OnRotate;
-        //#endif
+        #endif
     }
-
-    
-
 
     // Start is called before the first frame update
     private void OnInteract(InputAction.CallbackContext context)
     {
-        Ray ray = Camera.main.ScreenPointToRay (context.ReadValue<Vector2>());
-        if (Physics.Raycast(ray, out RaycastHit hit, 500))
+        //Change this, it should cast if a button was not pressed... How?
+        if (canRayCast)
         {
-            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green,5 );
-            if (hit.collider.GetComponent<Interactable>())
+            #if UNITY_IOS || UNITY_ANDROID
+            if (_controls.TouchBoardControls.RotateCamera.WasReleasedThisFrame())
             {
-                hit.collider.GetComponent<Interactable>().Pressed();
+                debugText.text = "Tap Cancelled: ";
+                return;
             }
+
+            
+            #endif
+            Ray ray = Camera.main.ScreenPointToRay(context.ReadValue<Vector2>());
+            if (Physics.Raycast(ray, out RaycastHit hit, 500))
+            {
+                GameObject go = new GameObject();
+                LineRenderer lr = go.AddComponent<LineRenderer>();
+                lr.positionCount = 2;
+                lr.SetPosition(0, ray.origin);
+                lr.SetPosition(1, hit.point);
+                lr.startColor = Color.green;
+                lr.endColor = Color.green;
+                lr.startWidth = 0.01f;
+                lr.endWidth = 0.01f;
+                Destroy(go, 5);
+                if (hit.collider.GetComponent<Interactable>())
+                {
+                    hit.collider.GetComponent<Interactable>().Pressed();
+                }
+            }
+            else
+            {
+                GameObject go = new GameObject();
+                Instantiate(go);
+                LineRenderer lr = go.AddComponent<LineRenderer>();
+                lr.positionCount = 2;
+                lr.SetPosition(0, ray.origin);
+                lr.SetPosition(1, ray.direction * 500);
+                lr.startColor = Color.red;
+                lr.startWidth = 0.01f;
+                lr.endWidth = 0.01f;
+                lr.endColor = Color.red;
+                Destroy(go, 5);
+            }
+
+            debugText.text = "RayCasted " + ++count;
         }
-        else
-        {
-            Debug.DrawRay(ray.origin, ray.direction * 500, Color.red, 5);
-        }
-        debugText.text = "RayCasted " + ++count;
     }
     private void OnZoom(InputAction.CallbackContext context)
     {

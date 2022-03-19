@@ -11,12 +11,13 @@ public static class StaticHelpers
     public static async void MoveLerp(Transform obj, Vector3 start, Vector3 moveTo, float moveSpeed,
         Action uponCompletion = null, bool animated = false)
     {
-        float travelTime = Vector3.Distance(start, moveTo) / (moveSpeed * Time.deltaTime);
-        float curTime = 0f;
-        while (curTime < travelTime)
+        //T = D/V
+        float travelDist = Vector3.Distance(start, moveTo);
+        float curDist = 0f;
+        while (curDist < travelDist)
         {
-            obj.position = Vector3.Lerp(start, moveTo, curTime / travelTime);
-            curTime += moveSpeed * Time.deltaTime;
+            obj.position = Vector3.Lerp(start, moveTo, curDist / travelDist);
+            curDist += moveSpeed * Time.deltaTime;
             await Task.Yield();
         }
 
@@ -31,12 +32,12 @@ public static class StaticHelpers
         Action uponCompletion = null)
     {
         //TODO: fix, this is not true. Need to do some sort of circle math, angle is always 180? Multiply by smth,
-        float travelTime = Vector3.Distance(start, moveTo) / (moveSpeed * Time.deltaTime);
-        float curTime = 0f;
-        while (curTime < travelTime)
+        float travelDist = Vector3.Distance(start, moveTo) * 1.5f;
+        float curDist = 0f;
+        while (curDist < travelDist)
         {
-            obj.position = Vector3.Slerp(start, moveTo, curTime / travelTime);
-            curTime += moveSpeed * Time.deltaTime;
+            obj.position = Vector3.Slerp(start, moveTo, curDist / travelDist);
+            curDist += moveSpeed * Time.deltaTime;
             await Task.Yield();
         }
 
@@ -73,6 +74,13 @@ public static class StaticHelpers
             //Set Random element to be what the old last element was
             array[rng] = temp;
         }
+    }
+
+    public static void Swap<T>(ref T a, ref T b)
+    {
+        T c = a;
+        a = b;
+        b = c;
     }
 
 

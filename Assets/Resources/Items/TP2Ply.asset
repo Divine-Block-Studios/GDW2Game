@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: c0776c1c8b0e6db4dbc9814d795da2f7, type: 3}
   awardName: Teleport To Player
+  cost: 2

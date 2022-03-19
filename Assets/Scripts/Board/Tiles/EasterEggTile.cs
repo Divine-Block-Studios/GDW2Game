@@ -8,6 +8,13 @@ namespace Board.Tiles
     {
         //Using a list here incase we decide to make tiles have multiple properties. This may be usedful down the line.
         private List<Tile> _otherComp;
+        private MiniGame _game;
+
+        public void SetMiniGame(MiniGame value)
+        {
+            _game = value;
+        }
+
         void Awake()
         {
             if (enabled)
@@ -32,7 +39,8 @@ namespace Board.Tiles
         protected override void LandedOnFunctionality(BoardPlayer player)
         {
             //Play mini game. When the minigame sends the players back, hopefully this function continues // TODO: Testing for errors here.
-            
+            _game.Init(player);
+
             //Re-enable the other components
             foreach (Tile t in _otherComp)
             {
