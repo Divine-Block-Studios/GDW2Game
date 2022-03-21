@@ -10,7 +10,9 @@ public class PowerUp : MonoBehaviour
 {
     [SerializeField] private float upDownDist;
     [SerializeField] private float duration;
+    [SerializeField] private float moveSpeedX;
     [SerializeField] private UnityEvent onCollide = new UnityEvent();
+    
 
     private Vector3 origin;
 
@@ -18,12 +20,14 @@ public class PowerUp : MonoBehaviour
     void Start()
     {
         origin = transform.position;
+        GetComponent<Collider2D>().isTrigger = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = origin + new Vector3(0f, Mathf.Sin(Time.time) * upDownDist, 0f);
+        origin = new Vector3(origin.x + moveSpeedX * Time.deltaTime, origin.y, origin.z);
+        transform.position = origin + new Vector3(0, Mathf.Sin(Time.time) * upDownDist, 0f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject dice;
     [SerializeField] private Vector2 diceSpawnHeightByRadius;
 
-    [Header("Game Settings")]
+    [Header("Game GameSettings")]
     [SerializeField] private ushort startingCoins;
 
     [SerializeField] private float timeBeforeForcedRoll;

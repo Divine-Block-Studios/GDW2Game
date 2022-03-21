@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenus.unity
+    guid: fba4da3e676e35c49aae687675f7da54
+  - enabled: 1
     path: Assets/Scenes/TestingBoardGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -17,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGames/Platformer.unity
     guid: 44a464776eb09834aa323980603df2cb
+  - enabled: 1
+    path: Assets/Scenes/Boards/BigBoard.unity
+    guid: 28cd68b39a9ef80468347ae6258c3e84
+  - enabled: 1
+    path: Assets/Scenes/InLobbyScene.unity
+    guid: 9b058f6090fa40b4888cea0c67df9545
   m_configObjects: {}
