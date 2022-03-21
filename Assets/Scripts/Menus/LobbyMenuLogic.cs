@@ -32,7 +32,7 @@ public class LobbyMenuLogic : MonoBehaviour
         if (roomCode.text == "000000")
         {
             //First Query if this list exists
-            networkManager.networkAddress = "72.141.19.113";
+            networkManager.networkAddress = "10.0.0.182";
         }
         networkManager.StartHost();
     }
@@ -42,7 +42,7 @@ public class LobbyMenuLogic : MonoBehaviour
         if (roomCode.text == "000000")
         {
             //First Query if this list exists
-            networkManager.networkAddress = "72.141.19.113";
+            networkManager.networkAddress = "10.0.0.182";
         }
         //Connect on local host.
         networkManager.StartClient();
