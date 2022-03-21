@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="" />
+    <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/LobbyMenuLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/LobbyMenuLogic.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +169,7 @@
       <workItem from="1647448761995" duration="8486000" />
       <workItem from="1647563417609" duration="9824000" />
       <workItem from="1647632440794" duration="12789000" />
-      <workItem from="1647813125656" duration="11799000" />
+      <workItem from="1647813125656" duration="12518000" />
     </task>
     <servers />
   </component>
