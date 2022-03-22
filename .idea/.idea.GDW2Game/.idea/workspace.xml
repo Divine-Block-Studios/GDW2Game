@@ -3,68 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DiceScript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DiceScript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LInarMap.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LInarMap.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PowerUp.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PowerUp.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/Double Dice.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Items/Double Dice.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/PickyDice.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/PickyDice.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/TP2Ply.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Items/TP2Ply.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/Together.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/Together.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/SpinnerA.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/SpinnerA.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/SpinnerB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/SpinnerB.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/MiniGames/Cheese Samurai.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/MiniGames/Cheese Samurai.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Spinner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Spinner.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Gamble Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Gamble Tile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/RenderPipeline/SpinnerMask.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/RenderPipeline/SpinnerMask.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Together_copy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Together_copy.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestingBoardGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/50-Mirror__Network Manager-NewNetworkManager.cs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/50-Mirror__Network Manager-NewNetworkManager.cs.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/52-Mirror__Network Behaviour-NewNetworkBehaviour.cs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/52-Mirror__Network Behaviour-NewNetworkBehaviour.cs.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/53-Mirror__Custom Interest Management-CustomInterestManagement.cs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/53-Mirror__Custom Interest Management-CustomInterestManagement.cs.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/54-Mirror__Network Room Manager-NewNetworkRoomManager.cs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/54-Mirror__Network Room Manager-NewNetworkRoomManager.cs.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/57-Mirror__Network Transform-NewNetworkTransform.cs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptTemplates/57-Mirror__Network Transform-NewNetworkTransform.cs.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures/diffuse.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures/diffuse.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures/normal_specular.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures/normal_specular.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures/shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures/shadow.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures/translucency_gloss.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree 1_Textures/translucency_gloss.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tree.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +56,6 @@
       <option value="$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs" />
       <option value="$USER_HOME$/Desktop/RP4K_2022/HauntedHarbour/Assets/Scripts/ParallaxObject.cs" />
       <option value="$PROJECT_DIR$/Assets/DiceScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PlayerMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ChanceTile.cs" />
@@ -141,9 +81,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PlayerMovement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PowerUp.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">

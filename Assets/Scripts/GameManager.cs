@@ -109,17 +109,23 @@ public class GameManager : MonoBehaviour
 
     private void RollDice()
     {
+        if (forceNum > 0)
+        {
+            CheckDice(forceNum);
+            return;
+        }
+
         Vector3 A = throwFromA.position;
         Vector3 B = throwFromB.position;
         
         Vector3 startLoc = new Vector3(Random.Range(A.x, B.x), Random.Range(A.y, B.y), Random.Range(A.z, B.z));
         print(A + " - " + B + " - " +Random.Range(A.x, B.x) + " = " + Random.Range(A.y, B.y) + " = " + Random.Range(A.z, B.z));
+        
         Instantiate(dice, startLoc, Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
     }
 
     private void CheckDice(int num)
     {
-        num = (forceNum == 0) ? num : forceNum;
         Debug.Log("Checking the dice from GM: " + num);
         diceRemainder = num;
         diceObj.gameObject.SetActive(true);
