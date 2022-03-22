@@ -15,8 +15,8 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] float speed;
     [SerializeField] float jumpPower;
     
-    private float _useSpeed;
-    private float _useJumpPower;
+    public float _useSpeed;
+    public float _useJumpPower;
 
     float moveDist;
     bool colliding;
@@ -177,12 +177,6 @@ public class PlayerMovement : NetworkBehaviour
     {
         Debug.Log("Ending power");
         ResetPlayer();
-    }
-
-    public void JumpBoostPowerUp(float increase)
-    {
-        Debug.Log("Jump power");
-        _useJumpPower += increase;
     }
     
 }

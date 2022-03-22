@@ -12,6 +12,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private float duration;
     [SerializeField] private float moveSpeedX;
     [SerializeField] private UnityEvent onCollide = new UnityEvent();
+    private PlayerMovement playerMovement;
     
 
     private Vector3 origin;
@@ -34,13 +35,13 @@ public class PowerUp : MonoBehaviour
     {
         //Will always be true, collectables can only collide with Players in layer.
         //Should only be used in minigame context
-        PlayerMovement pm = other.gameObject.GetComponent<PlayerMovement>();
-        pm.EndPowerUp();
+        playerMovement = other.gameObject.GetComponent<PlayerMovement>();
+        playerMovement.EndPowerUp();
         if(TryGetComponent(out SpriteRenderer component))
             component.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         onCollide.Invoke();
-        StartTimer(pm);
+        StartTimer(playerMovement);
     }
 
     private async void StartTimer(PlayerMovement pm)
@@ -52,5 +53,15 @@ public class PowerUp : MonoBehaviour
         }
         pm.EndPowerUp();
         Destroy(gameObject);
+    }
+
+    public void IncreaseJumpHeight(float val)
+    {
+        playerMovement._useJumpPower += val;
+    }
+
+    public void IncreaseSpeed(float val)
+    {
+        playerMovement._useSpeed += val;
     }
 }
