@@ -20,17 +20,19 @@ namespace Board.Tiles
         private Vector3 _origin;
         private void Start()
         {
-            _arrows = new List<GameObject>();
-            _highlights = new List<GameObject>();
-            _costsMoveToPass = true;
+            _costsMoveToPass = false;
             _origin = transform.position;
             _forcePlayerInteraction = true;
+            if(moveToTiles.Count == 0)
+                throw new Exception("TILE IS REDUNDANT: " + gameObject.name + " ADD OTHER MoveToTiles or change object script to Tile");
             moveToTiles.Add(nextTile.GetComponent<Tile>());
         }
 
         //TODO: Work through this weird issue.
         protected override void LandedOnFunctionality(BoardPlayer player)
         {
+            _arrows = new List<GameObject>();
+            _highlights = new List<GameObject>();
             if (randomlyPicked)
             {
                 GameManager.gameManager.EndAction(moveToTiles[Random.Range(0,moveToTiles.Count)], _costsMoveToPass);
@@ -63,6 +65,7 @@ namespace Board.Tiles
                 }
             
                 //Highlight all tiles that the player can move to (For Clarification purposes)
+                print("adding stuff: " + i);
                 _highlights.Add(Instantiate(highlight, moveToTiles[i].transform.position - new Vector3(0,0f,0.2f), Quaternion.identity));
                 _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
             }

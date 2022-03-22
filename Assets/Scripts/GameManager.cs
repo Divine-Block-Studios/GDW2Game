@@ -31,12 +31,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Elements")]
     [SerializeField] private GameObject dice;
-    [SerializeField] private Vector2 diceSpawnHeightByRadius;
+    [SerializeField] private Transform throwFromA;
+    [SerializeField] private Transform throwFromB;
 
     [Header("Game GameSettings")]
     [SerializeField] private ushort startingCoins;
 
     [SerializeField] private float timeBeforeForcedRoll;
+
+    [SerializeField] private int forceNum = 0;
 
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => players[curTurn];
@@ -58,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        print("GameManagerMade");
         if (gameManager != null && gameManager != this)
         {
             Destroy(gameObject);
@@ -93,7 +95,6 @@ public class GameManager : MonoBehaviour
 
     public void BeginGame()
     {
-        print(GetCurrentPlayer);
         GetCurrentPlayer.currentTile = debugStartTile;
 
         foreach (BoardPlayer player in players)
@@ -108,15 +109,17 @@ public class GameManager : MonoBehaviour
 
     private void RollDice()
     {
-        Vector3 startLoc = new Vector3(Random.Range(-diceSpawnHeightByRadius.y, diceSpawnHeightByRadius.y),
-            Random.Range(-diceSpawnHeightByRadius.x, diceSpawnHeightByRadius.x), 
-            Random.Range(0, diceSpawnHeightByRadius.y) + diceSpawnHeightByRadius.y);
+        Vector3 A = throwFromA.position;
+        Vector3 B = throwFromB.position;
+        
+        Vector3 startLoc = new Vector3(Random.Range(A.x, B.x), Random.Range(A.y, B.y), Random.Range(A.z, B.z));
+        print(A + " - " + B + " - " +Random.Range(A.x, B.x) + " = " + Random.Range(A.y, B.y) + " = " + Random.Range(A.z, B.z));
         Instantiate(dice, startLoc, Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
     }
 
     private void CheckDice(int num)
     {
-        num = 12;
+        num = (forceNum == 0) ? num : forceNum;
         Debug.Log("Checking the dice from GM: " + num);
         diceRemainder = num;
         diceObj.gameObject.SetActive(true);
@@ -151,8 +154,8 @@ public class GameManager : MonoBehaviour
 
     void EndTurn()
     {
-        curTurn = (curTurn + 1) % players.Length;
-        if (++curTurn % players.Length == 0)
+        curTurn = ++curTurn % players.Length;
+        if (curTurn % players.Length == 0)
         {
             //Then the full round is complete
             EndRound();
@@ -168,7 +171,7 @@ public class GameManager : MonoBehaviour
         if (costAction)
         {
             Debug.Log("End Action: " + (diceRemainder - 1));
-            if (diceRemainder-- == 0)
+            if (--diceRemainder == 0)
             {
                 diceObj.gameObject.SetActive(false);
                 EndTurn();
@@ -176,6 +179,8 @@ public class GameManager : MonoBehaviour
             }
             diceObj.text = diceRemainder.ToString();
         }
+
+        //?
         GetCurrentPlayer.MoveToTile(nextTile);
     }
 

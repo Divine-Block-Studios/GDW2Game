@@ -23,14 +23,6 @@ namespace Board.Tiles
 
         private void Awake()
         {
-            print("AwakeMain: " + gameObject.name);
-
-            if (GameManager.gameManager)
-            {
-                print("True");
-            }
-
-
             if(GameManager.gameManager.showTiles)
                 GetComponent<MeshRenderer>().enabled = false;
             float dims = transform.localScale.x / 2;
@@ -41,7 +33,6 @@ namespace Board.Tiles
                 Vector3 vertex = new Vector3(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad));
                 _locations[i] = vertex * dims;
             }
-            print("AwakeMain: " + gameObject.name);
         }
 
         public void LandedOn(BoardPlayer player)
@@ -49,14 +40,14 @@ namespace Board.Tiles
             //Set this to be the current tile
             player.currentTile = this;
             //if force interaction
-            Debug.Log("Testing: " + _forcePlayerInteraction + " - "  + _costsMoveToPass + " - " + gameObject.name + " - " + GameManager.gameManager.DiceRemainder);
             if (_forcePlayerInteraction)
             {
                 //Call function
                 LandedOnFunctionality(player);
                 return;
             }
-            if (GameManager.gameManager.DiceRemainder == 0)
+            print("Bravo: " + GameManager.gameManager.DiceRemainder);
+            if (GameManager.gameManager.DiceRemainder == 1)
             {
                 //if remaining moves is 0, call functionality regardless.
                 LandedOnFunctionality(player);

@@ -63,6 +63,7 @@ public class SelectorScript : MonoBehaviour
             }
             
             int temp = i;
+            print("Alpha: " + i +" - " + randomItemsToDisplay);
             gos[i].GetComponent<Button>().onClick.AddListener(() => BuyItem(ply, items[temp]));
             //gos[i].transform.GetChild(3).GetComponent<Image>().sprite = items[i].icon; Currency Icon
 

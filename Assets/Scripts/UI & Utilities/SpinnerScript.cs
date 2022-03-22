@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class SpinnerScript : MonoBehaviour
@@ -34,11 +31,14 @@ public class SpinnerScript : MonoBehaviour
 
     public void Init(AwardableEvents [] items, BoardPlayer ply)
     {
+        print("initing");
         matA = tempA;
         matB = tempB;
         _cones = new List<MeshRenderer>();
         _count = items.Length;
         _trueSpinTime = Random.Range(minSpinTimeS, maxSpinTimeS);
+
+        
         
         float angle = 360f / _count;
         
@@ -46,22 +46,25 @@ public class SpinnerScript : MonoBehaviour
         {
             DrawCone(angle, i, items);
         }
+        transform.eulerAngles = new Vector3(0f, 180f, 0f);
         Spin(angle, items, ply);
     }
 
     //This may be slow drawing the shape again and again...
     private void DrawCone(float angle, int index, AwardableEvents [] items)
     {
-        
-        GameObject go = Instantiate(new GameObject() ,transform);
+        GameObject go = new GameObject();
+        go.transform.SetParent(transform);
         go.name = "SpinnerSlice: " + index + " ( " + items[index].name + " )";
         Mesh mesh = new Mesh();
         go.AddComponent<MeshFilter>().mesh = mesh;
         MeshRenderer re = go.AddComponent<MeshRenderer>();
         
-        GameObject item = Instantiate(new GameObject(), go.transform);
+        GameObject item = new GameObject();
+        item.transform.SetParent(go.transform);
         item.name = items[index].name + ": Image";
         SpriteRenderer sr = item.AddComponent<SpriteRenderer>();
+        sr.sortingOrder = 1;
 
         //Weird magic float I guess
         
@@ -87,7 +90,7 @@ public class SpinnerScript : MonoBehaviour
         int trianglesIndex = 0;
         float tempRot = rotation - angle / 2;
         item.transform.eulerAngles = new Vector3(0,0,-tempRot);
-        item.transform.localPosition = new Vector3(Mathf.Sin(tempRot * Mathf.Deg2Rad), Mathf.Cos(tempRot * Mathf.Deg2Rad)) * (radius / 1.5f) + new Vector3(0,0,-1f);
+        item.transform.localPosition = new Vector3(Mathf.Sin(tempRot * Mathf.Deg2Rad), Mathf.Cos(tempRot * Mathf.Deg2Rad)) * (radius / 1.5f) + new Vector3(0,0,1f);
         
         //item.transform.localPosition = new Vector3()
         

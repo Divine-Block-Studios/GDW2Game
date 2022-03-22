@@ -17,7 +17,6 @@ namespace Board.Tiles
         private Vector3 _origin;
         private void Start()
         {
-            
             _costsMoveToPass = false;
             _origin = transform.position;
             _forcePlayerInteraction = true;

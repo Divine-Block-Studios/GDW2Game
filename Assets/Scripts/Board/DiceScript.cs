@@ -16,10 +16,12 @@ public class DiceScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Debug.Log(Vector3.zero);
-        Debug.DrawRay(transform.position, -transform.position, Color.magenta, 20f);
+        Vector3 throwDest = GameManager.gameManager.GetCurrentPlayer.transform.position;
+        print(throwDest);
+        Debug.DrawRay(transform.position, throwDest, Color.magenta, 20f);
         //Debug.DrawRay(transform.position, new Vector3(100,100,100), Color.black, 20f);
         Debug.Log("Hello");
-        StaticHelpers.ThrowAt(transform, transform.position, -transform.position, 5, 2, 0.75f);
+        StaticHelpers.ThrowAt(transform, transform.position, throwDest, 5, 2, 0.1f);
     }
 
     void Update()
