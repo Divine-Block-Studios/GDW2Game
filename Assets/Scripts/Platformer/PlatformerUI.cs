@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlatformerUI : MonoBehaviour
 {
-    public PlayerMovement player;
+    PlayerMovement player;
 
     public Text completion;
     public GameObject panel;
@@ -15,7 +15,7 @@ public class PlatformerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GetComponentInParent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -48,13 +48,16 @@ public class PlatformerUI : MonoBehaviour
 
     public void checkDash()
     {
+        Debug.Log("few");
         dashed = true;
     }
 
     void updateDash()
     {
+        Debug.Log("start");
         if(player.elapsedFrames < 50)
         {
+            Debug.Log("ere");
             RectTransform rt = panel.GetComponent<RectTransform>();
             int top = 200 - (player.elapsedFrames * 4);
 

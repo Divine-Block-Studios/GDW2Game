@@ -17,14 +17,11 @@ public class platforms : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        body.isKinematic = true;
 
-        for (int i = 0; i < plats.Count; i++)
-        {
-            plats[i].GetComponent<BoxCollider2D>().isTrigger = true;
-        }
     }
 
+    /*
+     
     void Update()
     {
         Vector3 playerPos = player.transform.position;
@@ -94,4 +91,7 @@ public class platforms : MonoBehaviour
     {
         enablePlatform(1, currentPlatform);
     }
+
+    */
 }
+    

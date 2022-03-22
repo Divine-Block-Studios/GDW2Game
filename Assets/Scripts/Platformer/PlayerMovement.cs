@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerMovement : NetworkBehaviour
 {
-    public platforms plats;
-    public PlatformerUI ui;
+    PlatformerUI ui;
     public PlatformerControls pc;
+    public Camera cam;
 
     Rigidbody2D body;
 
@@ -24,10 +24,14 @@ public class PlayerMovement : NetworkBehaviour
     bool moving;
     public int elapsedFrames;
     Vector2 mDir;
+
+    bool falling;
+    float fallTime;
     
     private void Awake()
     {
         pc = new PlatformerControls();
+        cam.enabled = false;
 
     }
 
@@ -35,9 +39,9 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            Debug.Log(isLocalPlayer);
-            
-
+            cam.enabled = true;
+            gameObject.GetComponentInChildren<Canvas>().enabled = true;
+            ui = GetComponentInChildren<PlatformerUI>();
             
             InitInputActions();
         }
@@ -59,6 +63,19 @@ public class PlayerMovement : NetworkBehaviour
             movement();
         }
         elapsedFrames++;
+    }
+
+    void Update()
+    {
+        if(falling && fallTime < 0.2)
+        {
+            fallTime += Time.deltaTime;
+        }
+        else
+        {
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+            fallTime = 0;
+        }
     }
 
     void OnEnable()
@@ -110,9 +127,6 @@ public class PlayerMovement : NetworkBehaviour
         if(moving)
         {
             Vector2 newPos = new Vector2(currentPos.x + moveDist * mDir.x, currentPos.y);
-            Debug.Log(newPos);
-            Debug.Log(moveDist);
-            Debug.Log(mDir);
             transform.position = newPos;
 
             if (dashing && !colliding && elapsedFrames >= 50)
@@ -139,17 +153,18 @@ public class PlayerMovement : NetworkBehaviour
     void OnCollisionStay2D(Collision2D collision)
     {
         colliding = true;
+        if(isLocalPlayer && collision.gameObject.layer == 9)
+        {
+            if(Input.GetKey(KeyCode.S))
+            {
+                gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+                falling = true;
+            }
+        }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
         colliding = false;
-    }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("w");
-        int curPlat = int.Parse(collision.tag);
-
-        plats.recievePlatform(curPlat);
     }
     
     private void ResetPlayer()
