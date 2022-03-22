@@ -1487,10 +1487,19 @@ MonoBehaviour:
   playerPrefab: {fileID: 6327273000034728709, guid: 441c02c0a61a25e46a73478be0931d27, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   menuScene: Assets/Scenes/MainMenus.unity
   lobbyScene: Assets/Scenes/InLobbyScene.unity
+  playerSpawns:
+  - {x: 164, y: 441.5, z: 0}
+  - {x: 714, y: 441.5, z: 0}
   roomPlayPrefab: {fileID: -3975670448306403144, guid: 441c02c0a61a25e46a73478be0931d27, type: 3}
+  charSprite: {fileID: 21300000, guid: 664694d62169d2a43b4f9861d13a2818, type: 3}
 --- !u!4 &672683688
 Transform:
   m_ObjectHideFlags: 0

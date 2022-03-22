@@ -2,13 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/MLAPI/MLAPI Noble Connect.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Mirror Noble Connect.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/UNet/UNet Noble Connect.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/MiniGames/Tron/Players.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/MiniGames/Tron/Players.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MiniGames/Tron.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MiniGames/Tron.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/Config.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/Config.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/Noble Example Player.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/Noble Example Player.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/NobleConnectSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/NobleConnectSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/TextFromFile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/TextFromFile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/UnityLogger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/UnityLogger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Common/white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/AddPunchthroughScriptingDefine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/AddPunchthroughScriptingDefine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/AmazonCertificateHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/AmazonCertificateHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/Noble Setup Title Background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/Noble Setup Title Background.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/SetupWizard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/SetupWizard.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/whale_256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Editor/whale_256.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/MLAPI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/MLAPI/INSTALL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/MLAPI/INSTALL.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Mirror.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Mirror/INSTALL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/Mirror/INSTALL.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/NobleConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/NobleConnect.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/README.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/UNet.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/UNet/INSTALL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noble Connect/UNet/INSTALL.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/SpawnablePrefabs/PlayerImg.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/SpawnablePrefabs/PlayerImg.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InLobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InLobbyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/RecyclablesManagerLobby.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/RecyclablesManagerLobby.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/RecyclablesPlayerLobby.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/RecyclablesPlayerLobby.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tron/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tron/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/kickPlayerLogic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/kickPlayerLogic.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,16 +70,16 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardSpecific/CyberPunkMapEvents.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/EasterEggTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/EasterEggTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/MultipleDisplayUtilities.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/MultipleDisplayUtilities.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -55,7 +98,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/TouchControls.cs" />
       <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/MultipleDisplayUtilities.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/CamRotation.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Tron/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/debugScript.cs" />
       <option value="$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs" />
       <option value="$USER_HOME$/Desktop/RP4K_2022/HauntedHarbour/Assets/Scripts/ParallaxObject.cs" />
@@ -86,6 +128,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/RecyclablesPlayerLobby.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/RecyclablesManagerLobby.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/LobbyMenuLogic.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Tron/PlayerController.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -169,6 +212,7 @@
       <workItem from="1647563417609" duration="9824000" />
       <workItem from="1647632440794" duration="12789000" />
       <workItem from="1647813125656" duration="12518000" />
+      <workItem from="1647913241727" duration="669000" />
     </task>
     <servers />
   </component>
@@ -188,6 +232,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

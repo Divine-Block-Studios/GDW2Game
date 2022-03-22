@@ -131,15 +131,19 @@ public class PlayerController : MonoBehaviour
         {
             case "W":
                 rb[0].velocity = new Vector2(0f, 1f * speed);
+                players[0].transform.eulerAngles = Vector3.zero;
                 break;
             case "S":
                 rb[0].velocity = new Vector2(0f, -1f * speed);
+                players[0].transform.eulerAngles = new Vector3(0,0,180);
                 break;
             case "D":
                 rb[0].velocity = new Vector2(1f * speed, 0f);
+                players[0].transform.eulerAngles = new Vector3(0,0,90);
                 break;
             case "A":
                 rb[0].velocity = new Vector2(-1f * speed, 0f);
+                players[0].transform.eulerAngles = new Vector3(0,0,270);
                 break;
         }
     }

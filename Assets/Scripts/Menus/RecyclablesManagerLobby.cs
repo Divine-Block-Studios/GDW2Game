@@ -3,6 +3,7 @@ using System.Linq;
 using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Menus
 {
@@ -12,15 +13,16 @@ namespace Menus
         {
             base.Awake();
             DontDestroyOnLoad(gameObject);
+            _roomInstance = new List<RecyclablesPlayerLobby>();
         }
-
-
 
         [Scene] [SerializeField] private string menuScene;
         [Scene] [SerializeField] private string lobbyScene;
-        
-        [Header("Room")] [SerializeField] private RecyclablesPlayerLobby roomPlayPrefab;
+        [SerializeField] private Vector3 [] playerSpawns;
+        private List<RecyclablesPlayerLobby> _roomInstance;
 
+        [Header("Room")] [SerializeField] private RecyclablesPlayerLobby roomPlayPrefab;
+        [SerializeField] private Sprite charSprite;
         public override void OnStartServer()
         {
             print("ServerStarted");
@@ -40,10 +42,15 @@ namespace Menus
 
         public override void OnClientConnect()
         {
+            
             base.OnClientConnect();
+            for (int i = 0; i < _roomInstance.Count; i++)
+            {
+                _roomInstance[i].transform.position = playerSpawns[i];
+            }
             print("Client Connected");
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene(lobbyScene);
+            
         }
 
         public override void OnClientDisconnect()
@@ -54,7 +61,7 @@ namespace Menus
 
         public override void OnServerConnect(NetworkConnectionToClient conn)
         {
-            print("Connecting To Server");
+            print("Connecting To Server: " + numPlayers);
             if (numPlayers >= maxConnections)
             {
                 print("Bad");
@@ -65,12 +72,23 @@ namespace Menus
 
         public override void OnServerAddPlayer(NetworkConnectionToClient conn)
         {
-            print("Adding Player: " + conn);
-            if (SceneManager.GetActiveScene().name == menuScene)
+            _roomInstance.Add(Instantiate(roomPlayPrefab));
+            _roomInstance[_roomInstance.Count-1].gameObject.name = "OBJ " + numPlayers;
+            for (int i = 0; i < _roomInstance.Count; i++)
             {
-                RecyclablesPlayerLobby roomInstance = Instantiate(roomPlayPrefab);
-                NetworkServer.AddPlayerForConnection(conn, roomInstance.gameObject);
+                _roomInstance[i].transform.position = playerSpawns[i];
             }
+
+           
+            DontDestroyOnLoad(_roomInstance[_roomInstance.Count-1]);
+            NetworkServer.AddPlayerForConnection(conn, _roomInstance[_roomInstance.Count-1].gameObject);
+            print("Adding Player: TRUE" + conn + " - " + numPlayers);
+        }
+
+        public override void OnServerDisconnect(NetworkConnectionToClient conn)
+        {
+            base.OnServerDisconnect(conn);
+            print("Disconnecting player: " + conn +  " - " +  numPlayers);
         }
     }
 }
