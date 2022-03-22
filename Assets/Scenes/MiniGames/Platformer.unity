@@ -1075,33 +1075,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158055089}
-  - component: {fileID: 1158055088}
   - component: {fileID: 1158055090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Soft Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &1158055088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158055087}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782a1d629a51d5545b0bac77b067868e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plats:
-  - {fileID: 1881819392}
-  - {fileID: 2002326858}
-  - {fileID: 1628481150}
-  - {fileID: 1698015858}
-  player: {fileID: 0}
 --- !u!4 &1158055089
 Transform:
   m_ObjectHideFlags: 0
@@ -1128,7 +1109,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158055087}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1388,7 +1369,7 @@ GameObject:
   m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!61 &1628481151
 BoxCollider2D:
@@ -1517,7 +1498,7 @@ GameObject:
   m_TagString: 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1698015859
 Transform:
@@ -1642,7 +1623,7 @@ GameObject:
   - component: {fileID: 1763946759}
   - component: {fileID: 1763946758}
   m_Layer: 0
-  m_Name: Square
+  m_Name: PowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1665,7 +1646,19 @@ MonoBehaviour:
   moveSpeedX: -1
   onCollide:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1763946758}
+        m_TargetAssemblyTypeName: PowerUp, Assembly-CSharp
+        m_MethodName: IncreaseJumpHeight
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 650
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &1763946759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1841,7 +1834,7 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 100
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 1618139757272639606, guid: 4e51e3d62ecfe7d4f81e9f4711ec0566, type: 3}
+  playerPrefab: {fileID: 7997657898329093415, guid: 005757fce637d9549a0f3137ce54c9f5, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
@@ -1876,7 +1869,7 @@ GameObject:
   m_TagString: 0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1881819393
 Transform:
@@ -2037,7 +2030,7 @@ GameObject:
   m_TagString: 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!61 &2002326859
 BoxCollider2D:
