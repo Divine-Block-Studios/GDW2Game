@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Board;
 using Board.Tiles;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     //May make sense to move this into BoardController class
     [Header("Player Objects")] 
     [SerializeField] private Transform playerParentObj;
-    [SerializeField] private TextMesh diceObj;
+    [SerializeField] private TextMeshPro diceObj;
     [SerializeField] private Transform shredderObj;
     [SerializeField] private Transform playerBadge;
 
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
         {
             players[i] = playerParentObj.GetChild(i).GetComponent<BoardPlayer>();
             players[i].AddCoins(startingCoins);
+            players[i].gameObject.name = "PLAYERNAME0" + (i+1);
         }
 
         StaticHelpers.Shuffle(players);
@@ -227,8 +229,8 @@ public class GameManager : MonoBehaviour
     { 
         Transform plyIcon = playerBadge.GetChild(0);
         plyIcon.GetComponent<Image>().sprite = GetCurrentPlayer.playerImg;
-        plyIcon.GetChild(0).GetComponent<Text>().text = GetCurrentPlayer.gameObject.name;
-        playerBadge.GetChild(1).GetChild(0).GetComponent<Text>().text = GetCurrentPlayer.coins.ToString();
+        plyIcon.GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.gameObject.name;
+        playerBadge.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.coins.ToString();
         Item i = GetCurrentPlayer.Item;
         if (i != null)
         {
@@ -236,7 +238,7 @@ public class GameManager : MonoBehaviour
             Transform item =playerBadge.GetChild(2);
             item.gameObject.SetActive(true);
             item.GetChild(0).GetComponent<Image>().sprite = i.icon;
-            item.GetChild(1).GetComponent<Text>().text = i.awardName;
+            item.GetChild(1).GetComponent<TextMeshProUGUI>().text = i.awardName;
         }
         else
         {

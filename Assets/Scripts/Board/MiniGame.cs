@@ -9,6 +9,7 @@ namespace Board
         
         public override void Init(BoardPlayer ply)
         {
+            Debug.Log("Loading: " + gameSceneName);
             GameManager.gameManager.LoadMiniGame(gameSceneName);
         }
     }

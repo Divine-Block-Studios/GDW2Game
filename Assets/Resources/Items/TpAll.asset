@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TpAll
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 34028dc3a218d9c4da1bf83d19b27086, type: 3}
-  awardName: Together
-  cost: 5
+  awardName: TOGETHER
+  cost: 2
   instantlyUsed: 0
   events:
     m_PersistentCalls:

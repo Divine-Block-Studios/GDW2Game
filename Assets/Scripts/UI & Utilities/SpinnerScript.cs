@@ -120,7 +120,7 @@ public class SpinnerScript : MonoBehaviour
         float maxHeight = radius * 0.025f;
         float size = Mathf.Min(maxHeight, Vector3.Distance(vertices[0], item.transform.localPosition) / 8 / (_count/2));
         item.transform.localScale = new Vector3( size,size, 1);
-
+        go.transform.localPosition = Vector3.zero;
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;

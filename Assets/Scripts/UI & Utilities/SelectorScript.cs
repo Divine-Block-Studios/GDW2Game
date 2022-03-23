@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Board;
 using Board.Tiles;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,8 +50,8 @@ public class SelectorScript : MonoBehaviour
             gos[i].transform.localPosition = new Vector3(itemTemplate.transform.localPosition.x, itemTemplate.transform.localPosition.y - (sizeDeltaY + 5) * i, 0);
 
             gos[i].transform.GetChild(0).GetComponent<Image>().sprite = items[i].icon;
-            gos[i].transform.GetChild(1).GetComponent<Text>().text = items[i].name;
-            gos[i].transform.GetChild(2).GetComponent<Text>().text = items[i].Cost.ToString();
+            gos[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = items[i].awardName;
+            gos[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = items[i].Cost.ToString();
             
             print("debug: "+ ply.Item + " - " + items[i] + (ply.coins < items[i].Cost));
             if (ply.Item == items[i] || ply.coins < items[i].Cost)
@@ -97,7 +98,7 @@ public class SelectorScript : MonoBehaviour
 
     private void BuyItem(BoardPlayer ply, AwardableEvents item)
     {
-        print("Player attempting to buy: " + item.name + " for: " + item.Cost + " ... ");
+        print("Player attempting to buy: " + item.awardName + " for: " + item.Cost + " ... ");
         if (item is Item it)
         {
             if (item.instantlyUsed)

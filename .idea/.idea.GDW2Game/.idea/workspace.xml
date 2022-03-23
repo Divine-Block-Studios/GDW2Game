@@ -3,9 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/Double Dice.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Items/Double Dice.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/TP2Ply.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Items/TP2Ply.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Items/TpAll.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Items/TpAll.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/MiniGames/Cheese Samurai.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/MiniGames/Cheese Samurai.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/MiniGames/JustinsPlatformer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/MiniGames/JustinsPlatformer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/HUD.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/HUD.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/ItemCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/ItemCard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard/Lightmap-4_comp_light.exr-autosave.kra" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard/Lightmap-4_comp_light.exr-autosave.kra.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InLobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InLobbyScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +58,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ForMobile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlatformSpecificAssets.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/ExampleRenderPipelineAsset.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/CustomRenderPipeline.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/Custom Renderer/CustomRenderPipeline.cs" />
@@ -65,7 +79,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/PowerUp.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/LobbyScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/PlayerNameInput.cs" />
@@ -77,14 +90,16 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/LobbyMenuLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tron/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Resources/RenderPipeline/SpinnerMask.shader" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PlayerMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PowerUp.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
     </changedPaths>
   </component>
@@ -171,6 +186,7 @@
       <workItem from="1647813125656" duration="12518000" />
       <workItem from="1647913241727" duration="2860000" />
       <workItem from="1647971321027" duration="9000000" />
+      <workItem from="1648020825715" duration="2847000" />
     </task>
     <servers />
   </component>

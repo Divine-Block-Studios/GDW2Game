@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cheese Samurai
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 34fa3e63857349449b8c1daebe3c3ae0, type: 3}
-  awardName: Cheese Samurai
+  awardName: CHEESE SAMURAI
   cost: 10
   instantlyUsed: 1
   gameSceneName: Cheese Samurai

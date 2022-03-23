@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Board;
 using Board.Tiles;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -46,7 +47,7 @@ public class BoardPlayer : MonoBehaviour
 
     public Vector3 GetHeight => imgHeight;
 
-    [SerializeField] private Text coinsText;
+    [SerializeField] private TextMeshProUGUI coinsText;
 
     private void Awake()
     {

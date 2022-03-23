@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TP2Ply
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: c0776c1c8b0e6db4dbc9814d795da2f7, type: 3}
-  awardName: TP to Random Player
+  awardName: TP TO RANDOM PLAYER
   cost: 2
   instantlyUsed: 0
   events:
