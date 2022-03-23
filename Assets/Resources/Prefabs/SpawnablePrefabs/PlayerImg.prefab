@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 664694d62169d2a43b4f9861d13a2818, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30a633efe2b61d44490648aeb3c6eefe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -111,3 +111,4 @@ MonoBehaviour:
   showRoomGUI: 1
   readyToBegin: 0
   index: 0
+  pos: {x: 0, y: 0, z: 0}
