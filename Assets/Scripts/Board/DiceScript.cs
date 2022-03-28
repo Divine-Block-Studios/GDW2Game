@@ -22,7 +22,7 @@ public class DiceScript : MonoBehaviour
         //Debug.DrawRay(transform.position, new Vector3(100,100,100), Color.black, 20f);
         Debug.Log("Hello");
         StaticHelpers.ThrowAt(transform, transform.position, throwDest, 5, 2, 0.1f);
-    }
+     }
 
     void Update()
     {

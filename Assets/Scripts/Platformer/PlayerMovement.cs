@@ -1,6 +1,8 @@
+using System;
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,22 +19,31 @@ public class PlayerMovement : NetworkBehaviour
     
     public float _useSpeed;
     public float _useJumpPower;
+    public bool _shouldSlam;
 
     float moveDist;
     bool colliding;
     bool dashing;
     bool moving;
     public int elapsedFrames;
-    Vector2 mDir;
+    public Vector2 mDir;
 
     bool falling;
     float fallTime;
+
+    //Multiplied by gravity
+    [SerializeField] private float slamScalar = 5f;
+    //Drop off is applied by percentage from dist.
+    [SerializeField]  private float slamDist = 5f;
+    //Last recorded gravity.
+    private float slam;
     
     private void Awake()
     {
         pc = new PlatformerControls();
         cam.enabled = false;
 
+        slamScalar = 1;
     }
 
     void Start()
@@ -67,6 +78,7 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
+
         if(falling && fallTime < 0.2)
         {
             fallTime += Time.deltaTime;
@@ -76,6 +88,12 @@ public class PlayerMovement : NetworkBehaviour
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
             fallTime = 0;
         }
+    }
+
+    private void LateUpdate()
+    {
+        //NEEDS TO BE CALLED LAST, therefore in late update.
+        slam = body.velocity.y;
     }
 
     void OnEnable()
@@ -149,6 +167,12 @@ public class PlayerMovement : NetworkBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         colliding = true;
+
+        //Has hit a floor, and can slam
+        if (body.velocity.y == 0 && _shouldSlam && slam != 0)
+        {
+            Slam();
+        }
     }
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -171,11 +195,30 @@ public class PlayerMovement : NetworkBehaviour
     {
         _useSpeed = speed;
         _useJumpPower = jumpPower;
+        _shouldSlam = false;
+    }
+
+    private void Slam()
+    {
+        RaycastHit2D [] circleCollider2D = new RaycastHit2D[4];
+        Physics2D.CircleCast(transform.position, slamDist, Vector2.up, new ContactFilter2D(), circleCollider2D);
+        for (int i = 0; i < circleCollider2D.Length; i++)
+        {
+            if (circleCollider2D[i].transform.gameObject != gameObject)
+            {
+                if (circleCollider2D[i].rigidbody)
+                {
+                    print(circleCollider2D[i].point);
+                    
+                    Debug.DrawRay(transform.position, -circleCollider2D[i].normal * ((Vector2)transform.position - circleCollider2D[i].point).magnitude, Color.cyan, 2f);
+                     circleCollider2D[i].rigidbody.AddForce( (1 - ((Vector2)transform.position - circleCollider2D[i].point).magnitude / slamDist) * slam * slamScalar * circleCollider2D[i].normal,ForceMode2D.Impulse);
+                }
+            }
+        }
     }
 
     public void EndPowerUp()
     {
-        Debug.Log("Ending power");
         ResetPlayer();
     }
     
