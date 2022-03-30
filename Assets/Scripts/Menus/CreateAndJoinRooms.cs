@@ -36,7 +36,7 @@ namespace Menus
         public override void OnConnectedToMaster()
         {
             Debug.Log("Successfully connected to master");
-            PhotonNetwork.NickName = "Jeff";
+            PhotonNetwork.NickName = Settings.settings.Name;
             PhotonNetwork.JoinLobby();
         }
 
@@ -50,7 +50,7 @@ namespace Menus
             }
             else
             {
-                print("Connected to : " + code + " - " +PhotonNetwork.JoinRoom(code));
+                PhotonNetwork.JoinRoom(code);
             }
         }
 
@@ -89,10 +89,10 @@ namespace Menus
             if (isHost)
             {
                 PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+                PhotonNetwork.LoadLevel(1);
             }
             print("ROOM: " + PhotonNetwork.CurrentRoom.Name);
             textObj.text = PhotonNetwork.CurrentRoom.Name + " - " + PhotonNetwork.CurrentRoom.Players.Count;
-            
         }
 
         public override void OnDisconnected(DisconnectCause cause)

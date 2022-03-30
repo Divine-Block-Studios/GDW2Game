@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/BigBoard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Platformer/PowerUpCube.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Platformer/PowerUpCube.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InLobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InLobbyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/CreateAndJoinRooms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/CreateAndJoinRooms.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +27,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardSpecific/CyberPunkMapEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/LobbyLogic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/EasterEggTile.cs" root0="FORCE_HIGHLIGHTING" />
@@ -41,7 +39,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ForMobile.cs" />
@@ -92,6 +89,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PowerUpCube.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/CreateAndJoinRooms.cs" />
+      <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -184,7 +182,7 @@
       <workItem from="1648578664665" duration="11000" />
       <workItem from="1648578726726" duration="4902000" />
       <workItem from="1648609432179" duration="1359000" />
-      <workItem from="1648611893102" duration="4519000" />
+      <workItem from="1648611893102" duration="8481000" />
     </task>
     <servers />
   </component>
