@@ -76,11 +76,13 @@ namespace Menus
         {
             //Invalid room code.
             textObj.text = message + " :: " + returnCode;
+            PhotonNetwork.Disconnect();
         }
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
             //if Name is the same, add a (1) to name. If name is too long, Replace last three chars for (1)
+            Debug.Log("Hello");
             print(newPlayer.ActorNumber + "::" + newPlayer.NickName + " - has joined lobby.");
         }
         public override void OnJoinedRoom()

@@ -9,7 +9,9 @@ public class Settings : MonoBehaviour
 
     public string Name => "Billy Bob";
 
-    private void Awake()
+    public bool HideCodeOnStart => false;
+
+        private void Awake()
     {
         if (settings != null && settings != this)
         {
