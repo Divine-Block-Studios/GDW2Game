@@ -25,13 +25,13 @@ public class PowerUpCube : MonoBehaviour
     {
         if (other.gameObject.layer != LayerMask.NameToLayer("Player") || isUsed)
             return;
-        isUsed = true;
         ContactPoint2D [] collisionPoints = other.contacts;
         for (int i = 0; i < collisionPoints.Length; i++)
         {
             print(collisionPoints[i].point.y + " <= " + boxMin.y);
             if (collisionPoints[i].point.y < boxMin.y)
             {
+                isUsed = true;
                 print("TRUE");
                 GameObject go = Instantiate(powerUp, transform.position + new Vector3(0,boxMax.y, 0), Quaternion.identity);
                 print(go.transform.position);
