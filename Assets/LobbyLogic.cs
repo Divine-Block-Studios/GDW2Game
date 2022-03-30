@@ -45,6 +45,9 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         {
             serverSettingsPrefab.SetActive(true);
             startGameButton.SetActive(true);
+            disableConnectionsButton.SetActive(true);
+            showCodeButton.SetActive(true);
+            
             lockImage = disableConnectionsButton.GetComponent<Image>();
             visibilityImage = showCodeButton.GetComponent<Image>();
             lockButton = disableConnectionsButton.GetComponent<Button>();
