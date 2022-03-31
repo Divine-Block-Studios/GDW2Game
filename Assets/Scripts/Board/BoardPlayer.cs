@@ -25,6 +25,7 @@ public class BoardPlayer : MonoBehaviour
 
     private BoardInputControls ctrls;
 
+
     public void InMenu(bool val)
     {
         ctrls.canRayCast = !val;
