@@ -5,7 +5,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Board;
 using Board.Tiles;
+using Photon.Pun;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,7 +16,7 @@ using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Tile debugStartTile;
     public bool showTiles;
@@ -26,9 +28,9 @@ public class GameManager : MonoBehaviour
     //May make sense to move this into BoardController class
     [Header("Player Objects")] 
     [SerializeField] private Transform playerParentObj;
+    [SerializeField] private GameObject playerObject;
     [SerializeField] private TextMeshPro diceObj;
     [SerializeField] private Transform shredderObj;
-    [SerializeField] private Transform playerBadge;
 
     [Header("Game Elements")]
     [SerializeField] private GameObject dice;
@@ -71,19 +73,30 @@ public class GameManager : MonoBehaviour
             gameManager = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            print("Seeing master");
+            players = new BoardPlayer[PhotonNetwork.CurrentRoom.PlayerCount];
+            GameObject go = PhotonNetwork.Instantiate("Prefabs/Map Assets/"+playerObject.name, Vector3.zero, quaternion.identity);
+            go.transform.parent = playerParentObj;
+            //Create object int count
+            //Parent to playerOBJs
+
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        players = new BoardPlayer[playerParentObj.childCount];
+        //players = new BoardPlayer[playerParentObj.childCount];
         
-        for (int i = 0; i < playerParentObj.childCount; i++)
-        {
-            players[i] = playerParentObj.GetChild(i).GetComponent<BoardPlayer>();
-            players[i].AddCoins(startingCoins);
-            players[i].gameObject.name = "PLAYERNAME0" + (i+1);
-        }
+        //for (int i = 0; i < playerParentObj.childCount; i++)
+        //{
+        //    players[i] = playerParentObj.GetChild(i).GetComponent<BoardPlayer>();
+        //    players[i].AddCoins(startingCoins);
+        //    players[i].gameObject.name = "PLAYERNAME0" + (i+1);
+        //}
 
         StaticHelpers.Shuffle(players);
 
@@ -106,7 +119,7 @@ public class GameManager : MonoBehaviour
         //DEBUG
         RollDice();
         //If local player == Current player, use item.
-        playerBadge.GetChild(2).GetComponent<Button>().onClick.AddListener(() => GetCurrentPlayer.UseItem());
+        playerObject.transform.GetChild(0).GetChild(2).GetComponent<Button>().onClick.AddListener(() => GetCurrentPlayer.UseItem());
     }
 
     private void RollDice()
@@ -227,22 +240,22 @@ public class GameManager : MonoBehaviour
 
     public void UpdateUIElements()
     { 
-        Transform plyIcon = playerBadge.GetChild(0);
+        Transform plyIcon = playerObject.transform.GetChild(0).GetChild(0);
         plyIcon.GetComponent<Image>().sprite = GetCurrentPlayer.playerImg;
         plyIcon.GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.gameObject.name;
-        playerBadge.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.coins.ToString();
+        playerObject.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.coins.ToString();
         Item i = GetCurrentPlayer.Item;
         if (i != null)
         {
             //If the player has an item
-            Transform item =playerBadge.GetChild(2);
+            Transform item =playerObject.transform.GetChild(0).GetChild(2);
             item.gameObject.SetActive(true);
             item.GetChild(0).GetComponent<Image>().sprite = i.icon;
             item.GetChild(1).GetComponent<TextMeshProUGUI>().text = i.awardName;
         }
         else
         {
-            playerBadge.GetChild(2).gameObject.SetActive(false);
+            playerObject.transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
         }
     }
 
