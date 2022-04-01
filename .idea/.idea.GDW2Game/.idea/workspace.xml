@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +37,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ForMobile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlatformSpecificAssets.cs" />
@@ -88,6 +87,7 @@
       <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/LookHere.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -184,6 +184,8 @@
       <workItem from="1648659595427" duration="8223000" />
       <workItem from="1648698532880" duration="5031000" />
       <workItem from="1648746081048" duration="1809000" />
+      <workItem from="1648772502653" duration="101000" />
+      <workItem from="1648775955466" duration="700000" />
     </task>
     <servers />
   </component>
