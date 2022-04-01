@@ -29,7 +29,7 @@ public class SpinnerScript : MonoBehaviour
     private Material matA;
     private Material matB;
 
-    public void Init(AwardableEvents [] items, BoardPlayer ply)
+    public void Init(AwardableEvents [] items, BoardPlayer ply = null)
     {
         print("initing");
         matA = tempA;
@@ -159,7 +159,16 @@ public class SpinnerScript : MonoBehaviour
         }
         //Acts as a callback.
         await Task.Delay(postDestructionDelay);
-        items[_curTile].Init(ply);
+        if (ply)
+        {
+            items[_curTile].Init(ply);
+        }
+        else
+        {
+            
+        }
+
+
         Destroy(gameObject);
         
     }

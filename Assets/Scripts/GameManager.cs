@@ -98,8 +98,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         //    players[i].gameObject.name = "PLAYERNAME0" + (i+1);
         //}
 
-        StaticHelpers.Shuffle(players);
-
         diceObj.transform.SetParent( players[0].transform);
         shredderObj.SetParent( players[0].transform);
 
@@ -276,4 +274,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         return rng;
     }
 
+    public void Activate()
+    {
+        CreateSelectionUI( , true, false, );
+    }
 }

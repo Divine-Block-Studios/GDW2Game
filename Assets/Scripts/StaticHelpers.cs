@@ -58,6 +58,16 @@ public static class StaticHelpers
         rb.AddForce(end * speed, ForceMode.Impulse);
     }
     
+    public static void ThrowAt2D(Transform obj, Vector3 start, Vector3 end, float throwRngAngle, float spinAngleRng, float speed)
+    {
+        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+        end = Quaternion.AxisAngle(-Vector3.forward , Random.Range(-throwRngAngle, throwRngAngle)) * end-start;
+        
+        Debug.Log((end-start).normalized);
+        Debug.DrawRay(start, end, Color.black, 20);
+        rb.AddForce(end * speed);
+    }
+    
     //Custom Variation of FisherYates array shuffle method.
     public static void Shuffle <T>(T [] array)
     {

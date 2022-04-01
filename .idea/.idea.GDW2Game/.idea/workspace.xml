@@ -5,6 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CutSceneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CutSceneController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/CM vcam1Timeline.playable" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/CM vcam1Timeline.playable" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +65,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
       <option value="$PROJECT_DIR$/Assets/PowerUp.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/LobbyScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/PlayerNameInput.cs" />
@@ -74,7 +79,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" />
@@ -84,11 +88,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/CreateAndJoinRooms.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
       <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/LookHere.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
       <option value="$PROJECT_DIR$/Assets/CutSceneController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -187,7 +193,7 @@
       <workItem from="1648746081048" duration="1809000" />
       <workItem from="1648772502653" duration="101000" />
       <workItem from="1648775955466" duration="3368000" />
-      <workItem from="1648834699287" duration="3153000" />
+      <workItem from="1648834699287" duration="12463000" />
     </task>
     <servers />
   </component>

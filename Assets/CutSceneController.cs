@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class CutSceneController : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class CutSceneController : MonoBehaviour
     [SerializeField] private List<Sprite> assets;
 
     private Transform[] _children;
+    private List<Rigidbody2D> simulating;
 
     [SerializeField] private Transform throwPoint;
 
@@ -19,17 +22,36 @@ public class CutSceneController : MonoBehaviour
     [SerializeField] private float fadeIOTime;
     [SerializeField] private int animDelay = 400;
 
+    [SerializeField] private Transform SLleft;
+    [SerializeField] private Transform SLright;
+
+    private Vector2 midPoint;
+
     void Awake()
     {;
         _children = new Transform[transform.GetChild(0).childCount];
+        simulating = new List<Rigidbody2D>();
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
             _children[i] = transform.GetChild(0).GetChild(i);
+            //Second half
+            if ( (int)(i / (_children.Length / 2)) == 1)
+            {
+                print(Screen.width);
+                _children[i].position = new Vector3(Screen.width - 140 - 140 * (i % 2), Screen.height - 40 - 140 * ((int)(i/2) % 4 + 1));
+            }
+            else
+            {
+                _children[i].position = new Vector3(100 + 140 * (i % 2), Screen.height - 40 - 140 * ((int)(i/2) % 4 + 1));
+            }
+            simulating.Add(_children[i].GetComponent<Rigidbody2D>());
             int val = Random.Range(0, assets.Count);
             _children[i].GetComponent<Image>().sprite = assets[val];
+            simulating[i].simulated = false;
             assets.RemoveAt(val);
         }
         Controller();
+        midPoint = new Vector2(Screen.width/2, Screen.height/2);
     }
 
     private async void Controller()
@@ -41,6 +63,7 @@ public class CutSceneController : MonoBehaviour
         print("Controller: C");
         await ThrowIcons();
         print("Controller: D");
+        await Update();
         await Task.Delay(animDelay);
         print("Controller: E");
         await Fade(false);
@@ -48,16 +71,60 @@ public class CutSceneController : MonoBehaviour
         Destroy(gameObject, 1);
     }
 
+    private async Task Update()
+    {
+        while (simulating.Count > 0)
+        {
+            for (int i = 0; i < simulating.Count; i++)
+            {
+                Vector2 pos = simulating[i].position;
+
+                if (pos.x < midPoint.x - 70 && simulating[i].velocity.x < 0)
+                {
+                    print("From left, hit right: " + simulating[i].gameObject.name);
+                    simulating[i].velocity = new Vector2(-simulating[i].velocity.x, simulating[i].velocity.y + 0.2f);
+                }
+
+                if (pos.x > 70 + midPoint.x && simulating[i].velocity.x > 0)
+                {
+                    print("From left, hit right: " + simulating[i].gameObject.name);
+                    simulating[i].velocity = new Vector2(-simulating[i].velocity.x, simulating[i].velocity.y + 0.2f);
+                }
+
+                if (pos.y < midPoint.y - 200)
+                {
+                    print("Hit bottom.");
+                    simulating[i].GetComponent<Rigidbody2D>().simulated = false;
+                    simulating.RemoveAt(i);
+                }
+            }
+            await Task.Yield();
+        }
+    }
+
     private async Task ThrowIcons()
     {
-        print("Debug: " + _children.Length);
+        StaticHelpers.Shuffle(_children);
         for (int i = 0; i < _children.Length; i++)
         {
-            StaticHelpers.ThrowAt(_children[i], _children[i].position, throwPoint.position, 0, 1, 3);
+            Vector3 endPos = _children[i].position.x < midPoint.x? SLleft.position : SLright.position;
+            int temp = i;
+            StaticHelpers.MoveSlerp(_children[i], _children[i].position, endPos, 300/*, () => throwItem(temp)*/);
             _children[i].GetComponent<Rigidbody2D>().simulated = true;
-            int timeForThrow = (int)((_children.Length - i - 1)  / (_children.Length - 1) * timeForFirstImage) * 1000;
-            await Task.Delay(timeForThrow);
+            float ySpeed = Random.Range(-100, -40);
+            _children[i].GetComponent<Rigidbody2D>().velocity = _children[i].position.x < midPoint.x?new Vector2(150,ySpeed):new Vector2(-150,ySpeed);
+            float throwDelay = (float)(_children.Length - i - 1) / (_children.Length - 1) * timeForFirstImage;
+            print("At ThrowIcons: " + i + " - " + throwDelay);
+            while (throwDelay > 0)
+            {
+                throwDelay -= Time.deltaTime;
+                await Task.Yield();
+            }
         }
+    }
+    
+    private void throwItem(int i) {
+        StaticHelpers.ThrowAt2D(_children[i], _children[i].position, throwPoint.position, 0, 1, 20);
     }
 
     //Move to static helpers?
@@ -71,7 +138,7 @@ public class CutSceneController : MonoBehaviour
         {
             images.Add(_children[i].GetComponent<Image>());
         }
-        
+
         images.Add(transform.GetChild(0).GetComponent<Image>());
         images.Add(transform.GetChild(1).GetComponent<Image>());
         while (curTime > 0)
