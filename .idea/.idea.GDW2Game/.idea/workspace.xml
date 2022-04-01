@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CutSceneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CutSceneController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +38,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/ForMobile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlatformSpecificAssets.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/ExampleRenderPipelineAsset.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/CustomRenderPipeline.cs" />
@@ -87,6 +88,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/LookHere.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
+      <option value="$PROJECT_DIR$/Assets/CutSceneController.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -185,6 +187,7 @@
       <workItem from="1648746081048" duration="1809000" />
       <workItem from="1648772502653" duration="101000" />
       <workItem from="1648775955466" duration="3368000" />
+      <workItem from="1648834699287" duration="3153000" />
     </task>
     <servers />
   </component>
