@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="" />
+    <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/LookHere.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/LookHere.cs.meta" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +30,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/EasterEggTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F7273206-767D-421E-8354-6C2B1E8D1169/a4/38e2d17d/Physics2D.cs" root0="SKIP_HIGHLIGHTING" />
@@ -33,7 +38,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ForMobile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlatformSpecificAssets.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/ExampleRenderPipelineAsset.cs" />
@@ -84,6 +88,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/LookHere.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -181,7 +186,7 @@
       <workItem from="1648698532880" duration="5031000" />
       <workItem from="1648746081048" duration="1809000" />
       <workItem from="1648772502653" duration="101000" />
-      <workItem from="1648775955466" duration="1297000" />
+      <workItem from="1648775955466" duration="3368000" />
     </task>
     <servers />
   </component>
