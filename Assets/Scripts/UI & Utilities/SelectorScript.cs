@@ -16,15 +16,17 @@ public class SelectorScript : MonoBehaviour
     private float _boxDeltaY;
     private bool _inShop;
 
+    private Action post;
+
     //TODO: Add the ability to press on an item ICON and have it display what it does.
     //It would have to be a special script that get's applied to all items that adds a button that on press displays what the item does.
 
-    public void Init(AwardableEvents[] items, BoardPlayer ply, int randomItemsToDisplay)
+    public void Init(AwardableEvents[] items, BoardPlayer ply, int randomItemsToDisplay, Action onComplete = null)
     {
         ply.InMenu(true);
         print("init shop");
         _inShop = true;
-
+        post = onComplete;
         List<GameObject> gos = new List<GameObject>();
         float sizeDeltaY = itemTemplate.GetComponent<RectTransform>().sizeDelta.y;
         
@@ -93,6 +95,7 @@ public class SelectorScript : MonoBehaviour
             }
         }
         GameManager.gameManager.EndAction(tile.NextTile, tile.CostsMoveToPass);
+        post?.Invoke();
         Destroy(gameObject);
     }
 

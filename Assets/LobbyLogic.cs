@@ -31,7 +31,8 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
     [SerializeField] private Sprite showRoomCode;
     [SerializeField] private TextMeshProUGUI boardNameUI;
     [SerializeField] private Image mapImage;
-    
+    [SerializeField] private int countDownSeconds = 5;
+
 
     private Image lockImage;
     private Image visibilityImage;
@@ -130,7 +131,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
     {
         timerObject.SetActive(true);
         canCountDown = true;
-        CountDown(5);
+        CountDown(countDownSeconds);
     }
 
     private async void CountDown(int seconds)

@@ -2110,6 +2110,7 @@ MonoBehaviour:
   showRoomCode: {fileID: 21300000, guid: 2455661a7c20752479510d895d4c7d3a, type: 3}
   boardNameUI: {fileID: 1697881483}
   mapImage: {fileID: 1895732516}
+  countDownSeconds: 1
 --- !u!4 &1637200632
 Transform:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class BoardInputControls : MonoBehaviour
     [SerializeField] private float maxSize;
     [SerializeField] private float minSize;
     [SerializeField] private float maxAngle;
-    [SerializeField] private Transform cameraArmBase;
+    public Transform cameraArmBase;
     public Text debugText;
     private Controls _controls;
     public bool canRayCast;
@@ -28,11 +28,6 @@ public class BoardInputControls : MonoBehaviour
     private void Awake()
     {
         _controls = new Controls();
-        if (!debugText)
-        {
-            debugText = GameObject.Find("DEBUGTEXT").GetComponent<Text>();
-        }
-
         canRayCast = true;
     }
 

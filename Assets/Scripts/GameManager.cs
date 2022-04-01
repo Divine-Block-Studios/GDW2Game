@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     private bool _inMenu;
     public bool InMenu => _inMenu;
 
+    private bool isEnabled = false;
+
     private void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -78,36 +80,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             print("Seeing master");
             players = new BoardPlayer[PhotonNetwork.CurrentRoom.PlayerCount];
-            GameObject go = PhotonNetwork.Instantiate("Prefabs/Map Assets/"+playerObject.name, Vector3.zero, quaternion.identity);
-            go.transform.parent = playerParentObj;
-            //Create object int count
-            //Parent to playerOBJs
-
+            for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
+            {
+                //Hash table needs to save player selected prefab.name
+                players[i] = PhotonNetwork.Instantiate("Prefabs/Map Assets/Players/"+playerObject.name, Vector3.zero, quaternion.identity).GetComponentInChildren<BoardPlayer>();
+            }
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //players = new BoardPlayer[playerParentObj.childCount];
-        
-        //for (int i = 0; i < playerParentObj.childCount; i++)
-        //{
-        //    players[i] = playerParentObj.GetChild(i).GetComponent<BoardPlayer>();
-        //    players[i].AddCoins(startingCoins);
-        //    players[i].gameObject.name = "PLAYERNAME0" + (i+1);
-        //}
-
-        diceObj.transform.SetParent( players[0].transform);
-        shredderObj.SetParent( players[0].transform);
-
-        //_players = new BoardPlayer[players];
-        BeginGame();
-        UpdateUIElements();
-    }
-
     public void BeginGame()
     {
+        diceObj.transform.SetParent( players[0].transform);
+        shredderObj.SetParent( players[0].transform);
+        
+        UpdateUIElements();
+        
         GetCurrentPlayer.currentTile = debugStartTile;
 
         foreach (BoardPlayer player in players)
@@ -155,7 +141,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        UpdateCamera();
+        if(isEnabled)
+            UpdateCamera();
     }
 
     void EliminatePlayer()
@@ -206,7 +193,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     //Somewhat complicated generic function. Essentially takes a list of objects and formats them in an appropriate manner./
     //Then the selected object is returned (val) with a state. 
     //If the UI is random, the user isn't actually allowed to select the option, but it should be dynamic for the sake of it's more interesting.
-    public void CreateSelectionUI(AwardableEvents[] objects, bool isSpinner, bool shouldShuffle, BoardPlayer ply, int randomItemsToDisplay = 1)
+    public void CreateSelectionUI(AwardableEvents[] objects, bool isSpinner, bool shouldShuffle, BoardPlayer ply, int randomItemsToDisplay = 1, Action onComplete = null)
     {
         GameObject go;
         if(shouldShuffle)
@@ -216,7 +203,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             //Create UI Spinner
             go = Instantiate(uiSpinner, DEBUG_SpinnerParent);
             SpinnerScript s = go.GetComponent<SpinnerScript>();
-            s.Init(objects, ply);
+            s.Init(objects, ply, onComplete);
             //return s.Init(objects, spawnedUILoc);
         }
         else
@@ -226,7 +213,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             SelectorScript s = go.GetComponent<SelectorScript>();
             _inMenu = true;
             //Safe cast into items.
-            s.Init(objects, ply, randomItemsToDisplay);
+            s.Init(objects, ply, randomItemsToDisplay, onComplete);
         }
     }
     
@@ -276,6 +263,16 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void Activate()
     {
-        CreateSelectionUI( , true, false, );
+        AwardableEvents[] playersAsAwards = new AwardableEvents[players.Length];
+        for (int i = 0; i < playersAsAwards.Length; i++)
+        {
+            print("Trying to set player image of player: " + i); // Error on player 0. Img not set. [ply not even appearing.]
+            playersAsAwards[i].icon = players[i].playerImg;
+        }
+        CreateSelectionUI(playersAsAwards, true, false, null, 1, () =>
+        {
+            print("Done Spinning.");
+            isEnabled = true;
+        });
     }
 }

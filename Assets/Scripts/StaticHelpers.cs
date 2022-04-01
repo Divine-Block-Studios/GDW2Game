@@ -93,5 +93,22 @@ public static class StaticHelpers
         b = c;
     }
 
+    public static void StartFrom<T>(ref T[] arr, int index)
+    {
+        //-1 cus we don't need to swap last index. makes no sense.
+        for (int i = 0; i < arr.Length-1; i++)
+        {
+            //0,1,2,3,4,5,6 (init)
+            //3,1,2,0,4,5,6 (index = 3, i = 0)
+            //3,4,2,0,1,5,6 (index = 4, i = 1)
+            //3,4,5,0,1,2,6 (index = 5, i = 2)
+            //3,4,5,6,1,2,0 (index = 6, i = 3)
+            //3,4,5,6,0,2,1 (index = CAPPED (6), i = 4)
+            //3,4,5,6,0,1,2 (index = CAPPED (6), i = 5)
+            
+            Swap(ref arr[Mathf.Min(index++, arr.Length-1)], ref arr[i]);
+        }
+    }
+
 
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Mathematics;
@@ -28,12 +29,14 @@ public class SpinnerScript : MonoBehaviour
 
     private Material matA;
     private Material matB;
+    private Action post;
 
-    public void Init(AwardableEvents [] items, BoardPlayer ply = null)
+    public void Init(AwardableEvents[] items, BoardPlayer ply = null, Action onComplete= null)
     {
         print("initing");
         matA = tempA;
         matB = tempB;
+        post = onComplete;
         _cones = new List<MeshRenderer>();
         _count = items.Length;
         _trueSpinTime = Random.Range(minSpinTimeS, maxSpinTimeS);
@@ -165,10 +168,10 @@ public class SpinnerScript : MonoBehaviour
         }
         else
         {
-            
+            print("Spinner set the players to start from: " + _curTile);
+            StaticHelpers.StartFrom(ref GameManager.gameManager.players, _curTile);
         }
-
-
+        post?.Invoke();
         Destroy(gameObject);
         
     }

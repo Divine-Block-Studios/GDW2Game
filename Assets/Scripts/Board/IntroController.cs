@@ -16,6 +16,7 @@ public class IntroController : MonoBehaviourPun
 
     public void ActivateGameManager()
     {
-        GameManager.gameManager.
+        if(Application.isPlaying)
+            GameManager.gameManager.Activate();
     }
 }
