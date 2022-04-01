@@ -95,5 +95,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextTile: {fileID: 0}
-  giveCoins: 1
   amount: 3
