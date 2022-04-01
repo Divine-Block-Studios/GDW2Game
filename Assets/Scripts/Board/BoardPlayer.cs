@@ -25,6 +25,7 @@ public class BoardPlayer : MonoBehaviour
 
     private BoardInputControls ctrls;
 
+
     public void InMenu(bool val)
     {
         ctrls.canRayCast = !val;
@@ -51,6 +52,7 @@ public class BoardPlayer : MonoBehaviour
 
     private void Awake()
     {
+        //TODO
         //This is temporary, It should show the coins of the CURRENT player. if the player presses esc, or the "esc" button for IOS they can see all players Icons, balances and names.
         coinsText.text = coins.ToString();
         imgHeight = new Vector3(0, 0,GetComponent<SpriteRenderer>().size.y + 0.15f);
