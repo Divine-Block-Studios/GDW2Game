@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private float timeBeforeForcedRoll;
 
     [SerializeField] private int forceNum = 0;
+    
+    [SerializeField] private GameObject enemy;
 
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => players[curTurn];
@@ -85,8 +87,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
             {
                 //Hash table needs to save player selected prefab.name
-                players[i] = PhotonNetwork.Instantiate("Prefabs/Map Assets/Players/"+playerObject.name, Vector3.zero, quaternion.identity).GetComponentInChildren<BoardPlayer>();
+                players[i] = PhotonNetwork.Instantiate("Prefabs/Map Assets/Players/Character"+i, Vector3.zero, quaternion.identity).GetComponentInChildren<BoardPlayer>();
                 players[i].transform.position = playerSpawnPoints[i].position+ new Vector3(0, players[i].playerImg.bounds.max.y,0);
+                players[i].transform.LookAt(enemy.transform.position);
             }
         }
     }
@@ -204,9 +207,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (isSpinner)
         {
             //Create UI Spinner
-            go = Instantiate(uiSpinner, DEBUG_SpinnerParent);
-            SpinnerScript s = go.GetComponent<SpinnerScript>();
-            s.Init(objects, ply, onComplete);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                go = PhotonNetwork.Instantiate("Prefabs/Map Assets/" + uiSpinner.name, Vector3.zero, Quaternion.identity);
+                go.transform.parent = DEBUG_SpinnerParent;
+                go.transform.localPosition = Vector3.zero;
+                SpinnerScript s = go.GetComponent<SpinnerScript>();
+                s.Init(objects, ply, onComplete);
+            }
             //return s.Init(objects, spawnedUILoc);
         }
         else

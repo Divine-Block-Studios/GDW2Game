@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Photon.Pun;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -49,7 +50,7 @@ public class SpinnerScript : MonoBehaviour
         {
             DrawCone(angle, i, items);
         }
-        transform.eulerAngles = new Vector3(0f, 180f, 0f);
+        transform.eulerAngles = new Vector3(-90f, 0, 0f);
         Spin(angle, items, ply);
     }
 
@@ -172,7 +173,7 @@ public class SpinnerScript : MonoBehaviour
             StaticHelpers.StartFrom(ref GameManager.gameManager.players, _curTile);
         }
         post?.Invoke();
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
         
     }
 }

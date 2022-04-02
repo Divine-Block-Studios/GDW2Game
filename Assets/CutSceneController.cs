@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -26,7 +27,6 @@ public class CutSceneController : MonoBehaviour
     [SerializeField] private Transform SLright;
 
     private Vector2 midPoint;
-
     void Awake()
     {;
         _children = new Transform[transform.GetChild(0).childCount];
@@ -56,18 +56,14 @@ public class CutSceneController : MonoBehaviour
 
     private async void Controller()
     {
-        print("Controller: A");
         await Fade(true);
-        print("Controller: B");
         await Task.Delay(animDelay);
-        print("Controller: C");
         await ThrowIcons();
-        print("Controller: D");
         await Update();
         await Task.Delay(animDelay);
-        print("Controller: E");
         await Fade(false);
-        print("Controller: F");
+        if(PhotonNetwork.IsMasterClient)
+            GameManager.gameManager.Activate();
         Destroy(gameObject, 1);
     }
 
@@ -81,21 +77,17 @@ public class CutSceneController : MonoBehaviour
 
                 if (pos.x < midPoint.x - 70 && simulating[i].velocity.x < 0)
                 {
-                    print("From left, hit right: " + simulating[i].gameObject.name);
                     simulating[i].velocity = new Vector2(-simulating[i].velocity.x, simulating[i].velocity.y + 0.2f);
                 }
 
                 if (pos.x > 70 + midPoint.x && simulating[i].velocity.x > 0)
                 {
-                    print("From left, hit right: " + simulating[i].gameObject.name);
                     simulating[i].velocity = new Vector2(-simulating[i].velocity.x, simulating[i].velocity.y + 0.2f);
                 }
-
-                if (pos.y < midPoint.y - 200)
+                
+                if (pos.y < midPoint.y - 200 && simulating[i].simulated)
                 {
-                    print("Hit bottom.");
                     simulating[i].GetComponent<Rigidbody2D>().simulated = false;
-                    Destroy(simulating[i].gameObject);
                     simulating.RemoveAt(i);
                 }
             }
@@ -110,12 +102,11 @@ public class CutSceneController : MonoBehaviour
         {
             Vector3 endPos = _children[i].position.x < midPoint.x? SLleft.position : SLright.position;
             int temp = i;
-            StaticHelpers.MoveSlerp(_children[i], _children[i].position, endPos, 300/*, () => throwItem(temp)*/);
-            _children[i].GetComponent<Rigidbody2D>().simulated = true;
+            StaticHelpers.MoveSlerp(_children[i], _children[i].position, endPos, 300,
+                () => { _children[temp].GetComponent<Rigidbody2D>().simulated = true;});
             float ySpeed = Random.Range(-100, -40);
             _children[i].GetComponent<Rigidbody2D>().velocity = _children[i].position.x < midPoint.x?new Vector2(150,ySpeed):new Vector2(-150,ySpeed);
             float throwDelay = (float)(_children.Length - i - 1) / (_children.Length - 1) * timeForFirstImage;
-            print("At ThrowIcons: " + i + " - " + throwDelay);
             while (throwDelay > 0)
             {
                 throwDelay -= Time.deltaTime;
@@ -142,6 +133,7 @@ public class CutSceneController : MonoBehaviour
 
         images.Add(transform.GetChild(0).GetComponent<Image>());
         images.Add(transform.GetChild(1).GetComponent<Image>());
+        
         while (curTime > 0)
         {
             for (int i = 0; i < images.Count; i++)
