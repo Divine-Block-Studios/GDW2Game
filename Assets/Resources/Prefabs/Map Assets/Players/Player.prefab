@@ -237,7 +237,6 @@ MonoBehaviour:
   minSize: -30
   maxAngle: 80
   cameraArmBase: {fileID: 0}
-  debugText: {fileID: 0}
   canRayCast: 0
 --- !u!222 &5971601518212247432
 CanvasRenderer:

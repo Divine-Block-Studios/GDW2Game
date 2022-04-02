@@ -50,5 +50,5 @@ MonoBehaviour:
   delayMS: 1000
   postDestructionDelay: 500
   radius: 5
-  tempA: {fileID: 2100000, guid: 3106713c319f38540bcb4161e65c7ec7, type: 2}
-  tempB: {fileID: 2100000, guid: 30fc4ec00f5afca4784e8c799b307741, type: 2}
+  tempA: {fileID: 2100000, guid: d9c61527936df4644a8487459ec07a37, type: 2}
+  tempB: {fileID: 2100000, guid: 0ddddd3d8a2cbc240861a618e852157f, type: 2}

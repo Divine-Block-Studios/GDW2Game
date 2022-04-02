@@ -17,7 +17,6 @@ public class BoardInputControls : MonoBehaviour
     [SerializeField] private float minSize;
     [SerializeField] private float maxAngle;
     public Transform cameraArmBase;
-    public Text debugText;
     private Controls _controls;
     public bool canRayCast;
     
@@ -66,7 +65,6 @@ public class BoardInputControls : MonoBehaviour
             #if UNITY_IOS || UNITY_ANDROID
             if (_controls.TouchBoardControls.RotateCamera.WasReleasedThisFrame())
             {
-                debugText.text = "Tap Cancelled: ";
                 return;
             }
 
@@ -104,24 +102,24 @@ public class BoardInputControls : MonoBehaviour
                 lr.endColor = Color.red;
                 Destroy(go, 5);
             }
-
-            debugText.text = "RayCasted " + ++count;
         }
     }
     private void OnZoom(InputAction.CallbackContext context)
     {
+        if (!GameManager.gameManager.isEnabled)
+            return;
         Vector2 zoomInput = context.ReadValue<Vector2>();
 
         Vector3 position = cameraArmBase.GetChild(0).GetChild(0).localPosition;
         position.z = Mathf.Clamp(position.z + (Time.deltaTime * scrollSensitivity * zoomInput.y), minSize, maxSize);
         cameraArmBase.GetChild(0).GetChild(0).localPosition = position;
-
-        debugText.text = "Zooming: " + position.z + " - (input): " + zoomInput;
     }
 
 
     private void OnRotate(InputAction.CallbackContext context)
     {
+        if (!GameManager.gameManager.isEnabled)
+            return;
         Vector2 rotateInfo = context.ReadValue<Vector2>();
         
         _zRot -= rotateInfo.x * sensitivity / 1000;
@@ -131,6 +129,5 @@ public class BoardInputControls : MonoBehaviour
         
         cameraArmBase.GetChild(0).localRotation = Quaternion.Euler(_xRot,0,0);
         cameraArmBase.localRotation = Quaternion.Euler(0,0,_zRot);
-        //debugText.text = "Rotating: " + cameraArmBase.eulerAngles.z + " -  (input) " + rotateInfo;
     }
 }

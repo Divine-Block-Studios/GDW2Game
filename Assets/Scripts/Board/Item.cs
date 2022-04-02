@@ -14,8 +14,13 @@ namespace Board
 
 
         private BoardPlayer _ply;
+        public Action action
+        {
+            get => action ?? events.Invoke;
+            set => action = value;
+        }
 
-        
+
         public override void Init(BoardPlayer ply)
         {
             _ply = ply;

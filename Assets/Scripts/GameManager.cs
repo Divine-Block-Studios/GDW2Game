@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private Transform DEBUG_SpinnerParent;
     [SerializeField] private Transform DEBUG_SelectorParent;
 
+    [SerializeField] private Transform[] playerSpawnPoints;
+
     //May make sense to move this into BoardController class
     [Header("Player Objects")] 
     [SerializeField] private Transform playerParentObj;
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private bool _inMenu;
     public bool InMenu => _inMenu;
 
-    private bool isEnabled = false;
+    public bool isEnabled = false;
 
     private void Awake()
     {
@@ -84,6 +86,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 //Hash table needs to save player selected prefab.name
                 players[i] = PhotonNetwork.Instantiate("Prefabs/Map Assets/Players/"+playerObject.name, Vector3.zero, quaternion.identity).GetComponentInChildren<BoardPlayer>();
+                players[i].transform.position = playerSpawnPoints[i].position+ new Vector3(0, players[i].playerImg.bounds.max.y,0);
             }
         }
     }
@@ -263,11 +266,16 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void Activate()
     {
-        AwardableEvents[] playersAsAwards = new AwardableEvents[players.Length];
+        Item[] playersAsAwards = new Item[players.Length];
         for (int i = 0; i < playersAsAwards.Length; i++)
         {
-            print("Trying to set player image of player: " + i); // Error on player 0. Img not set. [ply not even appearing.]
+            print("TRIAL: Alpha: " + i); // Error on player 0. Img not set. [ply not even appearing.]
+            playersAsAwards[i] = ScriptableObject.CreateInstance<Item>(); // Does this work??
+            print(" TRIAL: Beta: " + i); // Error on player 0. Img not set. [ply not even appearing.]
             playersAsAwards[i].icon = players[i].playerImg;
+            print(" TRIAL: Charlie: " + i); // Error on player 0. Img not set. [ply not even appearing.]
+            playersAsAwards[i].name = players[i].name;
+            
         }
         CreateSelectionUI(playersAsAwards, true, false, null, 1, () =>
         {

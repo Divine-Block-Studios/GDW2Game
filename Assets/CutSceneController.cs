@@ -95,6 +95,7 @@ public class CutSceneController : MonoBehaviour
                 {
                     print("Hit bottom.");
                     simulating[i].GetComponent<Rigidbody2D>().simulated = false;
+                    Destroy(simulating[i].gameObject);
                     simulating.RemoveAt(i);
                 }
             }
