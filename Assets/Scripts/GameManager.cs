@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     //Somewhat complicated generic function. Essentially takes a list of objects and formats them in an appropriate manner./
     //Then the selected object is returned (val) with a state. 
     //If the UI is random, the user isn't actually allowed to select the option, but it should be dynamic for the sake of it's more interesting.
-    public void CreateSelectionUI(AwardableEvents[] objects, bool isSpinner, bool shouldShuffle, BoardPlayer ply, int randomItemsToDisplay = 1, Action onComplete = null)
+    public void CreateSelectionUI(AwardableEvents[] objects, bool isSpinner, bool shouldShuffle, BoardPlayer ply, int randomItemsToDisplay = 1, Action onComplete = null, GameObject playerPrefab = null)
     {
         GameObject go;
         if(shouldShuffle)
@@ -213,7 +213,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 go.transform.parent = DEBUG_SpinnerParent;
                 go.transform.localPosition = Vector3.zero;
                 SpinnerScript s = go.GetComponent<SpinnerScript>();
-                s.Init(objects, ply, onComplete);
+                s.Init(objects, ply, onComplete, go);
             }
             //return s.Init(objects, spawnedUILoc);
         }

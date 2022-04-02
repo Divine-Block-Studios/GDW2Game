@@ -48,7 +48,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
     private void Awake()
     {
         roomCode.text = PhotonNetwork.CurrentRoom.Name;
-        GameObject go = PhotonNetwork.Instantiate("Prefabs/Map Assets/Players/Character" + (PhotonNetwork.CurrentRoom.PlayerCount - 1), Vector3.zero, Quaternion.identity);
+        GameObject go = PhotonNetwork.Instantiate("Prefabs/LobbyPlayer" + (PhotonNetwork.CurrentRoom.PlayerCount - 1), Vector3.zero, Quaternion.identity);
         go.transform.GetChild(0).localPosition = playerPoints[PhotonNetwork.CurrentRoom.PlayerCount - 1];
         print(PhotonNetwork.CurrentRoom.PlayerCount - 1);
 
