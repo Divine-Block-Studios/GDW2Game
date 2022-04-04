@@ -875,6 +875,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497456896}
   m_CullTransparentMesh: 1
+--- !u!1 &682046837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682046838}
+  m_Layer: 5
+  m_Name: PlayerHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &682046838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682046837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2041013057}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902103173
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +987,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 902103176}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1637200631}
+        m_TargetAssemblyTypeName: LobbyLogic, Assembly-CSharp
+        m_MethodName: LeaveRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &902103176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,8 +2139,15 @@ MonoBehaviour:
   - {x: 300, y: 0, z: 0}
   - {x: -300, y: -150, z: 0}
   - {x: 300, y: -150, z: 0}
-  lobbyPrefab: {fileID: 4013454644990001160, guid: ddf4232452bdb27439949d1f773b82e8, type: 3}
+  lobbyPrefab:
+  - {fileID: 8883097024135851714, guid: 488f829c925d5be4787dadde64394530, type: 3}
+  - {fileID: 1584968681253666328, guid: 411485421a3f15941bb209b1ead3e889, type: 3}
+  - {fileID: 2719138597496818803, guid: 0bb3b069aad514c408df1e15bf16b87c, type: 3}
+  - {fileID: 6003733624376100223, guid: 3916333bc9df1da4c85c95386eba66d7, type: 3}
+  - {fileID: 4280827880035826109, guid: 517c4ec2e1d218e4687aa706285ed706, type: 3}
+  - {fileID: 5540896498460244485, guid: e41691a2c66fe53409609e3c12e7c8a7, type: 3}
   timerObject: {fileID: 953542032}
+  playerHolder: {fileID: 682046838}
   serverSettingsPrefab: {fileID: 1215698688}
   startGameButton: {fileID: 453350740}
   disableConnectionsButton: {fileID: 1173327199}
@@ -2525,6 +2574,7 @@ RectTransform:
   - {fileID: 1515848475}
   - {fileID: 173433202}
   - {fileID: 902103174}
+  - {fileID: 682046838}
   m_Father: {fileID: 969889350}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

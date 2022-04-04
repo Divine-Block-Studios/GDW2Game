@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5419204594222823392}
   - component: {fileID: 5419204594222823395}
-  - component: {fileID: -7178519663755948984}
-  - component: {fileID: 4884024530954327104}
+  - component: {fileID: 5188797482814877484}
+  - component: {fileID: 14538838602743670}
   m_Layer: 0
   m_Name: Spinner
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MonoBehaviour:
   tempA: {fileID: 2100000, guid: d9c61527936df4644a8487459ec07a37, type: 2}
   tempB: {fileID: 2100000, guid: 0ddddd3d8a2cbc240861a618e852157f, type: 2}
   spriteMaterial: {fileID: 2100000, guid: a0008feffa47e6842afdb5895708ac0f, type: 2}
---- !u!114 &-7178519663755948984
+--- !u!114 &5188797482814877484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,12 +73,11 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 4884024530954327104}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4884024530954327104
+--- !u!114 &14538838602743670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,5 +91,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 0

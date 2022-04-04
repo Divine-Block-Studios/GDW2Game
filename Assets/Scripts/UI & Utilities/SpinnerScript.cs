@@ -54,9 +54,12 @@ public class SpinnerScript : MonoBehaviour
     }
 
     //This may be slow drawing the shape again and again...
+    
+    //RPC?
     private void DrawCone(float angle, int index, AwardableEvents [] items)
     {
         GameObject go = new GameObject();
+        go.AddComponent<PhotonView>().ViewID = Random.Range(100,500);
         go.transform.SetParent(transform);
         go.name = "SpinnerSlice: " + index + " ( " + items[index].name + " )";
         Mesh mesh = new Mesh();
@@ -73,7 +76,6 @@ public class SpinnerScript : MonoBehaviour
         //Weird magic float I guess
         
         //float size = Mathf.Min(1/ , maxHeight);
-        
         
         sr.sprite = items[index].icon;
 
@@ -121,8 +123,7 @@ public class SpinnerScript : MonoBehaviour
         }
         
         //Don't know why this is appropriate, but it is... So whatever..
-        float maxHeight = radius * 0.025f;
-        float size = Mathf.Min(maxHeight, Vector3.Distance(vertices[0], item.transform.localPosition) / 8 / (_count/2));
+        float size = Mathf.Min(radius, Vector3.Distance(vertices[0], item.transform.localPosition));
         item.transform.localScale = new Vector3( size,size, 1);
         go.transform.localPosition = Vector3.zero;
         mesh.vertices = vertices;
@@ -140,14 +141,17 @@ public class SpinnerScript : MonoBehaviour
         _cones[_curTile].material = matB;
         await Task.Delay(delayMS);
 
-
         while (initForce > 0)
         {
             initForce = _curForce - _curForce * (time / _trueSpinTime);
             transform.eulerAngles -= new Vector3(0, 0, initForce);
-            
+
+            if (transform.eulerAngles != Vector3.zero)
+            {
+                print("Thank god: " + transform.eulerAngles + angle);
+            }
+
             time += Time.deltaTime;
-            
             if (transform.localEulerAngles.z < angle * _curTile || (_curTile == 0 && transform.localEulerAngles.z > 358))
             {
                 //Change skins
@@ -169,7 +173,6 @@ public class SpinnerScript : MonoBehaviour
         }
         else
         {
-            print("Spinner set the players to start from: " + _curTile);
             StaticHelpers.StartFrom(ref GameManager.gameManager.players, _curTile);
         }
         post?.Invoke();

@@ -72,11 +72,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        CreateSelectionUI(DEBUGevts, true, false, null, 1, () =>
-        {
-            print("Done Spinning.");
-            isEnabled = true;
-        });
         if (gameManager != null && gameManager != this)
         {
             Destroy(gameObject);
@@ -99,8 +94,9 @@ public class GameManager : MonoBehaviourPunCallbacks
                 players[i].transform.LookAt(enemy.transform.position);
             }
         }
-        
-        
+
+        Activate();
+
     }
     public void BeginGame()
     {
@@ -219,8 +215,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.IsMasterClient)
             {
                 go = PhotonNetwork.Instantiate("Prefabs/Map Assets/" + uiSpinner.name, Vector3.zero, Quaternion.identity);
-                go.transform.parent = DEBUG_SpinnerParent;
-                go.transform.localPosition = Vector3.zero;
+                go.transform.position = DEBUG_SpinnerParent.position;
                 SpinnerScript s = go.GetComponent<SpinnerScript>();
                 s.Init(objects, ply, onComplete);
             }

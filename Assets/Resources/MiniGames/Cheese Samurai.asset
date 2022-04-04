@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338d2467ee2505047a9ea3a789bc8d45, type: 3}
   m_Name: Cheese Samurai
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 34fa3e63857349449b8c1daebe3c3ae0, type: 3}
+  icon: {fileID: 21300000, guid: e9b5bd7b1b5286747a377fad1ac05fc2, type: 3}
   awardName: CHEESE SAMURAI
   cost: 10
   instantlyUsed: 1

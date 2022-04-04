@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c3f997c870fe949bb7400a5e680011, type: 3}
   m_Name: TpAll
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 34028dc3a218d9c4da1bf83d19b27086, type: 3}
+  icon: {fileID: 21300000, guid: 8ed85190baafeba4fa0fc6037db80879, type: 3}
   awardName: TOGETHER
   cost: 2
   instantlyUsed: 0

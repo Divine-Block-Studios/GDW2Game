@@ -14,8 +14,9 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
     [Header("Player Information")]
     public TextMeshProUGUI roomCode;
     [SerializeField] private Vector3[] playerPoints;
-    [SerializeField] private GameObject lobbyPrefab;
+    [SerializeField] private GameObject [] lobbyPrefab;
     [SerializeField] private GameObject timerObject;
+    [SerializeField] private Transform playerHolder;
     
     [Header("Host Information")]
     [SerializeField] private GameObject serverSettingsPrefab;
@@ -48,8 +49,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
     private void Awake()
     {
         roomCode.text = PhotonNetwork.CurrentRoom.Name;
-        GameObject go = PhotonNetwork.Instantiate("Prefabs/LobbyPlayer" + (PhotonNetwork.CurrentRoom.PlayerCount - 1), Vector3.zero, Quaternion.identity);
-        go.transform.GetChild(0).localPosition = playerPoints[PhotonNetwork.CurrentRoom.PlayerCount - 1];
+        photonView.RPC("UpdatePlayerIconsRPC", RpcTarget.All);
         print(PhotonNetwork.CurrentRoom.PlayerCount - 1);
 
         if (PhotonNetwork.IsMasterClient)
@@ -79,13 +79,34 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
             //Fix issue w/ showing the hide button. Beep beep boop boop ba. Custom aids.
         }
     }
+
+    //May need to be an RPC if leave players and join players is only client.
     
-    
-   
+    [PunRPC]
+    private void UpdatePlayerIconsRPC()
+    {
+        print("UpdatePlayerIconsRPC");
+        //Destroy stuff
+        for (int i = playerHolder.childCount- 1; i >= 0; i--)
+        {
+            print("Removing player: " + playerHolder.gameObject);
+            Destroy(playerHolder.GetChild(i).gameObject);
+        }
+        
+        //Add stuff
+        for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
+        {
+            GameObject go = Instantiate(lobbyPrefab[i], playerHolder);
+            print("Adding player: " + go.name);
+            go.transform.localPosition = playerPoints[i];
+        }
+    }
+
+
+
 
     private void ToggleRoomAvailability()
     {
-        
         roomIsOpen = !roomIsOpen;
         Debug.Log("Toggling room availability: " + roomIsOpen);
         PhotonNetwork.CurrentRoom.IsOpen = roomIsOpen;
@@ -168,5 +189,26 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
             await Task.Yield();
         }
         timerObject.SetActive(false);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        base.OnJoinedRoom();
+        photonView.RPC("UpdatePlayerIconsRPC", RpcTarget.All);
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene(0);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        print("OnPlayerLeftRoom");
+        if (!otherPlayer.IsInactive) // If this is not the reason 
+            photonView.RPC("UpdatePlayerIconsRPC", RpcTarget.All);
+        
+        base.OnPlayerLeftRoom(otherPlayer);
     }
 }

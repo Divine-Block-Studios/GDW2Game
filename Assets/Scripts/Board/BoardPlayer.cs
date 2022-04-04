@@ -13,6 +13,7 @@ public class BoardPlayer : MonoBehaviour
 {
     [Header("Stats")] 
     //This should be set in player settings and forwarded through GM?
+    [HideInInspector]
     public Sprite playerImg;
     [SerializeField] private float moveSpeed;
 
@@ -56,6 +57,7 @@ public class BoardPlayer : MonoBehaviour
         //This is temporary, It should show the coins of the CURRENT player. if the player presses esc, or the "esc" button for IOS they can see all players Icons, balances and names.
         //coinsText.text = coins.ToString();
         imgHeight = new Vector3(0, 0,GetComponent<SpriteRenderer>().size.y + 0.15f);
+        playerImg = GetComponent<SpriteRenderer>().sprite;
         ctrls = GetComponent<BoardInputControls>();
         ctrls.cameraArmBase = GameManager.gameManager.CameraArm;
     }
