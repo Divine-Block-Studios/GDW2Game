@@ -19,6 +19,7 @@ public class SpinnerScript : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private Material tempA;
     [SerializeField] private Material tempB;
+    [SerializeField] private Material spriteMaterial;
 
     private float _trueSpinTime;
     
@@ -67,6 +68,7 @@ public class SpinnerScript : MonoBehaviour
         item.transform.SetParent(go.transform);
         item.name = items[index].name + ": Image";
         SpriteRenderer sr = item.AddComponent<SpriteRenderer>();
+        sr.material = spriteMaterial;
 
         //Weird magic float I guess
         
@@ -91,7 +93,7 @@ public class SpinnerScript : MonoBehaviour
         int vertexIndex = 1;
         int trianglesIndex = 0;
         float tempRot = rotation - angle / 2;
-        item.transform.eulerAngles = new Vector3(0,0,-tempRot);
+        item.transform.eulerAngles = new Vector3(0,180,-tempRot);
         item.transform.localPosition = new Vector3(Mathf.Sin(tempRot * Mathf.Deg2Rad), Mathf.Cos(tempRot * Mathf.Deg2Rad)) * (radius / 1.5f) + new Vector3(0,0,1f);
         
         //item.transform.localPosition = new Vector3()
