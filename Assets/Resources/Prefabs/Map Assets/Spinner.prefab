@@ -54,6 +54,7 @@ MonoBehaviour:
   radius: 7.5
   tempA: {fileID: 2100000, guid: d9c61527936df4644a8487459ec07a37, type: 2}
   tempB: {fileID: 2100000, guid: 0ddddd3d8a2cbc240861a618e852157f, type: 2}
+  spriteMaterial: {fileID: 2100000, guid: a0008feffa47e6842afdb5895708ac0f, type: 2}
 --- !u!114 &-7178519663755948984
 MonoBehaviour:
   m_ObjectHideFlags: 0
