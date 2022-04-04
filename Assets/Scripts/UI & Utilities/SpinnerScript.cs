@@ -32,9 +32,7 @@ public class SpinnerScript : MonoBehaviour
     private Material matB;
     private Action post;
 
-    private GameObject usePlayer;
-
-    public void Init(AwardableEvents[] items, BoardPlayer ply = null, Action onComplete= null, GameObject usePlayer = null)
+    public void Init(AwardableEvents[] items, BoardPlayer ply = null, Action onComplete= null)
     {
         print("initing");
         matA = tempA;
@@ -43,9 +41,7 @@ public class SpinnerScript : MonoBehaviour
         _cones = new List<MeshRenderer>();
         _count = items.Length;
         _trueSpinTime = Random.Range(minSpinTimeS, maxSpinTimeS);
-        this.usePlayer = usePlayer;
-        
-        
+
         float angle = 360f / _count;
         
         for (int i = 0; i < _count; i++)
@@ -66,11 +62,8 @@ public class SpinnerScript : MonoBehaviour
         go.AddComponent<MeshFilter>().mesh = mesh;
         MeshRenderer re = go.AddComponent<MeshRenderer>();
 
-        GameObject item;
-        if (usePlayer)
-            item = Instantiate(usePlayer);
-        else
-            item = new GameObject();
+        GameObject item =  new GameObject();
+
         item.transform.SetParent(go.transform);
         item.name = items[index].name + ": Image";
         SpriteRenderer sr = item.AddComponent<SpriteRenderer>();
