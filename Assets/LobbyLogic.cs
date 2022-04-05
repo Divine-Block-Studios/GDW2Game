@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
@@ -92,14 +93,38 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
             print("Removing player: " + playerHolder.gameObject);
             Destroy(playerHolder.GetChild(i).gameObject);
         }
-        
+
+        string[] playerNames = new string[PhotonNetwork.CurrentRoom.PlayerCount];
         //Add stuff
         for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
         {
             GameObject go = Instantiate(lobbyPrefab[i], playerHolder);
-            print("Adding player: " + go.name);
+            
+            //Keys start at 1???
+            playerNames[i] = FixName(playerNames, PhotonNetwork.CurrentRoom.Players[i+1].NickName);
+            
+            if(playerNames.Contains(playerNames[i]))
+            
+            print("Adding player: " + playerNames[i]);
             go.transform.localPosition = playerPoints[i];
+            go.name = playerNames[i];
+            go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerNames[i];
         }
+    }
+
+    private string FixName(string[] names, string newName, int dupCount = 0)
+    {
+        if (names.Contains(newName))
+        {
+            if (newName.Length == 12)
+            {
+                newName = ++dupCount + newName.Substring(1, 11);
+            }
+
+            return FixName(names, newName, dupCount);
+        }
+
+        return newName;
     }
 
 
@@ -175,7 +200,6 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         {
             StaticHelpers.Curtains(null);
         }
-
     }
 
     private async void GameCancelled(int durationSeconds)

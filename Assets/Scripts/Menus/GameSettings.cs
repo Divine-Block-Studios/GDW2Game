@@ -15,10 +15,7 @@ namespace Menus
         // Start is called before the first frame update
         void Awake()
         {
-            DontDestroyOnLoad(gameObject);
-            nameInputField.characterLimit = 12;
-            nameInputField.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
-            nameInputField.onValueChanged.AddListener((text) => nameInputField.text = text.ToUpper());
+            
         }
 
         public void SaveSettings()

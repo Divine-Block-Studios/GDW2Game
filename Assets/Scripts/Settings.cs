@@ -1,18 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Settings : MonoBehaviour
 {
     public static Settings settings { get; set; }
 
-    public string Name => "Billy Bob";
+    [SerializeField] private TMP_InputField userName;
+    public string Name => userName.text;
 
     public bool HideCodeOnStart => false;
 
-        private void Awake()
+    private void Awake()
     {
+        if (userName == null)
+        {
+            //Literally does nothing, but an error gets thrown without it...
+            userName = GameObject.Find("UserName").GetComponent<TMP_InputField>();
+        }
+
+        userName.characterLimit = 12;
+        userName.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
+        userName.onValueChanged.AddListener((text) => userName.text = text.ToUpper());
+        
         if (settings != null && settings != this)
         {
             Destroy(gameObject);
@@ -22,17 +34,5 @@ public class Settings : MonoBehaviour
             settings = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
