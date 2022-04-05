@@ -1,11 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Cinemachine;
 using Photon.Pun;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,8 +25,10 @@ public class IntroController : MonoBehaviourPun
 
     private void Start()
     {
-        BoardInputControls._controls.PCBoardControls.Interact.started += ToggleReady;
-        BoardInputControls._controls.TouchBoardControls.Interact.started += ToggleReady;
+        _controls = GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<BoardInputControls>()._controls;
+        
+        _controls.PCBoardControls.Interact.started += ToggleReady;
+        _controls.TouchBoardControls.Interact.started += ToggleReady;
         StaticHelpers.Curtains(() => {
             readyText.transform.parent.gameObject.SetActive(true);
             photonView.RPC("UpdateTextObject", RpcTarget.AllBuffered, 0);
@@ -74,8 +70,8 @@ public class IntroController : MonoBehaviourPun
         {
             print("Done Curtains.");
             readyText.transform.parent.gameObject.SetActive(false);
-            BoardInputControls._controls.PCBoardControls.Interact.started -= ToggleReady;
-            BoardInputControls._controls.TouchBoardControls.Interact.started -= ToggleReady;
+            _controls.PCBoardControls.Interact.started -= ToggleReady;
+            _controls.TouchBoardControls.Interact.started -= ToggleReady;
             PhotonNetwork.Destroy(gameObject);
         }));
     }

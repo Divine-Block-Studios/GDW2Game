@@ -171,6 +171,10 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         {
             StaticHelpers.Curtains(() => PhotonNetwork.LoadLevel(boardNameUI.text));
         }
+        else
+        {
+            StaticHelpers.Curtains(null);
+        }
 
     }
 

@@ -17,7 +17,7 @@ public class BoardInputControls : MonoBehaviour
     [SerializeField] private float minSize;
     [SerializeField] private float maxAngle;
     public Transform cameraArmBase;
-    public static Controls _controls;
+    public Controls _controls;
     public bool canRayCast;
     
     private float _xRot;
