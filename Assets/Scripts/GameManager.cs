@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
 
-        Activate();
+        //Activate();
     }
     public void BeginGame()
     {
