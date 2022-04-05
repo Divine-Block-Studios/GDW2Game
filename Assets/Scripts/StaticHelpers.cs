@@ -2,8 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public static class StaticHelpers
@@ -110,5 +113,78 @@ public static class StaticHelpers
         }
     }
 
+    public static async void Fade(Image myColor, Color lerpTo, float seconds, float delay)
+    {
+        await Task.Delay((int)(delay*1000));
+        float curSeconds = 0;
+        Color origin = myColor.tintColor;
+        while (curSeconds < seconds)
+        {
+            myColor.tintColor = Color.Lerp(origin, lerpTo, curSeconds);
+            curSeconds += Time.deltaTime;
+            await Task.Yield();
+        }
+    }
+    
+    public static async void Fade(SpriteRenderer myColor, Color lerpTo, float seconds, float delay)
+    {
+        await Task.Delay((int)(delay*1000));
+        float curSeconds = 0;
+        Color origin = myColor.color;
+        while (curSeconds < seconds)
+        {
+            myColor.color = Color.Lerp(origin, lerpTo, curSeconds);
+            curSeconds += Time.deltaTime;
+            await Task.Yield();
+        }
+    }
+    
+    public static async void Fade(TextMeshPro myColor, Color lerpTo, float seconds, float delay)
+    {
+        await Task.Delay((int)(delay*1000));
+        float curSeconds = 0;
+        Color origin = myColor.color;
+        while (curSeconds < seconds)
+        {
+            myColor.color = Color.Lerp(origin, lerpTo, curSeconds);
+            curSeconds += Time.deltaTime;
+            await Task.Yield();
+        }
+    }
+    
+    public static async void Fade(TextMeshProUGUI myColor, Color lerpTo, float seconds, float delay)
+    {
+        await Task.Delay((int)(delay*1000));
+        float curSeconds = 0;
+        Color origin = myColor.color;
+        while (curSeconds < seconds)
+        {
+            myColor.color = Color.Lerp(origin, lerpTo, curSeconds);
+            curSeconds += Time.deltaTime;
+            await Task.Yield();
+        }
+    }
+
+    private static bool _curtainAreOpen = true;
+
+    public static async void Curtains(Action onComplete, float completionTime = 4, float delay = 0)
+    {
+        _curtainAreOpen = !_curtainAreOpen;
+        
+        GameObject curtainsHolder = GameObject.FindWithTag("Curtains");
+
+        if (!curtainsHolder)
+        {
+            Debug.LogError("FATAL: no GameObject is marked with curtains tag.");
+        }
+
+        curtainsHolder.GetComponent<Canvas>().sortingOrder = 7;
+        await Task.Delay((int)(delay * 1000));
+        curtainsHolder.transform.GetChild(0).GetComponent<Animator>().SetBool("IsOpen", _curtainAreOpen);
+        await Task.Delay((int)(completionTime * 1000));
+        curtainsHolder.GetComponent<Canvas>().sortingOrder = -7;
+        
+        onComplete?.Invoke();
+    }
 
 }

@@ -1,0 +1,1077 @@
+fileFormatVersion: 2
+guid: 69c0d61254a05cf488b22e1c4e24e67d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5108601841118324724
+    second: ezgif.com-gif-maker_0
+  - first:
+      213: 763718201113852716
+    second: ezgif.com-gif-maker_1
+  - first:
+      213: 1037891125679955185
+    second: ezgif.com-gif-maker_2
+  - first:
+      213: 6965229494165062650
+    second: ezgif.com-gif-maker_3
+  - first:
+      213: 7488926447407996787
+    second: ezgif.com-gif-maker_4
+  - first:
+      213: 1824921886515328041
+    second: ezgif.com-gif-maker_5
+  - first:
+      213: 3779983321907253453
+    second: ezgif.com-gif-maker_6
+  - first:
+      213: -966056320420023668
+    second: ezgif.com-gif-maker_7
+  - first:
+      213: -8860312699811430183
+    second: ezgif.com-gif-maker_8
+  - first:
+      213: -5443729655699382175
+    second: ezgif.com-gif-maker_9
+  - first:
+      213: -4415440932393464980
+    second: ezgif.com-gif-maker_10
+  - first:
+      213: -1205740810681323922
+    second: ezgif.com-gif-maker_11
+  - first:
+      213: -2807913808948371079
+    second: ezgif.com-gif-maker_12
+  - first:
+      213: -6210186659520421850
+    second: ezgif.com-gif-maker_13
+  - first:
+      213: 6085218192123517740
+    second: ezgif.com-gif-maker_14
+  - first:
+      213: -3098221142656904999
+    second: ezgif.com-gif-maker_15
+  - first:
+      213: -5362691222513635890
+    second: ezgif.com-gif-maker_16
+  - first:
+      213: 6326988287503335889
+    second: ezgif.com-gif-maker_17
+  - first:
+      213: -1946271401956286902
+    second: ezgif.com-gif-maker_18
+  - first:
+      213: 7493043591068940568
+    second: ezgif.com-gif-maker_19
+  - first:
+      213: -6809371085959695748
+    second: ezgif.com-gif-maker_20
+  - first:
+      213: -4187907744740216896
+    second: ezgif.com-gif-maker_21
+  - first:
+      213: -7299982079221094050
+    second: ezgif.com-gif-maker_22
+  - first:
+      213: 5262801672783224760
+    second: ezgif.com-gif-maker_23
+  - first:
+      213: -1043656696398758442
+    second: ezgif.com-gif-maker_24
+  - first:
+      213: -5027714466931689989
+    second: ezgif.com-gif-maker_25
+  - first:
+      213: -837714591242410733
+    second: ezgif.com-gif-maker_26
+  - first:
+      213: 3047803924789513124
+    second: ezgif.com-gif-maker_27
+  - first:
+      213: 9128138834254292934
+    second: ezgif.com-gif-maker_28
+  - first:
+      213: 1693567719685220467
+    second: ezgif.com-gif-maker_29
+  - first:
+      213: 5705124103282463497
+    second: ezgif.com-gif-maker_30
+  - first:
+      213: -1434855942865972087
+    second: ezgif.com-gif-maker_31
+  - first:
+      213: -5016805020390001260
+    second: ezgif.com-gif-maker_32
+  - first:
+      213: 2078111573547904136
+    second: ezgif.com-gif-maker_33
+  - first:
+      213: 1094694293067274272
+    second: ezgif.com-gif-maker_34
+  - first:
+      213: 2916716520197839204
+    second: Curtains_0
+  - first:
+      213: -4761617822868919584
+    second: Curtains_1
+  - first:
+      213: -3564304320518828680
+    second: Curtains_2
+  - first:
+      213: -4864466777157272616
+    second: Curtains_3
+  - first:
+      213: -5765420496237445185
+    second: Curtains_4
+  - first:
+      213: 4454906868117759543
+    second: Curtains_5
+  - first:
+      213: 1413359634537592471
+    second: Curtains_6
+  - first:
+      213: -4456404953711359979
+    second: Curtains_7
+  - first:
+      213: 1548373126854674400
+    second: Curtains_8
+  - first:
+      213: -7295210671045166727
+    second: Curtains_9
+  - first:
+      213: -8067845628035437159
+    second: Curtains_10
+  - first:
+      213: -6340836377220302802
+    second: Curtains_11
+  - first:
+      213: 7493729915364458490
+    second: Curtains_12
+  - first:
+      213: 4860842039938847700
+    second: Curtains_13
+  - first:
+      213: -3231922939548423992
+    second: Curtains_14
+  - first:
+      213: 4357471866293321949
+    second: Curtains_15
+  - first:
+      213: -2121731238712269960
+    second: Curtains_16
+  - first:
+      213: 8282119986751549364
+    second: Curtains_17
+  - first:
+      213: -6496201167406161447
+    second: Curtains_18
+  - first:
+      213: 7164313554077526768
+    second: Curtains_19
+  - first:
+      213: 6375838616393335512
+    second: Curtains_20
+  - first:
+      213: 9124532808244246599
+    second: Curtains_21
+  - first:
+      213: -3999684874655270982
+    second: Curtains_22
+  - first:
+      213: 6903368325474109296
+    second: Curtains_23
+  - first:
+      213: -1928672894919502572
+    second: Curtains_24
+  - first:
+      213: -6676163926021903296
+    second: Curtains_25
+  - first:
+      213: -4105620410683119254
+    second: Curtains_26
+  - first:
+      213: -5782408360016796301
+    second: Curtains_27
+  - first:
+      213: -3479769508993415109
+    second: Curtains_28
+  - first:
+      213: -2435248690855781415
+    second: Curtains_29
+  - first:
+      213: 6671511974170740904
+    second: Curtains_30
+  - first:
+      213: -83180806054128275
+    second: Curtains_31
+  - first:
+      213: 2195695760538740210
+    second: Curtains_32
+  - first:
+      213: 5816128927172032299
+    second: Curtains_33
+  - first:
+      213: 7965286964918575653
+    second: Curtains_34
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Curtains_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 469d7e0c8324a7820800000000000000
+      internalID: 2916716520197839204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_1
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eaaab771d55bedb0800000000000000
+      internalID: -4761617822868919584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_2
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 1500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87dc510ea1c098ec0800000000000000
+      internalID: -3564304320518828680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_3
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 1500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dbf9dd3d31fd7cb0800000000000000
+      internalID: -4864466777157272616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_4
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 1500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbfb20dea9c1dffa0800000000000000
+      internalID: -5765420496237445185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7366b95813203dd30800000000000000
+      internalID: 4454906868117759543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_6
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7963d7c69134d9310800000000000000
+      internalID: 1413359634537592471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_7
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 1250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5184ebe3e4ba722c0800000000000000
+      internalID: -4456404953711359979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_8
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 1250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e70fedb72dec7510800000000000000
+      internalID: 1548373126854674400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_9
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 1250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979b6bedb8432ca90800000000000000
+      internalID: -7295210671045166727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d62468521490090800000000000000
+      internalID: -8067845628035437159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_11
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1000
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e28b8ecf8e2d008a0800000000000000
+      internalID: -6340836377220302802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_12
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 1000
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff340097a31ff760800000000000000
+      internalID: 7493729915364458490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_13
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 1000
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d317dbd41e257340800000000000000
+      internalID: 4860842039938847700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_14
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 1000
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c8a7ceb537e523d0800000000000000
+      internalID: -3231922939548423992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 750
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd00c255399d87c30800000000000000
+      internalID: 4357471866293321949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_16
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 750
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 873a4b70ea81e82e0800000000000000
+      internalID: -2121731238712269960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_17
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 750
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf2d755f3000f270800000000000000
+      internalID: 8282119986751549364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_18
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 750
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d12743e47bd8d5a0800000000000000
+      internalID: -6496201167406161447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_19
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 750
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0faae422831cc6360800000000000000
+      internalID: 7164313554077526768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d2c753e0778b7850800000000000000
+      internalID: 6375838616393335512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_21
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748bbc8ce3ad0ae70800000000000000
+      internalID: 9124532808244246599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_22
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab77ba83cc34e78c0800000000000000
+      internalID: -3999684874655270982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_23
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07741999ae0bdcf50800000000000000
+      internalID: 6903368325474109296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_24
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 500
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 415166a783afb35e0800000000000000
+      internalID: -1928672894919502572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04cef27f7408953a0800000000000000
+      internalID: -6676163926021903296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_26
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69a3ae2df7e507c0800000000000000
+      internalID: -4105620410683119254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_27
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37523faab32c0cfa0800000000000000
+      internalID: -5782408360016796301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_28
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b384634711065bfc0800000000000000
+      internalID: -3479769508993415109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_29
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 250
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db5ec9d732443ed0800000000000000
+      internalID: -2435248690855781415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a846371bc8f59c50800000000000000
+      internalID: 6671511974170740904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_31
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 0
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6553036f7b78def0800000000000000
+      internalID: -83180806054128275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_32
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 0
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f52eb139ada87e10800000000000000
+      internalID: 2195695760538740210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_33
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 0
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2776ffa17a07b050800000000000000
+      internalID: 5816128927172032299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curtains_34
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 0
+        width: 435
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522650eea426a8e60800000000000000
+      internalID: 7965286964918575653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -169,7 +169,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         timerObject.SetActive(false);
         if (canCountDown && PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel(boardNameUI.text);
+            StaticHelpers.Curtains(() => PhotonNetwork.LoadLevel(boardNameUI.text));
         }
 
     }

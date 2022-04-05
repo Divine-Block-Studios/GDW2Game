@@ -107,7 +107,6 @@ public class GameManager : MonoBehaviourPunCallbacks
                 AssetDatabase.Refresh();
             }
         }
-
         //Activate();
     }
     public void BeginGame()
