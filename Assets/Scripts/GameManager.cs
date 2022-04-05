@@ -8,6 +8,7 @@ using Board.Tiles;
 using Photon.Pun;
 using TMPro;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -82,21 +83,32 @@ public class GameManager : MonoBehaviourPunCallbacks
             DontDestroyOnLoad(gameObject);
         }
 
+        //CreateSelectionUI(DEBUGevts, true, false, null);
+        //return;
+        
         if (PhotonNetwork.IsMasterClient)
         {
             print("Seeing master");
             players = new BoardPlayer[PhotonNetwork.CurrentRoom.PlayerCount];
             for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
             {
-                //Hash table needs to save player selected prefab.name
+                //Hash table needs to save player selected prefab.name (Load custom player models)
                 players[i] = PhotonNetwork.Instantiate("Prefabs/Map Assets/Players/Character"+i, Vector3.zero, quaternion.identity).GetComponentInChildren<BoardPlayer>();
                 players[i].transform.position = playerSpawnPoints[i].position+ new Vector3(0, players[i].playerImg.bounds.max.y,0);
                 players[i].transform.LookAt(enemy.transform.position);
+
+                Item tempItem = Resources.Load<Item>("LoadableAssets/Items/Player" + i);
+
+                tempItem.icon = players[i].playerImg;
+                tempItem.awardName = players[i].transform.GetChild(0).GetComponent<TextMeshPro>().text;
+                
+                EditorUtility.SetDirty(tempItem);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
             }
         }
 
         Activate();
-
     }
     public void BeginGame()
     {
@@ -196,7 +208,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             diceObj.text = diceRemainder.ToString();
         }
-
         //?
         GetCurrentPlayer.MoveToTile(nextTile);
     }
@@ -214,9 +225,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             //Create UI Spinner
             if (PhotonNetwork.IsMasterClient)
             {
-                go = PhotonNetwork.Instantiate("Prefabs/Map Assets/" + uiSpinner.name, Vector3.zero, Quaternion.identity);
-                go.transform.position = DEBUG_SpinnerParent.position;
-                SpinnerScript s = go.GetComponent<SpinnerScript>();
+                go = PhotonNetwork.Instantiate("Prefabs/Map Assets/" + uiSpinner.name, DEBUG_SpinnerParent.position, Quaternion.identity);
+                SpinnerScript s = go.GetComponentInChildren<SpinnerScript>();
                 s.Init(objects, ply, onComplete);
             }
             //return s.Init(objects, spawnedUILoc);
@@ -276,18 +286,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         return rng;
     }
 
+    //Reinvestigate, and refactor.
     public void Activate()
     {
         Item[] playersAsAwards = new Item[players.Length];
         for (int i = 0; i < playersAsAwards.Length; i++)
         {
             print("TRIAL: Alpha: " + i); // Error on player 0. Img not set. [ply not even appearing.]
-            playersAsAwards[i] = ScriptableObject.CreateInstance<Item>(); // Does this work??
-            print(" TRIAL: Beta: " + i); // Error on player 0. Img not set. [ply not even appearing.]
-            playersAsAwards[i].icon = players[i].playerImg;
-            print(" TRIAL: Charlie: " + i); // Error on player 0. Img not set. [ply not even appearing.]
-            playersAsAwards[i].name = players[i].name;
-            
+            playersAsAwards[i] = Resources.Load<Item>("LoadableAssets/Items/Player" + i); // Does this work??
         }
         CreateSelectionUI(playersAsAwards, true, false, null, 1, () =>
         {

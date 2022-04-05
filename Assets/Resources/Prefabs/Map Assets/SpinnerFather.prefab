@@ -9,11 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5419204594222823392}
-  - component: {fileID: 5419204594222823395}
-  - component: {fileID: 5188797482814877484}
-  - component: {fileID: 14538838602743670}
   m_Layer: 0
-  m_Name: Spinner
+  m_Name: SpinnerFather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,39 +26,74 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1452062736505428529}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5419204594222823395
+--- !u!1 &7030528763311251625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1452062736505428529}
+  - component: {fileID: 5137664772303609534}
+  - component: {fileID: 4213023080810636571}
+  - component: {fileID: 8543382882033267711}
+  m_Layer: 0
+  m_Name: Spinner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1452062736505428529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7030528763311251625}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5419204594222823392}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5137664772303609534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419204594222823393}
+  m_GameObject: {fileID: 7030528763311251625}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7157086a0a31c5c4bb99346a3f67818c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minForce: 0.5
-  maxForce: 1.5
-  minSpinTimeS: 4
-  maxSpinTimeS: 8
+  maxForce: 0.5
+  minSpinTimeS: 20
+  maxSpinTimeS: 20
   delayMS: 1000
   postDestructionDelay: 500
   radius: 7.5
-  tempA: {fileID: 2100000, guid: d9c61527936df4644a8487459ec07a37, type: 2}
-  tempB: {fileID: 2100000, guid: 0ddddd3d8a2cbc240861a618e852157f, type: 2}
+  matA: {fileID: 2100000, guid: d9c61527936df4644a8487459ec07a37, type: 2}
+  matB: {fileID: 2100000, guid: 0ddddd3d8a2cbc240861a618e852157f, type: 2}
   spriteMaterial: {fileID: 2100000, guid: a0008feffa47e6842afdb5895708ac0f, type: 2}
---- !u!114 &5188797482814877484
+  _photonView: {fileID: 0}
+--- !u!114 &4213023080810636571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419204594222823393}
+  m_GameObject: {fileID: 7030528763311251625}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
@@ -73,17 +105,18 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 8543382882033267711}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &14538838602743670
+--- !u!114 &8543382882033267711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419204594222823393}
+  m_GameObject: {fileID: 7030528763311251625}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
@@ -91,5 +124,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 0
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
