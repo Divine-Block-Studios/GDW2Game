@@ -120,7 +120,7 @@ public static class StaticHelpers
         Color origin = myColor.tintColor;
         while (curSeconds < seconds)
         {
-            myColor.tintColor = Color.Lerp(origin, lerpTo, curSeconds);
+            myColor.tintColor = Color.Lerp(origin, lerpTo, curSeconds/seconds);
             curSeconds += Time.deltaTime;
             await Task.Yield();
         }
@@ -133,7 +133,7 @@ public static class StaticHelpers
         Color origin = myColor.color;
         while (curSeconds < seconds)
         {
-            myColor.color = Color.Lerp(origin, lerpTo, curSeconds);
+            myColor.color = Color.Lerp(origin, lerpTo, curSeconds/seconds);
             curSeconds += Time.deltaTime;
             await Task.Yield();
         }
@@ -146,7 +146,7 @@ public static class StaticHelpers
         Color origin = myColor.color;
         while (curSeconds < seconds)
         {
-            myColor.color = Color.Lerp(origin, lerpTo, curSeconds);
+            myColor.color = Color.Lerp(origin, lerpTo, curSeconds/seconds);
             curSeconds += Time.deltaTime;
             await Task.Yield();
         }
@@ -154,12 +154,14 @@ public static class StaticHelpers
     
     public static async void Fade(TextMeshProUGUI myColor, Color lerpTo, float seconds, float delay)
     {
+        Debug.Log("Waiting: " + (int)(delay*1000));
         await Task.Delay((int)(delay*1000));
+        Debug.Log("Beginning Fade");
         float curSeconds = 0;
         Color origin = myColor.color;
         while (curSeconds < seconds)
         {
-            myColor.color = Color.Lerp(origin, lerpTo, curSeconds);
+            myColor.color = Color.Lerp(origin, lerpTo, curSeconds/seconds);
             curSeconds += Time.deltaTime;
             await Task.Yield();
         }

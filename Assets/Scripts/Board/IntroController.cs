@@ -13,6 +13,7 @@ public class IntroController : MonoBehaviourPun
 {
     [SerializeField]private GameObject postTourCutScene;
     [SerializeField]private TextMeshProUGUI readyText;
+    [SerializeField] private TextMeshProUGUI numText;
     
     private Controls _controls;
 
@@ -30,9 +31,12 @@ public class IntroController : MonoBehaviourPun
 
     private void Start()
     {
-        StaticHelpers.Curtains(() => readyText.gameObject.SetActive(true));
-        _controls.PCBoardControls.Interact.started += ToggleReady;
-        _controls.TouchBoardControls.Interact.started += ToggleReady;
+        BoardInputControls._controls.PCBoardControls.Interact.started += ToggleReady;
+        BoardInputControls._controls.TouchBoardControls.Interact.started += ToggleReady;
+        StaticHelpers.Curtains(() => {
+            readyText.transform.parent.gameObject.SetActive(true);
+            photonView.RPC("UpdateTextObject", RpcTarget.AllBuffered, 0);
+        });
     }
 
     private void ToggleReady(InputAction.CallbackContext ctx)
@@ -55,16 +59,25 @@ public class IntroController : MonoBehaviourPun
             return;
         }
         readyText.color = Color.white;
-        
-        readyText.text = isLocalReady ? "Press anywhere to unskip: " : "Press anywhere to skip: ";
-        readyText.text += readyCount+"/"+PhotonNetwork.CurrentRoom.PlayerCount;
+        numText.color = Color.white;
+
+        readyText.text = isLocalReady ? "PRESS ANYWHERE TO UNSKIP: ": "PRESS ANYWEHRE TO SKIP: ";
+        numText.text = readyCount+"/"+PhotonNetwork.CurrentRoom.PlayerCount;
         StaticHelpers.Fade(readyText, Color.clear, 3, 3);
+        StaticHelpers.Fade(numText, Color.clear, 3, 3);
     }
 
     public void Finished()
     {
-        readyText.gameObject.SetActive(false);
-        Destroy(gameObject);
+        //Close, Open remove.
+        StaticHelpers.Curtains(() => StaticHelpers.Curtains(()=>
+        {
+            print("Done Curtains.");
+            readyText.transform.parent.gameObject.SetActive(false);
+            BoardInputControls._controls.PCBoardControls.Interact.started -= ToggleReady;
+            BoardInputControls._controls.TouchBoardControls.Interact.started -= ToggleReady;
+            PhotonNetwork.Destroy(gameObject);
+        }));
     }
 
 
