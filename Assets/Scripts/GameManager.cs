@@ -19,10 +19,11 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private Tile debugStartTile;
+    
     public bool showTiles;
     [SerializeField] private GameObject uiSpinner;
     [SerializeField] private GameObject uiSelector;
+    [SerializeField] private ToggleScoreBoard tsb;
     [SerializeField] private Transform DEBUG_SpinnerParent;
     [SerializeField] private Transform DEBUG_SelectorParent;
 
@@ -34,12 +35,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject playerObject;
     [SerializeField] private TextMeshPro diceObj;
     [SerializeField] private Transform shredderObj;
+    
 
     [Header("Game Elements")]
     [SerializeField] private GameObject dice;
     [SerializeField] private Transform throwFromA;
     [SerializeField] private Transform throwFromB;
-
+    [SerializeField] private Tile startTile;
+    
     [Header("Game GameSettings")]
     [SerializeField] private ushort startingCoins;
 
@@ -134,6 +137,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             players[i] = arr[i].GetComponent<BoardPlayer>();
             players[i].name = PhotonNetwork.CurrentRoom.Players[i + 1].NickName;
             players[i].transform.GetChild(0).GetComponent<TextMeshPro>().text = players[i].name;
+            players[i].currentTile = startTile;
+            players[i].coins = startingCoins;
             print("test");
             if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
             {
@@ -151,12 +156,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         UpdateUIElements();
         
-        GetCurrentPlayer.currentTile = debugStartTile;
-
-        foreach (BoardPlayer player in players)
-        {
-            player.transform.position = debugStartTile.transform.position - player.GetHeight;
-        }
         //DEBUG
         RollDice();
         //If local player == Current player, use item.
@@ -301,6 +300,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             playerObject.transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
         }
+        tsb.UpdateScoreBoard();
     }
 
     public BoardPlayer GetRandomPlayer(BoardPlayer ignore = null)

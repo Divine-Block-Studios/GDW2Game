@@ -3,20 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player0.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player0.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/HUD.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/HUD.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/SpinnerFather.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/SpinnerFather.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,13 +86,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
       <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/CutSceneController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -209,7 +199,7 @@
       <workItem from="1649172629508" duration="13432000" />
       <workItem from="1649211600829" duration="2324000" />
       <workItem from="1649218241563" duration="73000" />
-      <workItem from="1649257677873" duration="12252000" />
+      <workItem from="1649257677873" duration="13535000" />
     </task>
     <servers />
   </component>

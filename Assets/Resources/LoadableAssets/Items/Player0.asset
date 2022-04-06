@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player0
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: dcb85675e0503254bba2572c68e07993, type: 3}
-  awardName: MEGANINJA
+  awardName: HONKEDMOLE
   cost: 0
   instantlyUsed: 0
   events:

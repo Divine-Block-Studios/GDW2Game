@@ -106,17 +106,23 @@ public static class StaticHelpers
             {
                 if (ascending)
                 {
-                    if (temp[j] < vals[i])
+                    //0 > 8? // 0, 8, 2
+                    //0 > 2? // 0, 8, 2
+                    //8 > 2? // 0, 2, 8
+                    if (vals[i] > temp[j])
                     {
                         Swap(ref vals[i], ref temp[j]);
+                        Swap(ref arr[i], ref arr[j]);
                     }
                 }
                 else
                 {
-                    if (temp[j] > vals[i])
+                    // 0 < 8? // 8, 0, 2
+                    // 8 < 0? // 8, 0 ,2
+                    // 0 < 2? // 8, 2, 0
+                    if (vals[i] < temp[j])
                     {
                         Swap(ref vals[i], ref temp[j]);
-                        Swap(ref arr[i], ref arr[j]);
                     }
                 }
             }

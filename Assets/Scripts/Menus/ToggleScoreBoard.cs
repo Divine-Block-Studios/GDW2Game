@@ -39,6 +39,8 @@ public class ToggleScoreBoard : MonoBehaviour
         double[] ints = {0, 8, 2};
         
         StaticHelpers.Sort(ref test, ints,true);
+        
+        print(test[0] + " - " + test[1] + " - " + test[2]);
 
     }
 
