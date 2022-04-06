@@ -47,10 +47,10 @@ public class IntroController : MonoBehaviourPun
     {
         readyCount += readyAdd;
 
-        if (readyCount > PhotonNetwork.CurrentRoom.PlayerCount / 2)
+        if (readyCount > PhotonNetwork.CurrentRoom.PlayerCount / 2 && )
         {
             print("Vote passed, Skipping cutscene");
-            Finished();
+            Skip();
             return;
         }
         readyText.color = Color.white;
@@ -62,7 +62,7 @@ public class IntroController : MonoBehaviourPun
         StaticHelpers.Fade(numText, Color.clear, 3, 3);
     }
 
-    public void Finished()
+    public void Skip()
     {
         //Close, Open remove.
         StaticHelpers.Curtains(() =>

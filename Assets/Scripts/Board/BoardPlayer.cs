@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Board;
 using Board.Tiles;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -25,6 +26,12 @@ public class BoardPlayer : MonoBehaviour
     private Item _item;
 
     private BoardInputControls ctrls;
+
+    private ParticleSystem _particleSystem;
+    private SpriteRenderer sr;
+    private MeshRenderer mr;
+
+    private Vector3 myPlatform;
 
 
     public void InMenu(bool val)
@@ -56,10 +63,15 @@ public class BoardPlayer : MonoBehaviour
         //TODO
         //This is temporary, It should show the coins of the CURRENT player. if the player presses esc, or the "esc" button for IOS they can see all players Icons, balances and names.
         //coinsText.text = coins.ToString();
+        if(myPlatform == Vector3.zero)
+            myPlatform = transform.position;
         imgHeight = new Vector3(0, 0,GetComponent<SpriteRenderer>().size.y + 0.15f);
         playerImg = GetComponent<SpriteRenderer>().sprite;
         ctrls = GetComponent<BoardInputControls>();
         ctrls.cameraArmBase = GameManager.gameManager.CameraArm;
+        sr = transform.GetComponent<SpriteRenderer>();
+        _particleSystem = transform.GetChild(1).GetComponent<ParticleSystem>();
+        mr = transform.GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -101,6 +113,18 @@ public class BoardPlayer : MonoBehaviour
         _item.Init(this);
         _item = null;
         GameManager.gameManager.UpdateUIElements();
+    }
+
+    [PunRPC]
+    public async void Teleport(Vector3 loc)
+    {
+        _particleSystem.Play();
+        sr.enabled = false;
+        mr.enabled = false;
+        await Task.Delay((int)(_particleSystem.main.duration * 1000));
+        
+        sr.enabled = true;
+        mr.enabled = true;
     }
 
     //Sin wave turning?

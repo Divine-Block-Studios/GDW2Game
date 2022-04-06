@@ -96,9 +96,9 @@ public class GameManager : MonoBehaviourPunCallbacks
                 players[i] = PhotonNetwork
                     .Instantiate("Prefabs/Map Assets/Players/Character" + i, Vector3.zero, quaternion.identity)
                     .GetComponentInChildren<BoardPlayer>();
-                players[i].transform.position = playerSpawnPoints[i].position +
-                                                new Vector3(0, players[i].playerImg.bounds.max.y, 0);
+                players[i].transform.position = playerSpawnPoints[i].position + new Vector3(0, players[i].GetComponent<RectTransform>().rect.height + 0.3f, 0);
                 players[i].transform.LookAt(enemy.transform.position);
+                
                 
                 Item tempItem = Resources.Load<Item>("LoadableAssets/Items/Player" + i);
 
@@ -123,12 +123,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             print(i);
             players[i] = arr[i].GetComponent<BoardPlayer>();
             players[i].name = PhotonNetwork.CurrentRoom.Players[i + 1].NickName;
+            players[i].transform.GetChild(0).GetComponent<TextMeshPro>().text = players[i].name;
             print("test");
             if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
             {
                 print("true");
                 players[i].GetComponent<BoardInputControls>().Init();
             }
+            
         }
     }
 
