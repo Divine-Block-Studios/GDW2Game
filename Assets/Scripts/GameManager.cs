@@ -313,16 +313,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     //Reinvestigate, and refactor.
     public void Activate()
     {
-        Item[] playersAsAwards = new Item[players.Length];
-        for (int i = 0; i < playersAsAwards.Length; i++)
-        {
-            print("TRIAL: Alpha: " + i); // Error on player 0. Img not set. [ply not even appearing.]
-            playersAsAwards[i] = Resources.Load<Item>("LoadableAssets/Items/Player" + i); // Does this work??
-        }
-        CreateSelectionUI(playersAsAwards, true, false, null, 1, () =>
-        {
-            print("Done Spinning.");
-            isEnabled = true;
-        });
+        
     }
 }

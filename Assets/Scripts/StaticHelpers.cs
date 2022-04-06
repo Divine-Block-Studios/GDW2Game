@@ -169,10 +169,10 @@ public static class StaticHelpers
 
     private static bool _curtainAreOpen = true;
 
-    public static async void Curtains(Action onComplete, float completionTime = 4, float delay = 0)
+    public static async void Curtains(Action onComplete, float delay = 0)
     {
         _curtainAreOpen = !_curtainAreOpen;
-        
+
         GameObject curtainsHolder = GameObject.FindWithTag("Curtains");
 
         if (!curtainsHolder)
@@ -181,12 +181,32 @@ public static class StaticHelpers
         }
 
         curtainsHolder.GetComponent<Canvas>().sortingOrder = 7;
-        await Task.Delay((int)(delay * 1000));
-        curtainsHolder.transform.GetChild(0).GetComponent<Animator>().SetBool("IsOpen", _curtainAreOpen);
-        await Task.Delay((int)(completionTime * 1000));
+        await Task.Delay((int) (delay * 1000));
+        Animator anim = curtainsHolder.transform.GetChild(0).GetComponent<Animator>();
+
+        anim.SetBool("IsOpen", _curtainAreOpen);
+        await Task.Delay(1000);
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        {
+            Debug.Log("Test:" + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            await Task.Yield();
+        }
         curtainsHolder.GetComponent<Canvas>().sortingOrder = -7;
         
         onComplete?.Invoke();
+    }
+
+    public static async void MuteAudio(AudioSource a, float b, float time, float delay = 0)
+    {
+        await Task.Delay((int)(delay * 1000));
+
+        float curTime = 0;
+        float startPos = a.volume;
+        while (curTime < time)
+        {
+            a.volume= Mathf.Lerp(startPos, b, curTime / time);
+            curTime += Time.deltaTime;
+        }
     }
 
 }

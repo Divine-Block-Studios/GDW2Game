@@ -87,7 +87,6 @@ public class SpinnerScript : MonoBehaviour
         {
             //Add "/item or /minigame" to solve.
             AwardableEvents ae = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
-            print(ae.name);
         }
     }
 
@@ -110,14 +109,12 @@ public class SpinnerScript : MonoBehaviour
         for (int i = 0; i < assetNames.Length; i++)
         {
             awardableEvents[i] = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
-            print("Loading: " + assetNames[i]);
         }
 
         
         
         for (int index = 0; index < assetNames.Length; index++)
         {
-            print("DRAWCONE: " + awardableEvents[index].name);
             GameObject go = new GameObject();
             go.transform.SetParent(transform);
             go.transform.localPosition = Vector3.zero;
@@ -186,7 +183,6 @@ public class SpinnerScript : MonoBehaviour
 
             //Don't know why this is appropriate, but it is... So whatever..
             float size = Mathf.Min(radius * 0.66f, Vector3.Distance(vertices[0], vertices[rayCount/2]));
-            print(Vector3.Distance(vertices[0], vertices[rayCount]));
             item.transform.localScale = new Vector3(size, size, 1);
             go.transform.localPosition = Vector3.zero;
             mesh.vertices = vertices;
@@ -201,7 +197,6 @@ public class SpinnerScript : MonoBehaviour
     private void Update()
     {
         //140 is start value, angle * cones is always 360 / 2 = 180 /2 = 20. Always 20. -- 140 - angle*_cones.Count/ 2)/2
-        print(transform.localEulerAngles.z + " " + _curTile +" - "+ (_cones.Count/2-1));
         if (transform.localEulerAngles.z < prvRot && (transform.localEulerAngles.z > 20 || _curTile == _cones.Count/2+1))
         {
             //Change skins
@@ -216,7 +211,6 @@ public class SpinnerScript : MonoBehaviour
             prvRot -= angle;
             if (prvRot < 0)
                 prvRot = 360 + prvRot;
-            print("TEST: " + _curTile + "-" + transform.localEulerAngles.z + " - " + prvRot);
         }
     }
 
