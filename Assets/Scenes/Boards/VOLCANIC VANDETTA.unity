@@ -6174,6 +6174,10 @@ PrefabInstance:
       propertyPath: m_text
       value: ABCDEFGHIJKLMNOPQRSTUVWXYZ . abcdefghijklmnopqrstuvwxyz
       objectReference: {fileID: 0}
+    - target: {fileID: 2328714083177291775, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2444167850147603283, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -6225,6 +6229,10 @@ PrefabInstance:
     - target: {fileID: 5964564667843680551, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064515335550290900, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6220568694376934723, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_RootOrder

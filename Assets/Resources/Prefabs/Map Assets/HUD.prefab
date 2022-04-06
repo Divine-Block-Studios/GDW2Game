@@ -379,7 +379,7 @@ MonoBehaviour:
   closeImg: {fileID: 21300000, guid: 70916efb0eaead14c96ea13fefd73046, type: 3}
   moveX: 274.5
   speed: 3
-  playerBadge: {fileID: 0}
+  playerBadge: {fileID: 2953056376261459051, guid: 8b1c493d17d818a47aec5fa7ccc4a52b, type: 3}
   badgePositions:
   - {x: 125, y: -50, z: 0}
   - {x: 365, y: -50, z: 0}
