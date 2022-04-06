@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         //CreateSelectionUI(DEBUGevts, true, false, null);
         //return;
-        
+
         if (PhotonNetwork.IsMasterClient)
         {
             print("Seeing master");
@@ -93,19 +93,29 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
             {
                 //Hash table needs to save player selected prefab.name (Load custom player models)
-                players[i] = PhotonNetwork.Instantiate("Prefabs/Map Assets/Players/Character"+i, Vector3.zero, quaternion.identity).GetComponentInChildren<BoardPlayer>();
-                players[i].transform.position = playerSpawnPoints[i].position+ new Vector3(0, players[i].playerImg.bounds.max.y,0);
+                players[i] = PhotonNetwork
+                    .Instantiate("Prefabs/Map Assets/Players/Character" + i, Vector3.zero, quaternion.identity)
+                    .GetComponentInChildren<BoardPlayer>();
+                players[i].transform.position = playerSpawnPoints[i].position +
+                                                new Vector3(0, players[i].playerImg.bounds.max.y, 0);
                 players[i].transform.LookAt(enemy.transform.position);
 
                 Item tempItem = Resources.Load<Item>("LoadableAssets/Items/Player" + i);
 
                 tempItem.icon = players[i].playerImg;
                 tempItem.awardName = players[i].transform.GetChild(0).GetComponent<TextMeshPro>().text;
-                
+
                 EditorUtility.SetDirty(tempItem);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
+        }
+
+        int index = 0;
+        foreach (var ply in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            //Index out of bounds?
+            players[index++].gameObject.name = ply.NickName;
         }
         //Activate();
     }

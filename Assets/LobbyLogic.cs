@@ -102,10 +102,6 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
             
             //Keys start at 1???
             playerNames[i] = FixName(playerNames, PhotonNetwork.CurrentRoom.Players[i+1].NickName);
-            
-            if(playerNames.Contains(playerNames[i]))
-            
-            print("Adding player: " + playerNames[i]);
             go.transform.localPosition = playerPoints[i];
             go.name = playerNames[i];
             go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerNames[i];
@@ -116,11 +112,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
     {
         if (names.Contains(newName))
         {
-            if (newName.Length == 12)
-            {
-                newName = ++dupCount + newName.Substring(1, 11);
-            }
-
+            newName = ++dupCount + newName.Substring(0, Mathf.Min(11,newName.Length));
             return FixName(names, newName, dupCount);
         }
 
