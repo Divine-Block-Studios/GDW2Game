@@ -28,14 +28,14 @@ public class CutSceneController : MonoBehaviour
 
     private Vector2 midPoint;
     void Awake()
-    {;
+    {
         _children = new Transform[transform.GetChild(0).childCount];
         simulating = new List<Rigidbody2D>();
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
             _children[i] = transform.GetChild(0).GetChild(i);
             //Second half
-            if ( (int)(i / (_children.Length / 2)) == 1)
+            if ( i / (_children.Length / 2) == 1)
             {
                 print(Screen.width);
                 _children[i].position = new Vector3(Screen.width - 140 - 140 * (i % 2), Screen.height - 40 - 140 * ((int)(i/2) % 4 + 1));
@@ -62,8 +62,6 @@ public class CutSceneController : MonoBehaviour
         await Update();
         await Task.Delay(animDelay);
         await Fade(false);
-        if(PhotonNetwork.IsMasterClient)
-            GameManager.gameManager.Activate();
         Destroy(gameObject, 1);
     }
 

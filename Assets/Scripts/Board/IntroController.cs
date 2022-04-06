@@ -1,7 +1,11 @@
+using System.Threading.Tasks;
+using Board;
+using Cinemachine;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 public class IntroController : MonoBehaviourPun
 {
@@ -14,11 +18,15 @@ public class IntroController : MonoBehaviourPun
     private bool isLocalReady;
     private int readyCount;
 
+    private GameObject cutScene;
+
+    private bool skip;
+
     
     public void CreateCutScene()
     {
-        if (Application.isPlaying)
-            Instantiate(postTourCutScene);
+        if (Application.isPlaying && !skip)
+            cutScene = Instantiate(postTourCutScene);
     }
     
     
@@ -47,7 +55,7 @@ public class IntroController : MonoBehaviourPun
     {
         readyCount += readyAdd;
 
-        if (readyCount > PhotonNetwork.CurrentRoom.PlayerCount / 2 && )
+        if (readyCount > PhotonNetwork.CurrentRoom.PlayerCount / 2)
         {
             print("Vote passed, Skipping cutscene");
             Skip();
@@ -71,11 +79,43 @@ public class IntroController : MonoBehaviourPun
             readyText.transform.parent.gameObject.SetActive(false);
             _controls.PCBoardControls.Interact.started -= ToggleReady;
             _controls.TouchBoardControls.Interact.started -= ToggleReady;
-            if(PhotonNetwork.IsMasterClient)
-                PhotonNetwork.Destroy(gameObject);
+            if (cutScene)
+                Destroy(cutScene);
+            skip = true;
+            transform.GetComponent<PlayableDirector>().time = 107.75f;
+            AudioSource[] arr = transform.GetComponents<AudioSource>();
+            foreach(AudioSource audioSource in arr)
+            {
+                print("Removing");
+                StaticHelpers.MuteAudio(audioSource, 0, 0.4f);
+            }
             StaticHelpers.Curtains(null);
         });
     }
 
+    public void BeginGame()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Item[] playersAsAwards = new Item[GameManager.gameManager.players.Length];
+            for (int i = 0; i < playersAsAwards.Length; i++)
+            {
+                print("TRIAL: Alpha: " + i); // Error on player 0. Img not set. [ply not even appearing.]
+                playersAsAwards[i] = Resources.Load<Item>("LoadableAssets/Items/Player" + i); // Does this work??
+            }
 
+            GameManager.gameManager.CreateSelectionUI(playersAsAwards, true, false, null, 1, () =>
+            {
+                print("Done Spinning.");
+                photonView.RPC("DestroyMe", RpcTarget.AllBuffered);
+                GameManager.gameManager.isEnabled = true;
+            });
+        }
+    }
+
+    [PunRPC]
+    private void DestroyMe()
+    {
+        Destroy(gameObject);
+    }
 }
