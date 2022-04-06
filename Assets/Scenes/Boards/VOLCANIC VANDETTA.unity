@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   postTourCutScene: {fileID: 7403095069015478381, guid: a649364fdc7c6324196e787881cd83af, type: 3}
-  HUD: {fileID: 0}
+  HUD: {fileID: 391401257}
   readyText: {fileID: 1552128340}
   numText: {fileID: 190826750}
 --- !u!82 &49856690
@@ -6190,6 +6190,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: itemTxt
       objectReference: {fileID: 0}
+    - target: {fileID: 2863777869894448345, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923593678161417982, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4486838836002189710, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_Name
       value: PlayerNameTxt
@@ -6197,6 +6205,14 @@ PrefabInstance:
     - target: {fileID: 5135181143884238407, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_Name
       value: Helper
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623055886861184794, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889861079093798021, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5955380730495106912, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_RootOrder
@@ -6209,6 +6225,10 @@ PrefabInstance:
     - target: {fileID: 5964564667843680551, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220568694376934723, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6672134076171816489, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_Sprite
@@ -6366,9 +6386,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinsTxt
       objectReference: {fileID: 0}
+    - target: {fileID: 9129681006003435835, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+--- !u!1 &391401257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6672134077446348508, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+  m_PrefabInstance: {fileID: 391401256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &398563213
 GameObject:
   m_ObjectHideFlags: 0
