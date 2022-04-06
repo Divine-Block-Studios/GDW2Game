@@ -188,7 +188,6 @@ public static class StaticHelpers
         await Task.Delay(1000);
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
         {
-            Debug.Log("Test:" + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
             await Task.Yield();
         }
         curtainsHolder.GetComponent<Canvas>().sortingOrder = -7;

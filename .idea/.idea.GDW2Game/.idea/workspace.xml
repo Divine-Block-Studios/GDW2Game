@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CutSceneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CutSceneController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/Curtains.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/Curtains.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/CM vcam1Timeline.playable" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/CM vcam1Timeline.playable" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +85,8 @@
       <option value="$PROJECT_DIR$/Assets/CutSceneController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
