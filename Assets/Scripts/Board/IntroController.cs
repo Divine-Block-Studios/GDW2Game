@@ -10,6 +10,7 @@ using UnityEngine.Playables;
 public class IntroController : MonoBehaviourPun
 {
     [SerializeField] private GameObject postTourCutScene;
+    [SerializeField] private GameObject HUD;
     [SerializeField] private TextMeshProUGUI readyText;
     [SerializeField] private TextMeshProUGUI numText;
     
@@ -107,15 +108,26 @@ public class IntroController : MonoBehaviourPun
             GameManager.gameManager.CreateSelectionUI(playersAsAwards, true, false, null, 1, () =>
             {
                 print("Done Spinning.");
-                photonView.RPC("DestroyMe", RpcTarget.AllBuffered);
+                photonView.RPC("ChangeToPlayerSpec", RpcTarget.AllBuffered);
+                GameObject [] gos = GameObject.FindGameObjectsWithTag("Player");
+                for (int i = 0; i < gos.Length; i++)
+                {
+                    BoardPlayer temp = gos[i].GetComponent<BoardPlayer>();
+                    temp.Teleport(temp.currentTile.transform.position);
+                }
                 GameManager.gameManager.isEnabled = true;
             });
         }
     }
 
     [PunRPC]
-    private void DestroyMe()
+    private void ChangeToPlayerSpec()
     {
-        Destroy(gameObject);
+        //Needs to parent camera,
+        //Reenable controls, zoom & rotate. FIX BIC
+        _controls.PCBoardControls.Interact.started -= ToggleReady;
+        _controls.TouchBoardControls.Interact.started -= ToggleReady;
+        HUD.SetActive(true);
+        transform.GetComponent<CinemachineVirtualCamera>().m_Follow = GameManager.gameManager.MyPlayer.transform;
     }
 }

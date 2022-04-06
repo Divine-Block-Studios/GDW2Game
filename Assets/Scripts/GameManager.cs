@@ -51,6 +51,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => players[curTurn];
+    
+    public BoardPlayer MyPlayer
+    {
+        get
+        {
+            for(int i = 0;  i < players.Length; i++)
+                if(players[i].name == PhotonNetwork.LocalPlayer.NickName)
+                    return players[i];
+            return null;
+        }
+    }
 
     public Transform CameraArm;
     public static GameManager gameManager { get; set; }
@@ -83,8 +94,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             DontDestroyOnLoad(gameObject);
         }
 
-        CreateSelectionUI(DEBUGevts, true, false, null);
-        return;
+        //CreateSelectionUI(DEBUGevts, true, false, null);
+        //return;
         players = new BoardPlayer[PhotonNetwork.CurrentRoom.PlayerCount];
         if (PhotonNetwork.IsMasterClient)
         {
@@ -98,12 +109,11 @@ public class GameManager : MonoBehaviourPunCallbacks
                     .GetComponentInChildren<BoardPlayer>();
                 players[i].transform.position = playerSpawnPoints[i].position + new Vector3(0, players[i].GetComponent<RectTransform>().rect.height + 0.3f, 0);
                 players[i].transform.LookAt(enemy.transform.position);
-                
-                
+
                 Item tempItem = Resources.Load<Item>("LoadableAssets/Items/Player" + i);
 
                 tempItem.icon = players[i].playerImg;
-                tempItem.awardName = players[i].transform.GetChild(0).GetComponent<TextMeshPro>().text;
+                tempItem.awardName = PhotonNetwork.CurrentRoom.Players[i + 1].NickName;
 
                 EditorUtility.SetDirty(tempItem);
                 AssetDatabase.SaveAssets();
@@ -127,10 +137,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             print("test");
             if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
             {
-                print("true");
+                print("I found my guy!");
                 players[i].GetComponent<BoardInputControls>().Init();
+                players[i].photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
             }
-            
         }
     }
 

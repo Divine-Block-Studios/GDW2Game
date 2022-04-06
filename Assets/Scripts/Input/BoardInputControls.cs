@@ -68,7 +68,6 @@ public class BoardInputControls : MonoBehaviour
             {
                 return;
             }
-
             
             #endif
             Ray ray = Camera.main.ScreenPointToRay(context.ReadValue<Vector2>());

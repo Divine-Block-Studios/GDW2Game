@@ -78,8 +78,7 @@ public class SpinnerScript : MonoBehaviour
         
         Spin(items, ply);
     }
-
-
+    
     [PunRPC]
     private void TEST(object [] assetNames)
     {
@@ -112,8 +111,6 @@ public class SpinnerScript : MonoBehaviour
             awardableEvents[i] = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
         }
 
-        
-        
         for (int index = 0; index < assetNames.Length; index++)
         {
             GameObject go = new GameObject();
@@ -211,7 +208,6 @@ public class SpinnerScript : MonoBehaviour
             {
                 prvRot = 360 + prvRot;
                 nxtRot = prvRot - angle;
-                print(prvRot + " - " + nxtRot);
             }
             else
             {
@@ -247,7 +243,6 @@ public class SpinnerScript : MonoBehaviour
         {
             StaticHelpers.StartFrom(ref GameManager.gameManager.players, _curTile);
         }
-        
         post?.Invoke();
         PhotonNetwork.Destroy(gameObject);
     }

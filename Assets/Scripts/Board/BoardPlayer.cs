@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Board;
 using Board.Tiles;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BoardPlayer : MonoBehaviour
+public class BoardPlayer : MonoBehaviourPun
 {
     [Header("Stats")] 
     //This should be set in player settings and forwarded through GM?
@@ -33,6 +34,7 @@ public class BoardPlayer : MonoBehaviour
 
     private Vector3 myPlatform;
 
+    public bool isAlive = true;
 
     public void InMenu(bool val)
     {
@@ -121,13 +123,13 @@ public class BoardPlayer : MonoBehaviour
         _particleSystem.Play();
         sr.enabled = false;
         mr.enabled = false;
-        await Task.Delay((int)(_particleSystem.main.duration * 1000));
-        
+        await Task.Delay((int) (_particleSystem.main.duration * 1000));
+
         sr.enabled = true;
         mr.enabled = true;
-    }
 
+        transform.position = loc;
+    }
     //Sin wave turning?
     //Bouncing Character Up and down... Checkpointed system, Move in arcs...
-    
 }
