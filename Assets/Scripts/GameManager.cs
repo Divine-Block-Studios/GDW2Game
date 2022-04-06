@@ -83,8 +83,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             DontDestroyOnLoad(gameObject);
         }
 
-        //CreateSelectionUI(DEBUGevts, true, false, null);
-        //return;
+        CreateSelectionUI(DEBUGevts, true, false, null);
+        return;
         players = new BoardPlayer[PhotonNetwork.CurrentRoom.PlayerCount];
         if (PhotonNetwork.IsMasterClient)
         {
@@ -308,11 +308,5 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         return rng;
-    }
-
-    //Reinvestigate, and refactor.
-    public void Activate()
-    {
-        
     }
 }

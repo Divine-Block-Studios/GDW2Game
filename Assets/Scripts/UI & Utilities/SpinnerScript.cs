@@ -39,6 +39,7 @@ public class SpinnerScript : MonoBehaviour
     private int _count;
 
     private float prvRot;
+    private float nxtRot = 0;
 
     private void Awake()
     {
@@ -196,11 +197,8 @@ public class SpinnerScript : MonoBehaviour
 
     private void Update()
     {
-        //140 is start value, angle * cones is always 360 / 2 = 180 /2 = 20. Always 20. -- 140 - angle*_cones.Count/ 2)/2
-        if (transform.localEulerAngles.z < prvRot && (transform.localEulerAngles.z > 20 || _curTile == _cones.Count/2+1))
+        if (transform.localEulerAngles.z < prvRot && transform.localEulerAngles.z > nxtRot)
         {
-            //Change skins
-            
             _cones[_curTile].material = matA;
             if (--_curTile < 0)
             {
@@ -210,7 +208,15 @@ public class SpinnerScript : MonoBehaviour
 
             prvRot -= angle;
             if (prvRot < 0)
+            {
                 prvRot = 360 + prvRot;
+                nxtRot = prvRot - angle;
+                print(prvRot + " - " + nxtRot);
+            }
+            else
+            {
+                nxtRot = 0;
+            }
         }
     }
 
