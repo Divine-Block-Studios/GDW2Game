@@ -85,11 +85,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         //CreateSelectionUI(DEBUGevts, true, false, null);
         //return;
-
+        players = new BoardPlayer[PhotonNetwork.CurrentRoom.PlayerCount];
         if (PhotonNetwork.IsMasterClient)
         {
             print("Seeing master");
-            players = new BoardPlayer[PhotonNetwork.CurrentRoom.PlayerCount];
+            
             for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
             {
                 //Hash table needs to save player selected prefab.name (Load custom player models)
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 players[i].transform.position = playerSpawnPoints[i].position +
                                                 new Vector3(0, players[i].playerImg.bounds.max.y, 0);
                 players[i].transform.LookAt(enemy.transform.position);
-
+                
                 Item tempItem = Resources.Load<Item>("LoadableAssets/Items/Player" + i);
 
                 tempItem.icon = players[i].playerImg;
@@ -109,16 +109,29 @@ public class GameManager : MonoBehaviourPunCallbacks
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
+            photonView.RPC("UpdatePlayerArray", RpcTarget.AllBuffered);
         }
-
-        int index = 0;
-        foreach (var ply in PhotonNetwork.CurrentRoom.Players.Values)
-        {
-            //Index out of bounds?
-            players[index++].gameObject.name = ply.NickName;
-        }
-        //Activate();
     }
+
+    [PunRPC]
+    private void UpdatePlayerArray()
+    {
+        GameObject[] arr = GameObject.FindGameObjectsWithTag("Player");
+        print(arr.Length + " - " + players.Length);
+        for (int i = 0; i < players.Length; i++)
+        {
+            print(i);
+            players[i] = arr[i].GetComponent<BoardPlayer>();
+            players[i].name = PhotonNetwork.CurrentRoom.Players[i + 1].NickName;
+            print("test");
+            if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
+            {
+                print("true");
+                players[i].GetComponent<BoardInputControls>().Init();
+            }
+        }
+    }
+
     public void BeginGame()
     {
         diceObj.transform.SetParent( players[0].transform);

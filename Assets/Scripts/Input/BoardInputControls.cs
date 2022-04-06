@@ -24,24 +24,11 @@ public class BoardInputControls : MonoBehaviour
     private float _zRot;
 
     private int count = 0;
-    private void Awake()
+    public void Init()
     {
         _controls = new Controls();
         canRayCast = true;
-    }
-
-    public void OnEnable()
-    {
-        _controls.Enable();   
-    }
-
-    public void OnDisable()
-    {
-        _controls.Disable();
-    }
-
-    private void Start()
-    {
+        
         print("Success");
         _controls.PCBoardControls.Interact.started += OnInteract;
         _controls.PCBoardControls.RotateCamera.started += OnRotate;
@@ -54,6 +41,20 @@ public class BoardInputControls : MonoBehaviour
         _controls.TouchBoardControls.Zoom.started += OnZoom;
         _controls.TouchBoardControls.RotateCamera.started += OnRotate;
         #endif
+
+
+        GameObject.Find("CM vcam1").GetComponent<IntroController>().Init();
+        _controls.Enable(); 
+    }
+
+    public void OnEnable()
+    {
+        _controls?.Enable();   
+    }
+
+    public void OnDisable()
+    {
+        _controls?.Disable();
     }
 
     // Start is called before the first frame update

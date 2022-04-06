@@ -3,11 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LobbyLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LobbyLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character0.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character5.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,13 +91,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
       <option value="$PROJECT_DIR$/Assets/dontDestroy.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/CreateAndJoinRooms.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/GameSettings.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
       <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -196,7 +202,7 @@
       <workItem from="1649096631905" duration="8349000" />
       <workItem from="1649120382089" duration="18466000" />
       <workItem from="1649172629508" duration="13432000" />
-      <workItem from="1649211600829" duration="594000" />
+      <workItem from="1649211600829" duration="2324000" />
     </task>
     <servers />
   </component>

@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class IntroController : MonoBehaviourPun
 {
-    [SerializeField]private GameObject postTourCutScene;
-    [SerializeField]private TextMeshProUGUI readyText;
+    [SerializeField] private GameObject postTourCutScene;
+    [SerializeField] private TextMeshProUGUI readyText;
     [SerializeField] private TextMeshProUGUI numText;
     
     private Controls _controls;
@@ -22,8 +22,7 @@ public class IntroController : MonoBehaviourPun
     }
     
     
-
-    private void Start()
+    public void Init()
     {
         _controls = GameObject.Find(PhotonNetwork.LocalPlayer.NickName).GetComponent<BoardInputControls>()._controls;
         
@@ -66,14 +65,16 @@ public class IntroController : MonoBehaviourPun
     public void Finished()
     {
         //Close, Open remove.
-        StaticHelpers.Curtains(() => StaticHelpers.Curtains(()=>
+        StaticHelpers.Curtains(() =>
         {
             print("Done Curtains.");
             readyText.transform.parent.gameObject.SetActive(false);
             _controls.PCBoardControls.Interact.started -= ToggleReady;
             _controls.TouchBoardControls.Interact.started -= ToggleReady;
-            PhotonNetwork.Destroy(gameObject);
-        }));
+            if(PhotonNetwork.IsMasterClient)
+                PhotonNetwork.Destroy(gameObject);
+            StaticHelpers.Curtains(null);
+        });
     }
 
 
