@@ -35,7 +35,6 @@ public class ToggleScoreBoard : MonoBehaviour
         moveX = Screen.width/2 + Screen.width/8;
         minX = transform.position.x;
         maxX = minX - moveX;
-        UpdateScoreBoard();
     }
 
     public void Toggle()

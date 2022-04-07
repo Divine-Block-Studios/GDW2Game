@@ -132,7 +132,7 @@ public class IntroController : MonoBehaviourPun
         _controls.PCBoardControls.Interact.started -= ToggleReady;
         _controls.TouchBoardControls.Interact.started -= ToggleReady;
         HUD.SetActive(true);
-        GameManager.gameManager.isEnabled = true;
+        GameManager.gameManager.BeginGame();
         Destroy(gameObject);
     }
     

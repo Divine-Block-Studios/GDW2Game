@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [Header("Game Elements")]
     [SerializeField] private GameObject dice;
+
+    [SerializeField] private GameObject rollDiceButton;
     [SerializeField] private Transform throwFromA;
     [SerializeField] private Transform throwFromB;
     [SerializeField] private Tile startTile;
@@ -154,19 +156,34 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void BeginGame()
     {
-        diceObj.transform.SetParent( players[0].transform);
-        shredderObj.SetParent( players[0].transform);
+        isEnabled = true;
+
+        diceObj.transform.SetParent(GetCurrentPlayer.transform);
+        shredderObj.SetParent(GetCurrentPlayer.transform);
         
         UpdateUIElements();
         
-        //DEBUG
-        RollDice();
-        //If local player == Current player, use item.
-        playerObject.transform.GetChild(0).GetChild(2).GetComponent<Button>().onClick.AddListener(() => GetCurrentPlayer.UseItem());
+
+        if (MyPlayer == GetCurrentPlayer)
+        {
+            //Show dice roll element.
+            rollDiceButton.SetActive(true);
+            
+            //If local player == allow item use. (You don't start w/ an item)
+            //playerObject.transform.GetChild(0).GetChild(2).GetComponent<Button>().onClick.AddListener(() => GetCurrentPlayer.UseItem());
+        }
+
+        
     }
 
-    private void RollDice()
+    public void RollDice()
     {
+        //SAFETY
+        if (MyPlayer != GetCurrentPlayer)
+            return;
+        
+        rollDiceButton.SetActive(false);
+        
         if (forceNum > 0)
         {
             CheckDice(forceNum);
@@ -179,7 +196,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Vector3 startLoc = new Vector3(Random.Range(A.x, B.x), Random.Range(A.y, B.y), Random.Range(A.z, B.z));
         print(A + " - " + B + " - " +Random.Range(A.x, B.x) + " = " + Random.Range(A.y, B.y) + " = " + Random.Range(A.z, B.z));
         
-        Instantiate(dice, startLoc, Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
+        PhotonNetwork.Instantiate("Prefabs/"+dice, startLoc, Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
     }
 
     private void CheckDice(int num)
@@ -293,10 +310,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void UpdateUIElements()
     { 
-        Transform plyIcon = playerObject.transform.GetChild(0).GetChild(0);
+        Transform plyIcon = playerObject.transform.GetChild(0);
         plyIcon.GetComponent<Image>().sprite = GetCurrentPlayer.playerImg;
         plyIcon.GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.gameObject.name;
-        playerObject.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.coins.ToString();
+        playerObject.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.coins.ToString();
         Item i = GetCurrentPlayer.Item;
         if (i != null)
         {
@@ -308,7 +325,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            playerObject.transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
+            playerObject.transform.GetChild(2).gameObject.SetActive(false);
         }
         tsb.UpdateScoreBoard();
     }

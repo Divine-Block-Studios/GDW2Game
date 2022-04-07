@@ -330,7 +330,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49856684}
-  m_LocalRotation: {x: 0.0919473, y: -0.35685208, z: 0.03532102, w: 0.9289536}
+  m_LocalRotation: {x: 0.09191017, y: -0.3578271, z: 0.03541752, w: 0.92857844}
   m_LocalPosition: {x: -116.6, y: 256.9, z: 115.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6425,6 +6425,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216e6132f7281b248b69fae36d183734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &391401259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6672134078194187083, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+  m_PrefabInstance: {fileID: 391401256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &398563213
 GameObject:
   m_ObjectHideFlags: 0
@@ -13518,10 +13523,11 @@ MonoBehaviour:
   - {fileID: 79356370}
   - {fileID: 667112198}
   playerParentObj: {fileID: 1526574597}
-  playerObject: {fileID: 5971601518212247427, guid: a31eda6b4d26f4a43a4f05d52cd4d0bb, type: 3}
+  playerObject: {fileID: 391401259}
   diceObj: {fileID: 2091236191495340907}
   shredderObj: {fileID: 2091236189682140961}
   dice: {fileID: 4073299363586020757, guid: f2a231cf04630e646ad6b1c9f23a5185, type: 3}
+  rollDiceButton: {fileID: 0}
   throwFromA: {fileID: 929426933}
   throwFromB: {fileID: 410541691}
   startTile: {fileID: 2113296415}
@@ -14273,7 +14279,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059985306}
-  m_LocalRotation: {x: 0.0919473, y: -0.35685208, z: 0.03532102, w: 0.9289536}
+  m_LocalRotation: {x: 0.09191017, y: -0.3578271, z: 0.03541752, w: 0.92857844}
   m_LocalPosition: {x: -146.06201, y: 230.66891, z: 151.2341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
