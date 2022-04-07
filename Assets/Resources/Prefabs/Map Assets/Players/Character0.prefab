@@ -281,6 +281,7 @@ MonoBehaviour:
   moveSpeed: 10
   currentTile: {fileID: 0}
   coins: 0
+  offSet: {x: 0, y: 0, z: 0}
   isAlive: 1
   coinsText: {fileID: 0}
 --- !u!65 &5971601518212247439

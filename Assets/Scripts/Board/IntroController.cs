@@ -105,29 +105,49 @@ public class IntroController : MonoBehaviourPun
                 playersAsAwards[i] = Resources.Load<Item>("LoadableAssets/Items/Player" + i); // Does this work??
             }
 
-            GameManager.gameManager.CreateSelectionUI(playersAsAwards, true, false, null, 1, () =>
+            GameManager.gameManager.CreateSelectionUI(playersAsAwards, true, false, null, 1, async () =>
             {
                 print("Done Spinning.");
-                photonView.RPC("ChangeToPlayerSpec", RpcTarget.AllBuffered);
-                GameObject [] gos = GameObject.FindGameObjectsWithTag("Player");
-                for (int i = 0; i < gos.Length; i++)
+                
+                BoardPlayer [] plys = GameManager.gameManager.players;
+                float rot = 360 / plys.Length;
+                float dist = 3;
+                Vector2 startPoint = Vector2.left * dist;
+                Vector2 temp = startPoint;
+                for (int i = 0; i < plys.Length; i++)
                 {
-                    BoardPlayer temp = gos[i].GetComponent<BoardPlayer>();
-                    temp.Teleport(temp.currentTile.transform.position);
+                    //2D rotation matrix.
+                    temp.x = startPoint.x * Mathf.Cos(rot * i * Mathf.Deg2Rad)  - startPoint.x * Mathf.Sin(rot * i * Mathf.Deg2Rad);
+                    temp.y = startPoint.y * Mathf.Sin(rot * i* Mathf.Deg2Rad)  + startPoint.y * Mathf.Cos(rot * i* Mathf.Deg2Rad);
+
+                    plys[i].offSet = temp;
+                    print("Debugging offset: " + plys[i].offSet);
+                    plys[i].Teleport(plys[i].currentTile.transform.position, true);
                 }
-                GameManager.gameManager.isEnabled = true;
+                await Task.Delay(1500);
+                photonView.RPC("ChangeToPlayerSpec", RpcTarget.AllBuffered);
             });
         }
+        
     }
 
     [PunRPC]
     private void ChangeToPlayerSpec()
     {
-        //Needs to parent camera,
-        //Reenable controls, zoom & rotate. FIX BIC
         _controls.PCBoardControls.Interact.started -= ToggleReady;
         _controls.TouchBoardControls.Interact.started -= ToggleReady;
         HUD.SetActive(true);
-        transform.GetComponent<CinemachineVirtualCamera>().m_Follow = GameManager.gameManager.MyPlayer.transform;
+        GameManager.gameManager.isEnabled = true;
+        Destroy(gameObject);
+    }
+    
+    
+    
+
+    private void OnDestroy()
+    {
+        Transform t = Camera.main.transform;
+        t.rotation = Quaternion.identity;
+        t.localPosition = new Vector3(0, 0, -20f);
     }
 }

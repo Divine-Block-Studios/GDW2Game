@@ -33,6 +33,11 @@ public class BoardPlayer : MonoBehaviourPun
     private MeshRenderer mr;
 
     private Vector3 myPlatform;
+    
+    [HideInInspector]
+    public Vector3 offSet;
+
+    private RectTransform rt;
 
     public bool isAlive = true;
 
@@ -73,7 +78,10 @@ public class BoardPlayer : MonoBehaviourPun
         ctrls.cameraArmBase = GameManager.gameManager.CameraArm;
         sr = transform.GetComponent<SpriteRenderer>();
         _particleSystem = transform.GetChild(1).GetComponent<ParticleSystem>();
-        mr = transform.GetComponent<MeshRenderer>();
+        mr = transform.GetChild(0).GetComponent<MeshRenderer>();
+        rt = GetComponent<RectTransform>();
+        
+        
     }
 
     // Update is called once per frame
@@ -117,10 +125,9 @@ public class BoardPlayer : MonoBehaviourPun
         GameManager.gameManager.UpdateUIElements();
     }
 
-    [PunRPC]
-    public async void Teleport(Vector3 loc)
+    public async void Teleport(Vector3 loc, bool includeOffset)
     {
-        _particleSystem.Play();
+        photonView.RPC("ActivateParticles", RpcTarget.Others);
         sr.enabled = false;
         mr.enabled = false;
         await Task.Delay((int) (_particleSystem.main.duration * 1000));
@@ -128,7 +135,18 @@ public class BoardPlayer : MonoBehaviourPun
         sr.enabled = true;
         mr.enabled = true;
 
-        transform.position = loc;
+        Vector3 vec = (includeOffset)?offSet:Vector3.zero;
+        vec.y = rt.rect.height + 0.3f;
+        
+        
+        
+        transform.position = loc + vec;
+    }
+
+    [PunRPC]
+    private void ActivateParticles()
+    {
+        _particleSystem.Play();
     }
     //Sin wave turning?
     //Bouncing Character Up and down... Checkpointed system, Move in arcs...

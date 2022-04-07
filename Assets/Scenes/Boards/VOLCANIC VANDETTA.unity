@@ -330,7 +330,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49856684}
-  m_LocalRotation: {x: 0.09171991, y: -0.36277598, z: 0.035907365, w: 0.92665625}
+  m_LocalRotation: {x: 0.09206506, y: -0.3537393, z: 0.035012916, w: 0.93014336}
   m_LocalPosition: {x: -116.6, y: 256.9, z: 115.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6384,7 +6384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6672134077446348508, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6749327743485879649, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_text
@@ -8691,7 +8691,7 @@ MonoBehaviour:
   timeBeforeForcedRoll: 15
   forceNum: 0
   enemy: {fileID: 5971601519716378502}
-  CameraArm: {fileID: 942131747}
+  CameraArm: {fileID: 933397394}
   players: []
   isEnabled: 0
   DEBUGevts:
@@ -9434,7 +9434,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059985306}
-  m_LocalRotation: {x: 0.09171991, y: -0.36277598, z: 0.035907365, w: 0.92665625}
+  m_LocalRotation: {x: 0.09206506, y: -0.3537393, z: 0.035012916, w: 0.93014336}
   m_LocalPosition: {x: -146.06201, y: 230.66891, z: 151.2341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
