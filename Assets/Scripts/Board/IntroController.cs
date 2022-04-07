@@ -98,12 +98,7 @@ public class IntroController : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            Item[] playersAsAwards = new Item[GameManager.gameManager.players.Length];
-            for (int i = 0; i < playersAsAwards.Length; i++)
-            {
-                print("TRIAL: Alpha: " + i); // Error on player 0. Img not set. [ply not even appearing.]
-                playersAsAwards[i] = Resources.Load<Item>("LoadableAssets/Items/Player" + i); // Does this work??
-            }
+            Item[] playersAsAwards = GameManager.gameManager.playersAsItems;
 
             GameManager.gameManager.CreateSelectionUI(playersAsAwards, true, false, null, 1, async () =>
             {

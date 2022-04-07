@@ -79,15 +79,16 @@ public class SpinnerScript : MonoBehaviour
         Spin(items, ply);
     }
     
-    [PunRPC]
-    private void TEST(object [] assetNames)
+    public void Init(BoardPlayer ply = null, Action onComplete = null)
     {
-        
-        for (int i = 0; i < assetNames.Length; i++)
-        {
-            //Add "/item or /minigame" to solve.
-            AwardableEvents ae = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
-        }
+        print("initing");
+        post = onComplete;
+        _trueSpinTime = Random.Range(minSpinTimeS, maxSpinTimeS);
+
+        string[] temp = {};
+        _photonView.RPC("DrawConeRPC", RpcTarget.AllBuffered, temp as object);
+        items = GameManager.gameManager.playersAsItems;
+        Spin(items, ply);
     }
 
 
@@ -95,23 +96,30 @@ public class SpinnerScript : MonoBehaviour
     [PunRPC]
     private void DrawConeRPC(object [] assetNames)
     {
+        AwardableEvents [] awardableEvents = new AwardableEvents[assetNames.Length];
+        if (assetNames.Length > 0)
+        {
+            for (int i = 0; i < assetNames.Length; i++)
+            {
+                awardableEvents[i] = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
+            }
+        }
+        else
+        {
+            Debug.Log("Successfully got assets");
+            awardableEvents = GameManager.gameManager.playersAsItems;
+        }
         
         _cones = new List<MeshRenderer>();
-        _count = assetNames.Length;
+        _count = awardableEvents.Length;
         angle = 360f / _count;
-
+        
         //140 is magic spinner number, must always start at 140
         prvRot = 140;
         transform.parent.eulerAngles = new Vector3(-90, 0, 0);
         transform.localEulerAngles = new Vector3(0, 0, prvRot);
-        
-        AwardableEvents [] awardableEvents = new AwardableEvents[assetNames.Length];
-        for (int i = 0; i < assetNames.Length; i++)
-        {
-            awardableEvents[i] = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
-        }
 
-        for (int index = 0; index < assetNames.Length; index++)
+        for (int index = 0; index < awardableEvents.Length; index++)
         {
             GameObject go = new GameObject();
             go.transform.SetParent(transform);
