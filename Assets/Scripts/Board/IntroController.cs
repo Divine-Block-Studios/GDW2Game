@@ -107,15 +107,15 @@ public class IntroController : MonoBehaviourPun
                 BoardPlayer [] plys = GameManager.gameManager.players;
                 float rot = 360 / plys.Length;
                 float dist = 3;
-                Vector2 startPoint = Vector2.left * dist;
-                Vector2 temp = startPoint;
+                Vector3 startPoint = Vector2.left * dist;
+                Vector3 temp = startPoint;
                 for (int i = 0; i < plys.Length; i++)
                 {
                     //2D rotation matrix.
                     temp.x = startPoint.x * Mathf.Cos(rot * i * Mathf.Deg2Rad)  - startPoint.x * Mathf.Sin(rot * i * Mathf.Deg2Rad);
                     temp.y = startPoint.y * Mathf.Sin(rot * i* Mathf.Deg2Rad)  + startPoint.y * Mathf.Cos(rot * i* Mathf.Deg2Rad);
 
-                    plys[i].offSet = temp;
+                    plys[i].offSet += temp;
                     print("Debugging offset: " + plys[i].offSet);
                     plys[i].Teleport(plys[i].currentTile.transform.position, true);
                 }

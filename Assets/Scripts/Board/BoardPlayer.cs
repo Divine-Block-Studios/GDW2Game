@@ -37,8 +37,6 @@ public class BoardPlayer : MonoBehaviourPun
     [HideInInspector]
     public Vector3 offSet;
 
-    private RectTransform rt;
-
     public bool isAlive = true;
 
     public void InMenu(bool val)
@@ -79,9 +77,8 @@ public class BoardPlayer : MonoBehaviourPun
         sr = transform.GetComponent<SpriteRenderer>();
         _particleSystem = transform.GetChild(1).GetComponent<ParticleSystem>();
         mr = transform.GetChild(0).GetComponent<MeshRenderer>();
-        rt = GetComponent<RectTransform>();
         
-        
+        offSet.y = GetComponent<RectTransform>().rect.height+ 0.3f;
     }
 
     // Update is called once per frame
@@ -101,13 +98,13 @@ public class BoardPlayer : MonoBehaviourPun
         if (Mathf.Abs(end.z - start.z) > imgHeight.z)
         {
             Debug.Log("Needs to Slerp");//new Vector3(start.x, start.y, end.z - imgHeight.z)
-            StaticHelpers.MoveSlerp(transform, start - imgHeight, end - imgHeight,  moveSpeed + 20, 
+            StaticHelpers.MoveSlerp(transform, start + offSet, end + offSet,  moveSpeed + 20, 
                 () => moveToTile.LandedOn(this));
         }
         else
         {
             Debug.Log("Needs to Lerp: " + moveSpeed);
-            StaticHelpers.MoveLerp(transform, start - imgHeight, end - imgHeight, moveSpeed, () => moveToTile.LandedOn(this), true);
+            StaticHelpers.MoveLerp(transform, start + offSet, end + offSet, moveSpeed, () => moveToTile.LandedOn(this), true);
         }
         //Move along the direction vector at a set speed.
         //Cast two rays, one along ZX one along Y.
@@ -135,10 +132,9 @@ public class BoardPlayer : MonoBehaviourPun
         sr.enabled = true;
         mr.enabled = true;
 
-        Vector3 vec = (includeOffset)?offSet:Vector3.zero;
-        vec.y = rt.rect.height + 0.3f;
+        Vector3 vec = (includeOffset)?offSet:new Vector3(0,offSet.y,0);
         
-        
+        print(vec);
         
         transform.position = loc + vec;
     }

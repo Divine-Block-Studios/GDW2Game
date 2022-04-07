@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -40,6 +41,8 @@ namespace Board.Tiles
                 
                 //This working makes me sad
                 //There's a tilt sometimes which is an issue
+
+                print(Quaternion.FromToRotation(Vector3.up, normal).eulerAngles);
                 Quaternion rotation = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, normal).eulerAngles - new Vector3(0,0,180));
                 int reps = Mathf.CeilToInt(distance / distBetweenArrowSpawns);
 
@@ -48,16 +51,18 @@ namespace Board.Tiles
                 {
                     Vector3 location = (j == 0)
                         ? 0.2f * distBetweenArrowSpawns * normal + transform.position: j * distBetweenArrowSpawns * normal + transform.position;
-                    _arrows.Add(Instantiate(arrow, location, rotation));
+                    _arrows.Add(PhotonNetwork.Instantiate("Prefabs/Instantiated Assets/" + arrow.name, location, rotation));
                         _arrows[_arrows.Count-1].name = "Arrow: " + (_arrows.Count-1); // why would this not work??
                     
                     //Add a listener to the arrow
-                    _arrows[_arrows.Count-1].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
+                    if(GameManager.gameManager.GetCurrentPlayer == GameManager.gameManager.MyPlayer)
+                        _arrows[_arrows.Count-1].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
                 }
             
                 //Highlight all tiles that the player can move to (For Clarification purposes)
-                _highlights.Add(Instantiate(highlight, moveToTiles[i].transform.position - new Vector3(0,0f,0.2f), Quaternion.identity));
-                _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
+                _highlights.Add(PhotonNetwork.Instantiate("Prefabs/Instantiated Assets/" + highlight.name, moveToTiles[i].transform.position - new Vector3(0,0f,0.2f), Quaternion.identity));
+                if(GameManager.gameManager.GetCurrentPlayer == GameManager.gameManager.MyPlayer)
+                    _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
             }
         }
 
@@ -67,13 +72,13 @@ namespace Board.Tiles
             foreach (GameObject go in _arrows)
             {
                 //Remove the arrow
-                Destroy(go);
+                PhotonNetwork.Destroy(go);
             }
 
             foreach (GameObject go in _highlights)
             {
                 //Apparently it's recommended to destroy the listners after..
-                Destroy(go);
+                PhotonNetwork.Destroy(go);
             }
             GameManager.gameManager.EndAction(pressed, _costsMoveToPass);
         }

@@ -41,8 +41,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject dice;
 
     [SerializeField] private GameObject rollDiceButton;
-    [SerializeField] private Transform throwFromA;
-    [SerializeField] private Transform throwFromB;
+    [SerializeField] private float throwHeight;
     [SerializeField] private Tile startTile;
     
     [Header("Game GameSettings")]
@@ -118,7 +117,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                     .GetComponentInChildren<BoardPlayer>();
                 players[i].transform.position = playerSpawnPoints[i].position + new Vector3(0, players[i].GetComponent<RectTransform>().rect.height + 0.3f, 0);
                 players[i].transform.LookAt(enemy.transform.position);
-                
+                players[i].photonView.TransferOwnership(PhotonNetwork.CurrentRoom.Players[i+1]);
             }
             photonView.RPC("UpdatePlayerArray", RpcTarget.AllBuffered);
         }
@@ -149,7 +148,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 print("I found my guy!");
                 players[i].GetComponent<BoardInputControls>().Init();
-                players[i].photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+                players[i].photonView.RequestOwnership();
             }
         }
     }
@@ -160,20 +159,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         diceObj.transform.SetParent(GetCurrentPlayer.transform);
         shredderObj.SetParent(GetCurrentPlayer.transform);
-        
         UpdateUIElements();
         
+        Debug.Log(MyPlayer.name);
+        Debug.Log(GetCurrentPlayer.name);
 
-        if (MyPlayer == GetCurrentPlayer)
-        {
-            //Show dice roll element.
-            rollDiceButton.SetActive(true);
-            
-            //If local player == allow item use. (You don't start w/ an item)
-            //playerObject.transform.GetChild(0).GetChild(2).GetComponent<Button>().onClick.AddListener(() => GetCurrentPlayer.UseItem());
-        }
-
-        
+        rollDiceButton.SetActive(MyPlayer == GetCurrentPlayer);
     }
 
     public void RollDice()
@@ -189,14 +180,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             CheckDice(forceNum);
             return;
         }
-
-        Vector3 A = throwFromA.position;
-        Vector3 B = throwFromB.position;
-        
-        Vector3 startLoc = new Vector3(Random.Range(A.x, B.x), Random.Range(A.y, B.y), Random.Range(A.z, B.z));
-        print(A + " - " + B + " - " +Random.Range(A.x, B.x) + " = " + Random.Range(A.y, B.y) + " = " + Random.Range(A.z, B.z));
-        
-        PhotonNetwork.Instantiate("Prefabs/"+dice.name, startLoc, Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
+        PhotonNetwork.Instantiate("Prefabs/"+dice.name, GetCurrentPlayer.transform.position + new Vector3(0, throwHeight, 0), Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
     }
 
     private void CheckDice(int num)

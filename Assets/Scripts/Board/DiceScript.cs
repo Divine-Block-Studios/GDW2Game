@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -21,15 +22,31 @@ public class DiceScript : MonoBehaviour
         Debug.DrawRay(transform.position, throwDest, Color.magenta, 20f);
         //Debug.DrawRay(transform.position, new Vector3(100,100,100), Color.black, 20f);
         Debug.Log("Hello");
-        StaticHelpers.ThrowAt(transform, transform.position, throwDest, 5, 2, 0.1f);
-     }
+        
+        //1) Start high
+        //2) Aim straight down, then rotate at a random angle, w/ 2D rotation matrix along two points on a plane.
+        //3) throw from A to B.
+
+        float rot = Random.Range(0, 360);
+        
+        throwDest.x = throwDest.x * Mathf.Cos(rot * Mathf.Deg2Rad)  - throwDest.x * Mathf.Sin(rot * Mathf.Deg2Rad);
+        throwDest.z = throwDest.z * Mathf.Sin(rot* Mathf.Deg2Rad)  + throwDest.z * Mathf.Cos(rot* Mathf.Deg2Rad);
+        
+        print(transform.position + " - " + throwDest);
+        
+        Debug.DrawRay(transform.position, throwDest, Color.green, 5f, false);
+        
+        GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-5,6),Random.Range(-5,6),Random.Range(-5,6)));
+        
+        StaticHelpers.ThrowAt(transform, transform.position, throwDest, 10, 50, 0.3f);
+    }
 
     void Update()
     {
         if (rb.IsSleeping())
         {
             OnCompleted.Invoke(CheckDie());
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
     

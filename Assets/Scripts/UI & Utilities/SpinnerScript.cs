@@ -249,9 +249,15 @@ public class SpinnerScript : MonoBehaviour
         }
         else
         {
-            StaticHelpers.StartFrom(ref GameManager.gameManager.players, _curTile);
+            _photonView.RPC("PlayerStartFrom", RpcTarget.AllBuffered, _curTile);
         }
         post?.Invoke();
         PhotonNetwork.Destroy(gameObject);
+    }
+
+    [PunRPC]
+    private void PlayerStartFrom(int index)
+    {
+        StaticHelpers.StartFrom(ref GameManager.gameManager.players, index);
     }
 }
