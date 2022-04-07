@@ -24,13 +24,16 @@ public class DiceAnim : MonoBehaviour
     // Update is called once per frame
     private async void Spin()
     {
+        float dist = 0;
         while (isSpinning)
         {
             transform.eulerAngles += new Vector3(0, 0, rotSpeed);
+
+            dist += rotSpeed;
+            
             //Hit right boundry OR Hit left boundry
-            if (transform.eulerAngles.z >= maxRot || transform.eulerAngles.z <= 360 - maxRot)
+            if (dist < -maxRot || dist > maxRot)
             {
-                maxRot *= -1;
                 rotSpeed *= -1;
             }
 

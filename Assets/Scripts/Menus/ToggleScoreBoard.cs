@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Photon.Pun;
 using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,12 +13,15 @@ public class ToggleScoreBoard : MonoBehaviour
 {
     [SerializeField] private Sprite openImg;
     [SerializeField] private Sprite closeImg;
-    [SerializeField] private float moveX;
     [SerializeField] private float speed;
     [SerializeField] private GameObject playerBadge;
     [SerializeField] private Vector3[] badgePositions;
+    [SerializeField] private Transform parent;
+    private float maxX;
+    private float minX;
 
 
+    private float moveX;
     private Image _openButton;
     private List<GameObject> _badges;
     
@@ -30,24 +34,20 @@ public class ToggleScoreBoard : MonoBehaviour
 
         for (int i = 0; i  < _badges.Count; i++)
         {
-            _badges[i] = Instantiate(playerBadge, badgePositions[i], Quaternion.identity);
-            UpdateScoreBoard();
+            _badges[i] = Instantiate(playerBadge, parent);
+            _badges[i].transform.localPosition = badgePositions[i];
         }
-
-
-        string[] test = {"0", "8", "2"};
-        double[] ints = {0, 8, 2};
-        
-        StaticHelpers.Sort(ref test, ints,true);
-        
-        print(test[0] + " - " + test[1] + " - " + test[2]);
-
+        moveX = Screen.width/2 + Screen.width/8;
+        minX = transform.position.x;
+        maxX = minX - moveX;
+        UpdateScoreBoard();
     }
 
-    public async void Toggle()
+    public void Toggle()
     {
         moveX *= -1;
-        Vector3 newPos = transform.position + new Vector3(moveX, 0, 0);
+        print("DEBUG" + moveX);
+        Vector3 newPos = moveX > 0 ?  new Vector3(minX, transform.position.y, 0) : new Vector3(maxX, transform.position.y, 0);
         StaticHelpers.MoveLerp(transform, transform.position, newPos, speed, () =>
         {
             _openButton.sprite = moveX < 0 ? closeImg : openImg;
