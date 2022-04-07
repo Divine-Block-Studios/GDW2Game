@@ -39,6 +39,7 @@ public class SpinnerScript : MonoBehaviour
     private int _count;
 
     private float prvRot;
+    private float nxtRot = 0;
 
     private void Awake()
     {
@@ -77,17 +78,17 @@ public class SpinnerScript : MonoBehaviour
         
         Spin(items, ply);
     }
-
-
-    [PunRPC]
-    private void TEST(object [] assetNames)
+    
+    public void Init(BoardPlayer ply = null, Action onComplete = null)
     {
-        
-        for (int i = 0; i < assetNames.Length; i++)
-        {
-            //Add "/item or /minigame" to solve.
-            AwardableEvents ae = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
-        }
+        print("initing");
+        post = onComplete;
+        _trueSpinTime = Random.Range(minSpinTimeS, maxSpinTimeS);
+
+        string[] temp = {};
+        _photonView.RPC("DrawConeRPC", RpcTarget.AllBuffered, temp as object);
+        items = GameManager.gameManager.playersAsItems;
+        Spin(items, ply);
     }
 
 
@@ -95,25 +96,30 @@ public class SpinnerScript : MonoBehaviour
     [PunRPC]
     private void DrawConeRPC(object [] assetNames)
     {
+        AwardableEvents [] awardableEvents = new AwardableEvents[assetNames.Length];
+        if (assetNames.Length > 0)
+        {
+            for (int i = 0; i < assetNames.Length; i++)
+            {
+                awardableEvents[i] = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
+            }
+        }
+        else
+        {
+            Debug.Log("Successfully got assets");
+            awardableEvents = GameManager.gameManager.playersAsItems;
+        }
         
         _cones = new List<MeshRenderer>();
-        _count = assetNames.Length;
+        _count = awardableEvents.Length;
         angle = 360f / _count;
-
+        
         //140 is magic spinner number, must always start at 140
         prvRot = 140;
         transform.parent.eulerAngles = new Vector3(-90, 0, 0);
         transform.localEulerAngles = new Vector3(0, 0, prvRot);
-        
-        AwardableEvents [] awardableEvents = new AwardableEvents[assetNames.Length];
-        for (int i = 0; i < assetNames.Length; i++)
-        {
-            awardableEvents[i] = Resources.Load<AwardableEvents>("LoadableAssets/" + assetNames[i]);
-        }
 
-        
-        
-        for (int index = 0; index < assetNames.Length; index++)
+        for (int index = 0; index < awardableEvents.Length; index++)
         {
             GameObject go = new GameObject();
             go.transform.SetParent(transform);
@@ -196,11 +202,8 @@ public class SpinnerScript : MonoBehaviour
 
     private void Update()
     {
-        //140 is start value, angle * cones is always 360 / 2 = 180 /2 = 20. Always 20. -- 140 - angle*_cones.Count/ 2)/2
-        if (transform.localEulerAngles.z < prvRot && (transform.localEulerAngles.z > 20 || _curTile == _cones.Count/2+1))
+        if (transform.localEulerAngles.z < prvRot && transform.localEulerAngles.z > nxtRot)
         {
-            //Change skins
-            
             _cones[_curTile].material = matA;
             if (--_curTile < 0)
             {
@@ -210,7 +213,14 @@ public class SpinnerScript : MonoBehaviour
 
             prvRot -= angle;
             if (prvRot < 0)
+            {
                 prvRot = 360 + prvRot;
+                nxtRot = prvRot - angle;
+            }
+            else
+            {
+                nxtRot = 0;
+            }
         }
     }
 
@@ -241,7 +251,6 @@ public class SpinnerScript : MonoBehaviour
         {
             StaticHelpers.StartFrom(ref GameManager.gameManager.players, _curTile);
         }
-        
         post?.Invoke();
         PhotonNetwork.Destroy(gameObject);
     }

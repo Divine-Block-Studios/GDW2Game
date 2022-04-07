@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,23 +27,23 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardSpecific/CyberPunkMapEvents.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/LobbyLogic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/Tiles/EasterEggTile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/DiceAnim.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/MultipleDisplayUtilities.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/DisplayParticlesOnUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F7273206-767D-421E-8354-6C2B1E8D1169/a4/38e2d17d/Physics2D.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/MultipleDisplayUtilities.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/ExampleRenderPipelineAsset.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/CustomRenderPipeline.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/Custom Renderer/CustomRenderPipeline.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/Custom Renderer/CustomRendererInstance.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/PlatformSpecificAssets.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/TouchControls.cs" />
@@ -80,13 +85,16 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/GameSettings.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
       <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
+      <option value="$PROJECT_DIR$/Assets/CutSceneController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
+      <option value="$PROJECT_DIR$/Assets/DisplayParticlesOnUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/DiceAnim.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/CutSceneController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -193,6 +201,7 @@
       <workItem from="1649172629508" duration="13432000" />
       <workItem from="1649211600829" duration="2324000" />
       <workItem from="1649218241563" duration="73000" />
+      <workItem from="1649257677873" duration="29047000" />
     </task>
     <servers />
   </component>

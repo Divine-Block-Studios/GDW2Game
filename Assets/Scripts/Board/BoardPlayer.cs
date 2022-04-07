@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Board;
 using Board.Tiles;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BoardPlayer : MonoBehaviour
+public class BoardPlayer : MonoBehaviourPun
 {
     [Header("Stats")] 
     //This should be set in player settings and forwarded through GM?
@@ -32,7 +33,13 @@ public class BoardPlayer : MonoBehaviour
     private MeshRenderer mr;
 
     private Vector3 myPlatform;
+    
+    [HideInInspector]
+    public Vector3 offSet;
 
+    private RectTransform rt;
+
+    public bool isAlive = true;
 
     public void InMenu(bool val)
     {
@@ -71,7 +78,10 @@ public class BoardPlayer : MonoBehaviour
         ctrls.cameraArmBase = GameManager.gameManager.CameraArm;
         sr = transform.GetComponent<SpriteRenderer>();
         _particleSystem = transform.GetChild(1).GetComponent<ParticleSystem>();
-        mr = transform.GetComponent<MeshRenderer>();
+        mr = transform.GetChild(0).GetComponent<MeshRenderer>();
+        rt = GetComponent<RectTransform>();
+        
+        
     }
 
     // Update is called once per frame
@@ -115,19 +125,29 @@ public class BoardPlayer : MonoBehaviour
         GameManager.gameManager.UpdateUIElements();
     }
 
-    [PunRPC]
-    public async void Teleport(Vector3 loc)
+    public async void Teleport(Vector3 loc, bool includeOffset)
     {
-        _particleSystem.Play();
+        photonView.RPC("ActivateParticles", RpcTarget.Others);
         sr.enabled = false;
         mr.enabled = false;
-        await Task.Delay((int)(_particleSystem.main.duration * 1000));
-        
+        await Task.Delay((int) (_particleSystem.main.duration * 1000));
+
         sr.enabled = true;
         mr.enabled = true;
+
+        Vector3 vec = (includeOffset)?offSet:Vector3.zero;
+        vec.y = rt.rect.height + 0.3f;
+        
+        
+        
+        transform.position = loc + vec;
     }
 
+    [PunRPC]
+    private void ActivateParticles()
+    {
+        _particleSystem.Play();
+    }
     //Sin wave turning?
     //Bouncing Character Up and down... Checkpointed system, Move in arcs...
-    
 }

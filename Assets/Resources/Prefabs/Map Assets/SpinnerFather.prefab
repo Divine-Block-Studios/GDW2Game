@@ -77,9 +77,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minForce: 0.5
-  maxForce: 0.5
-  minSpinTimeS: 20
-  maxSpinTimeS: 20
+  maxForce: 1
+  minSpinTimeS: 5
+  maxSpinTimeS: 8
   delayMS: 1000
   postDestructionDelay: 500
   radius: 7.5

@@ -21,7 +21,7 @@ public class BoardInputControls : MonoBehaviour
     public bool canRayCast;
     
     private float _xRot;
-    private float _zRot;
+    private float _yRot;
 
     private int count = 0;
     public void Init()
@@ -44,6 +44,7 @@ public class BoardInputControls : MonoBehaviour
 
 
         GameObject.Find("CM vcam1").GetComponent<IntroController>().Init();
+        cameraArmBase = GameManager.gameManager.CameraArm;
         _controls.Enable(); 
     }
 
@@ -61,14 +62,13 @@ public class BoardInputControls : MonoBehaviour
     private void OnInteract(InputAction.CallbackContext context)
     {
         //Change this, it should cast if a button was not pressed... How?
-        if (canRayCast)
+        if (canRayCast && GameManager.gameManager.isEnabled)
         {
             #if UNITY_IOS || UNITY_ANDROID
             if (_controls.TouchBoardControls.RotateCamera.WasReleasedThisFrame())
             {
                 return;
             }
-
             
             #endif
             Ray ray = Camera.main.ScreenPointToRay(context.ReadValue<Vector2>());
@@ -123,12 +123,12 @@ public class BoardInputControls : MonoBehaviour
             return;
         Vector2 rotateInfo = context.ReadValue<Vector2>();
         
-        _zRot -= rotateInfo.x * sensitivity / 1000;
-        _xRot -= rotateInfo.y * sensitivity / 1000;
+        _yRot += rotateInfo.x * sensitivity / 1000;
+        _xRot += rotateInfo.y * sensitivity / 1000;
 
-        _xRot = Mathf.Clamp(_xRot, -maxAngle, 0);
+        _xRot = Mathf.Clamp(_xRot, 0, maxAngle);
         
         cameraArmBase.GetChild(0).localRotation = Quaternion.Euler(_xRot,0,0);
-        cameraArmBase.localRotation = Quaternion.Euler(0,0,_zRot);
+        cameraArmBase.rotation = Quaternion.Euler(0,_yRot,0);
     }
 }

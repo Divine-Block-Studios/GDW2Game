@@ -10,6 +10,7 @@ using UnityEngine.Playables;
 public class IntroController : MonoBehaviourPun
 {
     [SerializeField] private GameObject postTourCutScene;
+    [SerializeField] private GameObject HUD;
     [SerializeField] private TextMeshProUGUI readyText;
     [SerializeField] private TextMeshProUGUI numText;
     
@@ -97,25 +98,51 @@ public class IntroController : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            Item[] playersAsAwards = new Item[GameManager.gameManager.players.Length];
-            for (int i = 0; i < playersAsAwards.Length; i++)
-            {
-                print("TRIAL: Alpha: " + i); // Error on player 0. Img not set. [ply not even appearing.]
-                playersAsAwards[i] = Resources.Load<Item>("LoadableAssets/Items/Player" + i); // Does this work??
-            }
+            Item[] playersAsAwards = GameManager.gameManager.playersAsItems;
 
-            GameManager.gameManager.CreateSelectionUI(playersAsAwards, true, false, null, 1, () =>
+            GameManager.gameManager.CreateSelectionUI(playersAsAwards, true, false, null, 1, async () =>
             {
                 print("Done Spinning.");
-                photonView.RPC("DestroyMe", RpcTarget.AllBuffered);
-                GameManager.gameManager.isEnabled = true;
+                
+                BoardPlayer [] plys = GameManager.gameManager.players;
+                float rot = 360 / plys.Length;
+                float dist = 3;
+                Vector2 startPoint = Vector2.left * dist;
+                Vector2 temp = startPoint;
+                for (int i = 0; i < plys.Length; i++)
+                {
+                    //2D rotation matrix.
+                    temp.x = startPoint.x * Mathf.Cos(rot * i * Mathf.Deg2Rad)  - startPoint.x * Mathf.Sin(rot * i * Mathf.Deg2Rad);
+                    temp.y = startPoint.y * Mathf.Sin(rot * i* Mathf.Deg2Rad)  + startPoint.y * Mathf.Cos(rot * i* Mathf.Deg2Rad);
+
+                    plys[i].offSet = temp;
+                    print("Debugging offset: " + plys[i].offSet);
+                    plys[i].Teleport(plys[i].currentTile.transform.position, true);
+                }
+                await Task.Delay(1500);
+                photonView.RPC("ChangeToPlayerSpec", RpcTarget.AllBuffered);
             });
         }
+        
     }
 
     [PunRPC]
-    private void DestroyMe()
+    private void ChangeToPlayerSpec()
     {
+        _controls.PCBoardControls.Interact.started -= ToggleReady;
+        _controls.TouchBoardControls.Interact.started -= ToggleReady;
+        HUD.SetActive(true);
+        GameManager.gameManager.isEnabled = true;
         Destroy(gameObject);
+    }
+    
+    
+    
+
+    private void OnDestroy()
+    {
+        Transform t = Camera.main.transform;
+        t.rotation = Quaternion.identity;
+        t.localPosition = new Vector3(0, 0, -20f);
     }
 }

@@ -96,6 +96,39 @@ public static class StaticHelpers
         b = c;
     }
 
+    //Bubble sort, change to merge.
+    public static void Sort<T>(ref T [] arr,  double[] vals, bool ascending)
+    {
+        double[] temp = vals;
+        for (int i = 0; i < arr.Length -1; i++)
+        {
+            for (int j = i + 1; j < arr.Length; j++)
+            {
+                if (ascending)
+                {
+                    //0 > 8? // 0, 8, 2
+                    //0 > 2? // 0, 8, 2
+                    //8 > 2? // 0, 2, 8
+                    if (vals[i] > temp[j])
+                    {
+                        Swap(ref vals[i], ref temp[j]);
+                        Swap(ref arr[i], ref arr[j]);
+                    }
+                }
+                else
+                {
+                    // 0 < 8? // 8, 0, 2
+                    // 8 < 0? // 8, 0 ,2
+                    // 0 < 2? // 8, 2, 0
+                    if (vals[i] < temp[j])
+                    {
+                        Swap(ref vals[i], ref temp[j]);
+                    }
+                }
+            }
+        }
+    }
+
     public static void StartFrom<T>(ref T[] arr, int index)
     {
         //-1 cus we don't need to swap last index. makes no sense.
