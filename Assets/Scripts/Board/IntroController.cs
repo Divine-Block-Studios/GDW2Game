@@ -119,7 +119,7 @@ public class IntroController : MonoBehaviourPun
                     print("Debugging offset: " + plys[i].offSet);
                     plys[i].Teleport(plys[i].currentTile.transform.position, true);
                 }
-                await Task.Delay(1500);
+                await Task.Delay(1000);
                 photonView.RPC("ChangeToPlayerSpec", RpcTarget.AllBuffered);
             });
         }

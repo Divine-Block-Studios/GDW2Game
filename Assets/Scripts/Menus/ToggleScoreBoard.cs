@@ -12,6 +12,8 @@ public class ToggleScoreBoard : MonoBehaviour
     [SerializeField] private GameObject playerBadge;
     [SerializeField] private Vector3[] badgePositions;
     [SerializeField] private Transform parent;
+    [SerializeField] private Transform pt0;
+    [SerializeField] private Transform pt1;
     private float maxX;
     private float minX;
 
@@ -21,15 +23,15 @@ public class ToggleScoreBoard : MonoBehaviour
     private List<GameObject> _badges;
     
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         _openButton = transform.GetChild(0).GetComponent<Image>();
 
-        _badges = GameObject.FindGameObjectsWithTag("Player").ToList();
+        _badges = new List<GameObject>();
 
-        for (int i = 0; i  < _badges.Count; i++)
+        for (int i = 0; i  < GameManager.gameManager.players.Length; i++)
         {
-            _badges[i] = Instantiate(playerBadge, parent);
+            _badges.Add(Instantiate(playerBadge, parent));
             _badges[i].transform.localPosition = badgePositions[i];
         }
         moveX = Screen.width/2 + Screen.width/8;
@@ -41,7 +43,7 @@ public class ToggleScoreBoard : MonoBehaviour
     {
         moveX *= -1;
         print("DEBUG" + moveX);
-        Vector3 newPos = moveX > 0 ?  new Vector3(minX, transform.position.y, 0) : new Vector3(maxX, transform.position.y, 0);
+        Vector3 newPos = moveX > 0 ?  pt0.position : pt1.position;
         StaticHelpers.MoveLerp(transform, transform.position, newPos, speed, () =>
         {
             _openButton.sprite = moveX < 0 ? closeImg : openImg;
@@ -60,6 +62,8 @@ public class ToggleScoreBoard : MonoBehaviour
         
         StaticHelpers.Sort(ref plysSorted, playerScores,true);
 
+        
+        print(_badges.Count);
         for (int i = 0; i < _badges.Count; i++)
         {
             Transform t = _badges[i].transform;

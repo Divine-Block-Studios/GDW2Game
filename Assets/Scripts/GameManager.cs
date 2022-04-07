@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Vector3 startLoc = new Vector3(Random.Range(A.x, B.x), Random.Range(A.y, B.y), Random.Range(A.z, B.z));
         print(A + " - " + B + " - " +Random.Range(A.x, B.x) + " = " + Random.Range(A.y, B.y) + " = " + Random.Range(A.z, B.z));
         
-        PhotonNetwork.Instantiate("Prefabs/"+dice, startLoc, Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
+        PhotonNetwork.Instantiate("Prefabs/"+dice.name, startLoc, Quaternion.identity).GetComponent<DiceScript>().OnCompleted = CheckDice;
     }
 
     private void CheckDice(int num)

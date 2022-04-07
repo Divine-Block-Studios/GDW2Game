@@ -127,7 +127,7 @@ public class BoardPlayer : MonoBehaviourPun
 
     public async void Teleport(Vector3 loc, bool includeOffset)
     {
-        photonView.RPC("ActivateParticles", RpcTarget.Others);
+        photonView.RPC("ActivateParticles", RpcTarget.All);
         sr.enabled = false;
         mr.enabled = false;
         await Task.Delay((int) (_particleSystem.main.duration * 1000));
