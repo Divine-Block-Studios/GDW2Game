@@ -71,7 +71,7 @@ public class ToggleScoreBoard : MonoBehaviour
             Transform t = _badges[i].transform;
             t.gameObject.name = plysSorted[i].gameObject.name;
             //Rank
-            t.GetChild(0).GetComponent<TextMeshProUGUI>().text = i +".";
+            t.GetChild(0).GetComponent<TextMeshProUGUI>().text = (i+1) +".";
             //Icon
             t.GetChild(1).GetComponent<Image>().sprite = plysSorted[i].playerImg;
             //Player name
