@@ -3,7 +3,37 @@ guid: a203e916352aec240a4f94b1dcc285ba
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cyan
+    second: {fileID: 2100000, guid: bf1c1ee7605403843aef06d9e7d5941a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lava
+    second: {fileID: 2100000, guid: 80298102ffba3964c801553d96c53f12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedRock
+    second: {fileID: 2100000, guid: be62a6279db7b334a95bd0193b46ca36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shade
+    second: {fileID: 2100000, guid: 42341f3da77b26543882dd4049ea362f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teleporter
+    second: {fileID: 2100000, guid: 0669b3ce79e61744a9877328f23675b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Water
+    second: {fileID: 2100000, guid: a755f409bce9b954dbddd497563681b9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
