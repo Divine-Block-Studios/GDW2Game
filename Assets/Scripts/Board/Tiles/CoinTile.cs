@@ -14,7 +14,7 @@ namespace Board.Tiles
 
         protected override void LandedOnFunctionality(BoardPlayer player)
         {
-            player.AddCoins(amount);
+            player.UpdateCoins(amount);
         }
     }
 }

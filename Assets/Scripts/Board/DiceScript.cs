@@ -53,25 +53,18 @@ public class DiceScript : MonoBehaviour
     int CheckDie()
     {
         int len = transform.childCount;
-        float curLow = 1;
+        float curLow = 0;
         int val = 0;
         for (int i = 0; i < len; i++)
         {
-            float loc = transform.GetChild(i).position.z;
-            if (loc < curLow)
+            float loc = transform.GetChild(i).position.y;
+            if (loc > curLow)
             {
                 curLow = loc;
                 val =  i + 1;
             }
         }
+        print("Landed on: " +val);
         return val;
-    }
-
-    void Jump()
-    {
-        Vector3 rngVector = new Vector3(Random.value - Random.value, Random.value - Random.value, -Random.value);
-        Debug.Log("jumping: " + rngVector);
-        GetComponent<Rigidbody>().AddForce(rngVector * 500);
-        GetComponent<Rigidbody>().AddTorque(rngVector * 200);
     }
 }

@@ -4,29 +4,32 @@
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Instantiated Assets/Arrow 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Instantiated Assets/Arrow 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Instantiated Assets/Highlight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Instantiated Assets/Highlight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player0.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player0.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player3.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player3.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player4.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player4.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player5.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/LoadableAssets/Items/Player5.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Dice.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Dice.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character0.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character4.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Players/Character5.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Coin Tile.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Coin Tile.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Gamble Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Gamble Tile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Shop Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Shop Tile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Tile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Turn Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/Turn Tile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/WarpTile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/Tiles/WarpTile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +76,6 @@
       <option value="$USER_HOME$/Desktop/RP4K_2022/HauntedHarbour/Assets/Scripts/ParallaxObject.cs" />
       <option value="$PROJECT_DIR$/Assets/DiceScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/GambleTile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ChanceTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/EasterEggTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ShopTile.cs" />
@@ -86,33 +88,34 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/RecyclablesManagerLobby.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/LobbyMenuLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tron/PlayerController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/Tile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PowerUp.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PlayerMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PowerUpCube.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/LookHere.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/AwardableEvents.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" />
       <option value="$PROJECT_DIR$/Assets/Resources/RenderPipeline/SpinnerMask.shader" />
       <option value="$PROJECT_DIR$/Assets/dontDestroy.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/CreateAndJoinRooms.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/GameSettings.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
       <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/CutSceneController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
       <option value="$PROJECT_DIR$/Assets/DisplayParticlesOnUI.cs" />
       <option value="$PROJECT_DIR$/Assets/DiceAnim.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/WarpTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/CoinTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SelectorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Board/BoardPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
     </changedPaths>
   </component>
@@ -222,6 +225,7 @@
       <workItem from="1649218241563" duration="73000" />
       <workItem from="1649257677873" duration="29366000" />
       <workItem from="1649345630708" duration="11865000" />
+      <workItem from="1649383096951" duration="9766000" />
     </task>
     <servers />
   </component>

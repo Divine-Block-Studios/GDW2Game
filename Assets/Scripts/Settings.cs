@@ -47,8 +47,8 @@ public class Settings : MonoBehaviour
 
     private string RandomName()
     {
-        string[] names1 = {"Silly", "Large", "Quiet", "Upset", "Tiny", "Honked", "Zesty", "Hot", "Cold", "Mega", "Lame", "Light", "Hyper", "Jelly", "Happy", "Insane", "Psycho", "Genius", "Shy", "Tired"};
-        string[] names2 = {"Duck", "Cutie", "Goose", "Bagel", "Jinx", "Carlos", "Hotdog", "Vegan", "Shorty", "Probe", "Bone", "Rod", "Hole", "Mole", "Child", "Adult", "Cheese", "Sushi", "Ninja"};
+        string[] names1 = {"Silly", "Large", "Quiet", "Upset", "Tiny", "Honked", "Zesty", "Hot", "Cold", "Mega", "Lame", "Light", "Hyper", "Jelly", "Happy", "Insane", "Psycho", "Genius", "Shy", "Tired", "Sussy", "Mommy", "Pink", "Swag"};
+        string[] names2 = {"Duck", "Cutie", "Goose", "Bagel", "Jinx", "Carlos", "Hotdog", "Vegan", "Shorty", "Probe", "Bone", "Rod", "Hole", "Mole", "Child", "Adult", "Cheese", "Sushi", "Ninja", "Bakka", "Dommy", "Bird", "Possum"};
         return names1[Random.Range(0, names1.Length)] + names2[Random.Range(0, names2.Length)];
     }
 }

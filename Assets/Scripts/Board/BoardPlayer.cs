@@ -22,8 +22,8 @@ public class BoardPlayer : MonoBehaviourPun
     [Header("Debug (None of this should be exposed)")]
     public Tile currentTile;
 
-    public ushort coins;
-    
+    public ushort coins;// { get; private set; }
+
     private Item _item;
 
     private BoardInputControls ctrls;
@@ -38,6 +38,8 @@ public class BoardPlayer : MonoBehaviourPun
     public Vector3 offSet;
 
     public bool isAlive = true;
+
+    public int plyIndex;
 
     public void InMenu(bool val)
     {
@@ -110,16 +112,32 @@ public class BoardPlayer : MonoBehaviourPun
         //Cast two rays, one along ZX one along Y.
     }
 
-    public void AddCoins(int addAmount)
+    public void UpdateCoins(int val)
     {
-        coins = (ushort)Mathf.Clamp(coins + addAmount, 0, ushort.MaxValue);
+        photonView.RPC("UpdateCoins", RpcTarget.All, plyIndex, val);
+    }
+
+    [PunRPC]
+    private void UpdateCoins(int plyerIndex, int val)
+    {
+        print("Adding coins to: " + GameManager.gameManager.players[plyerIndex].name + " - " + val + " | " + plyerIndex + " I am " + plyIndex + " - " + name + " Expected [ifmine]: " +(GameManager.gameManager.players[plyerIndex].coins + " + " +(ushort)Mathf.Clamp(coins + val, 0, ushort.MaxValue)));
+        GameManager.gameManager.players[plyerIndex].coins = (ushort)Mathf.Clamp(coins + val, 0, ushort.MaxValue);
     }
 
     public void UseItem()
     {
         _item.Init(this);
-        _item = null;
-        GameManager.gameManager.UpdateUIElements();
+        photonView.RPC("ModifyItem", RpcTarget.All,null, plyIndex);
+    }
+
+    [PunRPC]
+    private void ModifyItem(string itemName, int plyerIndex)
+    {
+        if (string.IsNullOrEmpty(itemName))
+        {
+            GameManager.gameManager.players[plyerIndex]._item = null;
+            GameManager.gameManager.UpdateUIElements();
+        }
     }
 
     public async void Teleport(Vector3 loc, bool includeOffset)

@@ -75,7 +75,7 @@ namespace Board
         public void SwapCoinsRngPly()
         {
             //When activated [Cannot be activated manually on rounds before shred], swap coins with randomly selected player.
-            StaticHelpers.Swap(ref _ply.coins, ref GameManager.gameManager.GetRandomPlayer(_ply).coins);
+            //StaticHelpers.Swap(ref _ply.coins, ref GameManager.gameManager.GetRandomPlayer(_ply).coins);
         }
 
         public void StealCoinsFromRngPly()
