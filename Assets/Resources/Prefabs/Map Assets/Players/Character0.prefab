@@ -283,6 +283,7 @@ MonoBehaviour:
   coins: 0
   offSet: {x: 0, y: 0, z: 0}
   isAlive: 1
+  plyIndex: 0
   coinsText: {fileID: 0}
 --- !u!65 &5971601518212247439
 BoxCollider:

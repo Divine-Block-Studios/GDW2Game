@@ -66,7 +66,6 @@ namespace Board.Tiles
             }
         }
 
-
         private void PressedBtn(Tile pressed)
         {
             foreach (GameObject go in _arrows)

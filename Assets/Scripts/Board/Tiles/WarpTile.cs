@@ -78,7 +78,7 @@ namespace Board.Tiles
             if (pressed != moveToTiles[moveToTiles.Count - 1])
             {
                 //Take money.
-                player.AddCoins(-costToTravel);
+                player.UpdateCoins(-costToTravel);
             }
 
 

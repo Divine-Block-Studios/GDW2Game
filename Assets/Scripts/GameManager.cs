@@ -58,13 +58,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     public BoardPlayer MyPlayer
     {
-        get
-        {
-            for(int i = 0;  i < players.Length; i++)
-                if(players[i].name == PhotonNetwork.LocalPlayer.NickName)
-                    return players[i];
-            return null;
-        }
+        get; private set;
+            //for(int i = 0;  i < players.Length; i++)
+            //    if(players[i].name == PhotonNetwork.LocalPlayer.NickName)
+            //        return players[i];
+            //return null;
     }
 
     public Transform CameraArm;
@@ -107,8 +105,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         playersAsItems = new Item[players.Length];
         if (PhotonNetwork.IsMasterClient)
         {
-            print("Seeing master");
-            
             for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
             {
                 //Hash table needs to save player selected prefab.name (Load custom player models)
@@ -127,28 +123,25 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void UpdatePlayerArray()
     {
         GameObject[] arr = GameObject.FindGameObjectsWithTag("Player");
-        print(arr.Length + " - " + players.Length);
         for (int i = 0; i < players.Length; i++)
         {
-            print(i);
             players[i] = arr[i].GetComponent<BoardPlayer>();
             players[i].name = PhotonNetwork.CurrentRoom.Players[i + 1].NickName;
             players[i].transform.GetChild(0).GetComponent<TextMeshPro>().text = players[i].name;
             players[i].currentTile = startTile;
-            players[i].coins = startingCoins;
             
             playersAsItems[i] = ScriptableObject.CreateInstance<Item>();
-
             playersAsItems[i].name = PhotonNetwork.CurrentRoom.Players[i + 1].NickName;
             playersAsItems[i].icon = players[i].playerImg;
             playersAsItems[i].awardName = playersAsItems[i].name;
             
-            print("test");
             if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
             {
-                print("I found my guy!");
+                players[i].plyIndex = i;
+                MyPlayer = players[i];
                 players[i].GetComponent<BoardInputControls>().Init();
                 players[i].photonView.RequestOwnership();
+                players[i].UpdateCoins(startingCoins);
             }
         }
     }
@@ -237,7 +230,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (costAction)
         {
             Debug.Log("End Action: " + (diceRemainder - 1));
-            if (--diceRemainder == 0)
+            if (--diceRemainder <= 0)
             {
                 diceObj.gameObject.SetActive(false);
                 EndTurn();
@@ -302,7 +295,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (i != null)
         {
             //If the player has an item
-            Transform item =playerObject.transform.GetChild(0).GetChild(2);
+            Transform item = playerObject.transform.GetChild(2);
             item.gameObject.SetActive(true);
             item.GetChild(0).GetComponent<Image>().sprite = i.icon;
             item.GetChild(1).GetComponent<TextMeshProUGUI>().text = i.awardName;

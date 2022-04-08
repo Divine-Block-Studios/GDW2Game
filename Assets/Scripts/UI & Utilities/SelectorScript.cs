@@ -81,7 +81,6 @@ public class SelectorScript : MonoBehaviour
     }
     public void CloseShop()
     {
-        
         //Continue game process
         print("Closing Shop.");
         BoardPlayer ply = GameManager.gameManager.GetCurrentPlayer;
@@ -118,7 +117,8 @@ public class SelectorScript : MonoBehaviour
             //You cannot hold a minigame.
             item.Init(ply);
         }
-        ply.AddCoins(-item.Cost);
+        print("Taking coins");
+        ply.UpdateCoins(-item.Cost);
         CloseShop();
         GameManager.gameManager.UpdateUIElements();
     }
