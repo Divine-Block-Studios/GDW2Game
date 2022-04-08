@@ -3,7 +3,17 @@ guid: ca32093dc789ff04da6358afe33b4801
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CyanLIght
+    second: {fileID: 2100000, guid: b22b508f623d9af44b4354aa41f39df5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VertexColourPlatform
+    second: {fileID: 2100000, guid: ff99b229a65f5f84aaf07c4294ed6028, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
