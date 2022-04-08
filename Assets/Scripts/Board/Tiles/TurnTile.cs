@@ -37,14 +37,20 @@ namespace Board.Tiles
             {
                 int delegateInt = i;
                 float distance = Vector3.Distance(_origin, moveToTiles[i].transform.position);
-                Vector3 normal = (moveToTiles[i].transform.position - _origin) / distance;
+                Vector3 dist = moveToTiles[i].transform.position - _origin;
+                Vector3 normal = (dist) / distance;
                 
                 //This working makes me sad
                 //There's a tilt sometimes which is an issue
 
-                print(Quaternion.FromToRotation(Vector3.up, normal).eulerAngles);
-                Quaternion rotation = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, normal).eulerAngles - new Vector3(0,0,180));
+                //print(Quaternion.FromToRotation(Vector3.right, normal).eulerAngles - new Vector3(0,0,180));
+                Quaternion rotation = Quaternion.FromToRotation(dist,Vector3.up);
                 int reps = Mathf.CeilToInt(distance / distBetweenArrowSpawns);
+
+                //Quaternion rotation;
+                
+               // rotation = Quaternion.Euler(Vector3.Angle(_origin, moveToTiles[i].transform.position));
+                
 
                 //
                 for (int j = 0; j < reps; j++)
@@ -60,7 +66,7 @@ namespace Board.Tiles
                 }
             
                 //Highlight all tiles that the player can move to (For Clarification purposes)
-                _highlights.Add(PhotonNetwork.Instantiate("Prefabs/Instantiated Assets/" + highlight.name, moveToTiles[i].transform.position - new Vector3(0,0f,0.2f), Quaternion.identity));
+                _highlights.Add(PhotonNetwork.Instantiate("Prefabs/Instantiated Assets/" + highlight.name, moveToTiles[i].transform.position - new Vector3(0,-0.2f,0f), Quaternion.Euler(new Vector3(-90,0,0))));
                 if(GameManager.gameManager.GetCurrentPlayer == GameManager.gameManager.MyPlayer)
                     _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt]));
             }

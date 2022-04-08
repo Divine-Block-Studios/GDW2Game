@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -38,36 +39,44 @@ namespace Board.Tiles
                 GameManager.gameManager.EndAction(moveToTiles[Random.Range(0,moveToTiles.Count)], _costsMoveToPass);
                 return;
             }
-
             //Create Arrow Gameobjects
             player.currentTile = this;
             for (int i = 0; i < moveToTiles.Count; i++)
             {
                 int delegateInt = i;
                 float distance = Vector3.Distance(_origin, moveToTiles[i].transform.position);
-                Vector3 normal = (moveToTiles[i].transform.position - _origin) / distance;
+                Vector3 dist = moveToTiles[i].transform.position - _origin;
+                Vector3 normal = (dist) / distance;
                 
                 //This working makes me sad
                 //There's a tilt sometimes which is an issue
-                Quaternion rotation = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, normal).eulerAngles - new Vector3(0,0,180));
+
+                //print(Quaternion.FromToRotation(Vector3.right, normal).eulerAngles - new Vector3(0,0,180));
+                Quaternion rotation = Quaternion.FromToRotation(dist,Vector3.up);
                 int reps = Mathf.CeilToInt(distance / distBetweenArrowSpawns);
+
+                //Quaternion rotation;
+                
+               // rotation = Quaternion.Euler(Vector3.Angle(_origin, moveToTiles[i].transform.position));
+                
 
                 //
                 for (int j = 0; j < reps; j++)
                 {
                     Vector3 location = (j == 0)
                         ? 0.2f * distBetweenArrowSpawns * normal + transform.position: j * distBetweenArrowSpawns * normal + transform.position;
-                    _arrows.Add(Instantiate(arrow, location, rotation));
+                    _arrows.Add(PhotonNetwork.Instantiate("Prefabs/Instantiated Assets/" + arrow.name, location, rotation));
                         _arrows[_arrows.Count-1].name = "Arrow: " + (_arrows.Count-1); // why would this not work??
                     
                     //Add a listener to the arrow
-                    _arrows[_arrows.Count-1].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
+                    if(GameManager.gameManager.GetCurrentPlayer == GameManager.gameManager.MyPlayer)
+                        _arrows[_arrows.Count-1].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
                 }
             
                 //Highlight all tiles that the player can move to (For Clarification purposes)
-                print("adding stuff: " + i);
-                _highlights.Add(Instantiate(highlight, moveToTiles[i].transform.position - new Vector3(0,0f,0.2f), Quaternion.identity));
-                _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
+                _highlights.Add(PhotonNetwork.Instantiate("Prefabs/Instantiated Assets/" + highlight.name, moveToTiles[i].transform.position - new Vector3(0,-0.2f,0f), Quaternion.Euler(new Vector3(-90,0,0))));
+                if(GameManager.gameManager.GetCurrentPlayer == GameManager.gameManager.MyPlayer)
+                    _highlights[i].GetComponent<Interactable>().ONClick.AddListener(() => PressedBtn(moveToTiles[delegateInt], player));
             }
         }
 

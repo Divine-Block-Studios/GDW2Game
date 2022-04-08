@@ -19,7 +19,7 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    
+
     public bool showTiles;
     [SerializeField] private GameObject uiSpinner;
     [SerializeField] private GameObject uiSelector;
@@ -30,39 +30,41 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private Transform[] playerSpawnPoints;
 
     //May make sense to move this into BoardController class
-    [Header("Player Objects")] 
-    [SerializeField] private Transform playerParentObj;
+    [Header("Player Objects")] [SerializeField]
+    private Transform playerParentObj;
+
     [SerializeField] private GameObject playerObject;
     [SerializeField] private TextMeshPro diceObj;
     [SerializeField] private Transform shredderObj;
-    
 
-    [Header("Game Elements")]
-    [SerializeField] private GameObject dice;
+
+    [Header("Game Elements")] [SerializeField]
+    private GameObject dice;
 
     [SerializeField] private GameObject rollDiceButton;
     [SerializeField] private float throwHeight;
     [SerializeField] private Tile startTile;
-    
-    [Header("Game GameSettings")]
-    [SerializeField] private ushort startingCoins;
+
+    [Header("Game GameSettings")] [SerializeField]
+    private ushort startingCoins;
 
     [SerializeField] private float timeBeforeForcedRoll;
 
     [SerializeField] private int forceNum = 0;
-    
+
     [SerializeField] private GameObject enemy;
 
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => players[curTurn];
-    
+
     public BoardPlayer MyPlayer
     {
-        get; private set;
-            //for(int i = 0;  i < players.Length; i++)
-            //    if(players[i].name == PhotonNetwork.LocalPlayer.NickName)
-            //        return players[i];
-            //return null;
+        get;
+        private set;
+        //for(int i = 0;  i < players.Length; i++)
+        //    if(players[i].name == PhotonNetwork.LocalPlayer.NickName)
+        //        return players[i];
+        //return null;
     }
 
     public Transform CameraArm;
@@ -72,8 +74,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     private byte nextShreddingRound;
     private int curTurn;
     private int diceRemainder;
-    
-    public BoardPlayer [] players;
+
+    public BoardPlayer[] players;
     public int DiceRemainder => diceRemainder;
 
     //Move into board player;
@@ -84,9 +86,24 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public AwardableEvents[] DEBUGevts;
 
-    public Item [] playersAsItems;
+    public Item[] playersAsItems;
 
-    private void Awake()
+    public BoardPlayer GetLosingPlayer()
+    {
+        BoardPlayer ply = players[0];
+        int coins = players[0].coins;
+        for (int i = 1; i < players.Length; i++)
+        {
+            if (coins > players[i].coins)
+            {
+                ply = players[i];
+                coins = players[i].coins;
+            }
+        }
+        return ply;
+    }
+
+private void Awake()
     {
         
         if (gameManager != null && gameManager != this)
@@ -150,8 +167,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         isEnabled = true;
 
-        diceObj.transform.SetParent(GetCurrentPlayer.transform);
-        shredderObj.SetParent(GetCurrentPlayer.transform);
         UpdateUIElements();
         
         Debug.Log(MyPlayer.name);
@@ -287,6 +302,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void UpdateUIElements()
     { 
+        diceObj.transform.SetParent(GetCurrentPlayer.transform);
+        diceObj.transform.localPosition = new Vector3(0, 1.8f, 0);
+        
+        
+        shredderObj.SetParent(GetLosingPlayer().transform);
+        shredderObj.transform.localPosition = new Vector3(1.5f, 1.4f, 0);
         Transform plyIcon = playerObject.transform.GetChild(0);
         plyIcon.GetComponent<Image>().sprite = GetCurrentPlayer.playerImg;
         plyIcon.GetChild(0).GetComponent<TextMeshProUGUI>().text = GetCurrentPlayer.gameObject.name;

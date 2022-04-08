@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -39,6 +40,8 @@ public class DiceScript : MonoBehaviour
         GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-5,6),Random.Range(-5,6),Random.Range(-5,6)));
         
         StaticHelpers.ThrowAt(transform, transform.position, throwDest, 10, 50, 0.3f);
+        
+        TakingTooLong();
     }
 
     void Update()
@@ -66,5 +69,12 @@ public class DiceScript : MonoBehaviour
         }
         print("Landed on: " +val);
         return val;
+    }
+
+
+    private async void TakingTooLong()
+    {
+        await Task.Delay(10000);
+        rb.Sleep();
     }
 }
