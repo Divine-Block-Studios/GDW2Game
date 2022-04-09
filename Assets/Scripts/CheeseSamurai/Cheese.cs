@@ -11,8 +11,6 @@ public class Cheese : MonoBehaviour
     public LayerMask layer;
 
     [SerializeField] private GameObject half;
-    public Rigidbody Rigidbody;
-
     public void Cut(Vector2 direction)
     {
         gameObject.layer = layer;
