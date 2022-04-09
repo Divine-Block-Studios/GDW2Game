@@ -37,13 +37,15 @@ public class CheeseSamurai : MonoBehaviour
     [SerializeField] private int maxCheeseToSpawnDef;
     [SerializeField] private float gameDuration;
 
+    [SerializeField] private float forceScalar = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
         shinyChance /= 100;
         stinkyChance /= 100;
         crazyCheeseChance /= 100;
-
+        StartGame();
     }
 
     [PunRPC]
@@ -86,7 +88,7 @@ public class CheeseSamurai : MonoBehaviour
                     Vector3 position1 = throwB.position;
                     float throwPosX = Random.Range(position.x, position1.x);
                     float throwPosY = Random.Range(position.y, position1.y);
-                    GameManager.gameManager.photonView.RPC("SpawnCheese", RpcTarget.All, pos.x, pos.y, pos.z, cheeseType, rngType, throwPosX, throwPosY);
+                    //GameManager.gameManager.photonView.RPC("SpawnCheese", RpcTarget.All, pos.x, pos.y, pos.z, cheeseType, rngType, throwPosX, throwPosY);
 
                     print("DEBUG SPAWNING CHEESE");
                     SpawnCheese(pos.x, pos.y, pos.z, cheeseType, rngType, throwPosX, throwPosY);
@@ -111,16 +113,16 @@ public class CheeseSamurai : MonoBehaviour
         if (rng < stinkyChance)
         {
             cheese.value *= stinkyMultiplier;
-            Instantiate(stinkyParticles, transform);
+            Instantiate(stinkyParticles, cheese.transform);
         }
         //Is Shiny
         else if (rng < shinyChance + stinkyChance)
         {
             cheese.value *= shinyMultiplier;
-            Instantiate(shinyParticles, transform);
+            Instantiate(shinyParticles, cheese.transform);
         }
         
         Vector2 throwAt = new Vector2(x, y) - new Vector2(throwX, throwY);
-        cheese.Rigidbody.AddForce(throwAt, ForceMode.Impulse);
+        cheese.GetComponent<Rigidbody>().AddForce(-throwAt * forceScalar, ForceMode.Impulse);
     }
 }
