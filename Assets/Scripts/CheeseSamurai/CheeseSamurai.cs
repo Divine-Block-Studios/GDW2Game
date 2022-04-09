@@ -87,6 +87,9 @@ public class CheeseSamurai : MonoBehaviour
                     float throwPosX = Random.Range(position.x, position1.x);
                     float throwPosY = Random.Range(position.y, position1.y);
                     GameManager.gameManager.photonView.RPC("SpawnCheese", RpcTarget.All, pos.x, pos.y, pos.z, cheeseType, rngType, throwPosX, throwPosY);
+
+                    print("DEBUG SPAWNING CHEESE");
+                    SpawnCheese(pos.x, pos.y, pos.z, cheeseType, rngType, throwPosX, throwPosY);
                 }
                 nextCheese = Random.Range(minTimeToCheese, maxTimeToCheese);
                 lastCheese = 0;
