@@ -10,17 +10,34 @@ public class Cheese : MonoBehaviour
     public LayerMask layer;
 
     [SerializeField] private GameObject half;
+    [SerializeField] private GameObject shinyParticles;
+    [SerializeField] private GameObject stinkyParticles;
+    [Range(0,100)]
     [SerializeField] private float shinyChance;
+    [Range(0,100)]
     [SerializeField] private float stinkyChance;
-    [SerializeField] private float basePoints;
-    [SerializeField] private float shinyMultiplier;
-    [SerializeField] private float stinkyMultiplier;
+    [SerializeField] private int shinyMultiplier;
+    [SerializeField] private int stinkyMultiplier;
 
     private void Awake()
     {
+        shinyChance /= 1000;
+        stinkyChance /= 1000;
+
         float rng = Random.Range(0f, 1f);
 
-
+        //Is stinky
+        if (rng < stinkyChance)
+        {
+            value *= stinkyMultiplier;
+            Instantiate(stinkyParticles, transform);
+        }
+        //Is Shiny
+        else if (rng < shinyChance + stinkyChance)
+        {
+            value *= shinyMultiplier;
+            Instantiate(shinyParticles, transform);
+        }
     }
 
     public void Cut(Vector2 direction)

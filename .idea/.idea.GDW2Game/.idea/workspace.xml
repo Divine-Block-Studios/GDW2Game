@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Prefab/Ground Cheese.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Prefab/Ground Cheese.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MiniGames/Cheese Samurai.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MiniGames/Cheese Samurai.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +202,7 @@
       <workItem from="1649257677873" duration="29366000" />
       <workItem from="1649345630708" duration="11865000" />
       <workItem from="1649383096951" duration="10433000" />
-      <workItem from="1649430102418" duration="18432000" />
+      <workItem from="1649430102418" duration="18732000" />
     </task>
     <servers />
   </component>
