@@ -58,6 +58,8 @@ MonoBehaviour:
   - UpdateCoins
   - ModifyItem
   - UpdateScore
+  - SpawnCheese
+  - StartGame
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

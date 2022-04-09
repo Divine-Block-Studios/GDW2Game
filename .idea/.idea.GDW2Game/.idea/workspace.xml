@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/MultipleDisplayUtilities.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/CamRotation.cs" />
       <option value="$PROJECT_DIR$/Assets/debugScript.cs" />
       <option value="$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs" />
@@ -92,6 +93,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/DestructionZone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" />
     </changedPaths>
   </component>
@@ -202,7 +204,7 @@
       <workItem from="1649257677873" duration="29366000" />
       <workItem from="1649345630708" duration="11865000" />
       <workItem from="1649383096951" duration="10433000" />
-      <workItem from="1649430102418" duration="18732000" />
+      <workItem from="1649430102418" duration="23767000" />
     </task>
     <servers />
   </component>
