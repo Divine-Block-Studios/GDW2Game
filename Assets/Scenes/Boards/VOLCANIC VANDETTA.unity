@@ -330,7 +330,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49856684}
-  m_LocalRotation: {x: 0.091799274, y: -0.36072132, z: 0.03570399, w: 0.927458}
+  m_LocalRotation: {x: 0.091767445, y: -0.36154705, z: 0.03578572, w: 0.9271364}
   m_LocalPosition: {x: -116.6, y: 256.9, z: 115.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6326,6 +6326,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6672134076243766078, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672134076243766078, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e8811140219fd354fa8905a3c52e5be8, type: 3}
     - target: {fileID: 6672134076659027673, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
       propertyPath: m_Name
       value: PlayerIcon
@@ -9101,7 +9109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059985306}
-  m_LocalRotation: {x: 0.091799274, y: -0.36072132, z: 0.03570399, w: 0.927458}
+  m_LocalRotation: {x: 0.091767445, y: -0.36154705, z: 0.03578572, w: 0.9271364}
   m_LocalPosition: {x: -146.06201, y: 230.66891, z: 151.2341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
