@@ -55,7 +55,7 @@ public class ReadyMaster : MonoBehaviourPunCallbacks
 
     private void CheckPlayersLoaded()
     {
-        
+        print("Checking Ready Count: " + playerCount + " | " + readyCount);
         if (playerCount == readyCount)
         {
             readyCount = 0;
