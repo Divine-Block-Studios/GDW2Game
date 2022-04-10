@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private GameObject dice;
 
     [SerializeField] private GameObject rollDiceButton;
+    [SerializeField] private GameObject spectatingObject;
     [SerializeField] private float throwHeight;
     [SerializeField] private Tile startTile;
 
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private int forceNum = 0;
 
     [SerializeField] private GameObject enemy;
+    [SerializeField] private MiniGame[] _miniGames;
 
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => players[curTurn];
@@ -173,6 +175,7 @@ private void Awake()
         Debug.Log(GetCurrentPlayer.name);
 
         rollDiceButton.SetActive(MyPlayer == GetCurrentPlayer);
+        spectatingObject.SetActive(MyPlayer != GetCurrentPlayer);
     }
 
     public void RollDice()
@@ -226,8 +229,14 @@ private void Awake()
 
     void EndRound()
     {
+        Debug.LogWarning("WHIPPY YAYAYAYAYYAAY SUGMA");
         if (++curRound == nextShreddingRound)
         {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                StaticHelpers.Curtains(() =>_miniGames[0].Init(null));
+            }
+
             EliminatePlayer();
         }
     }
@@ -245,11 +254,15 @@ private void Awake()
     {
         curTurn = ++curTurn % players.Length;
         print("EndingTurn" +curTurn + " | " + players.Length);
+        
         if (curTurn % players.Length == 0)
         {
             //Then the full round is complete
             EndRound();
+            return;
         }
+        rollDiceButton.SetActive(MyPlayer == GetCurrentPlayer);
+        spectatingObject.SetActive(MyPlayer != GetCurrentPlayer);
     }
 
     //This is called after a tile is landed on
