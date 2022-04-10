@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.16363473, g: 0.19597302, b: 0.2735849, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 81f714daf7144784b8a2f42f1cd30927, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3e8bc5155c4c9ed46a63ac64c06408f3, type: 2}
   m_HaloStrength: 0.631
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.666
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1702308534}
-  m_IndirectSpecularColor: {r: 0.18848449, g: 0.19058096, b: 0.2221157, a: 0.666}
+  m_IndirectSpecularColor: {r: 0.15718818, g: 0.07358376, b: 0.092426784, a: 0.666}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -330,7 +330,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49856684}
-  m_LocalRotation: {x: 0.091737635, y: -0.36231807, z: 0.035862036, w: 0.92683536}
+  m_LocalRotation: {x: 0.091699, y: -0.3633152, z: 0.035960734, w: 0.92644495}
   m_LocalPosition: {x: -116.6, y: 256.9, z: 115.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8264,7 +8264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showTiles: 0
   uiSpinner: {fileID: 5419204594222823393, guid: c91b607c2bd37c64aa9618dff1456225, type: 3}
-  uiSelector: {fileID: 7177224267703314559, guid: b79bd5e4a6af14a4aaa1f91c05e35887, type: 3}
+  uiSelector: {fileID: 4714408927222635875, guid: 442d6db1e7f05794c9f1eb2ae5011800, type: 3}
   tsb: {fileID: 391401258}
   DEBUG_SpinnerParent: {fileID: 283293552}
   DEBUG_SelectorParent: {fileID: 79621624}
@@ -9109,7 +9109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059985306}
-  m_LocalRotation: {x: 0.091737635, y: -0.36231807, z: 0.035862036, w: 0.92683536}
+  m_LocalRotation: {x: 0.091699, y: -0.3633152, z: 0.035960734, w: 0.92644495}
   m_LocalPosition: {x: -146.06201, y: 230.66891, z: 151.2341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

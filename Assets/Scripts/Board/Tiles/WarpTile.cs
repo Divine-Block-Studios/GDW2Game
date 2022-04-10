@@ -94,13 +94,13 @@ namespace Board.Tiles
             foreach (GameObject go in _arrows)
             {
                 //Remove the arrow
-                Destroy(go);
+                PhotonNetwork.Destroy(go);
             }
 
             foreach (GameObject go in _highlights)
             {
                 //Apparently it's recommended to destroy the listners after..
-                Destroy(go);
+                PhotonNetwork.Destroy(go);
             }
             GameManager.gameManager.EndAction(pressed, _costsMoveToPass);
         }

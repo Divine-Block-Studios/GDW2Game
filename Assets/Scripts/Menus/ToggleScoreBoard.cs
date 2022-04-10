@@ -42,7 +42,6 @@ public class ToggleScoreBoard : MonoBehaviour
     public void Toggle()
     {
         moveX *= -1;
-        print("DEBUG" + moveX);
         Vector3 newPos = moveX > 0 ?  pt0.position : pt1.position;
         StaticHelpers.MoveLerp(transform, transform.position, newPos, speed, () =>
         {

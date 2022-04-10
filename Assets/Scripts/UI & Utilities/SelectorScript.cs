@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Board;
 using Board.Tiles;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -67,7 +68,7 @@ public class SelectorScript : MonoBehaviour
             
             int temp = i;
             print("Alpha: " + i +" - " + randomItemsToDisplay);
-            gos[i].GetComponent<Button>().onClick.AddListener(() => BuyItem(ply, items[temp]));
+            gos[i].GetComponent<Button>().onClick.AddListener(() => BuyItem(items[temp]));
             //gos[i].transform.GetChild(3).GetComponent<Image>().sprite = items[i].icon; Currency Icon
 
             //Temp is required in order to work.
@@ -98,30 +99,19 @@ public class SelectorScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void BuyItem(BoardPlayer ply, AwardableEvents item)
+    private void BuyItem( AwardableEvents item)
     {
-        print("Player attempting to buy: " + item.awardName + " for: " + item.Cost + " ... ");
-        if (item is Item it)
-        {
-            if (item.instantlyUsed)
-            {
-                it.Init(ply);
-            }
-            else
-            {
-                ply.Item = it;
-            }
-        }
-        else
-        {
-            //You cannot hold a minigame.
-            item.Init(ply);
-        }
-        print("Taking coins");
+        BoardPlayer ply = GameManager.gameManager.GetCurrentPlayer;
+        print("Trying to buy item");
+        string itemName = (item is Item)?"Items/":"MiniGames/";
+        itemName += item.name;
+        GameManager.gameManager.BuyItem(GameManager.gameManager.GetCurrentPlayer.plyIndex,  itemName);
         ply.UpdateCoins(-item.Cost);
         CloseShop();
         GameManager.gameManager.UpdateUIElements();
     }
+
+    
 
     private void ShiftItems(float dir)
     {

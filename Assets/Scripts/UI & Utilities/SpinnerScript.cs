@@ -259,5 +259,12 @@ public class SpinnerScript : MonoBehaviour
     private void PlayerStartFrom(int index)
     {
         StaticHelpers.StartFrom(ref GameManager.gameManager.players, index);
+
+        for (int i = 0; i < GameManager.gameManager.players.Length; i++) 
+        {
+            GameManager.gameManager.players[i].plyIndex = i;
+            
+        }
+        GameManager.gameManager.players[GameManager.gameManager.MyPlayer.plyIndex].UpdateCoins(GameManager.gameManager.startingCoins);
     }
 }

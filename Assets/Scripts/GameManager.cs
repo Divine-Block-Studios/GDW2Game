@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private float throwHeight;
     [SerializeField] private Tile startTile;
 
-    [Header("Game GameSettings")] [SerializeField]
-    private ushort startingCoins;
+    [Header("Game GameSettings")] 
+    public ushort startingCoins;
 
     [SerializeField] private float timeBeforeForcedRoll;
 
@@ -152,13 +152,13 @@ private void Awake()
             playersAsItems[i].icon = players[i].playerImg;
             playersAsItems[i].awardName = playersAsItems[i].name;
             
+            Debug.Log("Assigning player: " + players[i].name + " - " + i);
             if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
             {
-                players[i].plyIndex = i;
                 MyPlayer = players[i];
                 players[i].GetComponent<BoardInputControls>().Init();
                 players[i].photonView.RequestOwnership();
-                players[i].UpdateCoins(startingCoins);
+                
             }
         }
     }
@@ -194,10 +194,16 @@ private void Awake()
     private void CheckDice(int num)
     {
         Debug.Log("Checking the dice from GM: " + num);
-        diceRemainder = num;
-        diceObj.gameObject.SetActive(true);
-        diceObj.text = num.ToString();
+        photonView.RPC("SetDice", RpcTarget.All, num);
         GetCurrentPlayer.MoveToTile(GetCurrentPlayer.currentTile.NextTile);
+    }
+
+    [PunRPC]
+    private void SetDice(int num)
+    {
+        diceRemainder = num;
+        diceObj.gameObject.SetActive(diceRemainder > 0);
+        diceObj.text = num.ToString();
     }
 
     public void UpdateCamera()
@@ -226,28 +232,43 @@ private void Awake()
         }
     }
 
-    void EndTurn()
+    public void EndTurn()
+    {
+        print("Called EndTurn");
+        photonView.RPC("EndTurnRPC", RpcTarget.All);
+        UpdateUIElements();
+        //
+    }
+
+    [PunRPC]
+    private void EndTurnRPC()
     {
         curTurn = ++curTurn % players.Length;
+        print("EndingTurn" +curTurn + " | " + players.Length);
         if (curTurn % players.Length == 0)
         {
             //Then the full round is complete
             EndRound();
         }
-
-        UpdateUIElements();
-        //
     }
 
     //This is called after a tile is landed on
     public void EndAction(Tile nextTile, bool costAction)
     {
+        if(!GetCurrentPlayer.photonView.IsMine)
+            return;
         if (costAction)
         {
-            Debug.Log("End Action: " + (diceRemainder - 1));
-            if (--diceRemainder <= 0)
+            photonView.RPC("SetDice", RpcTarget.All, diceRemainder - 1);
+            if (diceRemainder <= 0)
             {
-                diceObj.gameObject.SetActive(false);
+                print("Ending turn");
+                if (GetCurrentPlayer.currentTile is GambleTile)
+                {
+                    print("");
+                    return;
+                }
+
                 EndTurn();
                 return;
             }
@@ -268,9 +289,12 @@ private void Awake()
         if (isSpinner)
         {
             //Create UI Spinner
-            if (PhotonNetwork.IsMasterClient)
+            if (GetCurrentPlayer.photonView.IsMine)
             {
-                go = PhotonNetwork.Instantiate("Prefabs/Map Assets/" + uiSpinner.name, DEBUG_SpinnerParent.position, Quaternion.identity);
+                if(isEnabled)
+                    DEBUG_SpinnerParent.position = GetCurrentPlayer.transform.position-new Vector3(0, GetCurrentPlayer.offSet.y,0);
+                go = PhotonNetwork.Instantiate("Prefabs/Map Assets/" + uiSpinner.name, DEBUG_SpinnerParent.position,
+                    Quaternion.identity);
                 SpinnerScript s = go.GetComponentInChildren<SpinnerScript>();
                 if (objects[0] == playersAsItems[0])
                 {
@@ -285,12 +309,15 @@ private void Awake()
         }
         else
         {
-            //Create UI SelectorScript
-            go = Instantiate(uiSelector, DEBUG_SelectorParent);
-            SelectorScript s = go.GetComponent<SelectorScript>();
-            _inMenu = true;
-            //Safe cast into items.
-            s.Init(objects, ply, randomItemsToDisplay, onComplete);
+            if (GetCurrentPlayer.photonView.IsMine)
+            {
+                //Create UI SelectorScript
+                go = Instantiate(uiSelector, uiSelector.transform.position, Quaternion.identity);
+                SelectorScript s = go.transform.GetChild(0).GetComponent<SelectorScript>();
+                _inMenu = true;
+                //Safe cast into items.
+                s.Init(objects, ply, randomItemsToDisplay, onComplete);
+            }
         }
     }
     
@@ -301,7 +328,13 @@ private void Awake()
     }
 
     public void UpdateUIElements()
-    { 
+    {
+        photonView.RPC("UpdateElementsRPC", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void UpdateElementsRPC()
+    {
         diceObj.transform.SetParent(GetCurrentPlayer.transform);
         diceObj.transform.localPosition = new Vector3(0, 1.8f, 0);
         
@@ -342,5 +375,37 @@ private void Awake()
             return GetRandomPlayer(ignore);
         }
         return rng;
+    }
+
+    public void BuyItem(int plyIndex, string itemName)
+    {
+        photonView.RPC("BuyItemRPC", RpcTarget.All, plyIndex, itemName);
+    }
+    
+    [PunRPC]
+    private void BuyItemRPC(int plyIndex, string itemName)
+    {
+        print("Testing RPC: " + plyIndex + " - " + itemName);
+        BoardPlayer ply = players[plyIndex];
+        print("TESTING ALPHA: " + ply.name);
+        AwardableEvents item = Resources.Load<AwardableEvents>("LoadableAssets/" + itemName);
+        print("Resources/LoadableAssets/"+ itemName);
+        print("Player attempting to buy: " + item.awardName + " for: " + item.Cost + " ... ");
+        if (item is Item it)
+        {
+            if (item.instantlyUsed)
+            {
+                it.Init(ply);
+            }
+            else
+            {
+                ply.Item = it;
+            }
+        }
+        else
+        {
+            //You cannot hold a minigame.
+            item.Init(ply);
+        }
     }
 }

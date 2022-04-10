@@ -18,7 +18,7 @@ namespace Board.Tiles
 
         protected override void LandedOnFunctionality(BoardPlayer player)
         {
-            GameManager.gameManager.CreateSelectionUI(miniGames, true, shouldShuffle, player);
+            GameManager.gameManager.CreateSelectionUI(miniGames, true, shouldShuffle, player, 0, () => GameManager.gameManager.EndTurn());
             //Do not end the turn. This will be handled outside of this script. Sorry for rabbit holeing couldn't get it working otherwise
         }
     }

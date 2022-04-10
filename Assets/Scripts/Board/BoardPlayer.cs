@@ -120,7 +120,7 @@ public class BoardPlayer : MonoBehaviourPun
     [PunRPC]
     private void UpdateCoins(int plyerIndex, int val)
     {
-        print("Adding coins to: " + GameManager.gameManager.players[plyerIndex].name + " - " + val + " | " + plyerIndex + " I am " + plyIndex + " - " + name + " Expected [ifmine]: " +(GameManager.gameManager.players[plyerIndex].coins + " + " +(ushort)Mathf.Clamp(coins + val, 0, ushort.MaxValue)));
+        print("Adding coins to: " + GameManager.gameManager.players[plyerIndex].name + " - " + val + " | " + plyerIndex + " I am " + plyIndex + " - " + name + " Expected [ifmine]: " +(GameManager.gameManager.players[plyerIndex].coins + " --> " +(ushort)Mathf.Clamp(coins + val, 0, ushort.MaxValue)));
         GameManager.gameManager.players[plyerIndex].coins = (ushort)Mathf.Clamp(coins + val, 0, ushort.MaxValue);
     }
 

@@ -3576,8 +3576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6356865ec2e086b42bf4c0b28e9ac6ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 0}
-  roomCode: {fileID: 1536070315}
 --- !u!1 &1399298765
 GameObject:
   m_ObjectHideFlags: 0
