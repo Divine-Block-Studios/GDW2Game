@@ -109,9 +109,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         return ply;
     }
 
-private void Awake()
+    private void Awake()
     {
-        
+
         if (gameManager != null && gameManager != this)
         {
             Destroy(gameObject);
@@ -121,8 +121,10 @@ private void Awake()
             gameManager = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        //CreateSelectionUI(DEBUGevts, true, false, null);
+    }
+    public void ReadiedStart()
+    {
+    //CreateSelectionUI(DEBUGevts, true, false, null);
         //return;
         players = new BoardPlayer[PhotonNetwork.CurrentRoom.PlayerCount];
         playersAsItems = new Item[players.Length];

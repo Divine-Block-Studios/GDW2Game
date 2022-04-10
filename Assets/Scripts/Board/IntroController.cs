@@ -37,10 +37,8 @@ public class IntroController : MonoBehaviourPun
         
         _controls.PCBoardControls.Interact.started += ToggleReady;
         _controls.TouchBoardControls.Interact.started += ToggleReady;
-        StaticHelpers.Curtains(() => {
-            readyText.transform.parent.gameObject.SetActive(true);
-            photonView.RPC("UpdateTextObject", RpcTarget.AllBuffered, 0);
-        });
+        readyText.transform.parent.gameObject.SetActive(true);
+        photonView.RPC("UpdateTextObject", RpcTarget.AllBuffered, 0);
     }
 
     private void ToggleReady(InputAction.CallbackContext ctx)
