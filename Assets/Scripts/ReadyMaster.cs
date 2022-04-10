@@ -18,7 +18,6 @@ public class ReadyMaster : MonoBehaviourPunCallbacks
         playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         print("Ready Master is Awake");
         photonView.RPC("UpdateReadyCount", RpcTarget.AllBuffered, +1);
-        Time.timeScale = 0;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -66,7 +65,6 @@ public class ReadyMaster : MonoBehaviourPunCallbacks
     [PunRPC]
     private void DetectReady()
     {
-        Time.timeScale = 1;
         readyCount = 0;
         imReady = false;
         print("All players are ready");
