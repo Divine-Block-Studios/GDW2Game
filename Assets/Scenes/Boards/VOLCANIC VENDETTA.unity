@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 398563214}
     m_Modifications:
     - target: {fileID: 1448979078991038513, guid: e606742e38fc8b44b9ae532bceb25ac9, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1448979078991038513, guid: e606742e38fc8b44b9ae532bceb25ac9, type: 3}
       propertyPath: m_Name
       value: Turn Tile
       objectReference: {fileID: 0}
@@ -676,6 +680,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1957799690506822711, guid: 6112b51a43911124b956c5a6a4be14a0, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1957799690506822711, guid: 6112b51a43911124b956c5a6a4be14a0, type: 3}
       propertyPath: m_Name
       value: Tile
@@ -5976,6 +5984,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &380271349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 380271350}
+  - component: {fileID: 380271353}
+  - component: {fileID: 380271352}
+  - component: {fileID: 380271351}
+  m_Layer: 0
+  m_Name: Gold Coin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &380271350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380271349}
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: -0.008, y: -0.05, z: 71}
+  m_LocalScale: {x: 0.22222224, y: 0.011111112, z: 20}
+  m_Children: []
+  m_Father: {fileID: 1495699756}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &380271351
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380271349}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!23 &380271352
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380271349}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e155c322b5a1bce46a3d1e3bb389388a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &380271353
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380271349}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &390754732
 GameObject:
   m_ObjectHideFlags: 0
@@ -7986,6 +8090,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 398563214}
     m_Modifications:
     - target: {fileID: 5791929584774386748, guid: 837d3579b0708464ca00f7e87237b6ec, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 5791929584774386748, guid: 837d3579b0708464ca00f7e87237b6ec, type: 3}
       propertyPath: m_Name
       value: +Coin Tile
       objectReference: {fileID: 0}
@@ -8818,6 +8926,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 398563214}
     m_Modifications:
     - target: {fileID: 5791929584774386748, guid: afe33af9ff70f02449e718699024daf2, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 5791929584774386748, guid: afe33af9ff70f02449e718699024daf2, type: 3}
       propertyPath: m_Name
       value: -Coin Tile
       objectReference: {fileID: 0}
@@ -8835,15 +8947,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5791929584774386751, guid: afe33af9ff70f02449e718699024daf2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.72
+      value: 73.45
       objectReference: {fileID: 0}
     - target: {fileID: 5791929584774386751, guid: afe33af9ff70f02449e718699024daf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -41.80001
+      value: -15.28
       objectReference: {fileID: 0}
     - target: {fileID: 5791929584774386751, guid: afe33af9ff70f02449e718699024daf2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -71.94
+      value: -71.9
       objectReference: {fileID: 0}
     - target: {fileID: 5791929584774386751, guid: afe33af9ff70f02449e718699024daf2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8994,6 +9106,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 191974409895638914, guid: 186345b76591f9545b6b4d0e3597d489, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 191974409895638914, guid: 186345b76591f9545b6b4d0e3597d489, type: 3}
       propertyPath: m_Name
       value: Gamble Tile
@@ -9480,6 +9596,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398563214}
     m_Modifications:
+    - target: {fileID: 2898849754604808368, guid: e10b271920c624d4c8acea8c327bbeed, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2898849754604808369, guid: e10b271920c624d4c8acea8c327bbeed, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 2898849754604808369, guid: e10b271920c624d4c8acea8c327bbeed, type: 3}
       propertyPath: m_Name
       value: Shop Tile
@@ -9580,6 +9704,10 @@ PrefabInstance:
       propertyPath: moveToTiles.Array.data[0]
       value: 
       objectReference: {fileID: 24011620}
+    - target: {fileID: 8268395042711215600, guid: b30fca64b290725408eb3dccbb00ade2, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8268395042711215600, guid: b30fca64b290725408eb3dccbb00ade2, type: 3}
       propertyPath: m_Name
       value: WarpTile
