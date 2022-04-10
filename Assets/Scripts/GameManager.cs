@@ -170,9 +170,6 @@ private void Awake()
         isEnabled = true;
 
         UpdateUIElements();
-        
-        Debug.Log(MyPlayer.name);
-        Debug.Log(GetCurrentPlayer.name);
 
         rollDiceButton.SetActive(MyPlayer == GetCurrentPlayer);
         spectatingObject.SetActive(MyPlayer != GetCurrentPlayer);
@@ -232,17 +229,19 @@ private void Awake()
         Debug.LogWarning("WHIPPY YAYAYAYAYYAAY SUGMA");
         if (++curRound == nextShreddingRound)
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                StaticHelpers.Curtains(() =>_miniGames[0].Init(null));
-            }
-
+            UpdateUIElements();
             EliminatePlayer();
+        }
+        if (PhotonNetwork.IsMasterClient)
+        {
+            StaticHelpers.Curtains(() =>_miniGames[0].Init(null));
         }
     }
 
     public void EndTurn()
     {
+        if (diceRemainder > 0)
+            return;
         print("Called EndTurn");
         photonView.RPC("EndTurnRPC", RpcTarget.All);
         UpdateUIElements();

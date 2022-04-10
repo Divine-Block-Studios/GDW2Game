@@ -202,7 +202,7 @@ public static class StaticHelpers
 
     private static bool _curtainAreOpen = true;
 
-    public static async void Curtains(Action onComplete, float delay = 0)
+    public static async void Curtains(Action onComplete, float delay = 0, bool manual = false)
     {
         _curtainAreOpen = !_curtainAreOpen;
 
@@ -223,9 +223,9 @@ public static class StaticHelpers
         {
             await Task.Yield();
         }
-        curtainsHolder.GetComponent<Canvas>().sortingOrder = -7;
-        
         onComplete?.Invoke();
+        if(!manual)
+            curtainsHolder.GetComponent<Canvas>().sortingOrder = -7;
     }
 
     public static async void MuteAudio(AudioSource a, float b, float time, float delay = 0)

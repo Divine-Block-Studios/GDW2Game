@@ -115,24 +115,17 @@ public class IntroController : MonoBehaviourPun
     {
         float rot = 360 / GameManager.gameManager.players.Length;
         float dist = 3;
-        Vector3 startPoint = Vector2.left * dist;
-        Vector3 temp = startPoint;
-
-        int i = 0;
         for (int x = 0; x < GameManager.gameManager.players.Length; x++)
         {
-            if (GameManager.gameManager.players[x].name == GameManager.gameManager.MyPlayer.name)
-            {
-                Debug.LogWarning("Doing things: " + x);
-                i = x;
-                break;
-            }
+            Vector3 temp = Vector3.zero;
+            
+            temp.x = Mathf.Cos(rot * x * Mathf.Deg2Rad) -
+                     Mathf.Sin(rot * x * Mathf.Deg2Rad);
+            temp.z = Mathf.Sin(rot * x * Mathf.Deg2Rad) +
+                     Mathf.Cos(rot * x * Mathf.Deg2Rad);
+            print("Gamma: " + temp + " --> " + GameManager.gameManager.players[x]);
+            GameManager.gameManager.players[x].offSet += temp * dist;
         }
-        
-        temp.x = startPoint.x * Mathf.Cos(rot * i * Mathf.Deg2Rad)  - startPoint.x * Mathf.Sin(rot * i * Mathf.Deg2Rad);
-        temp.y = startPoint.y * Mathf.Sin(rot * i * Mathf.Deg2Rad)  + startPoint.y * Mathf.Cos(rot * i* Mathf.Deg2Rad);
-        
-        GameManager.gameManager.MyPlayer.offSet += temp;
         GameManager.gameManager.MyPlayer.Teleport(GameManager.gameManager.MyPlayer.currentTile.transform.position, true);
     }
 

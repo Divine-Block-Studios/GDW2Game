@@ -157,7 +157,7 @@ public class SpinnerScript : MonoBehaviour
             int vertexIndex = 1;
             int trianglesIndex = 0;
             float tempRot = rotation - angle / 2;
-            item.transform.localEulerAngles = new Vector3(180, 0,-tempRot);
+            item.transform.localEulerAngles = new Vector3(180, 0,(index - 1) * angle);
             item.transform.localPosition =
                 new Vector3(Mathf.Sin(tempRot * Mathf.Deg2Rad), Mathf.Cos(tempRot * Mathf.Deg2Rad)) * (radius / 1.5f) +
                 new Vector3(0, 0, 1f);

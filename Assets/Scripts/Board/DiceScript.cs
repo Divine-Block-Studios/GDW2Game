@@ -75,6 +75,7 @@ public class DiceScript : MonoBehaviour
     private async void TakingTooLong()
     {
         await Task.Delay(10000);
-        rb.Sleep();
+        if(rb)
+            rb.Sleep();
     }
 }
