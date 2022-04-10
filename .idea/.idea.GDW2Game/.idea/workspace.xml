@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReadyMaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReadyMaster.cs" afterDir="false" />
-    </list>
+    <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -206,7 +204,7 @@
       <workItem from="1649430102418" duration="25478000" />
       <workItem from="1649530994910" duration="1328000" />
       <workItem from="1649552444429" duration="15671000" />
-      <workItem from="1649612755377" duration="11789000" />
+      <workItem from="1649612755377" duration="12107000" />
     </task>
     <servers />
   </component>

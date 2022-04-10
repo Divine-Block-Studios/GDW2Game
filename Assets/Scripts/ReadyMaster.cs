@@ -17,7 +17,8 @@ public class ReadyMaster : MonoBehaviourPunCallbacks
     {
         playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
         print("Ready Master is Awake");
-        photonView.RPC("UpdateReadyCount", RpcTarget.AllBuffered, ++readyCount);
+        photonView.RPC("UpdateReadyCount", RpcTarget.AllBuffered, +1);
+        Time.timeScale = 0;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -32,7 +33,7 @@ public class ReadyMaster : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient)
             photonView.RPC("UpdatePlayerCount", RpcTarget.AllBuffered);
         if(imReady)
-            photonView.RPC("UpdateReadyCount", RpcTarget.AllBuffered, --readyCount);
+            photonView.RPC("UpdateReadyCount", RpcTarget.AllBuffered, -1);
         
         print("Player left room CC");
     }
@@ -48,7 +49,7 @@ public class ReadyMaster : MonoBehaviourPunCallbacks
     [PunRPC]
     private void UpdateReadyCount(int val)
     {
-        readyCount = val;
+        readyCount += val;
         CheckPlayersLoaded();
         print("Testing: Player Readied");
     }
@@ -58,12 +59,19 @@ public class ReadyMaster : MonoBehaviourPunCallbacks
         print("Checking Ready Count: " + playerCount + " | " + readyCount);
         if (playerCount == readyCount)
         {
-            readyCount = 0;
-            imReady = false;
-            print("All players are ready");
-            
-            //Open Curtains
-            StaticHelpers.Curtains(() => onComplete.Invoke());
+            photonView.RPC("DetectReady", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    private void DetectReady()
+    {
+        Time.timeScale = 1;
+        readyCount = 0;
+        imReady = false;
+        print("All players are ready");
+            
+        //Open Curtains
+        StaticHelpers.Curtains(() => onComplete.Invoke());
     }
 }
