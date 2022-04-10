@@ -11,38 +11,36 @@ public class CurtainController : MonoBehaviourPunCallbacks
     private int playerCount;
     private int readyCount;
     private bool imReady;
-    private Canvas myCanvas;
     public Action onComplete = null;
 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        myCanvas = GetComponent<Canvas>();
-        SceneManager.sceneLoaded += (arg0, mode) =>
+        SceneManager.sceneLoaded += (scene, mode) =>
         {
-            if (!PhotonNetwork.IsConnected)
-                return;
+            //if (!PhotonNetwork.IsConnected || scene.name == "InLobbyScene")
+               // return;
             print("Scene loaded Check is working");
             imReady = true;
-            photonView.RPC("CheckPlayersLoaded", RpcTarget.AllBuffered);
+            //photonView.RPC("CheckPlayersLoaded", RpcTarget.AllBuffered);
         };
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        if(PhotonNetwork.IsMasterClient)
-            photonView.RPC("UpdatePlayerCount", RpcTarget.Others, ++playerCount);
-        print("Player entered room: ");
+        //if(PhotonNetwork.IsMasterClient)
+            //photonView.RPC("UpdatePlayerCount", RpcTarget.Others, ++playerCount);
+        print("Player entered room CC");
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        if(PhotonNetwork.IsMasterClient)
-            photonView.RPC("UpdatePlayerCount", RpcTarget.Others, --playerCount);
-        if(imReady)
-            photonView.RPC("UpdatePlayerCount", RpcTarget.Others, --readyCount);
+       // if(PhotonNetwork.IsMasterClient)
+            //photonView.RPC("UpdatePlayerCount", RpcTarget.Others, --playerCount);
+        //if(imReady)
+            //photonView.RPC("UpdatePlayerCount", RpcTarget.Others, --readyCount);
         
-        print("Player left room: ");
+        print("Player left room CC");
     }
 
 
@@ -69,5 +67,4 @@ public class CurtainController : MonoBehaviourPunCallbacks
         //Open Curtains
         StaticHelpers.Curtains(() => Time.timeScale = 1);
     }
-
 }

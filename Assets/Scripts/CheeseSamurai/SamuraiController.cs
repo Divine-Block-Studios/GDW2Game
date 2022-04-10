@@ -28,12 +28,14 @@ public class SamuraiController : MonoBehaviour
         _lineRenderer.positionCount = ptsCount;
         _lineRenderer.alignment = LineAlignment.TransformZ;
         z = transform.position.z;
+        
+        GameManager.gameManager.DebugFunction();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit, 50, cheeseLayer))
         {
             Cheese cheese = hit.collider.GetComponent<Cheese>();
@@ -43,7 +45,7 @@ public class SamuraiController : MonoBehaviour
             curScore += cheese.value;
         }
         
-        Vector3 pt = Input.mousePosition;
+        Vector3 pt = Mouse.current.position.ReadValue();
         pt.z = -z;
         pt = cam.ScreenToWorldPoint(pt);
         pt.z = z;

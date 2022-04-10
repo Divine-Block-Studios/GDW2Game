@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     //This is looking like it should be in board manager
     public BoardPlayer GetCurrentPlayer => players[curTurn];
 
+    private bool inMiniGame;
+
     public BoardPlayer MyPlayer
     {
         get;
@@ -78,6 +80,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     private int diceRemainder;
 
     public BoardPlayer[] players;
+    private PlayerData[] _playerDatas;
+    
     public int DiceRemainder => diceRemainder;
 
     //Move into board player;
@@ -208,6 +212,9 @@ private void Awake()
 
     public void UpdateCamera()
     {
+        if (inMiniGame)
+            return;
+
         //TODO: Make this not called every frame, only while moving and when swapping views.
         //While in game call this... While player is moving call this.
         CameraArm.transform.position = GetCurrentPlayer.transform.position;
@@ -234,7 +241,26 @@ private void Awake()
         }
         if (PhotonNetwork.IsMasterClient)
         {
+            inMiniGame = true;
+            _playerDatas = new PlayerData[players.Length];
+            for (int i = 0; i < players.Length; i++)
+            {
+                _playerDatas[i].name = players[i].name;
+                _playerDatas[i].coins = players[i].coins;
+                _playerDatas[i].img = players[i].playerImg;
+                _playerDatas[i].curTile = players[i].currentTile;
+                _playerDatas[i].item = players[i].Item;
+            }
+
             StaticHelpers.Curtains(() =>_miniGames[0].Init(null));
+        }
+    }
+
+    public void DebugFunction()
+    {
+        foreach (PlayerData plyDats in _playerDatas)
+        {
+            print("I remember: " + plyDats.name + " who has $" + plyDats.coins);
         }
     }
 
@@ -419,5 +445,23 @@ private void Awake()
             //You cannot hold a minigame.
             item.Init(ply);
         }
+    }
+}
+
+public struct PlayerData
+{
+    public Sprite img;
+    public string name;
+    public ushort coins;
+    public Item item;
+    public Tile curTile;
+
+    public PlayerData(BoardPlayer ply)
+    {
+        img = ply.playerImg;
+        name = ply.name;
+        coins = ply.coins;
+        item = ply.Item;
+        curTile = ply.currentTile;
     }
 }

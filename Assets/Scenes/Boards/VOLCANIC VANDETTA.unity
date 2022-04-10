@@ -330,7 +330,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49856684}
-  m_LocalRotation: {x: 0.09172077, y: -0.36275396, z: 0.035905182, w: 0.9266648}
+  m_LocalRotation: {x: 0.09171947, y: -0.3627874, z: 0.03590849, w: 0.9266518}
   m_LocalPosition: {x: -116.6, y: 256.9, z: 115.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8389,9 +8389,10 @@ MonoBehaviour:
   startTile: {fileID: 2113296415}
   startingCoins: 3
   timeBeforeForcedRoll: 15
-  forceNum: 0
+  forceNum: 1
   enemy: {fileID: 5971601519716378502}
-  _miniGames: []
+  _miniGames:
+  - {fileID: 11400000, guid: c9faa944e666f9a48aa2cc3ab898105d, type: 2}
   CameraArm: {fileID: 933397394}
   players: []
   isEnabled: 0
@@ -9214,7 +9215,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059985306}
-  m_LocalRotation: {x: 0.09172077, y: -0.36275396, z: 0.035905182, w: 0.9266648}
+  m_LocalRotation: {x: 0.09171947, y: -0.3627874, z: 0.03590849, w: 0.9266518}
   m_LocalPosition: {x: -146.06201, y: 230.66891, z: 151.2341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

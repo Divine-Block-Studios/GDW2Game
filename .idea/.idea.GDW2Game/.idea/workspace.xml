@@ -3,18 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CurtainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CurtainController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/LobbyLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LobbyLogic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/MiniGames/Cheese Samurai.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/MiniGames/Cheese Samurai.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InLobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InLobbyScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenus.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/dontDestroy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/dontDestroy.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +51,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/BigMapSpecialBrain.cs" />
       <option value="$USER_HOME$/Desktop/RP4K_2022/HauntedHarbour/Assets/Scripts/ParallaxObject.cs" />
       <option value="$PROJECT_DIR$/Assets/DiceScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/ChanceTile.cs" />
@@ -76,7 +72,6 @@
       <option value="$PROJECT_DIR$/Assets/dontDestroy.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/CreateAndJoinRooms.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Menus/GameSettings.cs" />
-      <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/CutSceneController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
       <option value="$PROJECT_DIR$/Assets/DisplayParticlesOnUI.cs" />
@@ -88,9 +83,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/DiceScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Tiles/TurnTile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/DestructionZone.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PlayerMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/platforms.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Platformer/PlatformerUI.cs" />
@@ -104,7 +97,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/MiniGame.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI &amp; Utilities/SpinnerScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/CurtainController.cs" />
+      <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -217,7 +214,7 @@
       <workItem from="1649430102418" duration="25478000" />
       <workItem from="1649530994910" duration="1328000" />
       <workItem from="1649552444429" duration="15671000" />
-      <workItem from="1649612755377" duration="5120000" />
+      <workItem from="1649612755377" duration="10236000" />
     </task>
     <servers />
   </component>
