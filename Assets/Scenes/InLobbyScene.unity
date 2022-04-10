@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.19634691, g: 0.09731356, b: 0.119633995, a: 1}
+  m_IndirectSpecularColor: {r: 0.19695786, g: 0.0996042, b: 0.12066949, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VOLCANIC VANDETTA
+  m_text: VOLCANIC VENDETTA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a734a25d8455caf468c963075cdfa6a7, type: 2}
   m_sharedMaterial: {fileID: -4781748088868632128, guid: a734a25d8455caf468c963075cdfa6a7, type: 2}
