@@ -75,10 +75,20 @@ public class ToggleScoreBoard : MonoBehaviour
             //Coins
             t.GetChild(3).GetComponent<TextMeshProUGUI>().text = plysSorted[i].coins.ToString();
 
+            if (plysSorted[i].Item)
+            {
+                t.GetChild(4).GetComponent<Image>().sprite = plysSorted[i].Item.icon;
+                t.GetChild(4).gameObject.SetActive(true);
+            }
+            else
+            {
+                t.GetChild(4).gameObject.SetActive(false);
+            }
+
             if (!plysSorted[i].isAlive)
             { 
                 t.GetComponent<Image>().color = new Color(247,121,134, 122);
-                t.GetChild(4).gameObject.SetActive(true);
+                t.GetChild(6).gameObject.SetActive(true);
                 _badges.RemoveAt(i);
             }
         }

@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Prefab/CircleCheese.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Prefab/CircleCheese.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/MiniGames/Cheese Samurai.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/MiniGames/Cheese Samurai.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Material/Round Cheese/GroundCheese.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Material/Round Cheese/GroundCheese.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/ScoreboardPlayerTemplate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Map Assets/ScoreboardPlayerTemplate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boards/VOLCANIC VANDETTA.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +82,6 @@
       <option value="$PROJECT_DIR$/Assets/DisplayParticlesOnUI.cs" />
       <option value="$PROJECT_DIR$/Assets/DiceAnim.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Input/BoardInputControls.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/IntroController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Board/Item.cs" />
@@ -97,6 +97,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Menus/ToggleScoreBoard.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -206,7 +207,8 @@
       <workItem from="1649257677873" duration="29366000" />
       <workItem from="1649345630708" duration="11865000" />
       <workItem from="1649383096951" duration="10433000" />
-      <workItem from="1649430102418" duration="24878000" />
+      <workItem from="1649430102418" duration="25478000" />
+      <workItem from="1649530994910" duration="1328000" />
     </task>
     <servers />
   </component>
