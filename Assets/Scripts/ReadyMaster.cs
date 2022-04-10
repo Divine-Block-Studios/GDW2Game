@@ -56,7 +56,7 @@ public class ReadyMaster : MonoBehaviourPunCallbacks
     private void CheckPlayersLoaded()
     {
         print("Checking Ready Count: " + playerCount + " | " + readyCount);
-        if (playerCount == readyCount)
+        if (playerCount == readyCount && PhotonNetwork.IsMasterClient)
         {
             photonView.RPC("DetectReady", RpcTarget.All);
         }
