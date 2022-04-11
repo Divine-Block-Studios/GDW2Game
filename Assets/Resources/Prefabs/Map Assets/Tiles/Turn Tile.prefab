@@ -15,9 +15,9 @@ GameObject:
   m_Layer: 0
   m_Name: Turn Tile
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1448979078991038514
 Transform:
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1448979078991038513}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.5}
-  m_LocalScale: {x: 9, y: 9, z: 0.2}
+  m_LocalScale: {x: 9, y: 9, z: 0.20000002}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextTile: {fileID: 0}
-  moveToTiles: []
+  moveToTiles:
+  - {fileID: 0}
   arrow: {fileID: 2103831153101574204, guid: 70ea6375b9e63eb47be57af36f5584c8, type: 3}
   highlight: {fileID: 3595099606364897832, guid: fa7a39ecc7e6c244493bcdfd67e7e018, type: 3}
   distBetweenArrowSpawns: 20
