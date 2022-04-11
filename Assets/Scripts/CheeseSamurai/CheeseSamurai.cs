@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheeseSamurai : MonoBehaviour
 {
@@ -24,9 +26,13 @@ public class CheeseSamurai : MonoBehaviour
     [SerializeField] private int stinkyMultiplier;
     
     [Header("Canvas Elements")]
-    [SerializeField] private Transform timer;
+    [SerializeField] private TextMeshProUGUI timer;
     [SerializeField] private Transform myScore;
+    private TextMeshProUGUI myScoreText;
+    private Image myImage;
     [SerializeField] private Transform[] scoreBoard;
+    private TextMeshProUGUI[] scoreBoardTxts;
+    private Image []  scoreBoardImgs;
     [SerializeField] private Transform imWinningEffect;
     
     [Header("GameSettings")]
@@ -46,6 +52,17 @@ public class CheeseSamurai : MonoBehaviour
         stinkyChance /= 100;
         crazyCheeseChance /= 100;
         StartGame();
+
+        scoreBoardTxts = new TextMeshProUGUI[scoreBoard.Length];
+        scoreBoardImgs = new Image[scoreBoard.Length];
+        myImage = myScore.GetChild(0).GetComponent<Image>();
+        myScoreText = myScore.GetChild(1).GetComponent<TextMeshProUGUI>();
+
+        for (int i = 0; i < scoreBoard.Length; i++)
+        {
+            scoreBoardTxts[i] = scoreBoard[i].GetComponent<TextMeshProUGUI>();
+            scoreBoardImgs[i] = scoreBoard[i].GetComponent<Image>();
+        }
     }
 
     [PunRPC]
@@ -62,6 +79,7 @@ public class CheeseSamurai : MonoBehaviour
         float nextCheese = Random.Range(minTimeToCheese, maxTimeToCheese);
         while (curTime < gameDuration)
         {
+            timer.text = ((int)(gameDuration - curTime)).ToString();
             curTime += Time.deltaTime;
             //If is master
             lastCheese += Time.deltaTime;

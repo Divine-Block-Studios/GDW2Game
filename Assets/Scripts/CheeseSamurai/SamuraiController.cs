@@ -38,11 +38,13 @@ public class SamuraiController : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit, 50, cheeseLayer))
         {
+            float force = (_lineRenderer.GetPosition(ptsCount - 2) - _lineRenderer.GetPosition(ptsCount - 3)).magnitude;
+            if (force < 0.075f)
+                return;
             Cheese cheese = hit.collider.GetComponent<Cheese>();
             Vector2 direction = (_lineRenderer.GetPosition(ptsCount-2) - _lineRenderer.GetPosition(ptsCount-3)).normalized;
-            float force = (_lineRenderer.GetPosition(ptsCount - 2) - _lineRenderer.GetPosition(ptsCount - 3)).magnitude;
+            
             cheese.Cut(direction, force);
-            print("I'm cutting da cheese");
             curScore += cheese.value;
         }
         
@@ -62,6 +64,7 @@ public class SamuraiController : MonoBehaviour
     [PunRPC]
     private void UpdateScore()
     {
+        print("Updating Score");
         
     }
 }
