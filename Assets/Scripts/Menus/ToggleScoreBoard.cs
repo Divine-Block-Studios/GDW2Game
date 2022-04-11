@@ -59,7 +59,7 @@ public class ToggleScoreBoard : MonoBehaviour
             playerScores[i] = plysSorted[i].coins;
         }
         
-        StaticHelpers.Sort(ref plysSorted, playerScores,true);
+        StaticHelpers.Sort(ref plysSorted, playerScores,false);
         
         for (int i = 0; i < _badges.Count; i++)
         {

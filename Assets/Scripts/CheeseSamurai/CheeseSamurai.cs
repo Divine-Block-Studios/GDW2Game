@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CheeseSamurai : MonoBehaviour
+public class CheeseSamurai : MonoBehaviourPun
 {
     [Header("Cheese Control")]
     [SerializeField] private Transform throwA;
@@ -34,6 +34,7 @@ public class CheeseSamurai : MonoBehaviour
     private TextMeshProUGUI[] scoreBoardTxts;
     private Image []  scoreBoardImgs;
     [SerializeField] private Transform imWinningEffect;
+    [SerializeField] private Sprite[] defaultSprites;
     
     [Header("GameSettings")]
     [SerializeField] private float minTimeToCheese;
@@ -45,14 +46,15 @@ public class CheeseSamurai : MonoBehaviour
 
     [SerializeField] private float forceScalar = 0.5f;
 
+    private CheesePlayerDatas [] playerdatas;
+
     // Start is called before the first frame update
-    void Start()
+    public void SyncedStart()
     {
         shinyChance /= 100;
         stinkyChance /= 100;
         crazyCheeseChance /= 100;
-        StartGame();
-
+        
         scoreBoardTxts = new TextMeshProUGUI[scoreBoard.Length];
         scoreBoardImgs = new Image[scoreBoard.Length];
         myImage = myScore.GetChild(0).GetComponent<Image>();
@@ -60,23 +62,46 @@ public class CheeseSamurai : MonoBehaviour
 
         for (int i = 0; i < scoreBoard.Length; i++)
         {
-            scoreBoardTxts[i] = scoreBoard[i].GetComponent<TextMeshProUGUI>();
-            scoreBoardImgs[i] = scoreBoard[i].GetComponent<Image>();
+            scoreBoardImgs[i] = scoreBoard[i].GetChild(0).GetComponent<Image>();
+            scoreBoardTxts[i] = scoreBoard[i].GetChild(1).GetComponent<TextMeshProUGUI>();
         }
+        StartGame();
     }
 
-    [PunRPC]
     private async void StartGame()
     {
-        /*
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return;
-        }*/
-
         float curTime = 0;
         float lastCheese = 0;
         float nextCheese = Random.Range(minTimeToCheese, maxTimeToCheese);
+        playerdatas = new CheesePlayerDatas[PhotonNetwork.CurrentRoom.PlayerCount];
+        if (GameManager.gameManager)
+        {
+            for (int i = 0; i < playerdatas.Length; i++)
+            {
+                playerdatas[i] = new CheesePlayerDatas(0, GameManager.gameManager._playerDatas[i].img);
+                if (i < 3)
+                {
+                    scoreBoardTxts[i].text = "0";
+                    scoreBoardImgs[i].sprite = playerdatas[i].image;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < playerdatas.Length; i++)
+            {
+                playerdatas[i] = new CheesePlayerDatas(0,  defaultSprites[i]);
+                playerdatas[i].samurai.playerIndex = i;
+                if (i < 3)
+                {
+                    scoreBoardTxts[i].text = "0";
+                    print(scoreBoardImgs[i]);
+                    print(defaultSprites[i]);
+                    scoreBoardImgs[i].sprite = defaultSprites[i];
+                }
+            }
+        }
+
         while (curTime < gameDuration)
         {
             timer.text = ((int)(gameDuration - curTime)).ToString();
@@ -142,5 +167,37 @@ public class CheeseSamurai : MonoBehaviour
         
         Vector2 throwAt = new Vector2(x, y) - new Vector2(throwX, throwY);
         cheese.GetComponent<Rigidbody>().AddForce(-throwAt * forceScalar, ForceMode.Impulse);
+    }
+
+    [PunRPC]
+    private void UpdateScoreBoard(int player, int value)
+    {
+        playerdatas[player].points = value;
+
+        int[] points = new int[playerdatas.Length];
+
+        for (int i = 0; i < points.Length; i++)
+        {
+            points[i] = playerdatas[i].points;
+        }
+        StaticHelpers.Sort(ref playerdatas, points, true);
+    }
+
+    public void UpdateScore(int playerIndex, int curScore)
+    {
+        photonView.RPC("UpdateScoreBoard", RpcTarget.All, playerIndex, curScore);
+    }
+}
+
+public class CheesePlayerDatas
+{
+    public SamuraiController samurai;
+    public int points;
+    public Sprite image;
+
+    public CheesePlayerDatas(int points, Sprite image)
+    {
+        this.points = points;
+        this.image = image;
     }
 }
