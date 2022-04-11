@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2880246959821973313}
   - component: {fileID: 6567682390894894977}
   - component: {fileID: 31763781665557469}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ChedderCheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 3
-  half: {fileID: 4269708035328505483, guid: dbb83bbfc3171f54da37d55aead57d08, type: 3}
+  half: {fileID: 236563999741686700, guid: f88a2aa7295dcb240b6c3d0dd874145c, type: 3}
   destructionEffect: {fileID: 7087536869871024918, guid: 4337331cb6db0174881d8e8f151d83f2, type: 3}
   shinyEffect: {fileID: 8109059006478255201, guid: 8c7f38d8e234d6840b8a9ece381223ba, type: 3}
   stinkyEffect: {fileID: 1972319787608813178, guid: 4a17eb9b09aa5c04e9427d250f44eb36, type: 3}

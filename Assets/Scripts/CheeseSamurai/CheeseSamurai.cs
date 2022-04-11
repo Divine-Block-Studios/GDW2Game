@@ -28,7 +28,7 @@ public class CheeseSamurai : MonoBehaviourPun
     [Header("Canvas Elements")]
     [SerializeField] private TextMeshProUGUI timer;
     [SerializeField] private Transform myScore;
-    private TextMeshProUGUI myScoreText;
+    public TextMeshProUGUI myScoreText;
     private Image myImage;
     [SerializeField] private Transform[] scoreBoard;
     private TextMeshProUGUI[] scoreBoardTxts;
@@ -47,6 +47,7 @@ public class CheeseSamurai : MonoBehaviourPun
     [SerializeField] private float forceScalar = 0.5f;
 
     private CheesePlayerDatas [] playerdatas;
+    private CheesePlayerDatas[] sortedDatas;
 
     // Start is called before the first frame update
     public void SyncedStart()
@@ -74,6 +75,7 @@ public class CheeseSamurai : MonoBehaviourPun
         float lastCheese = 0;
         float nextCheese = Random.Range(minTimeToCheese, maxTimeToCheese);
         playerdatas = new CheesePlayerDatas[PhotonNetwork.CurrentRoom.PlayerCount];
+        sortedDatas = new CheesePlayerDatas[PhotonNetwork.CurrentRoom.PlayerCount];
         if (GameManager.gameManager)
         {
             for (int i = 0; i < playerdatas.Length; i++)
@@ -85,21 +87,31 @@ public class CheeseSamurai : MonoBehaviourPun
                     scoreBoardImgs[i].sprite = playerdatas[i].image;
                 }
             }
+            for(int x = 2; x >= playerdatas.Length; x++)
+            {
+                scoreBoard[x].gameObject.SetActive(false);
+            }
         }
         else
         {
             for (int i = 0; i < playerdatas.Length; i++)
             {
                 playerdatas[i] = new CheesePlayerDatas(0,  defaultSprites[i]);
-                playerdatas[i].samurai.playerIndex = i;
+                print("Debug " + PhotonNetwork.CurrentRoom.Players[i + 1].ActorNumber);
                 if (i < 3)
                 {
                     scoreBoardTxts[i].text = "0";
-                    print(scoreBoardImgs[i]);
-                    print(defaultSprites[i]);
                     scoreBoardImgs[i].sprite = defaultSprites[i];
                 }
             }
+            for(int x = 2; x >= playerdatas.Length; x--)
+            {
+                scoreBoard[x].gameObject.SetActive(false);
+            }
+
+            FindObjectOfType<SamuraiController>().playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+            myImage.sprite = playerdatas[PhotonNetwork.LocalPlayer.ActorNumber-1].image;
+            myScoreText.text = "0";
         }
 
         while (curTime < gameDuration)
@@ -172,15 +184,22 @@ public class CheeseSamurai : MonoBehaviourPun
     [PunRPC]
     private void UpdateScoreBoard(int player, int value)
     {
+        print("Updating player: " + player);
         playerdatas[player].points = value;
-
         int[] points = new int[playerdatas.Length];
 
         for (int i = 0; i < points.Length; i++)
         {
             points[i] = playerdatas[i].points;
         }
-        StaticHelpers.Sort(ref playerdatas, points, true);
+        sortedDatas  =  (CheesePlayerDatas[]) playerdatas.Clone();
+        StaticHelpers.Sort(ref sortedDatas, points, true);
+        
+        for(int x = 0; x < scoreBoard.Length && x < sortedDatas.Length; x++)
+        {
+            scoreBoardImgs[x].sprite = sortedDatas[x].image;
+            scoreBoardTxts[x].text = sortedDatas[x].points.ToString();
+        }
     }
 
     public void UpdateScore(int playerIndex, int curScore)
@@ -191,7 +210,6 @@ public class CheeseSamurai : MonoBehaviourPun
 
 public class CheesePlayerDatas
 {
-    public SamuraiController samurai;
     public int points;
     public Sprite image;
 

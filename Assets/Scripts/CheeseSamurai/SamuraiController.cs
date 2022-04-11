@@ -46,6 +46,7 @@ public class SamuraiController : MonoBehaviour
             
             cheese.Cut(direction, force);
             curScore += cheese.value;
+            gameController.myScoreText.text = curScore.ToString();
             gameController.UpdateScore(playerIndex, curScore);
         }
         
