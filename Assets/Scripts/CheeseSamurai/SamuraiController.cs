@@ -13,6 +13,8 @@ public class SamuraiController : MonoBehaviour
     [SerializeField] private int ptsCount;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask cheeseLayer;
+    [SerializeField] private CheeseSamurai gameController;
+    public int playerIndex;
     
     private Queue<Vector3> points = new Queue<Vector3>();
     private LineRenderer _lineRenderer;
@@ -28,8 +30,6 @@ public class SamuraiController : MonoBehaviour
         _lineRenderer.positionCount = ptsCount;
         _lineRenderer.alignment = LineAlignment.TransformZ;
         z = transform.position.z;
-        
-        GameManager.gameManager.DebugFunction();
     }
 
     // Update is called once per frame
@@ -46,6 +46,7 @@ public class SamuraiController : MonoBehaviour
             
             cheese.Cut(direction, force);
             curScore += cheese.value;
+            gameController.UpdateScore(playerIndex, curScore);
         }
         
         Vector3 pt = Mouse.current.position.ReadValue();
@@ -59,12 +60,5 @@ public class SamuraiController : MonoBehaviour
             points.Dequeue();
         }
         _lineRenderer.SetPositions(points.ToArray());
-    }
-
-    [PunRPC]
-    private void UpdateScore()
-    {
-        print("Updating Score");
-        
     }
 }

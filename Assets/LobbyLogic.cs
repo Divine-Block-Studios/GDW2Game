@@ -12,28 +12,33 @@ using UnityEngine.UI;
 
 public class LobbyLogic : MonoBehaviourPunCallbacks
 {
-    [Header("Player Information")]
-    public TextMeshProUGUI roomCode;
+    [Header("Player Information")] public TextMeshProUGUI roomCode;
     [SerializeField] private Vector3[] playerPoints;
-    [SerializeField] private GameObject [] lobbyPrefab;
+    [SerializeField] private GameObject[] lobbyPrefab;
     [SerializeField] private GameObject timerObject;
     [SerializeField] private Transform playerHolder;
-    
-    [Header("Host Information")]
-    [SerializeField] private GameObject serverSettingsPrefab;
+
+    [Header("Host Information")] [SerializeField]
+    private GameObject serverSettingsPrefab;
+
     [SerializeField] private GameObject startGameButton;
     [SerializeField] private GameObject disableConnectionsButton;
     [SerializeField] private GameObject showCodeButton;
     [SerializeField] private GameObject code;
-    
-    [Header("Host Tools")]
-    [SerializeField] private Sprite roomLocked;
+
+    [Header("Host Tools")] [SerializeField]
+    private Sprite roomLocked;
+
     [SerializeField] private Sprite roomUnlocked;
     [SerializeField] private Sprite hideRoomCode;
     [SerializeField] private Sprite showRoomCode;
     [SerializeField] private TextMeshProUGUI boardNameUI;
+    [SerializeField] private string[] loadableScenes;
+    [SerializeField] private Sprite[] loadImages;
     [SerializeField] private Image mapImage;
     [SerializeField] private int countDownSeconds = 5;
+    [SerializeField] private GameObject leftArrow;
+    [SerializeField] private GameObject rightArrow;
 
 
     private Image lockImage;
@@ -44,7 +49,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
     private bool roomCodeIsVisible;
     private bool canCountDown;
 
-    public string BoardName { get; set; }
+    private int curIndex;
     public Sprite MapSprite { get; set; }
 
     private void Awake()
@@ -52,21 +57,22 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         roomCode.text = PhotonNetwork.CurrentRoom.Name;
         photonView.RPC("UpdatePlayerIconsRPC", RpcTarget.All);
         print(PhotonNetwork.CurrentRoom.PlayerCount - 1);
-
+        boardNameUI.text = loadableScenes[curIndex];
         if (PhotonNetwork.IsMasterClient)
         {
             serverSettingsPrefab.SetActive(true);
             startGameButton.SetActive(true);
             disableConnectionsButton.SetActive(true);
             showCodeButton.SetActive(true);
+            leftArrow.SetActive(true);
+            rightArrow.SetActive(true);
 
             lockImage = disableConnectionsButton.GetComponent<Image>();
             visibilityImage = showCodeButton.GetComponent<Image>();
             lockButton = disableConnectionsButton.GetComponent<Button>();
             visibilityButton = showCodeButton.GetComponent<Button>();
-            BoardName = boardNameUI.text;
             MapSprite = mapImage.sprite;
-            
+
 
             roomCodeIsVisible = !Settings.settings.HideCodeOnStart;
             visibilityImage.sprite = roomCodeIsVisible ? showRoomCode : hideRoomCode;
@@ -76,19 +82,19 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
             startGameButton.GetComponent<Button>().onClick.AddListener(StartGame);
         }
         else
-        {  
+        {
             //Fix issue w/ showing the hide button. Beep beep boop boop ba. Custom aids.
         }
     }
 
     //May need to be an RPC if leave players and join players is only client.
-    
+
     [PunRPC]
     private void UpdatePlayerIconsRPC()
     {
         print("UpdatePlayerIconsRPC");
         //Destroy stuff
-        for (int i = playerHolder.childCount- 1; i >= 0; i--)
+        for (int i = playerHolder.childCount - 1; i >= 0; i--)
         {
             print("Removing player: " + playerHolder.gameObject);
             Destroy(playerHolder.GetChild(i).gameObject);
@@ -99,9 +105,9 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
         {
             GameObject go = Instantiate(lobbyPrefab[i], playerHolder);
-            
+
             //Keys start at 1???
-            playerNames[i] = FixName(playerNames, PhotonNetwork.CurrentRoom.Players[i+1].NickName);
+            playerNames[i] = FixName(playerNames, PhotonNetwork.CurrentRoom.Players[i + 1].NickName);
             go.transform.localPosition = playerPoints[i];
             go.name = playerNames[i];
             go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerNames[i];
@@ -112,7 +118,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
     {
         if (names.Contains(newName))
         {
-            newName = ++dupCount + newName.Substring(0, Mathf.Min(11,newName.Length));
+            newName = ++dupCount + newName.Substring(0, Mathf.Min(11, newName.Length));
             return FixName(names, newName, dupCount);
         }
 
@@ -127,13 +133,14 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         roomIsOpen = !roomIsOpen;
         Debug.Log("Toggling room availability: " + roomIsOpen);
         PhotonNetwork.CurrentRoom.IsOpen = roomIsOpen;
-        lockImage.sprite = roomIsOpen?roomUnlocked:roomLocked;
+        lockImage.sprite = roomIsOpen ? roomUnlocked : roomLocked;
     }
+
     private void ToggleRoomCodeVisibility()
     {
         roomCodeIsVisible = !roomCodeIsVisible;
         Debug.Log("Toggling roomcode visibility: " + roomCodeIsVisible);
-        visibilityImage.sprite = roomCodeIsVisible ? showRoomCode:hideRoomCode;
+        visibilityImage.sprite = roomCodeIsVisible ? showRoomCode : hideRoomCode;
         photonView.RPC("ShowRoomCode", RpcTarget.All, roomCodeIsVisible);
     }
 
@@ -151,7 +158,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         SceneManager.LoadScene(0);
         PhotonNetwork.Disconnect();
     }
-    
+
     private void StartGame()
     {
         photonView.RPC("StartGameRPC", RpcTarget.All);
@@ -180,9 +187,10 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         while (curTime > 0 && canCountDown)
         {
             curTime -= Time.deltaTime;
-            timerObject.GetComponent<TextMeshProUGUI>().text = curTime < 1 ? "STARTING" : ((int)curTime).ToString();
+            timerObject.GetComponent<TextMeshProUGUI>().text = curTime < 1 ? "STARTING" : ((int) curTime).ToString();
             await Task.Yield();
         }
+
         timerObject.SetActive(false);
         if (canCountDown && PhotonNetwork.IsMasterClient)
         {
@@ -206,8 +214,10 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
             {
                 timerObject.GetComponent<TextMeshProUGUI>().text = "CANCELLED";
             }
+
             await Task.Yield();
         }
+
         timerObject.SetActive(false);
     }
 
@@ -228,7 +238,25 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
         print("OnPlayerLeftRoom");
         if (!otherPlayer.IsInactive) // If this is not the reason 
             photonView.RPC("UpdatePlayerIconsRPC", RpcTarget.All);
-        
+
         base.OnPlayerLeftRoom(otherPlayer);
     }
+
+    public void ChangeMap(int val)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            curIndex = Mathf.Abs(curIndex + val) % loadableScenes.Length;
+            photonView.RPC("ChangeMapRPC", RpcTarget.Others, curIndex);
+            boardNameUI.text = loadableScenes[curIndex];
+        }
+    }
+
+    [PunRPC]
+    private void ChangeMapRPC(int val)
+    {
+        curIndex = val;
+        boardNameUI.text = loadableScenes[val];
+    }
+
 }

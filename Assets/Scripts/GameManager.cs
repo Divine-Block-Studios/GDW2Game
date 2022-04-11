@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private int diceRemainder;
 
     public BoardPlayer[] players;
-    private PlayerData[] _playerDatas;
+    public PlayerData[] _playerDatas;
     
     public int DiceRemainder => diceRemainder;
 
