@@ -39,8 +39,9 @@ public class SamuraiController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 50, cheeseLayer))
         {
             Cheese cheese = hit.collider.GetComponent<Cheese>();
-            Vector2 direction = _lineRenderer.GetPosition(ptsCount-2) - _lineRenderer.GetPosition(ptsCount-3);
-            cheese.Cut(direction);
+            Vector2 direction = (_lineRenderer.GetPosition(ptsCount-2) - _lineRenderer.GetPosition(ptsCount-3)).normalized;
+            float force = (_lineRenderer.GetPosition(ptsCount - 2) - _lineRenderer.GetPosition(ptsCount - 3)).magnitude;
+            cheese.Cut(direction, force);
             print("I'm cutting da cheese");
             curScore += cheese.value;
         }
