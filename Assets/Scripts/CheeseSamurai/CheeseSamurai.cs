@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Photon.Pun;
 using TMPro;
@@ -39,6 +40,8 @@ public class CheeseSamurai : MonoBehaviourPun
     [SerializeField] private Transform imWinningEffect;
     [SerializeField] private Sprite[] defaultSprites;
 
+    [SerializeField] private GameObject startGameCanvas;
+    [SerializeField] private TextMeshProUGUI countDown;
     [SerializeField] private GameObject gameplayCanvas;
     [SerializeField] private GameObject endgameCanvas;
     
@@ -58,6 +61,8 @@ public class CheeseSamurai : MonoBehaviourPun
     private bool gameComplete;
     private bool done;
     private float delTimer;
+    private bool hasStarted;
+    private float startTimer = 15;
 
     // Start is called before the first frame update
     public void SyncedStart()
@@ -76,11 +81,22 @@ public class CheeseSamurai : MonoBehaviourPun
             scoreBoardImgs[i] = scoreBoard[i].GetChild(0).GetComponent<Image>();
             scoreBoardTxts[i] = scoreBoard[i].GetChild(1).GetComponent<TextMeshProUGUI>();
         }
-        StartGame();
     }
 
     private void Update()
     {
+        if (!hasStarted)
+        {
+            startTimer -= Time.deltaTime;
+            countDown.text = ((int)startTimer).ToString();
+            if (startTimer <= 0)
+            {
+                hasStarted = true;
+                startGameCanvas.SetActive(false);
+                gameplayCanvas.SetActive(true);
+                StartGame();
+            }
+        }
         if (gameComplete && transform.childCount == 0)
         {
             if (!done)
