@@ -503,7 +503,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49856684}
-  m_LocalRotation: {x: 0.2646351, y: -0.349099, z: 0.103456855, w: 0.8929697}
+  m_LocalRotation: {x: 0.08889793, y: -0.37478158, z: 0.036130674, w: 0.9221337}
   m_LocalPosition: {x: -116.6, y: 256.9, z: 115.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8489,66 +8489,6 @@ Transform:
   m_Father: {fileID: 1938700089}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1431790569 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 86014073205374562, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
-  m_PrefabInstance: {fileID: 391401256}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1431790571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431790569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1431790572}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1431790572 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4047200888921701482, guid: 297c5b77e09f2134b84ee14125bde728, type: 3}
-  m_PrefabInstance: {fileID: 391401256}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431790569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1495699754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9456,7 +9396,7 @@ MonoBehaviour:
   startTile: {fileID: 2113296415}
   startingCoins: 3
   timeBeforeForcedRoll: 15
-  forceNum: 1
+  forceNum: 0
   enemy: {fileID: 5971601519716378502}
   _miniGames:
   - {fileID: 11400000, guid: c9faa944e666f9a48aa2cc3ab898105d, type: 2}
@@ -10734,8 +10674,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059985306}
-  m_LocalRotation: {x: 0.2646351, y: -0.349099, z: 0.103456855, w: 0.8929697}
-  m_LocalPosition: {x: -154.20966, y: 237.44803, z: 160.87543}
+  m_LocalRotation: {x: 0.08889793, y: -0.37478158, z: 0.036130674, w: 0.9221337}
+  m_LocalPosition: {x: -146.07489, y: 230.26607, z: 152.69136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 942131747}
