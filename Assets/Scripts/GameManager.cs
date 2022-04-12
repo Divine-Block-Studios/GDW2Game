@@ -165,7 +165,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
             {
                 MyPlayer = players[i];
-                myPlayerIndex = i;
                 players[i].GetComponent<BoardInputControls>().Init();
                 players[i].photonView.RequestOwnership();
                 
@@ -253,6 +252,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             _playerDatas[i].img = players[i].playerImg;
             _playerDatas[i].curTile = players[i].currentTile;
             _playerDatas[i].item = players[i].Item;
+            if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
+            {
+                myPlayerIndex = i;
+            }
         }
 
         if (PhotonNetwork.IsMasterClient)

@@ -72,9 +72,7 @@ public class LobbyLogic : MonoBehaviourPunCallbacks
             lockButton = disableConnectionsButton.GetComponent<Button>();
             visibilityButton = showCodeButton.GetComponent<Button>();
             MapSprite = mapImage.sprite;
-
-
-            roomCodeIsVisible = !Settings.settings.HideCodeOnStart;
+            
             visibilityImage.sprite = roomCodeIsVisible ? showRoomCode : hideRoomCode;
 
             lockButton.onClick.AddListener(ToggleRoomAvailability);

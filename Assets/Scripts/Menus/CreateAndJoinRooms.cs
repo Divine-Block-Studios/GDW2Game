@@ -23,6 +23,8 @@ namespace Menus
 
         public void JoinOrCreateRoom(bool createRoom)
         {
+            if(PhotonNetwork.IsConnected)
+                PhotonNetwork.Disconnect();
             Debug.Log("0 Connecting: " + createRoom);
             //PhotonNetwork.OfflineMode = false;
             isHost = createRoom;
@@ -92,7 +94,7 @@ namespace Menus
                 PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
                 PhotonNetwork.LoadLevel(1);
             }
-            PhotonNetwork.LocalPlayer.NickName = Settings.settings.Name;
+            PhotonNetwork.LocalPlayer.NickName = GameObject.Find("SettingsManager").GetComponent<Settings>().Name;
             print("ROOM: " + PhotonNetwork.CurrentRoom.Name + " - " + PhotonNetwork.LocalPlayer.NickName);
             textObj.text = PhotonNetwork.CurrentRoom.Name + " - " + PhotonNetwork.CurrentRoom.Players.Count;
         }
