@@ -44,6 +44,9 @@ public class SamuraiController : MonoBehaviour
             Cheese cheese = hit.collider.GetComponent<Cheese>();
             Vector2 direction = (_lineRenderer.GetPosition(ptsCount-2) - _lineRenderer.GetPosition(ptsCount-3)).normalized;
             
+            print("has cheese: " + cheese);
+            print("Force: " + force);
+            print("Direction: " + direction);
             cheese.Cut(direction, force);
             curScore += cheese.value;
             gameController.myScoreText.text = curScore.ToString();

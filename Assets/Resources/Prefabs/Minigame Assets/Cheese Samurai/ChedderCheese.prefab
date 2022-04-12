@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40989387442884032}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -3.1242266, y: 0.39030266, z: -5.7742434}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 213.75795, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4356551597969856735
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0f705fec381f44c848c2d39a9e0bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 3
+  value: 4
   half: {fileID: 236563999741686700, guid: f88a2aa7295dcb240b6c3d0dd874145c, type: 3}
   destructionEffect: {fileID: 7087536869871024918, guid: 4337331cb6db0174881d8e8f151d83f2, type: 3}
   shinyEffect: {fileID: 8109059006478255201, guid: 8c7f38d8e234d6840b8a9ece381223ba, type: 3}

@@ -25,17 +25,19 @@ public class Cheese : MonoBehaviour
 
     public void Cut(Vector2 direction, float force)
     {
+        print(force);
+        
         force *= pushScalar;
         Vector3 rot = Vector3.zero;
         
         rot.z= Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        GameObject goA = Instantiate(half, transform.position, Quaternion.Euler(-rot));
+        GameObject goA = Instantiate(half, transform.position, Quaternion.Euler(transform.eulerAngles -rot));
         Rigidbody goARB = goA.GetComponent<Rigidbody>();
         goARB.AddForce(direction * force);
         goARB.AddForce(goA.transform.up * vertPush);
         
         rot.z -= 180;
-        GameObject goB = Instantiate(half, transform.position, Quaternion.Euler(-rot));
+        GameObject goB = Instantiate(half, transform.position, Quaternion.Euler(transform.eulerAngles -rot));
         Rigidbody goBRB = goB.GetComponent<Rigidbody>();
         goBRB.AddForce(direction * force);
         goBRB.GetComponent<Rigidbody>().AddForce(goB.transform.up * vertPush);

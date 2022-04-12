@@ -114,10 +114,16 @@ public class CheeseSamurai : MonoBehaviourPun
             myScoreText.text = "0";
         }
 
-        while (curTime < gameDuration)
+        while (curTime < gameDuration && Application.isPlaying)
         {
             timer.text = ((int)(gameDuration - curTime)).ToString();
             curTime += Time.deltaTime;
+
+            if (!PhotonNetwork.LocalPlayer.IsMasterClient)
+            {
+                continue;
+            }
+
             //If is master
             lastCheese += Time.deltaTime;
             if (lastCheese > nextCheese)
@@ -146,7 +152,7 @@ public class CheeseSamurai : MonoBehaviourPun
                     //GameManager.gameManager.photonView.RPC("SpawnCheese", RpcTarget.All, pos.x, pos.y, pos.z, cheeseType, rngType, throwPosX, throwPosY);
 
                     print("DEBUG SPAWNING CHEESE");
-                    SpawnCheese(pos.x, pos.y, pos.z, cheeseType, rngType, throwPosX, throwPosY);
+                    photonView.RPC("SpawnCheese", RpcTarget.All, pos.x, pos.y, pos.z, cheeseType, rngType, throwPosX, throwPosY);
                 }
                 nextCheese = Random.Range(minTimeToCheese, maxTimeToCheese);
                 lastCheese = 0;
@@ -162,7 +168,7 @@ public class CheeseSamurai : MonoBehaviourPun
     {
         Vector3 pos = new Vector3(x, y, z);
         
-        Cheese cheese = Instantiate(cheeses[cheeseNum], pos, Quaternion.identity, transform).GetComponent<Cheese>();
+        Cheese cheese = Instantiate(cheeses[cheeseNum], pos, cheeses[cheeseNum].transform.rotation, transform).GetComponent<Cheese>();
         
         //Is stinky
         if (rng < stinkyChance)
