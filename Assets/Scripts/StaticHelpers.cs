@@ -129,14 +129,14 @@ public static class StaticHelpers
         }
     }
     
-    public static void Sort<T>(ref T [] arr,  int[] vals, bool ascending)
+    public static void Sort<T>(ref T [] arr,  int[] vals, bool decensding)
     {
         int[] temp = vals;
         for (int i = 0; i < arr.Length -1; i++)
         {
             for (int j = i + 1; j < arr.Length; j++)
             {
-                if (ascending)
+                if (decensding)
                 {
                     //0 > 8? // 0, 8, 2
                     //0 > 2? // 0, 8, 2
@@ -155,6 +155,7 @@ public static class StaticHelpers
                     if (vals[i] < temp[j])
                     {
                         Swap(ref vals[i], ref temp[j]);
+                        Swap(ref arr[i], ref arr[j]);
                     }
                 }
             }

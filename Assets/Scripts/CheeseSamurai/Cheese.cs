@@ -31,13 +31,13 @@ public class Cheese : MonoBehaviour
         Vector3 rot = Vector3.zero;
         
         rot.z= Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        GameObject goA = Instantiate(half, transform.position, Quaternion.Euler(transform.eulerAngles -rot));
+        GameObject goA = Instantiate(half, transform.position, Quaternion.Euler(transform.eulerAngles -rot), transform.parent);
         Rigidbody goARB = goA.GetComponent<Rigidbody>();
         goARB.AddForce(direction * force);
         goARB.AddForce(goA.transform.up * vertPush);
         
         rot.z -= 180;
-        GameObject goB = Instantiate(half, transform.position, Quaternion.Euler(transform.eulerAngles -rot));
+        GameObject goB = Instantiate(half, transform.position, Quaternion.Euler(transform.eulerAngles -rot), transform.parent);
         Rigidbody goBRB = goB.GetComponent<Rigidbody>();
         goBRB.AddForce(direction * force);
         goBRB.GetComponent<Rigidbody>().AddForce(goB.transform.up * vertPush);
