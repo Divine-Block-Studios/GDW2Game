@@ -70,6 +70,7 @@ MonoBehaviour:
   - DetectReady
   - UpdateScoreBoard
   - ChangeMapRPC
+  - ImDone
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -7,42 +7,29 @@ using Random = UnityEngine.Random;
 
 public class Settings : MonoBehaviour
 {
-    public static Settings settings { get; set; }
-
-    [SerializeField] private TMP_InputField userName;
+    //public static Settings settings { get; set; }
+    public TMP_InputField _nameText;
+    public TMP_InputField _codeText;
+    
     public string Name
     {
         get
         {
-            if (userName.text == "")
-                userName.text = RandomName();
-            return userName.text; 
+            if (_nameText.text == "")
+                _nameText.text = RandomName();
+            return _nameText.text; 
         }
     }
 
     public bool HideCodeOnStart => false;
 
-    private void Awake()
+    private void Start()
     {
-        if (userName == null)
-        {
-            //Literally does nothing, but an error gets thrown without it...
-            userName = GameObject.Find("UserName").GetComponent<TMP_InputField>();
-        }
-
-        userName.characterLimit = 12;
-        userName.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
-        userName.onValueChanged.AddListener((text) => userName.text = text.ToUpper());
-        
-        if (settings != null && settings != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            settings = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        _nameText.characterLimit = 12;
+        _codeText.characterLimit = 6;
+        _nameText.characterValidation = TMP_InputField.CharacterValidation.Alphanumeric;
+        _codeText.characterValidation = TMP_InputField.CharacterValidation.Digit;
+        _nameText.onValueChanged.AddListener((text) => _nameText.text = text.ToUpper());
     }
 
     private string RandomName()

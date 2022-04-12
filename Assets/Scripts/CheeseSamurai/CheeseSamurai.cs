@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class CheeseSamurai : MonoBehaviourPun
 {
@@ -35,6 +39,11 @@ public class CheeseSamurai : MonoBehaviourPun
     private Image []  scoreBoardImgs;
     [SerializeField] private Transform imWinningEffect;
     [SerializeField] private Sprite[] defaultSprites;
+
+    [SerializeField] private GameObject startGameCanvas;
+    [SerializeField] private TextMeshProUGUI countDown;
+    [SerializeField] private GameObject gameplayCanvas;
+    [SerializeField] private GameObject endgameCanvas;
     
     [Header("GameSettings")]
     [SerializeField] private float minTimeToCheese;
@@ -48,6 +57,12 @@ public class CheeseSamurai : MonoBehaviourPun
 
     private CheesePlayerDatas [] playerdatas;
     private CheesePlayerDatas[] sortedDatas;
+
+    private bool gameComplete;
+    private bool done;
+    private float delTimer;
+    private bool hasStarted;
+    private float startTimer = 15;
 
     // Start is called before the first frame update
     public void SyncedStart()
@@ -66,7 +81,78 @@ public class CheeseSamurai : MonoBehaviourPun
             scoreBoardImgs[i] = scoreBoard[i].GetChild(0).GetComponent<Image>();
             scoreBoardTxts[i] = scoreBoard[i].GetChild(1).GetComponent<TextMeshProUGUI>();
         }
-        StartGame();
+    }
+
+    private void Update()
+    {
+        if (!hasStarted)
+        {
+            startTimer -= Time.deltaTime;
+            countDown.text = ((int)startTimer).ToString();
+            if (startTimer <= 0)
+            {
+                hasStarted = true;
+                startGameCanvas.SetActive(false);
+                gameplayCanvas.SetActive(true);
+                StartGame();
+            }
+        }
+        if (gameComplete && transform.childCount == 0)
+        {
+            if (!done)
+            {
+                done = true;
+                photonView.RPC("ImDone", RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber - 1);
+            }
+            delTimer += Time.deltaTime;
+            if (delTimer > 10f)
+            {
+                PhotonNetwork.Disconnect();
+                SceneManager.LoadScene(0);
+            }
+        }
+    }
+
+    [PunRPC]
+    private void ImDone(int playerIndex)
+    {
+        playerdatas[playerIndex].isDone = true;
+
+        for (int i = 0; i < playerdatas.Length; i++)
+        {
+            if (!playerdatas[playerIndex].isDone)
+            {
+                return;
+            }
+        }
+        //Doesn't need to be an RPC because all players should be synced.
+        EndGame();
+    }
+
+    private async void EndGame()
+    {
+        float curTime = 0;
+        while (curTime < 2)
+        {
+            curTime += Time.deltaTime;
+            await Task.Yield();
+        }
+        gameplayCanvas.SetActive(false);
+        endgameCanvas.SetActive(true);
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (i >= sortedDatas.Length)
+            {
+                endgameCanvas.transform.GetChild(i).gameObject.SetActive(false);
+                continue;
+            }
+
+            Transform t = endgameCanvas.transform.GetChild(i);
+            t.GetChild(0).GetComponent<Image>().sprite = sortedDatas[i].image;
+            t.GetChild(1).GetComponent<TextMeshProUGUI>().text = sortedDatas[i].points.ToString();
+        }
+
     }
 
     private async void StartGame()
@@ -86,18 +172,21 @@ public class CheeseSamurai : MonoBehaviourPun
                     scoreBoardTxts[i].text = "0";
                     scoreBoardImgs[i].sprite = playerdatas[i].image;
                 }
+               
             }
-            for(int x = 2; x >= playerdatas.Length; x++)
+            for(int x = 2; x >= playerdatas.Length; x--)
             {
                 scoreBoard[x].gameObject.SetActive(false);
             }
+            FindObjectOfType<SamuraiController>().playerIndex = GameManager.gameManager.myPlayerIndex;
+            myImage.sprite = playerdatas[GameManager.gameManager.myPlayerIndex].image;
+            myScoreText.text = "0";
         }
         else
         {
             for (int i = 0; i < playerdatas.Length; i++)
             {
                 playerdatas[i] = new CheesePlayerDatas(0,  defaultSprites[i]);
-                print("Debug " + PhotonNetwork.CurrentRoom.Players[i + 1].ActorNumber);
                 if (i < 3)
                 {
                     scoreBoardTxts[i].text = "0";
@@ -108,12 +197,10 @@ public class CheeseSamurai : MonoBehaviourPun
             {
                 scoreBoard[x].gameObject.SetActive(false);
             }
-
             FindObjectOfType<SamuraiController>().playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
             myImage.sprite = playerdatas[PhotonNetwork.LocalPlayer.ActorNumber-1].image;
             myScoreText.text = "0";
         }
-
         while (curTime < gameDuration && Application.isPlaying)
         {
             timer.text = ((int)(gameDuration - curTime)).ToString();
@@ -153,10 +240,9 @@ public class CheeseSamurai : MonoBehaviourPun
                 nextCheese = Random.Range(minTimeToCheese, maxTimeToCheese);
                 lastCheese = 0;
             }
-
             await Task.Yield();
-
         }
+        gameComplete = true;
     }
 
     [PunRPC]
@@ -214,10 +300,12 @@ public class CheesePlayerDatas
 {
     public int points;
     public Sprite image;
+    public bool isDone;
 
     public CheesePlayerDatas(int points, Sprite image)
     {
         this.points = points;
         this.image = image;
+        isDone = false;
     }
 }

@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public BoardPlayer[] players;
     public PlayerData[] _playerDatas;
+    public int myPlayerIndex;
     
     public int DiceRemainder => diceRemainder;
 
@@ -235,27 +236,37 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void EndRound()
     {
+        inMiniGame = true;
         Debug.LogWarning("WHIPPY YAYAYAYAYYAAY SUGMA");
         if (++curRound == nextShreddingRound)
         {
             UpdateUIElements();
             EliminatePlayer();
         }
+        
+        _playerDatas = new PlayerData[players.Length];
+        for (int i = 0; i < players.Length; i++)
+        {
+            _playerDatas[i].name = players[i].name;
+            _playerDatas[i].coins = players[i].coins;
+            _playerDatas[i].img = players[i].playerImg;
+            _playerDatas[i].curTile = players[i].currentTile;
+            _playerDatas[i].item = players[i].Item;
+            if (PhotonNetwork.LocalPlayer.NickName == players[i].name)
+            {
+                myPlayerIndex = i;
+            }
+        }
+
         if (PhotonNetwork.IsMasterClient)
         {
-            inMiniGame = true;
-            _playerDatas = new PlayerData[players.Length];
-            for (int i = 0; i < players.Length; i++)
-            {
-                _playerDatas[i].name = players[i].name;
-                _playerDatas[i].coins = players[i].coins;
-                _playerDatas[i].img = players[i].playerImg;
-                _playerDatas[i].curTile = players[i].currentTile;
-                _playerDatas[i].item = players[i].Item;
-            }
-
             StaticHelpers.Curtains(() =>_miniGames[0].Init(null));
         }
+        else
+        {
+            StaticHelpers.Curtains(null);
+        }
+
     }
 
     public void DebugFunction()
