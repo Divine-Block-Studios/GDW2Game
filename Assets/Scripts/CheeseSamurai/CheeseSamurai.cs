@@ -89,7 +89,7 @@ public class CheeseSamurai : MonoBehaviourPun
                 photonView.RPC("ImDone", RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber - 1);
             }
             delTimer += Time.deltaTime;
-            if (delTimer < 10f)
+            if (delTimer > 10f)
             {
                 PhotonNetwork.Disconnect();
                 SceneManager.LoadScene(0);
@@ -156,18 +156,21 @@ public class CheeseSamurai : MonoBehaviourPun
                     scoreBoardTxts[i].text = "0";
                     scoreBoardImgs[i].sprite = playerdatas[i].image;
                 }
+               
             }
-            for(int x = 2; x >= playerdatas.Length; x++)
+            for(int x = 2; x >= playerdatas.Length; x--)
             {
                 scoreBoard[x].gameObject.SetActive(false);
             }
+            FindObjectOfType<SamuraiController>().playerIndex = GameManager.gameManager.myPlayerIndex;
+            myImage.sprite = playerdatas[GameManager.gameManager.myPlayerIndex].image;
+            myScoreText.text = "0";
         }
         else
         {
             for (int i = 0; i < playerdatas.Length; i++)
             {
                 playerdatas[i] = new CheesePlayerDatas(0,  defaultSprites[i]);
-                print("Debug " + PhotonNetwork.CurrentRoom.Players[i + 1].ActorNumber);
                 if (i < 3)
                 {
                     scoreBoardTxts[i].text = "0";
@@ -178,12 +181,10 @@ public class CheeseSamurai : MonoBehaviourPun
             {
                 scoreBoard[x].gameObject.SetActive(false);
             }
-
             FindObjectOfType<SamuraiController>().playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
             myImage.sprite = playerdatas[PhotonNetwork.LocalPlayer.ActorNumber-1].image;
             myScoreText.text = "0";
         }
-
         while (curTime < gameDuration && Application.isPlaying)
         {
             timer.text = ((int)(gameDuration - curTime)).ToString();
