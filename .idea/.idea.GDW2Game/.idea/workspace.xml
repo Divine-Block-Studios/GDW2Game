@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b3b5181-4bed-43f8-bea4-057e34b4f4c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW2Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Material/Round Cheese/GroundCheeseSplittedUpdated.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Material/Round Cheese/GroundCheeseSplittedUpdated.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Material/Round Cheese/GroundCheeseUpdated.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/3D Models/Cheese Samurai/Material/Round Cheese/GroundCheeseUpdated.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/ChedderCheese.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/ChedderCheese.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/ChedderCut.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/ChedderCut.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/CheeseBall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/CheeseBall.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/CheeseCutInHalf.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/CheeseCutInHalf.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/CircleCheese.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/CircleCheese.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/CircleCheeseHalf.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Minigame Assets/Cheese Samurai/CircleCheeseHalf.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,8 +87,8 @@
       <option value="$PROJECT_DIR$/Assets/LobbyLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StaticHelpers.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/SamuraiController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/Cheese.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CheeseSamurai/CheeseSamurai.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">

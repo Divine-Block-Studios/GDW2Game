@@ -119,14 +119,10 @@ public class CheeseSamurai : MonoBehaviourPun
             timer.text = ((int)(gameDuration - curTime)).ToString();
             curTime += Time.deltaTime;
 
-            if (!PhotonNetwork.LocalPlayer.IsMasterClient)
-            {
-                continue;
-            }
-
             //If is master
             lastCheese += Time.deltaTime;
-            if (lastCheese > nextCheese)
+            
+            if (PhotonNetwork.LocalPlayer.IsMasterClient && lastCheese > nextCheese)
             {
                 int iterations;
                 if (curTime > 5 && Random.Range(0f, 1f) < crazyCheeseChance)
@@ -199,7 +195,7 @@ public class CheeseSamurai : MonoBehaviourPun
             points[i] = playerdatas[i].points;
         }
         sortedDatas  =  (CheesePlayerDatas[]) playerdatas.Clone();
-        StaticHelpers.Sort(ref sortedDatas, points, true);
+        StaticHelpers.Sort(ref sortedDatas, points, false);
         
         for(int x = 0; x < scoreBoard.Length && x < sortedDatas.Length; x++)
         {
