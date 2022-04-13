@@ -55,6 +55,9 @@ public class CheeseSamurai : MonoBehaviourPun
 
     [SerializeField] private float forceScalar = 0.5f;
 
+    [Header("Game Audio")] 
+    [SerializeField] private AudioSource countDownMusic;
+
     private CheesePlayerDatas [] playerdatas;
     private CheesePlayerDatas[] sortedDatas;
 
@@ -157,6 +160,9 @@ public class CheeseSamurai : MonoBehaviourPun
 
     private async void StartGame()
     {
+        //Start Audio When Start Game
+        countDownMusic.Play();
+        
         float curTime = 0;
         float lastCheese = 0;
         float nextCheese = Random.Range(minTimeToCheese, maxTimeToCheese);

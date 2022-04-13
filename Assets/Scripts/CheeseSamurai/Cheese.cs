@@ -16,6 +16,9 @@ public class Cheese : MonoBehaviour
     [SerializeField] private GameObject stinkyEffect;
     [SerializeField] private float pushScalar;
     [SerializeField] private float vertPush;
+    
+    //Play when cut
+    [SerializeField] AudioSource sliceCheeseAudio;
 
     private void Awake()
     {
@@ -53,8 +56,11 @@ public class Cheese : MonoBehaviour
             Instantiate(stinkyEffect, goA.transform);
             Instantiate(stinkyEffect, goB.transform);
         }
-
+        
         Destroy(gameObject);
+        //Audio Plays After Destorying Cheese
+        sliceCheeseAudio.pitch = Random.Range(0.5f, 1.5f);
+        sliceCheeseAudio.Play();
         GameObject temp = Instantiate(destructionEffect, transform.position, quaternion.identity);
         Destroy(temp, 1);
         print("Cut AT: " + direction + " force of " + force);
