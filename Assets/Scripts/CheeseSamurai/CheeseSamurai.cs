@@ -65,7 +65,7 @@ public class CheeseSamurai : MonoBehaviourPun
     private bool done;
     private float delTimer;
     private bool hasStarted;
-    private float startTimer = 15;
+    private float startTimer = 10;
 
     // Start is called before the first frame update
     public void SyncedStart()
